@@ -3,7 +3,7 @@ import React from 'react';
 import LinearGradient from 'react-native-linear-gradient';
 import {styles} from './styles';
 import {useNavigation} from '@react-navigation/native';
-import Menu from '../../../assets/images/Vector.svg';
+import Menu from '../../../assets/images/hamburger.svg';
 
 const BackButton = ({showMenu}) => {
   const navigation = useNavigation();

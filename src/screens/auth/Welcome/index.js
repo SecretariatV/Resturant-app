@@ -1,10 +1,11 @@
 import {View, Text, Image} from 'react-native';
 import React from 'react';
 import HeaderCommon from '../../../components/HeaderCommon';
+import HeaderModed from '../../../components/HeaderModed/index.js';
 import BackgroundLayout from '../../../components/BackgroundLayout';
 import {styles} from './styles';
 import LinearGradient from 'react-native-linear-gradient';
-import {width, widthToDp} from '../../../utils/Dimensions';
+import {width, widthToDp, heightToDp} from '../../../utils/Dimensions';
 import Swiper from 'react-native-swiper';
 import ButtonsCommon from '../../../components/Buttons/ButtonCommon.js';
 import {useNavigation} from '@react-navigation/native';
@@ -15,10 +16,21 @@ const Welcome = props => {
     console.log('kmdsakas');
     navigation.navigate('Signup');
   };
+
+  
   return (
     <View style={styles.container}>
       <BackgroundLayout />
       <HeaderCommon show={false} />
+      <HeaderModed
+        slotLeft={<Text style={{ color:'#fff'}}></Text>}
+        slotCenter={
+          <View style={[{flex: 1, alignItems: 'center'}]}>
+            <Image source={require('../../../assets/images/logo.png')} />
+          </View>
+        }
+        slotRight={<Text style={{ color:'#fff'}}></Text>}
+      />
       <Swiper
         style={styles.wrapper}
         showsButtons={false}
@@ -26,13 +38,20 @@ const Welcome = props => {
         showsPagination={false}>
         <View style={styles.slide1}>
           <View style={{alignItems: 'center'}}>
-            <Image source={require('../../../assets/images/chef.png')} />
+            <Image
+              style={{
+                width: widthToDp(100),
+                objectFit: 'contain',
+                height: heightToDp(80),
+              }}
+              source={require('../../../assets/images/chef.png')}
+            />
             <Text style={styles.welcomeTxt}>Welcome To</Text>
 
             <View style={{alignSelf: 'center', marginTop: 5}}>
               <LinearGradient
                 colors={['#02ABEE6E', '#02ABEE', '#00F594']}
-                style={{borderRadius: 15, flexWrap: 'nowrap'}}
+                style={{borderRadius: 10, flexWrap: 'nowrap'}}
                 start={{x: 0, y: 0.5}}
                 end={{x: 1, y: 0.5}}>
                 <View style={styles.circleGradient}>

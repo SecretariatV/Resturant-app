@@ -2,6 +2,11 @@ import {StyleSheet} from 'react-native';
 import {fonts} from '../../../theme/FontFamily';
 import {width, widthToDp} from '../../../utils/Dimensions';
 
+
+const percentSize = (size) => {
+  let scrensize = widthToDp(100);
+  return (size * scrensize) / 100;
+};
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -17,13 +22,13 @@ const styles = StyleSheet.create({
   shareABillTxt: {
     fontFamily: fonts.URBANIST_EXTRABOLD,
     color: '#ffffff',
-    fontSize: 30,
+    fontSize: 24,
     paddingHorizontal: 5,
   },
   byeTxt: {
     color: '#01CA78',
     fontFamily: fonts.URBANIST_SEMIBOLD,
-    fontSize: 18,
+    fontSize: percentSize(5),
     marginTop: widthToDp(7),
     textAlign: 'center',
   },
@@ -34,12 +39,12 @@ const styles = StyleSheet.create({
   circleGradient: {
     margin: 1,
 
-    paddingVertical: 10,
-    paddingHorizontal: 15,
+    paddingVertical: 2,
+    paddingHorizontal: 7,
     alignSelf: 'center',
     alignItems: 'center',
     backgroundColor: '#00000099',
-    borderRadius: 15,
+    borderRadius: 10,
   },
   sliderDot: {
     margin: 1,
