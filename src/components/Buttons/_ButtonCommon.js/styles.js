@@ -4,15 +4,15 @@ import {fonts} from '../../../theme/FontFamily';
 
 const styles = StyleSheet.create({
   circleGradient: {
-    margin: 1,
+    margin: 2,
     // width: 300,
     // width: width * 0.868,
 
-    padding: 10,
+    padding: 15,
     // alignSelf: 'center',
     alignItems: 'center',
     backgroundColor: '#00000099',
-    borderRadius: 15,
+    borderRadius: 20,
   },
   input: {
     // backgroundColor: 'white',
@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
   btnText: {
     color: '#ffffff',
     fontFamily: fonts.URBANIST_EXTRABOLD,
-    fontSize: 16,
+    fontSize: 18,
   },
 });
 export {styles};

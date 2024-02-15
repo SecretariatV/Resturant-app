@@ -17,13 +17,13 @@ const styles = StyleSheet.create({
   shareABillTxt: {
     fontFamily: fonts.URBANIST_EXTRABOLD,
     color: '#ffffff',
-    fontSize: 24,
+    fontSize: 30,
     paddingHorizontal: 5,
   },
   byeTxt: {
     color: '#01CA78',
     fontFamily: fonts.URBANIST_SEMIBOLD,
-    fontSize: 14,
+    fontSize: 18,
     marginTop: widthToDp(7),
     textAlign: 'center',
   },
@@ -34,12 +34,12 @@ const styles = StyleSheet.create({
   circleGradient: {
     margin: 1,
 
-    paddingVertical: 2,
-    paddingHorizontal: 7,
+    paddingVertical: 10,
+    paddingHorizontal: 15,
     alignSelf: 'center',
     alignItems: 'center',
     backgroundColor: '#00000099',
-    borderRadius: 10,
+    borderRadius: 15,
   },
   sliderDot: {
     margin: 1,

@@ -25,7 +25,7 @@ const ButtonsCommon = ({
       <LinearGradient
         colors={['#02ABEE6E', '#02ABEE', '#00F594']}
         // colors={['#040B1B', '#045386']}
-        style={{borderRadius: 15, flexWrap: 'nowrap', margin: 2}}
+        style={{borderRadius: 20, flexWrap: 'nowrap', margin: 2}}
         start={{x: 0, y: 0.5}}
         end={{x: 1, y: 0.5}}>
         <TouchableOpacity

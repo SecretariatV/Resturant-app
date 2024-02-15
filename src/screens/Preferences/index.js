@@ -11,7 +11,7 @@ const Preferences = () => {
     <View style={styles.container}>
       <BackgroundLayout />
       <HeaderCommon
-        showSkipBtn={true}
+        showSkipBtn={false}
         title={'Menu Customization'}
         showValet={false}
       />

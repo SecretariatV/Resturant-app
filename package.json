@@ -8,7 +8,7 @@
     "lint": "eslint .",
     "start": "react-native start",
     "test": "jest",
-    "build:ios": "react-native bundle --entry-file='index.js' --bundle-output='./ios/ShareaBill/main.jsbundle' --dev=false --platform='ios' --assets-dest='./ios'"
+    "build:ios": "react-native bundle --entry-file='index.js' --bundle-output='./ios/main.jsbundle' --dev=false --platform='ios'"
   },
   "dependencies": {
     "@react-navigation/bottom-tabs": "^6.5.11",
@@ -17,14 +17,18 @@
     "react": "18.2.0",
     "react-native": "0.73.3",
     "react-native-bootsplash": "^5.3.0",
+    "react-native-camera": "^4.2.1",
     "react-native-confirmation-code-field": "^7.3.2",
     "react-native-gesture-handler": "^2.14.1",
     "react-native-linear-gradient": "^2.8.3",
+    "react-native-permissions": "^2.0.2",
+    "react-native-qrcode-scanner": "^1.5.5",
     "react-native-safe-area-context": "^4.8.2",
     "react-native-screens": "^3.29.0",
     "react-native-svg": "^14.1.0",
     "react-native-svg-transformer": "^1.3.0",
-    "react-native-swiper": "^1.6.0"
+    "react-native-swiper": "^1.6.0",
+    "react-native-text-gradient": "^0.1.7"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",

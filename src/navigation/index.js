@@ -21,6 +21,7 @@ import Verification from '../screens/auth/Verification';
 import Splash from '../screens/Splash';
 import Home from '../screens/Home';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import QrCode from '../screens/QrCode';
 // import {createDrawerNavigator} from '@react-navigation/drawer';
 
 const Tab = createBottomTabNavigator();
@@ -136,6 +137,13 @@ const AuthStack = () => {
         }}
         component={Home}
       />
+      <Stack.Screen
+        name="QrCode"
+        options={{
+          headerShown: false,
+        }}
+        component={QrCode}
+      />
     </Stack.Navigator>
   );
 };
@@ -154,7 +162,7 @@ const HomeStack = () => {
 const TabNavigator = () => {
   return (
     <Tab.Navigator
-      initialRouteName="Home"
+      initialRouteName="QrCode"
       backBehavior="initialRoute"
       screenListeners={({navigation, route}) => ({
         tabPress: e => {
@@ -168,6 +176,7 @@ const TabNavigator = () => {
         headerShown: false,
       })}>
       <Tab.Screen name="Home" component={Home} />
+      <Tab.Screen name="QrCode" component={QrCode} />
     </Tab.Navigator>
   );
 };
@@ -186,7 +195,7 @@ const TabNavigator = () => {
 const RootNavigator = () => {
   return (
     <NavigationContainer>
-      {user ? HomeStack() : AuthStack()}
+      {!user ? HomeStack() : AuthStack()}
     </NavigationContainer>
   );
 };

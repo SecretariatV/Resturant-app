@@ -8,7 +8,7 @@ const styles = StyleSheet.create({
     // width: 300,
     width: width * 0.868,
 
-    padding: 15,
+    padding: 10,
     alignSelf: 'center',
     alignItems: 'center',
     // backgroundColor: '#00000099',
@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
   btnText: {
     color: '#ffffff',
     fontFamily: fonts.URBANIST_EXTRABOLD,
-    fontSize: 18,
+    fontSize: 16,
   },
 });
 export {styles};

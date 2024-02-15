@@ -31,15 +31,10 @@ const BackButton = ({showMenu}) => {
             !showMenu && styles.menuGradient,
             showMenu && styles.circleTwoGradient,
           ]}
-          onPress={() => handleButton()}>
+          onPress={() => (!showMenu ? handleButton() : null)}>
           {showMenu ? (
             <Menu width={40} height={40} style={{marginTop: 5}} />
           ) : (
-            // <Image
-            //   source={require('../../../assets/images/back_arrow.png')}
-            //   width={38}
-            //   height={38}
-            // />
             <Image
               source={require('../../../assets/images/back_arrow.png')}
               width={38}

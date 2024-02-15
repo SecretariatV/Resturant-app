@@ -10,7 +10,8 @@ const styles = StyleSheet.create({
   },
   circleGradient: {
     margin: 1,
-
+    // width: '30%',
+    flexDirection: 'row',
     paddingVertical: 5,
     paddingHorizontal: 5,
     alignSelf: 'center',
