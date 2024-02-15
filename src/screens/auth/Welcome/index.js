@@ -20,15 +20,15 @@ const Welcome = props => {
   return (
     <View style={styles.container}>
       <BackgroundLayout />
-      <HeaderCommon show={false} />
+      {/* <HeaderCommon show={false} /> */}
       <HeaderModed
-        slotLeft={<Text style={{color: '#fff'}}></Text>}
+        slotLeft={<></>}
         slotCenter={
           <View style={[{flex: 1, alignItems: 'center'}]}>
             <Image source={require('../../../assets/images/logo.png')} />
           </View>
         }
-        slotRight={<Text style={{color: '#fff'}}></Text>}
+        slotRight={<></>}
       />
       <Swiper
         style={styles.wrapper}

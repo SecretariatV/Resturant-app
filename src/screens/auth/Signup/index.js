@@ -4,6 +4,7 @@ import {useState} from 'react';
 import BackgroundLayout from '../../../components/BackgroundLayout';
 import {styles} from './styles';
 import HeaderCommon from '../../../components/HeaderCommon';
+import HeaderModed from '../../../components/HeaderModed';
 import LinearGradient from 'react-native-linear-gradient';
 import FancyText from '../../../components/FancyText';
 import FancyInput from '../../../components/FancyInput';
@@ -20,8 +21,8 @@ import fbLoginIcon from '../../../assets/images/fbLoginIcon.png';
 import gLoginIcon from '../../../assets/images/gLoginIcon.png';
 import aLoginIcon from '../../../assets/images/aLoginIcon.png';
 import {useNavigation} from '@react-navigation/native';
-import ButtonsCommon from '../../../components/Buttons/ButtonCommon.js';
-
+import ButtonsCommon from '../../../components/Buttons/ButtonCommon.js'; 
+import BackButton from '../../../components/Buttons/BackButton/index.js';
 const Signup = ({showMenu}) => {
   const navigation = useNavigation();
 
@@ -60,7 +61,8 @@ const Signup = ({showMenu}) => {
     <View style={styles.container}>
       <BackgroundLayout />
 
-      <HeaderCommon show={true} showMenu={false} />
+      {/* <HeaderCommon show={true} showMenu={false} /> */}
+      <HeaderModed slotLeft={<BackButton  />} />
       <ScrollView style={styles.regFormScrollView}>
         <View className="join-screen-header-text">
           <View

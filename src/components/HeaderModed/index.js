@@ -3,9 +3,13 @@ import React from 'react';
 import {styles} from './styles';
 import BackButton from '../Buttons/BackButton/index.js';
 import SkipButton from '../Buttons/SkipButton/index.js';
-import { heightToDp, widthToDp } from '../../utils/Dimensions.js';
+import {heightToDp, widthToDp} from '../../utils/Dimensions.js';
 
-const HeaderModed = ({slotLeft = null, slotCenter = null, slotRight = null}) => {
+const HeaderModed = ({
+  slotLeft = null,
+  slotCenter = null,
+  slotRight = null,
+}) => {
   return (
     <View
       style={{
@@ -13,22 +17,17 @@ const HeaderModed = ({slotLeft = null, slotCenter = null, slotRight = null}) => 
         justifyContent: 'space-between',
         alignItems: 'center',
         flexDirection: 'row',
-        height: heightToDp(10),
+        height: heightToDp(15),
+        marginTop: Platform.OS == 'ios' ? 70 : 10,
       }}
       className="header-container">
-      <View
-        style={{width: '20%'}}
-        className="slot-left">
+      <View style={{width: '20%'}} className="slot-left">
         {slotLeft}
       </View>
-      <View
-        style={{width: '60%'}}
-        className="slot-center">
+      <View style={{width: '60%'}} className="slot-center">
         {slotCenter}
       </View>
-      <View
-        style={{width: '20%'}}
-        className="slot-right">
+      <View style={{width: '20%'}} className="slot-right">
         {slotRight}
       </View>
     </View>

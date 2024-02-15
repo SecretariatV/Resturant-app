@@ -8,7 +8,7 @@ const styles = StyleSheet.create({
     // width: 300,
     width: width * 0.868,
 
-    padding: 15,
+    padding: 10,
     alignSelf: 'center',
     alignItems: 'center',
     backgroundColor: '#00000099',
@@ -28,8 +28,8 @@ const styles = StyleSheet.create({
   },
   menuGradient: {
     margin: 1,
-    width: 50,
-    padding: 15,
+    width: 45,
+    padding: 10,
     backgroundColor: '#345B61',
     borderRadius: 20,
     alignItems: 'center',
@@ -38,12 +38,12 @@ const styles = StyleSheet.create({
   linearBack: {
     borderRadius: 20,
     flexWrap: 'nowrap',
-    width: 50,
+    width: 45,
   },
   linearMenu: {
     borderRadius: 20,
     flexWrap: 'nowrap',
-    width: 50,
+    width: 45,
   },
   menuCondition: {
     width: 60,

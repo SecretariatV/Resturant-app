@@ -28,7 +28,7 @@ function Section({children, title}) {
           },
         ]}>
         {title}
-      </Text>
+      </Text>true
       <Text
         style={[
           styles.sectionDescription,
