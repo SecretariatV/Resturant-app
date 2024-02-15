@@ -4,7 +4,7 @@ import {styles} from './styles';
 import BackgroundLayout from '../../components/BackgroundLayout';
 import HeaderCommon from '../../components/HeaderCommon';
 import MenuBg from '../../assets/images/tabbar-center.svg';
-import { heightToDp, widthToDp } from '../../utils/Dimensions';
+import {heightToDp, widthToDp} from '../../utils/Dimensions';
 import HeaderModed from '../../components/HeaderModed';
 import MenuNavButton from '../../components/MenuNavButton';
 import Hamburger from '../../assets/images/hamburger.png';
