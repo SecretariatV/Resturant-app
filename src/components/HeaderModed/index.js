@@ -13,18 +13,24 @@ const HeaderModed = ({
   return (
     <View
       style={{
+        // position: 'absolute',
+        // bottom: 0,
+        // top: 10,
         width: '100%',
         justifyContent: 'space-between',
         alignItems: 'center',
         flexDirection: 'row',
         height: heightToDp(15),
-        marginTop: Platform.OS == 'ios' ? 70 : 10,
+        marginTop: Platform.OS == 'ios' ? heightToDp(12) : 10,
+        // marginTop: Platform.OS == 'ios' ? 70 : 10,
       }}
       className="header-container">
       <View style={{width: '20%'}} className="slot-left">
         {slotLeft}
       </View>
-      <View style={{width: '60%'}} className="slot-center">
+      <View
+        style={{width: '60%', alignItems: 'center'}}
+        className="slot-center">
         {slotCenter}
       </View>
       <View style={{width: '20%'}} className="slot-right">

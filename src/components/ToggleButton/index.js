@@ -4,10 +4,14 @@ import LinearGradient from 'react-native-linear-gradient';
 import {styles} from './styles';
 import {widthToDp} from '../../utils/Dimensions';
 
-const ToggleButton = ({name, show}) => {
+const ToggleButton = ({name, show, onPress}) => {
   const [isToggled, setIsToggled] = useState(false);
 
   const handleToggle = () => {
+    if (onPress) {
+      console.log('first on pRWSX');
+      onPress;
+    }
     // Toggle the state when the button is clicked
     setIsToggled(!isToggled);
   };
@@ -26,8 +30,7 @@ const ToggleButton = ({name, show}) => {
         flexWrap: 'nowrap',
         marginVertical: 5,
         marginRight: widthToDp(4),
-        //   width: widthToDp(30),
-        // alignItems: 'center',
+
         alignSelf: 'flex-start',
       }}
       start={{x: 0, y: 0.5}}
@@ -35,6 +38,7 @@ const ToggleButton = ({name, show}) => {
       <TouchableOpacity
         style={[styles.circleGradient, isToggled && styles.active]}
         onPress={handleToggle}
+        // onPress={onPress}
         disabled={show}>
         <Text style={[styles.menuTxt, isToggled && styles.menuActiveTxt]}>
           {name}

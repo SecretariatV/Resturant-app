@@ -45,11 +45,14 @@ import Menu from '../screens/Menu';
 import Cart from '../screens/Cart';
 import Requests from '../screens/Requests';
 import {heightToDp, widthToDp} from '../utils/Dimensions';
+import Restaurant from '../screens/Restaurant';
 
 const Tab = createBottomTabNavigator();
 // const Drawer = createDrawerNavigator();
 
 const Stack = createNativeStackNavigator();
+const HomeStacked = createNativeStackNavigator();
+
 const user = true;
 
 const relativeFont = numb => {
@@ -171,6 +174,14 @@ const AuthStack = () => {
         }}
         component={QrCode}
       />
+
+      <Stack.Screen
+        name="Restaurant"
+        options={{
+          headerShown: false,
+        }}
+        component={Restaurant}
+      />
     </Stack.Navigator>
   );
 };
@@ -249,10 +260,10 @@ const TabNavigator = () => {
   return (
     <Tab.Navigator
       // tabBar={props => <MyTabBar  {...props} />}
-      tabBarOptions={{
-        backgroundColor: '#f00',
-      }}
-      initialRouteName="Home"
+      // tabBarOptions={{
+      //   backgroundColor: '#f00',
+      // }}
+      initialRouteName="Restaurant"
       backBehavior="initialRoute"
       style={{backgroundColor: '#f00'}}
       screenListeners={({navigation, route}) => ({
@@ -265,6 +276,8 @@ const TabNavigator = () => {
       })}
       screenOptions={({route}) => ({
         headerShown: false,
+        // tabBarHideOnKeyboard: true,
+
         tabBarShowLabel: false,
         tabBarStyle: {
           position: 'absolute',
@@ -274,7 +287,8 @@ const TabNavigator = () => {
           elevation: 0,
           // backgroundColor: '#2d2d3d',
           backgroundColor: 'transparent',
-          borderWidth: 0,
+
+          borderTopWidth: 0,
 
           borderColor: 'transparent',
           paddingVertical: 10,
@@ -336,8 +350,8 @@ const TabNavigator = () => {
         }}
       />
       <Tab.Screen
-        name="Menu"
-        component={Menu}
+        name="Restaurant"
+        component={Restaurant}
         options={{
           tabBarIcon: ({focused}) => {
             return (

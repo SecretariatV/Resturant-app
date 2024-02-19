@@ -7,5 +7,6 @@ export default {
   BLACK: '#000000',
   ACTIVE_COLOR: '#021A2E',
   DISABLED_COLOR: '#fc7779',
+  EXCELLENT_COLOR: '#006D60',
   // PLACEHOLDER_TEXT: 'gray',
 };

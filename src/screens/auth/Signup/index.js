@@ -21,7 +21,7 @@ import fbLoginIcon from '../../../assets/images/fbLoginIcon.png';
 import gLoginIcon from '../../../assets/images/gLoginIcon.png';
 import aLoginIcon from '../../../assets/images/aLoginIcon.png';
 import {useNavigation} from '@react-navigation/native';
-import ButtonsCommon from '../../../components/Buttons/ButtonCommon.js'; 
+import ButtonsCommon from '../../../components/Buttons/ButtonCommon.js';
 import BackButton from '../../../components/Buttons/BackButton/index.js';
 const Signup = ({showMenu}) => {
   const navigation = useNavigation();
@@ -62,7 +62,7 @@ const Signup = ({showMenu}) => {
       <BackgroundLayout />
 
       {/* <HeaderCommon show={true} showMenu={false} /> */}
-      <HeaderModed slotLeft={<BackButton  />} />
+      <HeaderModed slotLeft={<BackButton />} />
       <ScrollView style={styles.regFormScrollView}>
         <View className="join-screen-header-text">
           <View
