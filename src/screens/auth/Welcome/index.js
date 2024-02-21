@@ -20,16 +20,27 @@ const Welcome = props => {
   return (
     <View style={styles.container}>
       <BackgroundLayout />
-      {/* <HeaderCommon show={false} /> */}
       <HeaderModed
         slotLeft={<></>}
         slotCenter={
-          <View style={[{flex: 1, alignItems: 'center'}]}>
+          <View
+            style={[
+              {
+                // alignSelf: 'center',
+                // justifyContent: 'center',
+                // width: '100%',
+                // alignItems: 'center',
+                // backgroundColor: 'red',
+              },
+            ]}>
             <Image source={require('../../../assets/images/logo.png')} />
           </View>
         }
+        bannerImage={<></>}
         slotRight={<></>}
       />
+      {/* <HeaderCommon show={false} /> */}
+
       <Swiper
         style={styles.wrapper}
         showsButtons={false}

@@ -16,6 +16,8 @@ import {height, heightToDp, widthToDp} from '../../utils/Dimensions';
 import HeaderModed from '../../components/HeaderModed';
 import MenuNavButton from '../../components/MenuNavButton';
 import Hamburger from '../../assets/images/hamburger.png';
+import heart from '../../assets/images/heart.png';
+
 import Clock from '../../assets/images/clock.svg';
 import Dress from '../../assets/images/dress.svg';
 
@@ -28,14 +30,148 @@ import LinearGradient from 'react-native-linear-gradient';
 import {ListItem} from '@rneui/themed';
 import ResturantCard from '../../components/RestaurantCard';
 import ReviewCard from '../../components/ReviewCard';
-import {reviews, ageGroup, cuisine, dressCode} from '../../utils/demodata';
-import Footer from '../../components/Footer';
 
 const Restaurant = () => {
-  const [about, setAbout] = useState(false);
+  const dressCode = [
+    {
+      codeType: 'Smart casual',
+    },
+    {
+      codeType: 'Casual',
+    },
+    {
+      codeType: 'Formal',
+    },
+    {
+      codeType: 'Smart casual',
+    },
+    {
+      codeType: 'Smart casual',
+    },
+  ];
+
+  const cuisine = [
+    {
+      type: 'Italian',
+    },
+    {
+      type: 'Italian',
+    },
+    {
+      type: 'Italian',
+    },
+    {
+      type: 'Italian',
+    },
+    {
+      type: 'Italian',
+    },
+    {
+      type: 'Italian',
+    },
+    {
+      type: 'Italian',
+    },
+    {
+      type: 'Italian',
+    },
+    {
+      type: 'Italian',
+    },
+    {
+      type: 'Italian',
+    },
+    {
+      type: 'Italian',
+    },
+    {
+      type: 'Italian',
+    },
+    {
+      type: 'Italian',
+    },
+    {
+      type: 'Italian',
+    },
+    {
+      type: 'Italian',
+    },
+    {
+      type: 'Italian',
+    },
+    {
+      type: 'Italian',
+    },
+    {
+      type: 'Italian',
+    },
+    {
+      type: 'Italian',
+    },
+    {
+      type: 'Italian',
+    },
+    {
+      type: 'Italian',
+    },
+    {
+      type: 'Italian',
+    },
+    {
+      type: 'Italian',
+    },
+    {
+      type: 'Italian',
+    },
+    {
+      type: 'Italian',
+    },
+    {
+      type: 'Italian',
+    },
+  ];
+  const ageGroup = [
+    {
+      age: 'Kids allowed,',
+    },
+    {
+      age: 'couples & groups',
+    },
+  ];
+
+  const reviewObj = [
+    {
+      name: 'abc',
+      time: '2 mins ago',
+      detail:
+        'Consequat velit qui adipisicing sunt do rependerit ad laborum tempor ullamco exercitation. Ullamco tempor adipisicing et voluptate duis sit esse aliqua',
+    },
+
+    {
+      name: 'abc',
+      time: '2 mins ago',
+      detail:
+        'Consequat velit qui adipisicing sunt do rependerit ad laborum tempor ullamco exercitation. Ullamco tempor adipisicing et voluptate duis sit esse aliqua',
+    },
+
+    {
+      name: 'abc',
+      time: '2 mins ago',
+      detail:
+        'Consequat velit qui adipisicing sunt do rependerit ad laborum tempor ullamco exercitation. Ullamco tempor adipisicing et voluptate duis sit esse aliqua',
+    },
+
+    {
+      name: 'abc',
+      time: '2 mins ago',
+      detail:
+        'Consequat velit qui adipisicing sunt do rependerit ad laborum tempor ullamco exercitation. Ullamco tempor adipisicing et voluptate duis sit esse aliqua',
+    },
+  ];
+  const [about, setAbout] = useState(true);
   const [review, setReview] = useState(true);
-  const [expanded, setExpanded] = useState(true);
-  const [isCollapsed, setIsCollapsed] = useState(false);
+  const [expanded, setExpanded] = useState(false);
+  const [isCollapsed, setIsCollapsed] = useState(true);
 
   const [contentHeight, setContentHeight] = useState(new Animated.Value(0));
   const handleAboutToggle = () => {
@@ -63,41 +199,13 @@ const Restaurant = () => {
     //   useNativeDriver: false,
     // }).start();
   };
-  const StickyHeader = () => {
-    return (
-      <View style={styles.restaurantHeaderContainer}>
-        <Text style={styles.resturantName}>Restaurant Name</Text>
-        <View style={styles.resturantRatingContainer}>
-          <Text style={styles.rating}>4.5</Text>
-          <Image
-            source={require('../../assets/images/star.png')}
-            style={{width: 20, height: 20}}
-          />
-        </View>
-        <ToggleButton
-          name={'About'}
-          onPress={() => handleAboutToggle()}
-          show={false}
-        />
-        <ToggleButton name={'Reviews'} onPress={() => handleReviewToggle()} />
-      </View>
-    );
-  };
 
   return (
     <View style={styles.container}>
       <BackgroundLayout />
+
       <HeaderModed
-        slotLeft={
-          <MenuNavButton
-            icon={Hamburger}
-            iconType="image"
-            containerStyle={{
-              position: 'absolute',
-              top: 0,
-            }}
-          />
-        }
+        slotLeft={<MenuNavButton icon={Hamburger} iconType="image" />}
         slotCenter={<></>}
         slotRight={<></>}
         bannerImage={
@@ -108,17 +216,27 @@ const Restaurant = () => {
         }
       />
 
-      <ScrollView style={styles.restaurantScrollView}>
+      {/* <ImageBackground
+        source={resturant_cover}
+        // resizeMode="cover"
+        style={{
+          width: widthToDp(100),
+          height: heightToDp(100),
+        }}>
         <View
-          class="restaurant-content-container"
-          style={styles.restaurantContentContainer}>
+          style={{
+            justifyContent: 'flex-end',
+            height: heightToDp(70),
+          }}>
           <View
-            class="restaurant-header-container"
-            style={styles.resturantHeaderContainer}>
+            style={{
+              flexDirection: 'row',
+              width: widthToDp(100),
+              justifyContent: 'space-between',
+              alignItems: 'center',
+            }}>
             <Text style={styles.resturantName}>Restaurant Name</Text>
-            <View
-              class="restaurant-rating-container"
-              style={styles.resturantRatingContainer}>
+            <View style={{flexDirection: 'row', marginRight: 15}}>
               <Text style={styles.rating}>4.5</Text>
               <Image
                 source={require('../../assets/images/star.png')}
@@ -131,8 +249,10 @@ const Restaurant = () => {
             industry. Lorem Ipsum has been the..
           </Text>
         </View>
-        <View class="restaurant-meta-details" style={{marginHorizontal: 15}}>
-          <View class="restaurant-meta-tabs" style={styles.btnsContainer}>
+      </ImageBackground> */}
+      <ScrollView>
+        <View style={{marginHorizontal: 15}}>
+          <View style={styles.btnsContainer}>
             <ToggleButton
               name={'About'}
               onPress={() => handleAboutToggle()}
@@ -146,6 +266,7 @@ const Restaurant = () => {
           {!about && (
             <>
               <Text style={styles.headingText}>Opening Hours</Text>
+
               <View style={styles.timeContainer}>
                 <Clock width={32} height={32} style={{marginRight: 10}} />
                 <Text style={styles.to}>6:00 PM</Text>
@@ -271,27 +392,6 @@ const Restaurant = () => {
               </Animated.View> */}
 
               <View style={{marginBottom: 10}}>
-                <ListItem.Accordion
-                  // onPress={toggleAccordion}
-                  isExpanded={expanded}
-                  onPress={() => {
-                    setExpanded(!expanded);
-                  }}
-                  containerStyle={styles.review_btn}>
-                  <ListItem.Content>
-                    <FlatList
-                      data={reviews}
-                      renderItem={({item}) => (
-                        <ReviewCard
-                          name={item.name}
-                          time={item.time}
-                          detail={item.detail}
-                        />
-                      )}
-                    />
-                  </ListItem.Content>
-                </ListItem.Accordion>
-
                 <LinearGradient
                   colors={['#00000022', '#FFFFFFFF', '#FFFFFFFF']}
                   start={{x: 0, y: 0.5}}
@@ -302,12 +402,63 @@ const Restaurant = () => {
                     margin: 1,
                     borderRadius: 18,
                     width: '100%',
-                  }}></LinearGradient>
+                  }}>
+                  <ListItem
+                    // onPress={toggleAccordion}
+                    isExpanded={expanded}
+                    onPress={() => {
+                      setExpanded(!expanded);
+                    }}
+                    containerStyle={styles.review_btn}>
+                    <View
+                      style={{
+                        justifyContent: 'space-between',
+                        flexDirection: 'row',
+                        width: '100%',
+                      }}>
+                      <View
+                        style={{flexDirection: 'row', alignItems: 'center'}}>
+                        <Text style={styles.rating_type}>Excellent</Text>
+                        <View style={styles.review_tag}></View>
+                      </View>
 
-                {!expanded && (
+                      <View
+                        style={{flexDirection: 'row', alignItems: 'center'}}>
+                        <Image
+                          source={require('../../assets/images/Star_2.png')}
+                        />
+                        <Text style={styles.rating_no}>4.0</Text>
+                        <Image
+                          source={require('../../assets/images/chevron_down.png')}
+                          // width={10}
+                        />
+                      </View>
+                    </View>
+
+                    <ListItem.Content>
+                      {/* <Icon
+              name={isCollapsed ? 'chevron-down' : 'chevron-up'}
+              type='entypo'
+              color='white'
+              size={24}
+            /> */}
+                    </ListItem.Content>
+                  </ListItem>
+                </LinearGradient>
+
+                {!isCollapsed && (
                   <View style={{padding: 10}}>
                     {/* <Text>{'content'}</Text> */}
-
+                    <FlatList
+                      data={reviewObj}
+                      renderItem={({item}) => (
+                        <ReviewCard
+                          name={item.name}
+                          time={item.time}
+                          detail={item.detail}
+                        />
+                      )}
+                    />
                     {/* <ReviewCard /> */}
                   </View>
                 )}
@@ -316,8 +467,6 @@ const Restaurant = () => {
           )}
         </View>
       </ScrollView>
-
-      <Footer />
     </View>
   );
 };

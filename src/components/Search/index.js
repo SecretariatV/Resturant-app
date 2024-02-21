@@ -16,6 +16,7 @@ import FilterIcon from '../../assets/images/filter.png';
 import LinearGradient from 'react-native-linear-gradient';
 import Valet from '../../assets/images/valet.svg';
 import {widthToDp} from '../../utils/Dimensions';
+import {Colors} from '../../theme';
 
 const Search = () => {
   return (
@@ -48,10 +49,13 @@ const Search = () => {
       {/* {!showBtn && ( */}
 
       <LinearGradient
-        colors={['#5A9CA9', '#345B61']}
+        colors={['#5A9CA9', '#345B6199']}
         style={styles.linearStyle}
         start={{x: 0, y: 0.5}}
-        end={{x: 1, y: 0.5}}>
+        end={{x: 1, y: 0.5}}
+        // useAngle={true}
+        // angle={10}
+      >
         <View style={styles.circleTwoGradient}>
           {/* {showValetImg ? ( */}
           {/* <View> */}
@@ -62,6 +66,7 @@ const Search = () => {
             height={20}
             resizeMode="cover"
             style={{width: 20, height: 20}}
+            tintColor={Colors.GREEN}
           />
           {/* </View> */}
           <TextInput

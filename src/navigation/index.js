@@ -46,6 +46,8 @@ import Cart from '../screens/Cart';
 import Requests from '../screens/Requests';
 import {heightToDp, widthToDp} from '../utils/Dimensions';
 import Restaurant from '../screens/Restaurant';
+// import ResturantMenu from '../screens/ResturantMenu';
+import MenuDetail from '../screens/MenuDetail';
 
 const Tab = createBottomTabNavigator();
 // const Drawer = createDrawerNavigator();
@@ -193,6 +195,7 @@ const HomeStack = () => {
         headerShown: false,
       }}>
       <Stack.Screen name="TabNavigator" component={TabNavigator} />
+      <Stack.Screen name="MenuDetail" component={MenuDetail} />
     </Stack.Navigator>
   );
 };
@@ -387,6 +390,45 @@ const TabNavigator = () => {
           },
         }}
       />
+
+      {/* <Tab.Screen
+        name="Menu"
+        component={Menu}
+        options={{
+          tabBarIcon: ({focused}) => {
+            return (
+              <View
+                style={{
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  gap: 5,
+                  width: widthToDp(16),
+                  height: heightToDp(16),
+                  backgroundColor: '#fff',
+                  borderColor: '#0ad6c0',
+                  borderWidth: 4,
+                  borderRadius: 50,
+                  justifyContent: 'center',
+                  alignContent: 'center',
+                  position: 'relative',
+                  top: -10,
+                  elevation: 5,
+                  shadowColor: '#000',
+                  shadowOffset: {
+                    width: 2,
+                    height: 2,
+                  },
+                }}>
+                <MenuIcon
+                  width={relativeFont(8)}
+                  style={{width: 12, height: 12}}
+                  source={require('../assets/images/tabbar-menu.svg')}
+                />
+              </View>
+            );
+          },
+        }}
+      /> */}
       <Tab.Screen
         name="Cart"
         component={Cart}

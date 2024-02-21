@@ -7,6 +7,7 @@ const styles = StyleSheet.create({
     margin: 1,
     width: '100%',
     padding: 10,
+    height: 60,
     alignItems: 'center',
     // ma: 15,
     backgroundColor: '#00000099',

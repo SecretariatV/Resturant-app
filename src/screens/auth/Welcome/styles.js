@@ -98,7 +98,9 @@ const styles = StyleSheet.create({
     width: width * 0.128,
   },
 
-  wrapper: {},
+  wrapper: {
+    marginTop: 100,
+  },
   slide1: {
     flex: 1,
     // justifyContent: 'center',

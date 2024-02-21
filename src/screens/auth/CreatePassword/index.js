@@ -10,6 +10,7 @@ import FancyInput from '../../../components/FancyInput';
 
 import passIcon from '../../../assets/images/passIcon.png';
 import ButtonsCommon from '../../../components/Buttons/ButtonCommon.js';
+import HeaderModed from '../../../components/HeaderModed/index.js';
 
 const CreatePassword = () => {
   const [inputPass, setInputPass] = useState('');
@@ -18,8 +19,8 @@ const CreatePassword = () => {
     <View style={styles.container}>
       <BackgroundLayout />
 
-      <HeaderCommon show={true} />
-
+      {/* <HeaderCommon show={true} /> */}
+      <HeaderModed />
       <View className="join-screen-header-text">
         <Text style={styles.forgotTxt}>Create Password</Text>
 
