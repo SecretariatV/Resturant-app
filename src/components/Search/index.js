@@ -20,46 +20,20 @@ import {Colors} from '../../theme';
 
 const Search = () => {
   return (
-    // <FancyInput />
-    // <View
-    //   style={{
-    //     flexDirection: 'row',
-    //     backgroundColor: 'green',
-    //     alignItems: 'center',
-    //     paddingHorizontal: 5,
-    //     borderRadius: 10,
-    //   }}>
-    //   <Image
-    //     source={SearchIcon}
-    //     width={20}
-    //     height={20}
-    //     resizeMode="cover"
-    //     style={{width: 20, height: 20}}
-    //   />
-
-    //   <TextInput
-    //     style={{
-    //       backgroundColor: 'red',
-    //       padding: 10,
-    //     }}
-    //   />
-    // </View>
-
-    <View style={{flexDirection: 'row', alignItems: 'center', marginTop: 10}}>
-      {/* {!showBtn && ( */}
-
+    <View
+      style={{
+        flexDirection: 'row',
+        alignItems: 'center',
+        marginTop: 10,
+        width: '100%',
+        paddingHorizontal: 15,
+      }}>
       <LinearGradient
         colors={['#5A9CA9', '#345B6199']}
         style={styles.linearStyle}
         start={{x: 0, y: 0.5}}
-        end={{x: 1, y: 0.5}}
-        // useAngle={true}
-        // angle={10}
-      >
+        end={{x: 1, y: 0.5}}>
         <View style={styles.circleTwoGradient}>
-          {/* {showValetImg ? ( */}
-          {/* <View> */}
-          {/* <Valet width={22} height={22} /> */}
           <Image
             source={SearchIcon}
             width={20}
@@ -84,40 +58,10 @@ const Search = () => {
           <Image
             source={FilterIcon}
             // resizeMode="cover"
-            style={{width: 25, height: 25}}
+            style={{width: 20, height: 25}}
           />
-
-          {/* <LinearGradient
-            colors={['red', 'green']}
-            style={styles.linearStyle}
-            start={{x: 0, y: 0.5}}
-            end={{x: 1, y: 0.5}}>
-            <Image
-              source={SearchIcon}
-              resizeMode="cover"
-              style={{width: 40, height: 40}}
-            />
-          </LinearGradient> */}
-          {/* ) : (
-            <Text style={{color: '#fff'}}>Skip</Text>
-          )} */}
-          {/*  */}
-          {/* <LinearGradient
-            colors={['#5A9CA9', '#345B61']}
-            style={styles.linearStyle}
-            start={{x: 0, y: 0.5}}
-            end={{x: 1, y: 0.5}}>
-            <Image
-              source={SearchIcon}
-              resizeMode="cover"
-              style={{width: 20, height: 20}}
-            />
-          </LinearGradient> */}
         </View>
       </LinearGradient>
-      {/* {showValetImg && <ValetService style={{margin: 10}} />} */}
-
-      {/* )} */}
     </View>
   );
 };

@@ -6,7 +6,7 @@ import {Colors} from '../../theme';
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingHorizontal: 15,
+    // paddingHorizontal: 15,
   },
   circleGradient: {
     margin: 1,
@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
   shareABillTxt: {
     fontFamily: fonts.URBANIST_EXTRABOLD,
     color: '#00FC92',
-    fontSize: 22,
+    fontSize: 20,
     paddingHorizontal: 5,
   },
   saveButton: {

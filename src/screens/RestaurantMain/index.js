@@ -8,7 +8,7 @@ import {
   TouchableHighlight,
   Image,
 } from 'react-native';
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {styles} from './styles';
 import BackgroundLayout from '../../components/BackgroundLayout';
 import HeaderCommon from '../../components/HeaderCommon';
@@ -23,8 +23,13 @@ import scan_here from '../../assets/images/scan_here.png';
 import scan_arrow from '../../assets/images/scan_arrow.png';
 import SkipButton from '../../components/Buttons/SkipButton';
 import {widthToDp} from '../../utils/Dimensions';
+import HeaderModed from '../../components/HeaderModed';
+import MenuNavButton from '../../components/MenuNavButton';
+import Hamburger from '../../assets/images/hamburger.png';
+import Footer from '../../components/Footer';
+import SearchModded from '../../components/SearchModded';
 
-const Home = () => {
+const RestaurantMain = () => {
   const [modalVisible, setModalVisible] = useState(true);
   const data = [
     {
@@ -68,6 +73,20 @@ const Home = () => {
 
     // Add more items as needed
   ];
+  useEffect(() => {
+    getData();
+  }, []);
+  const getData = async () => {
+    try {
+      const value = await AsyncStorage.getItem('user');
+      if (value !== null) {
+        console.log(value, 'myyyyyyyy');
+        // value previously stored
+      }
+    } catch (e) {
+      // error reading value
+    }
+  };
   const renderItem = ({item}) => (
     <ResturantCard
       name={item.name}
@@ -122,17 +141,16 @@ const Home = () => {
         </View>
       </Modal>
       <BackgroundLayout />
-      <HeaderCommon
-        showSkipBtn={false}
-        showValet={false}
-        showMenu={true}
-        show={true}
+
+      <HeaderModed
+        slotLeft={<MenuNavButton icon={Hamburger} iconType="image" />}
       />
       <View
         style={{
           flexDirection: 'row',
           justifyContent: 'space-between',
           alignItems: 'center',
+          marginHorizontal: 15,
         }}>
         <View
           style={{
@@ -169,16 +187,19 @@ const Home = () => {
         </LinearGradient>
       </View>
 
-      <Search />
+      {/* <Search /> */}
+      <SearchModded />
       <FlatList
         showsVerticalScrollIndicator={false}
-        style={{marginVertical: 5}}
+        style={{marginVertical: 5, marginHorizontal: 15}}
         data={data}
         renderItem={renderItem}
         keyExtractor={item => item.id} // Key extractor for each item
       />
+
+      <Footer />
     </View>
   );
 };
 
-export default Home;
+export default RestaurantMain;

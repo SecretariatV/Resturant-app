@@ -6,17 +6,20 @@ import {widthToDp} from '../../../utils/Dimensions';
 import {styles} from './styles';
 import ButtonsCommon from '../../../components/Buttons/ButtonCommon.js';
 import ButtonsCommonAlt from '../../../components/Buttons/ButtonCommonAlt/index.js';
+import HeaderModed from '../../../components/HeaderModed/index.js';
+import BackButton from '../../../components/Buttons/BackButton/index.js';
 
 const Login = () => {
   return (
     <View style={styles.container}>
       <BackgroundLayout />
 
-      <HeaderCommon
+      {/* <HeaderCommon
         showSkipBtn={false}
         show={true}
         logoStyle={{marginRight: widthToDp(15)}}
-      />
+      /> */}
+      <HeaderModed slotLeft={<BackButton />} />
       <View
         style={{
           width: '100%',

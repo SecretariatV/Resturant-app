@@ -23,20 +23,8 @@ const Welcome = props => {
       <HeaderModed
         slotLeft={<></>}
         slotCenter={
-          <View
-            style={[
-              {
-                // alignSelf: 'center',
-                // justifyContent: 'center',
-                // width: '100%',
-                // alignItems: 'center',
-                // backgroundColor: 'red',
-              },
-            ]}>
-            <Image source={require('../../../assets/images/logo.png')} />
-          </View>
+          <Image source={require('../../../assets/images/logo.png')} />
         }
-        bannerImage={<></>}
         slotRight={<></>}
       />
       {/* <HeaderCommon show={false} /> */}
