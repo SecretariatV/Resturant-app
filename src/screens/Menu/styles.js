@@ -8,9 +8,21 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingHorizontal: 15,
   },
+  navbarPageTitle: {
+    color: '#fff',
+    fontWeight: '700',
+  },
+  restaurantFilterBg: {
+    height: '100%',
+    width: widthToDp(100),
+    resizeMode: 'stretch',
+    position: 'absolute',
+    bottom: 0,
+    borderTopLeftRadius: 25,
+    borderTopRightRadius: 25,
+  },
   circleGradient: {
     margin: 1,
-
     paddingVertical: 5,
     paddingHorizontal: 5,
     alignSelf: 'center',

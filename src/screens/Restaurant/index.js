@@ -9,167 +9,37 @@ import {
   FlatList,
 } from 'react-native';
 import React, {useEffect, useState} from 'react';
-import BackgroundLayout from '../../components/BackgroundLayout';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 import {styles} from './styles';
-import MenuBg from '../../assets/images/tabbar-center.svg';
 import {height, heightToDp, widthToDp} from '../../utils/Dimensions';
+import LinearGradient from 'react-native-linear-gradient';
+import {ListItem} from '@rneui/themed';
+
+import BackgroundLayout from '../../components/BackgroundLayout';
+import MenuBg from '../../assets/images/tabbar-center.svg';
+
 import HeaderModed from '../../components/HeaderModed';
 import MenuNavButton from '../../components/MenuNavButton';
 import Hamburger from '../../assets/images/hamburger.png';
 import Clock from '../../assets/images/clock.svg';
 import Dress from '../../assets/images/dress.svg';
 
+
 import resturant_cover from '../../assets/images/restaurant_cover.png';
 import ToggleButton from '../../components/ToggleButton';
 import FadedSeparator from '../../components/FadedSeparator';
 import {Colors} from '../../theme';
-import LinearGradient from 'react-native-linear-gradient';
 // import {Button} from '@rneui/base';
-import {ListItem} from '@rneui/themed';
 import ResturantCard from '../../components/RestaurantCard';
 import ReviewCard from '../../components/ReviewCard';
+import {reviews, ageGroup, cuisine, dressCode} from '../../utils/demodata';
+import Footer from '../../components/Footer';
 
 const Restaurant = () => {
-  const dressCode = [
-    {
-      codeType: 'Smart casual',
-    },
-    {
-      codeType: 'Casual',
-    },
-    {
-      codeType: 'Formal',
-    },
-    {
-      codeType: 'Smart casual',
-    },
-    {
-      codeType: 'Smart casual',
-    },
-  ];
-
-  const cuisine = [
-    {
-      type: 'Italian',
-    },
-    {
-      type: 'Italian',
-    },
-    {
-      type: 'Italian',
-    },
-    {
-      type: 'Italian',
-    },
-    {
-      type: 'Italian',
-    },
-    {
-      type: 'Italian',
-    },
-    {
-      type: 'Italian',
-    },
-    {
-      type: 'Italian',
-    },
-    {
-      type: 'Italian',
-    },
-    {
-      type: 'Italian',
-    },
-    {
-      type: 'Italian',
-    },
-    {
-      type: 'Italian',
-    },
-    {
-      type: 'Italian',
-    },
-    {
-      type: 'Italian',
-    },
-    {
-      type: 'Italian',
-    },
-    {
-      type: 'Italian',
-    },
-    {
-      type: 'Italian',
-    },
-    {
-      type: 'Italian',
-    },
-    {
-      type: 'Italian',
-    },
-    {
-      type: 'Italian',
-    },
-    {
-      type: 'Italian',
-    },
-    {
-      type: 'Italian',
-    },
-    {
-      type: 'Italian',
-    },
-    {
-      type: 'Italian',
-    },
-    {
-      type: 'Italian',
-    },
-    {
-      type: 'Italian',
-    },
-  ];
-  const ageGroup = [
-    {
-      age: 'Kids allowed,',
-    },
-    {
-      age: 'couples & groups',
-    },
-  ];
-
-  const reviewObj = [
-    {
-      name: 'abc',
-      time: '2 mins ago',
-      detail:
-        'Consequat velit qui adipisicing sunt do rependerit ad laborum tempor ullamco exercitation. Ullamco tempor adipisicing et voluptate duis sit esse aliqua',
-    },
-
-    {
-      name: 'abc',
-      time: '2 mins ago',
-      detail:
-        'Consequat velit qui adipisicing sunt do rependerit ad laborum tempor ullamco exercitation. Ullamco tempor adipisicing et voluptate duis sit esse aliqua',
-    },
-
-    {
-      name: 'abc',
-      time: '2 mins ago',
-      detail:
-        'Consequat velit qui adipisicing sunt do rependerit ad laborum tempor ullamco exercitation. Ullamco tempor adipisicing et voluptate duis sit esse aliqua',
-    },
-
-    {
-      name: 'abc',
-      time: '2 mins ago',
-      detail:
-        'Consequat velit qui adipisicing sunt do rependerit ad laborum tempor ullamco exercitation. Ullamco tempor adipisicing et voluptate duis sit esse aliqua',
-    },
-  ];
-  const [about, setAbout] = useState(true);
+  const [about, setAbout] = useState(false);
   const [review, setReview] = useState(true);
-  const [expanded, setExpanded] = useState(false);
-  const [isCollapsed, setIsCollapsed] = useState(true);
+  const [expanded, setExpanded] = useState(true);
+  const [isCollapsed, setIsCollapsed] = useState(false);
 
   const [contentHeight, setContentHeight] = useState(new Animated.Value(0));
   const handleAboutToggle = () => {
@@ -191,52 +61,39 @@ const Restaurant = () => {
 
     const newValue = expanded ? 0 : 100; // Change 100 to your desired height
     setExpanded(!expanded);
-    Animated.timing(contentHeight, {
-      toValue: newValue,
-      duration: 300,
-      useNativeDriver: false,
-    }).start();
+    // Animated.timing(contentHeight, {
+    //   toValue: newValue,
+    //   duration: 300,
+    //   useNativeDriver: false,
+    // }).start();
   };
+
 
   return (
     <View style={styles.container}>
       <BackgroundLayout />
-      <MenuBg
-        width={widthToDp(100)}
-        style={{
-          position: 'absolute',
-          bottom: 0,
-          left: 0,
-          right: 0,
-          elevation: 1,
-        }}
+      <HeaderModed
+        slotLeft={<MenuNavButton icon={Hamburger} iconType="image" />}
+        slotCenter={<></>}
+        slotRight={<></>}
+        bannerImage={
+          <ImageBackground
+            source={resturant_cover}
+            style={styles.bannerImage}
+          />
+        }
       />
-      <ImageBackground
-        source={resturant_cover}
-        // resizeMode="cover"
-        style={{
-          width: widthToDp(100),
-          height: heightToDp(100),
-        }}>
-        <HeaderModed
-          slotLeft={<MenuNavButton icon={Hamburger} iconType="image" />}
-          slotCenter={<></>}
-          slotRight={<></>}
-        />
+      <ScrollView style={styles.restaurantScrollView}  >
         <View
-          style={{
-            justifyContent: 'flex-end',
-            height: heightToDp(70),
-          }}>
+          class="restaurant-content-container"
+          style={styles.restaurantContentContainer}>
           <View
-            style={{
-              flexDirection: 'row',
-              width: widthToDp(100),
-              justifyContent: 'space-between',
-              alignItems: 'center',
-            }}>
+            class="restaurant-header-container"
+            style={styles.resturantHeaderContainer}>
             <Text style={styles.resturantName}>Restaurant Name</Text>
-            <View style={{flexDirection: 'row', marginRight: 15}}>
+            <View
+              class="restaurant-rating-container"
+              style={styles.resturantRatingContainer}>
               <Text style={styles.rating}>4.5</Text>
               <Image
                 source={require('../../assets/images/star.png')}
@@ -249,10 +106,8 @@ const Restaurant = () => {
             industry. Lorem Ipsum has been the..
           </Text>
         </View>
-      </ImageBackground>
-      <ScrollView>
-        <View style={{marginHorizontal: 15}}>
-          <View style={styles.btnsContainer}>
+        <View class="restaurant-meta-details" style={{marginHorizontal: 15}}>
+          <View class="restaurant-meta-tabs" style={styles.btnsContainer}>
             <ToggleButton
               name={'About'}
               onPress={() => handleAboutToggle()}
@@ -266,7 +121,6 @@ const Restaurant = () => {
           {!about && (
             <>
               <Text style={styles.headingText}>Opening Hours</Text>
-
               <View style={styles.timeContainer}>
                 <Clock width={32} height={32} style={{marginRight: 10}} />
                 <Text style={styles.to}>6:00 PM</Text>
@@ -392,6 +246,27 @@ const Restaurant = () => {
               </Animated.View> */}
 
               <View style={{marginBottom: 10}}>
+                <ListItem.Accordion
+                  // onPress={toggleAccordion}
+                  isExpanded={expanded}
+                  onPress={() => {
+                    setExpanded(!expanded);
+                  }}
+                  containerStyle={styles.review_btn}>
+                  <ListItem.Content>
+                    <FlatList
+                      data={reviews}
+                      renderItem={({item}) => (
+                        <ReviewCard
+                          name={item.name}
+                          time={item.time}
+                          detail={item.detail}
+                        />
+                      )}
+                    />
+                  </ListItem.Content>
+                </ListItem.Accordion>
+
                 <LinearGradient
                   colors={['#00000022', '#FFFFFFFF', '#FFFFFFFF']}
                   start={{x: 0, y: 0.5}}
@@ -402,65 +277,12 @@ const Restaurant = () => {
                     margin: 1,
                     borderRadius: 18,
                     width: '100%',
-                  }}>
-                  <ListItem
-                    onPress={toggleAccordion}
-                    // containerStyle={{
-                    //   backgroundColor: 'transparent',
-                    //   padding: 0,
-                    //   margin: 0,
-                    // }}
+                  }}></LinearGradient>
 
-                    containerStyle={styles.review_btn}>
-                    <View
-                      style={{
-                        justifyContent: 'space-between',
-                        flexDirection: 'row',
-                        width: '100%',
-                      }}>
-                      <View
-                        style={{flexDirection: 'row', alignItems: 'center'}}>
-                        <Text style={styles.rating_type}>Excellent</Text>
-                        <View style={styles.review_tag}></View>
-                      </View>
-
-                      <View
-                        style={{flexDirection: 'row', alignItems: 'center'}}>
-                        <Image
-                          source={require('../../assets/images/Star_2.png')}
-                        />
-                        <Text style={styles.rating_no}>4.0</Text>
-                        <Image
-                          source={require('../../assets/images/chevron_down.png')}
-                          // width={10}
-                        />
-                      </View>
-                    </View>
-
-                    <ListItem.Content>
-                      {/* <Icon
-              name={isCollapsed ? 'chevron-down' : 'chevron-up'}
-              type='entypo'
-              color='white'
-              size={24}
-            /> */}
-                    </ListItem.Content>
-                  </ListItem>
-                </LinearGradient>
-
-                {!isCollapsed && (
+                {!expanded && (
                   <View style={{padding: 10}}>
                     {/* <Text>{'content'}</Text> */}
-                    <FlatList
-                      data={reviewObj}
-                      renderItem={({item}) => (
-                        <ReviewCard
-                          name={item.name}
-                          time={item.time}
-                          detail={item.detail}
-                        />
-                      )}
-                    />
+
                     {/* <ReviewCard /> */}
                   </View>
                 )}
@@ -469,6 +291,7 @@ const Restaurant = () => {
           )}
         </View>
       </ScrollView>
+      <Footer />
     </View>
   );
 };

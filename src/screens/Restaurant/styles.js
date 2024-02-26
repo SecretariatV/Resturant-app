@@ -1,5 +1,6 @@
 import {StyleSheet} from 'react-native';
 import {fonts} from '../../theme/FontFamily';
+// eslint-disable-next-line no-unused-vars
 import {heightToDp, width, widthToDp} from '../../utils/Dimensions';
 import {Colors} from '../../theme';
 
@@ -8,9 +9,33 @@ const styles = StyleSheet.create({
     flex: 1,
     // paddingHorizontal: 15,
   },
+  bannerImage: {
+    top: -20,
+    width: widthToDp(100),
+    height: heightToDp(100),
+  },
+  restaurantScrollView: {
+    marginTop: heightToDp(20),
+    marginBottom: heightToDp(20)
+  },
+  restaurantContentContainer: {
+    justifyContent: 'flex-end',
+    // height: heightToDp(70),
+    marginTop: 50,
+  },
   resturantContainer: {
     justifyContent: 'flex-end',
     height: heightToDp(100),
+  },
+  resturantHeaderContainer: {
+    flexDirection: 'row',
+    width: widthToDp(100),
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+  resturantRatingContainer: {
+    flexDirection: 'row',
+    marginRight: 15,
   },
   resturantSubContainer: {
     flexDirection: 'row',
@@ -37,6 +62,10 @@ const styles = StyleSheet.create({
     fontSize: 18,
     marginBottom: 10,
     marginRight: 5,
+  },
+  metaDetails: {
+    marginTop: 100,
+    marginHorizontal: 15,
   },
   btnsContainer: {
     flexDirection: 'row',

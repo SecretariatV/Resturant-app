@@ -17,7 +17,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import Valet from '../../assets/images/valet.svg';
 import {widthToDp} from '../../utils/Dimensions';
 
-const Search = () => {
+const Search = ({isVisible, setIsVisible}) => {
   return (
     // <FancyInput />
     // <View
@@ -75,12 +75,13 @@ const Search = () => {
             placeholder="Search"
             placeholderTextColor={'#A3AFAF'}
           />
-
-          <Image
-            source={FilterIcon}
-            // resizeMode="cover"
-            style={{width: 25, height: 25}}
-          />
+          <TouchableOpacity onPress={() => setIsVisible(!isVisible)}>
+            <Image
+              source={FilterIcon}
+              // resizeMode="cover"
+              style={{width: 25, height: 25}}
+            />
+          </TouchableOpacity>
 
           {/* <LinearGradient
             colors={['red', 'green']}

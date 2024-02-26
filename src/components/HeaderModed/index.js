@@ -1,40 +1,32 @@
-import {View, Text, Image} from 'react-native';
+import {View} from 'react-native';
 import React from 'react';
 import {styles} from './styles';
-import BackButton from '../Buttons/BackButton/index.js';
-import SkipButton from '../Buttons/SkipButton/index.js';
-import {heightToDp, widthToDp} from '../../utils/Dimensions.js';
 
 const HeaderModed = ({
   slotLeft = null,
   slotCenter = null,
   slotRight = null,
+  bannerImage = null,
 }) => {
+  let bannerStylesHoc = bannerImage
+    ? styles.headerHoc
+    : styles.headerHocNoBanner;
+  let bannerStylesContainer = bannerImage
+    ? styles.headerContainer
+    : styles.headerContainerNoBanner;
   return (
-    <View
-      style={{
-        // position: 'absolute',
-        // bottom: 0,
-        // top: 10,
-        width: '100%',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        flexDirection: 'row',
-        height: heightToDp(15),
-        marginTop: Platform.OS == 'ios' ? heightToDp(12) : 10,
-        // marginTop: Platform.OS == 'ios' ? 70 : 10,
-      }}
-      className="header-container">
-      <View style={{width: '20%'}} className="slot-left">
-        {slotLeft}
-      </View>
-      <View
-        style={{width: '60%', alignItems: 'center'}}
-        className="slot-center">
-        {slotCenter}
-      </View>
-      <View style={{width: '20%'}} className="slot-right">
-        {slotRight}
+    <View className="header-hoc" style={bannerStylesHoc}>
+      {bannerImage}
+      <View style={bannerStylesContainer} className="header-container">
+        <View style={styles.slotLeft} className="slot-left">
+          {slotLeft}
+        </View>
+        <View style={styles.slotCenter} className="slot-center">
+          {slotCenter}
+        </View>
+        <View style={styles.slotRight} className="slot-right">
+          {slotRight}
+        </View>
       </View>
     </View>
   );

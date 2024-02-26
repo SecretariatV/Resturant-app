@@ -46,6 +46,7 @@ import Cart from '../screens/Cart';
 import Requests from '../screens/Requests';
 import {heightToDp, widthToDp} from '../utils/Dimensions';
 import Restaurant from '../screens/Restaurant';
+import QRCodeScanner from 'react-native-qrcode-scanner';
 
 const Tab = createBottomTabNavigator();
 // const Drawer = createDrawerNavigator();
@@ -197,64 +198,6 @@ const HomeStack = () => {
   );
 };
 
-const MyTabBar = ({state, descriptors, navigation}) => {
-  return (
-    <View
-      style={{
-        flexDirection: 'row',
-        position: 'relative',
-      }}>
-      {state.routes.map((route, index) => {
-        const {options} = descriptors[route.key];
-        const label =
-          options.tabBarLabel !== undefined
-            ? options.tabBarLabel
-            : options.title !== undefined
-            ? options.title
-            : route.name;
-
-        const isFocused = state.index === index;
-        const centerMenu = options.title == 'menu';
-        const onPress = () => {
-          const event = navigation.emit({
-            type: 'tabPress',
-            target: route.key,
-            canPreventDefault: true,
-          });
-
-          if (!isFocused && !event.defaultPrevented) {
-            navigation.navigate(route.name, route.params);
-          }
-        };
-
-        const onLongPress = () => {
-          navigation.emit({
-            type: 'tabLongPress',
-            target: route.key,
-          });
-        };
-
-        return (
-          <TouchableOpacity
-            accessibilityRole="button"
-            accessibilityState={isFocused ? {selected: true} : {}}
-            accessibilityLabel={options.tabBarAccessibilityLabel}
-            testID={options.tabBarTestID}
-            onPress={onPress}
-            onLongPress={onLongPress}
-            style={{
-              flex: 1,
-              position: 'absolute',
-              bottom: 0,
-              backgroundColor: 'transparent',
-            }}>
-            <Text style={{color: isFocused ? '#673ab7' : '#FFF'}}>{label}</Text>
-          </TouchableOpacity>
-        );
-      })}
-    </View>
-  );
-};
 
 const TabNavigator = () => {
   return (
@@ -263,7 +206,7 @@ const TabNavigator = () => {
       // tabBarOptions={{
       //   backgroundColor: '#f00',
       // }}
-      initialRouteName="Restaurant"
+      initialRouteName="Menu"
       backBehavior="initialRoute"
       style={{backgroundColor: '#f00'}}
       screenListeners={({navigation, route}) => ({
@@ -350,8 +293,8 @@ const TabNavigator = () => {
         }}
       />
       <Tab.Screen
-        name="Restaurant"
-        component={Restaurant}
+        name="QrCode"
+        component={QrCode}
         options={{
           tabBarIcon: ({focused}) => {
             return (
