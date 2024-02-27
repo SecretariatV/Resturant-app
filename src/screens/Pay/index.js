@@ -3,6 +3,7 @@ import React from 'react';
 import {styles} from './styles';
 import BackgroundLayout from '../../components/BackgroundLayout';
 import HeaderCommon from '../../components/HeaderCommon';
+import Footer from '../../components/Footer';
 
 const Pay = () => {
   return (
@@ -20,8 +21,9 @@ const Pay = () => {
           justifyContent: 'space-between',
           alignItems: 'center',
         }}>
-          <Text>Pay</Text>
+        <Text>Pay</Text>
       </View>
+      <Footer />
     </View>
   );
 };

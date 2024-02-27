@@ -67,13 +67,42 @@ const Restaurant = () => {
     //   useNativeDriver: false,
     // }).start();
   };
+  const StickyHeader = () => {
+    return (
+      <View style={styles.restaurantHeaderContainer}>
+        <Text style={styles.resturantName}>Restaurant Name</Text>
+        <View style={styles.resturantRatingContainer}>
+          <Text style={styles.rating}>4.5</Text>
+          <Image
+            source={require('../../assets/images/star.png')}
+            style={{width: 20, height: 20}}
+          />
+        </View>
+        <ToggleButton
+          name={'About'}
+          onPress={() => handleAboutToggle()}
+          show={false}
+        />
+        <ToggleButton name={'Reviews'} onPress={() => handleReviewToggle()} />
+      </View>
+    );
+  };
 
 
   return (
     <View style={styles.container}>
       <BackgroundLayout />
       <HeaderModed
-        slotLeft={<MenuNavButton icon={Hamburger} iconType="image" />}
+        slotLeft={
+          <MenuNavButton
+            icon={Hamburger}
+            iconType="image"
+            containerStyle={{
+              position: 'absolute',
+              top: 0,
+            }}
+          />
+        }
         slotCenter={<></>}
         slotRight={<></>}
         bannerImage={
@@ -83,7 +112,8 @@ const Restaurant = () => {
           />
         }
       />
-      <ScrollView style={styles.restaurantScrollView}  >
+
+      <ScrollView style={styles.restaurantScrollView}>
         <View
           class="restaurant-content-container"
           style={styles.restaurantContentContainer}>

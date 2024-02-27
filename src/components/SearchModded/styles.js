@@ -1,4 +1,4 @@
-import {StyleSheet} from 'react-native'; 
+import {StyleSheet} from 'react-native';
 import {fonts} from '../../theme/FontFamily';
 import {widthToDp, heightToDp} from '../../utils/Dimensions';
 
@@ -9,14 +9,16 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginTop: 10,
     backgroundColor: 'transparent',
+    alignSelf: 'center',
   },
   searchBarGradStyle: {
     borderRadius: 12,
     flexWrap: 'nowrap',
-    opacity: 0.8
+    opacity: 0.8,
   },
   searchBarInnerContainer: {
     margin: 1,
+
     width: widthToDp(100 - horizontalPadding),
     paddingVertical: 5,
     paddingHorizontal: horizontalPadding,

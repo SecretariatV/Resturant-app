@@ -7,6 +7,7 @@ const styles = StyleSheet.create({
     margin: 1,
     width: '100%',
     padding: 10,
+    height: 50,
     alignItems: 'center',
     // ma: 15,
     backgroundColor: '#00000099',
@@ -16,6 +17,7 @@ const styles = StyleSheet.create({
   linearStyle: {
     borderRadius: 20,
     flexWrap: 'nowrap',
+    width: '100%',
   },
   btnText: {
     color: '#ffffff',

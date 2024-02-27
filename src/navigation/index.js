@@ -7,7 +7,7 @@ import {
   ImageBackground,
   StyleSheet,
 } from 'react-native';
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {
   NavigationContainer,
@@ -31,6 +31,7 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import QrCode from '../screens/QrCode';
 // import {createDrawerNavigator} from '@react-navigation/drawer';
 import {SvgXml} from 'react-native-svg';
+// import DrawerNavigation from '../screens/drawer/DrawerNavigation';
 
 // icons
 import BackBtn from '../assets/images/tabbar-back.svg';
@@ -39,22 +40,24 @@ import MenuBg from '../assets/images/tabbar-center.svg';
 import MenuIcon from '../assets/images/tabbar-menu.svg';
 
 // tab screens
-import Home from '../screens/Home';
+import Home from '../screens/RestaurantMain';
 import Pay from '../screens/Pay';
 import Menu from '../screens/Menu';
 import Cart from '../screens/Cart';
 import Requests from '../screens/Requests';
 import {heightToDp, widthToDp} from '../utils/Dimensions';
 import Restaurant from '../screens/Restaurant';
-import QRCodeScanner from 'react-native-qrcode-scanner';
+// import ResturantMenu from '../screens/ResturantMenu';
+import MenuDetail from '../screens/MenuDetail';
+import RestaurantMain from '../screens/RestaurantMain';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import IngredientCustomization from '../screens/IngredientCustomization';
 
 const Tab = createBottomTabNavigator();
 // const Drawer = createDrawerNavigator();
 
 const Stack = createNativeStackNavigator();
 const HomeStacked = createNativeStackNavigator();
-
-const user = true;
 
 const relativeFont = numb => {
   let screenSize = widthToDp(100);
@@ -161,7 +164,7 @@ const AuthStack = () => {
         component={Verification}
       />
 
-      <Stack.Screen
+      {/* <Stack.Screen
         name="Home"
         options={{
           headerShown: false,
@@ -182,7 +185,7 @@ const AuthStack = () => {
           headerShown: false,
         }}
         component={Restaurant}
-      />
+      /> */}
     </Stack.Navigator>
   );
 };
@@ -190,14 +193,49 @@ const AuthStack = () => {
 const HomeStack = () => {
   return (
     <Stack.Navigator
+      // initialRouteName="IngredientCustomization"
+      initialRouteName="Menu"
       screenOptions={{
         headerShown: false,
       }}>
       <Stack.Screen name="TabNavigator" component={TabNavigator} />
+      <Stack.Screen name="MenuDetail" component={MenuDetail} />
+      <Stack.Screen name="Menu" component={Menu} />
+      <Stack.Screen
+        name="RestaurantMain"
+        options={{
+          headerShown: false,
+        }}
+        component={RestaurantMain}
+      />
+      <Stack.Screen
+        name="QrCode"
+        options={{
+          headerShown: false,
+        }}
+        component={QrCode}
+      />
+
+      <Stack.Screen
+        name="Restaurant"
+        options={{
+          headerShown: false,
+        }}
+        component={Restaurant}
+      />
+
+      <Stack.Screen
+        name="IngredientCustomization"
+        options={{
+          headerShown: false,
+        }}
+        component={IngredientCustomization}
+      />
     </Stack.Navigator>
   );
 };
 
+// const DrawerNav = () => {};
 
 const TabNavigator = () => {
   return (
@@ -210,17 +248,12 @@ const TabNavigator = () => {
       backBehavior="initialRoute"
       style={{backgroundColor: '#f00'}}
       screenListeners={({navigation, route}) => ({
-        tabPress: e => {
-          // if (route.state && route.state.routeNames.length > 0) {
-          //   navigation.navigate('Device');
-          // }
-          // console.log('Something happened')
-        },
+        tabPress: e => {},
       })}
       screenOptions={({route}) => ({
         headerShown: false,
         // tabBarHideOnKeyboard: true,
-
+        tabBarPosition: 'bottom',
         tabBarShowLabel: false,
         tabBarStyle: {
           position: 'absolute',
@@ -230,9 +263,7 @@ const TabNavigator = () => {
           elevation: 0,
           // backgroundColor: '#2d2d3d',
           backgroundColor: 'transparent',
-
           borderTopWidth: 0,
-
           borderColor: 'transparent',
           paddingVertical: 10,
           height: heightToDp(20),
@@ -240,7 +271,7 @@ const TabNavigator = () => {
       })}>
       <Tab.Screen
         name="Back"
-        component={Home}
+        component={RestaurantMain}
         options={{
           tabBarIcon: ({focused}) => {
             return (
@@ -330,6 +361,84 @@ const TabNavigator = () => {
           },
         }}
       />
+
+      <Tab.Screen
+        name="Menu"
+        component={Menu}
+        options={{
+          tabBarIcon: ({focused}) => {
+            return (
+              <View
+                style={{
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  gap: 5,
+                  width: widthToDp(16),
+                  height: heightToDp(16),
+                  backgroundColor: '#fff',
+                  borderColor: '#0ad6c0',
+                  borderWidth: 4,
+                  borderRadius: 50,
+                  justifyContent: 'center',
+                  alignContent: 'center',
+                  position: 'relative',
+                  top: -10,
+                  elevation: 5,
+                  shadowColor: '#000',
+                  shadowOffset: {
+                    width: 2,
+                    height: 2,
+                  },
+                }}>
+                <MenuIcon
+                  width={relativeFont(8)}
+                  style={{width: 12, height: 12}}
+                  source={require('../assets/images/tabbar-menu.svg')}
+                />
+              </View>
+            );
+          },
+        }}
+      />
+
+      {/* <Tab.Screen
+        name="Menu"
+        component={Menu}
+        options={{
+          tabBarIcon: ({focused}) => {
+            return (
+              <View
+                style={{
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  gap: 5,
+                  width: widthToDp(16),
+                  height: heightToDp(16),
+                  backgroundColor: '#fff',
+                  borderColor: '#0ad6c0',
+                  borderWidth: 4,
+                  borderRadius: 50,
+                  justifyContent: 'center',
+                  alignContent: 'center',
+                  position: 'relative',
+                  top: -10,
+                  elevation: 5,
+                  shadowColor: '#000',
+                  shadowOffset: {
+                    width: 2,
+                    height: 2,
+                  },
+                }}>
+                <MenuIcon
+                  width={relativeFont(8)}
+                  style={{width: 12, height: 12}}
+                  source={require('../assets/images/tabbar-menu.svg')}
+                />
+              </View>
+            );
+          },
+        }}
+      /> */}
       <Tab.Screen
         name="Cart"
         component={Cart}
@@ -400,12 +509,34 @@ const TabNavigator = () => {
 //   );
 // };
 const RootNavigator = () => {
+  const [saveUser, setSaveUser] = useState(false);
+  // const user = true;
+  useEffect(() => {
+    getData();
+    console.log(saveUser, 'saveUser');
+    return () => {};
+  }, [saveUser]);
+
+  const getData = async () => {
+    try {
+      const user = await AsyncStorage.getItem('user');
+      if (user !== null) {
+        setSaveUser(user);
+        console.log(user, 'value');
+        // value previously stored
+      }
+    } catch (e) {
+      console.log(e, 'e');
+      // error reading value
+    }
+  };
   return (
     <NavigationContainer>
       {/* <View style={{  backgroundColor: 'transparent'}}>
         <Image resizeMethod='auto' resizeMode='contain' source={require('../assets/images/tabbar-bg.svg')} style={{ backgroundColor: 'transparent', width: widthToDp(100)}} />
       </View> */}
-      {user ? HomeStack() : AuthStack()}
+      {/* <DrawerNavigation /> */}
+      {saveUser ? HomeStack() : AuthStack()}
     </NavigationContainer>
   );
 };

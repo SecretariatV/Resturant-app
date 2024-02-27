@@ -1,5 +1,3 @@
-import React, {useState} from 'react';
-import {styles} from './styles';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 import {
   View,
@@ -9,69 +7,44 @@ import {
   TouchableOpacity,
   Image,
 } from 'react-native';
-import ResturantCard from '../../components/RestaurantCard';
+import React, {useEffect, useState} from 'react';
+import {styles} from './styles';
 import BackgroundLayout from '../../components/BackgroundLayout';
-import HeaderModed from '../../components/HeaderModed';
-import MenuNavButton from '../../components/MenuNavButton';
-import Hamburger from '../../assets/images/hamburger.png';
 import LinearGradient from 'react-native-linear-gradient';
 import ActiveOrders from '../../assets/images/activeOrders.svg';
 import Search from '../../components/Search';
-import {BottomSheet, Button} from '@rneui/themed';
+import ResturantCard from '../../components/RestaurantCard';
+import {LinearTextGradient} from 'react-native-text-gradient';
+import scan_here from '../../assets/images/scan_here.png';
+import scan_arrow from '../../assets/images/scan_arrow.png';
+import SkipButton from '../../components/Buttons/SkipButton';
+import {widthToDp} from '../../utils/Dimensions';
+import HeaderModed from '../../components/HeaderModed';
+import MenuNavButton from '../../components/MenuNavButton';
+import Hamburger from '../../assets/images/hamburger.png';
 import Footer from '../../components/Footer';
-import CloseFilterBtn from '../../assets/images/closeBtnFilter.svg';
-import FadedSeparator from '../../components/FadedSeparator';
-import ToggleButton from '../../components/ToggleButton';
-import {Colors} from '../../theme';
-import {heightToDp, widthToDp} from '../../utils/Dimensions';
-
-const Home = () => {
+import SearchModded from '../../components/SearchModded';
+import restaurants from '../../utils/demodata'
+const RestaurantMain = () => {
   const [modalVisible, setModalVisible] = useState(true);
   const [isVisible, setIsVisible] = useState(false);
   const [sliderValue, setSliderValue] = useState(0);
 
-  const data = [
-    {
-      id: '1',
-      name: 'Resturant Name',
-      location: 'Location Here',
-      cuisine: 'French',
-    },
-    {
-      id: '2',
-      name: 'Resturant Name',
-      location: 'Location Here',
-      cuisine: 'Italian',
-    },
-    {
-      id: '3',
-      name: 'Resturant Name',
-      location: 'Location Here',
-      cuisine: 'Turkish',
-    },
-    {
-      id: '4',
-      name: 'Resturant Name',
-      location: 'Location Here',
-      cuisine: 'American',
-    },
-
-    {
-      id: '5',
-      name: 'Resturant Name',
-      location: 'Location Here',
-      cuisine: 'French',
-    },
-
-    {
-      id: '6',
-      name: 'Resturant Name',
-      location: 'Location Here',
-      cuisine: 'French',
-    },
-
-    // Add more items as needed
-  ];
+ 
+  useEffect(() => {
+    getData();
+  }, []);
+  const getData = async () => {
+    try {
+      const value = await AsyncStorage.getItem('user');
+      if (value !== null) {
+        console.log(value, 'myyyyyyyy');
+        // value previously stored
+      }
+    } catch (e) {
+      // error reading value
+    }
+  };
   const renderItem = ({item}) => (
     <ResturantCard
       name={item.name}
@@ -83,14 +56,62 @@ const Home = () => {
     return false;
   };
   return (
-    <SafeAreaProvider>
-      <View style={styles.container}>
-        <BackgroundLayout />
-        <HeaderModed
-          slotLeft={<MenuNavButton icon={Hamburger} iconType="image" />}
-          slotCenter={<></>}
-          slotRight={<></>}
-        />
+    <View style={styles.container}>
+      <Modal
+        animationType="slide"
+        transparent={true}
+        visible={modalVisible}
+        onRequestClose={() => {
+          Alert.alert('Modal has been closed.');
+        }}>
+        <View style={{backgroundColor: 'rgba(0, 0, 0, 0.8)', flex: 1}}>
+          {/* <TouchableOpacity
+            style={{
+              alignItems: 'flex-end',
+              paddingTop: 50,
+            }}
+
+            // onPress={() => setModalVisible(!modalVisible)}
+          > */}
+          <TouchableHighlight
+            style={{alignItems: 'flex-end', paddingTop: widthToDp(15)}}
+            onPress={() => {
+              setModalVisible(!modalVisible);
+            }}>
+            <SkipButton showCross={true} showValetImg={false} />
+          </TouchableHighlight>
+          {/* </TouchableOpacity> */}
+          <View
+            style={{
+              alignItems: 'center',
+              justifyContent: 'center',
+              flex: 1,
+
+              // backgroundColor: 'red',
+            }}>
+            <Image source={scan_here} />
+            <Text style={{color: Colors.WHITE, margin: 15}}>
+              Lorem Ipsum is simply dummy text of the printing and typesetting
+              industry. Lorem Ipsum has been t...
+            </Text>
+            {/* <View opacit> */}
+            <Image source={scan_arrow} style={{width: 200, height: 200}} />
+            {/* </View> */}
+          </View>
+        </View>
+      </Modal>
+      <BackgroundLayout />
+
+      <HeaderModed
+        slotLeft={<MenuNavButton icon={Hamburger} iconType="image" />}
+      />
+      <View
+        style={{
+          flexDirection: 'row',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          marginHorizontal: 15,
+        }}>
         <View
           style={{
             flexDirection: 'row',
@@ -136,7 +157,7 @@ const Home = () => {
         <FlatList
           showsVerticalScrollIndicator={false}
           style={{marginVertical: 5}}
-          data={data}
+          data={restaurants}
           renderItem={renderItem}
           keyExtractor={item => item.id} // Key extractor for each item
         />
@@ -150,7 +171,7 @@ const Home = () => {
         />
         <ScrollView
           className="restaurant-filter-container"
-          style={styles.restaurantFilterContainer}>
+        style={styles.restaurantFilterContainer}>
           <View style={[styles.filterSection, styles.filterHeading]}>
             <Text style={styles.filterHeadingText}>Filter</Text>
             <TouchableOpacity onPress={() => setIsVisible(false)}>
@@ -294,13 +315,22 @@ const Home = () => {
                 onValueChange={setSliderValue}
               /> */}
             </View>
-
-            <View style={styles.priceRangeLabelBottom}></View>
           </View>
         </ScrollView>
       </BottomSheet>
-    </SafeAreaProvider>
+      {/* <Search /> */}
+      <SearchModded />
+      <FlatList
+        showsVerticalScrollIndicator={false}
+        style={{marginVertical: 5, marginHorizontal: 15}}
+        data={data}
+        renderItem={renderItem}
+        keyExtractor={item => item.id} // Key extractor for each item
+      />
+
+      <Footer />
+    </View>
   );
 };
 
-export default Home;
+export default RestaurantMain;

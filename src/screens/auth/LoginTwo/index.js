@@ -19,7 +19,7 @@ import gLoginIcon from '../../../assets/images/gLoginIcon.png';
 import aLoginIcon from '../../../assets/images/aLoginIcon.png';
 import {useNavigation} from '@react-navigation/native';
 import ButtonsCommon from '../../../components/Buttons/ButtonCommon.js';
-
+import AsyncStorage from '@react-native-async-storage/async-storage';
 const LoginTwo = () => {
   const navigation = useNavigation();
   const [inputEmail, setInputEmail] = useState('');
@@ -92,7 +92,7 @@ const LoginTwo = () => {
           </LinearGradient>
         </View> */}
 
-        <ButtonsCommon btnText={'Sign In'} navRoute="Preferences" />
+        <ButtonsCommon btnText={'Sign In'} navRoute="RestaurantMain" />
 
         <SeparatorText separatorText="or Sign In with" />
         <View
@@ -115,7 +115,8 @@ const LoginTwo = () => {
           <Text style={styles.alreadyAccount.textContent}>
             Already have an account?{' '}
           </Text>
-          <TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => navigation.navigate('RestaurantMain')}>
             <Text style={styles.underline}>Sign in.</Text>
           </TouchableOpacity>
         </View>

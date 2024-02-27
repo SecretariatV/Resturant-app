@@ -2,6 +2,7 @@ import {Platform, StyleSheet} from 'react-native';
 import {heightToDp, width} from '../../utils/Dimensions';
 import {fonts} from '../../theme/FontFamily';
 import {Colors} from '../../theme';
+import { getPlatformSpecificValue } from '../../utils/helper';
 
 const styles = StyleSheet.create({
   headerHoc: {
@@ -22,6 +23,7 @@ const styles = StyleSheet.create({
     marginTop: Platform.OS === 'ios' ? heightToDp(12) : 10,
   },
   headerContainerNoBanner: {
+    paddingHorizontal: getPlatformSpecificValue(15, 0),
     zIndex: 10,
     width: '100%',
     justifyContent: 'space-between',
@@ -32,7 +34,7 @@ const styles = StyleSheet.create({
   },
   slotLeft: {
     width: '20%',
-    alignItems: 'flex-start'
+    alignItems: 'flex-start',
   },
   slotCenter: {
     width: '60%',
@@ -40,7 +42,7 @@ const styles = StyleSheet.create({
   },
   slotRight: {
     width: '20%',
-    alignItems: 'flex-end'
+    alignItems: 'flex-end',
   },
 });
 export {styles};

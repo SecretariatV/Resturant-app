@@ -17,8 +17,6 @@ const BackButton = ({showMenu}) => {
         alignItems: 'center',
         justifyContent: 'center',
       }}>
-      {/* <View style={{width: '100%', backgroundColor: 'red'}}> */}
-
       <LinearGradient
         colors={['#5A9CA9', '#345B61']}
         useAngle
@@ -43,8 +41,6 @@ const BackButton = ({showMenu}) => {
           )}
         </TouchableOpacity>
       </LinearGradient>
-
-      {/* </View> */}
     </View>
   );
 };

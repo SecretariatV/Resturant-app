@@ -134,3 +134,46 @@ export const reviews = [
       'Consequat velit qui adipisicing sunt do rependerit ad laborum tempor ullamco exercitation. Ullamco tempor adipisicing et voluptate duis sit esse aliqua',
   },
 ];
+
+export const restaurants = [
+  {
+    id: '1',
+    name: 'Resturant Name',
+    location: 'Location Here',
+    cuisine: 'French',
+  },
+  {
+    id: '2',
+    name: 'Resturant Name',
+    location: 'Location Here',
+    cuisine: 'Italian',
+  },
+  {
+    id: '3',
+    name: 'Resturant Name',
+    location: 'Location Here',
+    cuisine: 'Turkish',
+  },
+  {
+    id: '4',
+    name: 'Resturant Name',
+    location: 'Location Here',
+    cuisine: 'American',
+  },
+
+  {
+    id: '5',
+    name: 'Resturant Name',
+    location: 'Location Here',
+    cuisine: 'French',
+  },
+
+  {
+    id: '6',
+    name: 'Resturant Name',
+    location: 'Location Here',
+    cuisine: 'French',
+  },
+
+  // Add more items as needed
+];

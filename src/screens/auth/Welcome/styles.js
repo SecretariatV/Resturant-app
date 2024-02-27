@@ -1,11 +1,9 @@
 import {StyleSheet} from 'react-native';
 import {fonts} from '../../../theme/FontFamily';
 import {width, widthToDp} from '../../../utils/Dimensions';
+import {getPlatformSpecificValue} from '../../../utils/helper';
+import {screenToTextSize} from '../../../utils/helper';
 
-const percentSize = size => {
-  let scrensize = widthToDp(100);
-  return (size * scrensize) / 100;
-};
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -27,7 +25,7 @@ const styles = StyleSheet.create({
   byeTxt: {
     color: '#01CA78',
     fontFamily: fonts.URBANIST_SEMIBOLD,
-    fontSize: percentSize(5),
+    fontSize: screenToTextSize(5),
     marginTop: widthToDp(7),
     textAlign: 'center',
   },
@@ -98,7 +96,9 @@ const styles = StyleSheet.create({
     width: width * 0.128,
   },
 
-  wrapper: {},
+  wrapper: {
+    marginTop: getPlatformSpecificValue(100, 0),
+  },
   slide1: {
     flex: 1,
     // justifyContent: 'center',

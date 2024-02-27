@@ -8,6 +8,7 @@ import {heightToDp, widthToDp} from '../../utils/Dimensions';
 import HeaderModed from '../../components/HeaderModed';
 import MenuNavButton from '../../components/MenuNavButton';
 import Hamburger from '../../assets/images/hamburger.png';
+import Footer from '../../components/Footer';
 
 const Cart = () => {
   console.log(widthToDp(100));
@@ -43,6 +44,7 @@ const Cart = () => {
         }}>
         <Text>Cart</Text>
       </View>
+      <Footer />
     </View>
   );
 };

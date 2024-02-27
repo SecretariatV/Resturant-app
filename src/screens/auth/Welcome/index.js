@@ -20,16 +20,15 @@ const Welcome = props => {
   return (
     <View style={styles.container}>
       <BackgroundLayout />
-      {/* <HeaderCommon show={false} /> */}
       <HeaderModed
         slotLeft={<></>}
         slotCenter={
-          <View style={[{flex: 1, alignItems: 'center'}]}>
-            <Image source={require('../../../assets/images/logo.png')} />
-          </View>
+          <Image source={require('../../../assets/images/logo.png')} />
         }
         slotRight={<></>}
       />
+      {/* <HeaderCommon show={false} /> */}
+
       <Swiper
         style={styles.wrapper}
         showsButtons={false}
@@ -93,7 +92,7 @@ const Welcome = props => {
 
         <View style={styles.slide1}>
           <View style={{alignItems: 'center'}}>
-            <Image source={require('../../../assets/images/qr_code.png')} />
+            <Image source={require('../../../assets/images/qr_code.png')} style={{height: heightToDp(70), resizeMode: 'contain'}}/>
             <Text style={styles.welcomeTxt}>Instant Access to </Text>
 
             <View style={{alignSelf: 'center', marginTop: 5}}>
