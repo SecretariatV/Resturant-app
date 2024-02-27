@@ -537,7 +537,7 @@ const RootNavigator = () => {
         <Image resizeMethod='auto' resizeMode='contain' source={require('../assets/images/tabbar-bg.svg')} style={{ backgroundColor: 'transparent', width: widthToDp(100)}} />
       </View> */}
       {/* <DrawerNavigation /> */}
-      {!saveUser ? HomeStack() : AuthStack()}
+      {saveUser ? HomeStack() : AuthStack()}
     </NavigationContainer>
   );
 };

@@ -4,22 +4,27 @@ import {styles} from './styles';
 import {Image} from 'react-native';
 import {Colors} from '../../theme';
 
-const Counter = () => {
+const Counter = ({
+  minusContainerStyle,
+  minusStyle,
+  plusStyle,
+  plusContainerStyle,
+  counterTextStyle,
+}) => {
   return (
     <View style={styles.container}>
-      <TouchableOpacity style={styles.minusContainer}>
+      <TouchableOpacity style={[styles.minusContainer, minusContainerStyle]}>
         <Image
           source={require('../../assets/images/minus.png')}
-          style={{width: 26, height: 3}}
+          style={[{width: 26, height: 3}, minusStyle]}
         />
       </TouchableOpacity>
 
-      <Text style={styles.counterTxt}>30</Text>
-      <TouchableOpacity
-        style={[styles.minusContainer, {backgroundColor: Colors.GREEN}]}>
+      <Text style={[styles.counterTxt, counterTextStyle]}>30</Text>
+      <TouchableOpacity style={[styles.minusContainer, plusContainerStyle]}>
         <Image
           source={require('../../assets/images/plus.png')}
-          style={{width: 20, height: 20}}
+          style={[{width: 20, height: 20}, plusStyle]}
         />
       </TouchableOpacity>
     </View>

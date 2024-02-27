@@ -134,3 +134,53 @@ export const reviews = [
       'Consequat velit qui adipisicing sunt do rependerit ad laborum tempor ullamco exercitation. Ullamco tempor adipisicing et voluptate duis sit esse aliqua',
   },
 ];
+
+export const productQuantities = [
+  {
+    productName: 'Onion',
+    qty: 2,
+    price: 150,
+  },
+  {
+    productName: 'Onion',
+    qty: 2,
+    price: 150,
+  },
+  {
+    productName: 'Onion',
+    qty: 2,
+    price: 150,
+  },
+  // {
+  //   productName: 'Onion',
+  //   qty: 2,
+  //   price: 150,
+  // },
+  // {
+  //   productName: 'Onion',
+  //   qty: 2,
+  //   price: 150,
+  // },
+];
+
+export const Ingredients = [
+  {
+    productName: 'Onion',
+    counterType: 'number',
+    price: 150,
+  },
+  {
+    productName: 'Sauce',
+    counterType: 'size',
+
+    qty: 2,
+    price: 150,
+  },
+  {
+    productName: 'Onion',
+    counterType: 'number',
+
+    qty: 2,
+    price: 150,
+  },
+];
