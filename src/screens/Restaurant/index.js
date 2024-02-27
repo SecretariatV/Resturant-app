@@ -9,23 +9,27 @@ import {
   FlatList,
 } from 'react-native';
 import React, {useEffect, useState} from 'react';
-import BackgroundLayout from '../../components/BackgroundLayout';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 import {styles} from './styles';
-import MenuBg from '../../assets/images/tabbar-center.svg';
 import {height, heightToDp, widthToDp} from '../../utils/Dimensions';
+import LinearGradient from 'react-native-linear-gradient';
+import {ListItem} from '@rneui/themed';
+
+import BackgroundLayout from '../../components/BackgroundLayout';
+import MenuBg from '../../assets/images/tabbar-center.svg';
+
 import HeaderModed from '../../components/HeaderModed';
 import MenuNavButton from '../../components/MenuNavButton';
 import Hamburger from '../../assets/images/hamburger.png';
 import Clock from '../../assets/images/clock.svg';
 import Dress from '../../assets/images/dress.svg';
 
+
 import resturant_cover from '../../assets/images/restaurant_cover.png';
 import ToggleButton from '../../components/ToggleButton';
 import FadedSeparator from '../../components/FadedSeparator';
 import {Colors} from '../../theme';
-import LinearGradient from 'react-native-linear-gradient';
 // import {Button} from '@rneui/base';
-import {ListItem} from '@rneui/themed';
 import ResturantCard from '../../components/RestaurantCard';
 import ReviewCard from '../../components/ReviewCard';
 import {reviews, ageGroup, cuisine, dressCode} from '../../utils/demodata';
@@ -83,6 +87,7 @@ const Restaurant = () => {
       </View>
     );
   };
+
 
   return (
     <View style={styles.container}>
@@ -316,7 +321,6 @@ const Restaurant = () => {
           )}
         </View>
       </ScrollView>
-
       <Footer />
     </View>
   );

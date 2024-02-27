@@ -92,7 +92,7 @@ const Welcome = props => {
 
         <View style={styles.slide1}>
           <View style={{alignItems: 'center'}}>
-            <Image source={require('../../../assets/images/qr_code.png')} />
+            <Image source={require('../../../assets/images/qr_code.png')} style={{height: heightToDp(70), resizeMode: 'contain'}}/>
             <Text style={styles.welcomeTxt}>Instant Access to </Text>
 
             <View style={{alignSelf: 'center', marginTop: 5}}>

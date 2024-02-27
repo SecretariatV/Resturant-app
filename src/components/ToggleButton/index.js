@@ -18,7 +18,7 @@ const ToggleButton = ({name, show, onPress}) => {
 
   const gradientColors = isToggled
     ? ['#02ABEE6E', '#02ABEE', '#00F594']
-    : ['rgba(255, 255, 255, 0.10)'];
+    : ['rgba(255, 255, 255, 0.10)', 'rgba(255, 255, 255, 0.10)'];
 
   return (
     <LinearGradient

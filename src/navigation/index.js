@@ -31,7 +31,7 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import QrCode from '../screens/QrCode';
 // import {createDrawerNavigator} from '@react-navigation/drawer';
 import {SvgXml} from 'react-native-svg';
-import DrawerNavigation from '../screens/drawer/DrawerNavigation';
+// import DrawerNavigation from '../screens/drawer/DrawerNavigation';
 
 // icons
 import BackBtn from '../assets/images/tabbar-back.svg';
@@ -193,7 +193,8 @@ const AuthStack = () => {
 const HomeStack = () => {
   return (
     <Stack.Navigator
-      initialRouteName="IngredientCustomization"
+      // initialRouteName="IngredientCustomization"
+      initialRouteName="Menu"
       screenOptions={{
         headerShown: false,
       }}>
@@ -234,7 +235,7 @@ const HomeStack = () => {
   );
 };
 
-const DrawerNav = () => {};
+// const DrawerNav = () => {};
 
 const TabNavigator = () => {
   return (
@@ -252,7 +253,7 @@ const TabNavigator = () => {
       screenOptions={({route}) => ({
         headerShown: false,
         // tabBarHideOnKeyboard: true,
-
+        tabBarPosition: 'bottom',
         tabBarShowLabel: false,
         tabBarStyle: {
           position: 'absolute',
@@ -262,9 +263,7 @@ const TabNavigator = () => {
           elevation: 0,
           // backgroundColor: '#2d2d3d',
           backgroundColor: 'transparent',
-
           borderTopWidth: 0,
-
           borderColor: 'transparent',
           paddingVertical: 10,
           height: heightToDp(20),
@@ -325,8 +324,8 @@ const TabNavigator = () => {
         }}
       />
       <Tab.Screen
-        name="Restaurant"
-        component={Restaurant}
+        name="QrCode"
+        component={QrCode}
         options={{
           tabBarIcon: ({focused}) => {
             return (
@@ -363,7 +362,7 @@ const TabNavigator = () => {
         }}
       />
 
-      {/* <Tab.Screen
+      <Tab.Screen
         name="Menu"
         component={Menu}
         options={{
@@ -400,7 +399,7 @@ const TabNavigator = () => {
             );
           },
         }}
-      /> */}
+      />
 
       {/* <Tab.Screen
         name="Menu"

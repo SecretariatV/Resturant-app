@@ -61,6 +61,10 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     marginRight: 5,
   },
+  metaDetails: {
+    marginTop: 100,
+    marginHorizontal: 15,
+  },
   btnsContainer: {
     flexDirection: 'row',
     marginTop: 5,

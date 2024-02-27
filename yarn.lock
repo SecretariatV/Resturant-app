@@ -1541,9 +1541,9 @@
     fastq "^1.6.0"
 
 "@react-native-async-storage/async-storage@^1.13.4", "@react-native-async-storage/async-storage@^1.22.1":
-  version "1.22.1"
-  resolved "https://registry.npmjs.org/@react-native-async-storage/async-storage/-/async-storage-1.22.1.tgz"
-  integrity sha512-kLC0kREjUzXawcNFWrBXD8efBYbQq/F9pchDuUuXf6Wue9dCur9nEkjJYM1Ods81BVisPey1QVDT3qVoOYbqgQ==
+  version "1.22.2"
+  resolved "https://registry.npmjs.org/@react-native-async-storage/async-storage/-/async-storage-1.22.2.tgz"
+  integrity sha512-nZpzT4Wz1OkVdQaZP/awpDCTKiPzdmG0PYmRF37ZeJlfwlwOg55in0TP2YUOW0MhOCRiNMomWWLojDLv5j2OIw==
   dependencies:
     merge-options "^3.0.4"
 
@@ -1905,18 +1905,18 @@
     use-latest-callback "^0.1.7"
 
 "@react-navigation/drawer@^6.6.7":
-  version "6.6.7"
-  resolved "https://registry.npmjs.org/@react-navigation/drawer/-/drawer-6.6.7.tgz"
-  integrity sha512-9hSJySPQcG33vV199uzkI3jHewvAGjVFF2bhC28TkQYDKtp/DmtTvjCEiecOm+qep1Qp4ksh5vBo2P0A1hF6vQ==
+  version "6.6.9"
+  resolved "https://registry.npmjs.org/@react-navigation/drawer/-/drawer-6.6.9.tgz"
+  integrity sha512-fWRp7f2AzLJ5KsQHTeXR+ihVwDeERWigIU4FKa+uoFjPC6ncWzj7kpZYb5/nEJzFOH3ERODLfva6rUf4cPYKcA==
   dependencies:
-    "@react-navigation/elements" "^1.3.22"
+    "@react-navigation/elements" "^1.3.24"
     color "^4.2.3"
     warn-once "^0.1.0"
 
-"@react-navigation/elements@^1.3.21", "@react-navigation/elements@^1.3.22":
-  version "1.3.22"
-  resolved "https://registry.npmjs.org/@react-navigation/elements/-/elements-1.3.22.tgz"
-  integrity sha512-HYKucs0TwQT8zMvgoZbJsY/3sZfzeP8Dk9IDv4agst3zlA7ReTx4+SROCG6VGC7JKqBCyQykHIwkSwxhapoc+Q==
+"@react-navigation/elements@^1.3.21", "@react-navigation/elements@^1.3.24":
+  version "1.3.24"
+  resolved "https://registry.npmjs.org/@react-navigation/elements/-/elements-1.3.24.tgz"
+  integrity sha512-zgZV50qjlv3/N+MzNV0DIRmtg30IZcR0+LaTQRP/OxLtveQkgUG6wIEKl6SXO2ykC9yF9V82msdCzKl9uPSQCA==
 
 "@react-navigation/native-stack@^6.9.17":
   version "6.9.17"
@@ -3927,11 +3927,6 @@ fs.realpath@^1.0.0:
   version "1.0.0"
   resolved "https://registry.npmjs.org/fs.realpath/-/fs.realpath-1.0.0.tgz"
   integrity sha512-OO0pH2lK6a0hZnAdau5ItzHPI6pUlvI7jMVnxUQRtw4owF2wk8lOSabtGDCTP4Ggrg2MbGnWO9X8K1t4+fGMDw==
-
-fsevents@^2.3.2:
-  version "2.3.3"
-  resolved "https://registry.npmjs.org/fsevents/-/fsevents-2.3.3.tgz"
-  integrity sha512-5xoDfX+fL7faATnagmWPpbFtwh/R77WmMMqqHGS65C3vvB0YHrgF+B1YmZ3441tMj5n63k0212XNoJwzlhffQw==
 
 function-bind@^1.1.1, function-bind@^1.1.2:
   version "1.1.2"

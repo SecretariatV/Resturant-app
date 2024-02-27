@@ -1,6 +1,6 @@
 import {StyleSheet} from 'react-native';
 import {fonts} from '../../theme/FontFamily';
-import {width, widthToDp} from '../../utils/Dimensions';
+import {heightToDp, width, widthToDp} from '../../utils/Dimensions';
 import {Colors} from '../../theme';
 const forBoth = (anStyles, ioStyles) => {
   return Platform.OS === 'android' ? anStyles : ioStyles;
@@ -23,15 +23,15 @@ const styles = StyleSheet.create({
     borderTopLeftRadius: 25,
     borderTopRightRadius: 25,
   },
-  circleGradient: {
-    margin: 1,
-    paddingVertical: 5,
-    paddingHorizontal: 5,
-    alignSelf: 'center',
-    alignItems: 'center',
-    backgroundColor: '#00000044',
-    borderRadius: 15,
-  },
+  // circleGradient: {
+  //   margin: 1,
+  //   paddingVertical: 5,
+  //   paddingHorizontal: 5,
+  //   alignSelf: 'center',
+  //   alignItems: 'center',
+  //   backgroundColor: '#00000044',
+  //   borderRadius: 15,
+  // },
   shareABillTxt: {
     fontFamily: fonts.URBANIST_EXTRABOLD,
     color: '#00FC92',
@@ -40,10 +40,58 @@ const styles = StyleSheet.create({
   },
   saveButton: {
     position: 'absolute',
-
     bottom: 30,
     left: 20,
     right: 20,
+  },
+  categoryWiseContainer: {
+    justifyContent: 'start',
+    flexDirection: 'row',
+    height: heightToDp(80)
+  },
+  verticalTabs: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    position: 'relative',
+  },
+  uselessWrapper: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    transform: [{rotate: '-90deg'}],
+    position: 'absolute',
+    left: -25,
+    top: 140,
+    width: widthToDp(30),
+    height: heightToDp(20),
+  },
+  verticalTabBtns1: {
+    width: widthToDp(20),
+  },
+  verticalTabBtns2: {
+    width: widthToDp(35),
+  },
+  flatlistWrapper: {
+    width: widthToDp(80),
+    marginLeft: 45,
+  },
+  itemTypeGrad: {
+    borderRadius: 20,
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: '100%',
+    marginTop: 10,
+  },
+  categoryWiseTabItem: {
+    textAlign: 'center',
+    width: '100%',
+    fontSize: 12,
+    color: '#fff',
+  },
+  categoryWiseTabItemActive: {
+    color: '#000',
+    textAlign: 'center',
+    width: '100%',
+    fontSize: 12,
   },
   circleGradient: {
     margin: 1,
@@ -65,7 +113,7 @@ const styles = StyleSheet.create({
     fontFamily: fonts.URBANIST_EXTRABOLD,
     color: '#00FC92',
     fontSize: 22,
-    paddingHorizontal: 5,
+    paddingHorizontaal: 5,
   },
   saveButton: {
     position: 'absolute',
@@ -113,7 +161,6 @@ const styles = StyleSheet.create({
   priceRangeLabelBottom: {
     marginBottom: 20,
   },
-
   circleTwoGradient: {
     margin: 1,
     width: '100%',
@@ -140,11 +187,12 @@ const styles = StyleSheet.create({
   },
   linearBack: {
     borderRadius: 20,
-    flexWrap: 'nowrap',
-    width: '80%',
+    flexWrap: 'wrap',
+    width: '100%',
     marginTop: 10,
     // b
   },
+
   verticalLinearBack: {
     width: '40%',
   },

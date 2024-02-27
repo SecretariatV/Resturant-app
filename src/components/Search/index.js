@@ -18,7 +18,7 @@ import Valet from '../../assets/images/valet.svg';
 import {widthToDp} from '../../utils/Dimensions';
 import {Colors} from '../../theme';
 
-const Search = () => {
+const Search = ({isVisible, setIsVisible}) => {
   return (
     <View
       style={{

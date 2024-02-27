@@ -13,22 +13,16 @@ const Login = () => {
   return (
     <View style={styles.container}>
       <BackgroundLayout />
-
-      {/* <HeaderCommon
-        showSkipBtn={false}
-        show={true}
-        logoStyle={{marginRight: widthToDp(15)}}
-      /> */}
-      <HeaderModed slotLeft={<BackButton />} />
+      <HeaderModed slotLeft={<BackButton />} slotCenter={<></>} slotRight={<></>} />
       <View
         style={{
           width: '100%',
           alignItems: 'center',
           justifyContent: 'center',
-          marginTop: widthToDp(5),
+          marginTop: widthToDp(2),
         }}>
-        <View style={styles.box}>
-          <View style={styles.boxTwo}>
+        <View style={styles.outerBox}>
+          <View style={styles.innerBox}>
             <Text style={styles.startedTxt}>
               Let's Get Started with .
               <Text style={styles.startedTxtTwo}>Shareabill</Text>

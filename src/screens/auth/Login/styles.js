@@ -1,49 +1,54 @@
 import {StyleSheet} from 'react-native';
 import {fonts} from '../../../theme/FontFamily';
-import {width, widthToDp} from '../../../utils/Dimensions';
+import {heightToDp, width, widthToDp} from '../../../utils/Dimensions';
 import {Colors} from '../../../theme';
+import { screenToTextSize } from '../../../utils/helper';
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingHorizontal: 15,
   },
-  box: {
-    width: '90%',
+  outerBox: {
+    width: '100%',
     // backgroundColor: 'red',
-    height: 492,
+    paddingVertical: 14,
+    paddingHorizontal: 14,
     borderWidth: 1,
-    borderColor: '#fff',
-    borderRadius: 33,
+    borderColor: '#FFFFFFAA',
+    borderRadius: 25,
     alignItems: 'center',
     justifyContent: 'center',
   },
-  boxTwo: {
-    width: '92%',
+  innerBox: {
+    width: '100%',
     backgroundColor: 'rgba(255, 255, 255, 0.10)',
-    height: 462,
     borderWidth: 1,
-    borderColor: '#fff',
-    borderRadius: 33,
+    paddingVertical: heightToDp(15),
+    // paddingHorizontal: 30,
+    borderColor: '#FFFFFF3a',
+    borderRadius: 20,
     alignItems: 'center',
     justifyContent: 'center',
-    paddingHorizontal: widthToDp(5),
+    paddingHorizontal: widthToDp(9),
   },
   startedTxt: {
     color: Colors.WHITE,
     fontFamily: fonts.URBANIST_EXTRABOLD,
-    fontSize: 32,
+    fontSize: screenToTextSize(8),
+    textAlign: 'center',
   },
   startedTxtTwo: {
     color: Colors.SECONDARY,
     fontFamily: fonts.URBANIST_EXTRABOLD,
-    fontSize: 32,
+    fontSize: screenToTextSize(8),
   },
   startedTxtThree: {
     marginTop: 20,
     color: Colors.WHITE,
     fontFamily: fonts.URBANIST_REGULAR,
-    fontSize: 20,
+    fontSize: screenToTextSize(5),
+    textAlign: 'center'
   },
 });
 

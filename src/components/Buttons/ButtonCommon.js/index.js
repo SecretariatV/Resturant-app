@@ -24,7 +24,7 @@ const ButtonsCommon = ({
   const handleClick = () => {
     if (navRoute) {
       // storeData();
-      console.log(first);
+      // console.log(first);
       navigation.navigate(navRoute);
     } else {
       console.log(' chal  bhag yeha se');

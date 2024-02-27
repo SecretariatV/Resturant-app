@@ -1,76 +1,3 @@
-// import {View, Text} from 'react-native';
-// import React from 'react';
-// import {styles} from './styles';
-// import BackgroundLayout from '../../components/BackgroundLayout';
-// import HeaderCommon from '../../components/HeaderCommon';
-// import HeaderModed from '../../components/HeaderModed';
-// import MenuNavButton from '../../components/MenuNavButton';
-// import Hamburger from '../../assets/images/hamburger.png';
-// import heart from '../../assets/images/heart.png';
-// import {widthToDp} from '../../utils/Dimensions';
-// import Search from '../../components/Search';
-// import {Colors} from '../../theme';
-// import Footer from '../../components/Footer';
-// import SearchModded from '../../components/SearchModded';
-
-// const Menu = () => {
-//   return (
-//     <View style={styles.container}>
-//       <BackgroundLayout />
-//       <HeaderModed
-//         slotLeft={<MenuNavButton icon={Hamburger} iconType="image" />}
-//         slotCenter={<Text>Menu</Text>}
-//         slotRight={
-//           <MenuNavButton
-//             icon={heart}
-//             iconType="image"
-//             iconStyle={{
-//               width: widthToDp(8),
-//               height: widthToDp(8),
-//               margin: 5,
-//             }}
-//           />
-//         }
-//       />
-//       {/* <HeaderCommon
-//         showSkipBtn={true}
-//         showValet={true}
-//         showMenu={true}
-//         show={true}
-//       /> */}
-//       {/* <Search /> */}
-//       <SearchModded />
-
-//       {/* <View style={{flexDirection: 'row'}}>
-//         <View>
-//           <Text
-//             style={{
-//               transform: [{rotate: '-90deg'}],
-//               color: Colors.WHITE,
-//               marginTop: 40,
-//               backgroundColor: 'red',
-//               margin: 0,
-//             }}>
-//             Previously ordered
-//           </Text>
-
-//           <Text
-//             style={{
-//               transform: [{rotate: '-90deg'}],
-//               color: Colors.WHITE,
-//               marginTop: 50,
-//             }}>
-//             Top Picks
-//           </Text>
-//         </View>
-//         <View style={{width: 100, height: 100, backgroundColor: 'red'}}></View>
-//       </View> */}
-//       <Footer />
-//     </View>
-//   );
-// };
-
-// export default Menu;
 import {View, Text, ScrollView, TouchableOpacity, FlatList} from 'react-native';
 import React, {useState} from 'react';
 import {styles} from './styles';
@@ -85,7 +12,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import SearchModded from '../../components/SearchModded';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 import {BottomSheet} from '@rneui/themed';
-// import CloseFilterBtn from '../../assets/images/closeBtnFilter.svg';
+import CloseFilterBtn from '../../assets/images/closeBtnFilter.svg';
 import FadedSeparator from '../../components/FadedSeparator';
 import ToggleButton from '../../components/ToggleButton';
 import BackgroundCard from '../../components/BackgroundCard';
@@ -114,9 +41,17 @@ const Menu = () => {
       imgUrl: require('../../assets/images/fish_2.json'),
     },
   ];
-  const [modalVisible, setModalVisible] = useState(true);
+  const [modalVisible, setModalVisible] = useState(false);
   const [showFilter, setShowFilter] = useState(false);
   const [showRequest, setShowRequest] = useState(false);
+  const [itemListType, setItemListType] = useState('top');
+
+  let activeColors = ['#00A7F7', '#00FC92'];
+  let inActiveColors = ['#00A7F700', '#00FC9200'];
+
+  const handleItemType = Itype => {
+    setItemListType(Itype);
+  };
   return (
     <SafeAreaProvider>
       <View style={styles.container}>
@@ -127,58 +62,162 @@ const Menu = () => {
           slotRight={<MenuNavButton icon={HeartIcon} iconType="image" />}
         />
         <SearchModded isVisible={showFilter} setIsVisible={setShowFilter} />
+        <View class="category-wise-menu" style={styles.categoryWiseContainer}>
+          <View class="category-container" style={styles.verticalTabs}>
+            <View class="useless-wrapper" style={styles.uselessWrapper}>
+              <TouchableOpacity
+                style={styles.verticalTabBtns1}
+                onPress={() => handleItemType('top')}>
+                <LinearGradient
+                  colors={
+                    itemListType === 'top' ? activeColors : inActiveColors
+                  }
+                  useAngle
+                  angle={300}
+                  style={styles.linearBack}
+                  start={{x: 1, y: 0.5}}
+                  end={{x: 1, y: 0.5}}>
+                  <Text
+                    style={
+                      itemListType === 'top'
+                        ? styles.categoryWiseTabItemActive
+                        : styles.categoryWiseTabItem
+                    }>
+                    Top Picks
+                  </Text>
+                </LinearGradient>
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={styles.verticalTabBtns2}
+                onPress={() => handleItemType('prev')}>
+                <LinearGradient
+                  colors={
+                    itemListType === 'prev' ? activeColors : inActiveColors
+                  }
+                  useAngle
+                  angle={300}
+                  style={styles.linearBack}
+                  start={{x: 1, y: 0.5}}
+                  end={{x: 1, y: 0.5}}>
+                  <Text
+                    style={
+                      itemListType === 'prev'
+                        ? styles.categoryWiseTabItemActive
+                        : styles.categoryWiseTabItem
+                    }>
+                    Previously Ordered
+                  </Text>
+                </LinearGradient>
+              </TouchableOpacity>
+            </View>
+          </View>
+          <View class="flatlist-wrapper" style={styles.flatlistWrapper}>
+            {itemListType === 'top' && (
+              <FlatList
+                data={dressCode}
+                style={styles.horizontalListStyle}
+                keyExtractor={(item, index) => item.id + index.toString()}
+                horizontal
+                renderItem={({item, index}) => (
+                  <BackgroundCard
+                    style={{
+                      padding: 10,
+                      width: 150,
+                      height: heightToDp(100),
+                      // margin: 10,
+                    }}
+                    childrenStyle={{borderRadius: 26}}
+                    linearBackStyle={{borderRadius: 26}}>
+                    <LinearGradient
+                      colors={['#5A5A75', '#27273500']}
+                      useAngle
+                      angle={300}
+                      style={styles.linearBack}
+                      start={{x: 1, y: 0.5}}
+                      end={{x: 1, y: 0.5}}>
+                      <View
+                        style={[
+                          // !showMenu && styles.menuGradient,
+                          styles.circleTwoGradient,
+                        ]}
+                        //   onPress={() => (!showMenu ? handleButton() : null)}
+                      >
+                        {/* {children} */}
 
-        <FlatList
-          data={dressCode}
-          style={styles.horizontalListStyle}
-          keyExtractor={(item, index) => item.id + index.toString()}
-          horizontal
-          renderItem={({item, index}) => (
-            <BackgroundCard
-              style={{
-                padding: 10,
-                width: 200,
-                height: heightToDp(100),
-                // margin: 10,
-              }}
-              childrenStyle={{borderRadius: 26}}
-              linearBackStyle={{borderRadius: 26}}>
-              <LinearGradient
-                colors={['#5A5A75', '#27273500']}
-                useAngle
-                angle={300}
-                style={styles.linearBack}
-                start={{x: 1, y: 0.5}}
-                end={{x: 1, y: 0.5}}>
-                <View
-                  style={[
-                    // !showMenu && styles.menuGradient,
-                    styles.circleTwoGradient,
-                  ]}
-                  //   onPress={() => (!showMenu ? handleButton() : null)}
-                >
-                  {/* {children} */}
+                        <Image
+                          source={require('../../assets/images/burger_one.png')}
+                          style={{width: 100, height: 100}}
+                        />
+                      </View>
+                    </LinearGradient>
+                    <View style={styles.productContainer}>
+                      <Text style={styles.productTxt}>Burger 1</Text>
+                      <View style={styles.ratingContainer}>
+                        <Text style={styles.ratingTxt}>4.5</Text>
+                        <Image
+                          source={require('../../assets/images/star.png')}
+                          style={styles.starImg}
+                        />
+                      </View>
+                    </View>
+                  </BackgroundCard>
+                )}
+              />
+            )}
+            {itemListType === 'prev' && (
+              <FlatList
+                data={dressCode}
+                style={styles.horizontalListStyle}
+                keyExtractor={(item, index) => item.id + index.toString()}
+                horizontal
+                renderItem={({item, index}) => (
+                  <BackgroundCard
+                    style={{
+                      padding: 10,
+                      width: 200,
+                      height: heightToDp(100),
+                      // margin: 10,
+                    }}
+                    childrenStyle={{borderRadius: 26}}
+                    linearBackStyle={{borderRadius: 26}}>
+                    <LinearGradient
+                      colors={['#5A5A75', '#27273500']}
+                      useAngle
+                      angle={300}
+                      style={styles.linearBack}
+                      start={{x: 1, y: 0.5}}
+                      end={{x: 1, y: 0.5}}>
+                      <View
+                        style={[
+                          // !showMenu && styles.menuGradient,
+                          styles.circleTwoGradient,
+                        ]}
+                        //   onPress={() => (!showMenu ? handleButton() : null)}
+                      >
+                        {/* {children} */}
 
-                  <Image
-                    source={require('../../assets/images/burger_one.png')}
-                    style={{width: 100, height: 100}}
-                  />
-                </View>
-              </LinearGradient>
-              <View style={styles.productContainer}>
-                <Text style={styles.productTxt}>Burger</Text>
-                <View style={styles.ratingContainer}>
-                  <Text style={styles.ratingTxt}>4.5</Text>
-                  <Image
-                    source={require('../../assets/images/star.png')}
-                    style={styles.starImg}
-                  />
-                </View>
-              </View>
-            </BackgroundCard>
-          )}
-        />
-
+                        <Image
+                          source={require('../../assets/images/burger_one.png')}
+                          style={{width: 100, height: 100}}
+                        />
+                      </View>
+                    </LinearGradient>
+                    <View style={styles.productContainer}>
+                      <Text style={styles.productTxt}>Burger 2</Text>
+                      <View style={styles.ratingContainer}>
+                        <Text style={styles.ratingTxt}>4.5</Text>
+                        <Image
+                          source={require('../../assets/images/star.png')}
+                          style={styles.starImg}
+                        />
+                      </View>
+                    </View>
+                  </BackgroundCard>
+                )}
+              />
+            )}
+          </View>
+        </View>
         <FlatList
           data={dressCode}
           style={styles.horizontalListStyle}
@@ -272,7 +311,7 @@ const Menu = () => {
           )}
         />
       </View>
-      <Footer />
+      {/* <Footer /> */}
       <BottomSheet modalProps={{}} isVisible={showFilter}>
         <Image
           className="restaurant-filter-bg"
@@ -285,7 +324,7 @@ const Menu = () => {
           <View style={[styles.filterSection, styles.filterHeading]}>
             <Text style={styles.filterHeadingText}>Filter</Text>
             <TouchableOpacity onPress={() => setShowFilter(false)}>
-              {/* <CloseFilterBtn width={20} height={20} /> */}
+              <CloseFilterBtn width={20} height={20} />
             </TouchableOpacity>
           </View>
           <View class="personal-preference" style={styles.filterSection}>
@@ -563,7 +602,7 @@ const Menu = () => {
           </View>
         </ScrollView>
       </BottomSheet>
-      <Footer />
+      {/* <Footer /> */}
     </SafeAreaProvider>
   );
 };
