@@ -4,6 +4,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import {styles} from './styles';
 // import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {useNavigation} from '@react-navigation/native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const ButtonsCommon = ({
   btnStyle,
@@ -11,30 +12,24 @@ const ButtonsCommon = ({
   containerStyle,
   btnTextStyle,
   linearTextStyle,
+  onSignIn,
+  onPress,
   navRoute = false,
 }) => {
-  const navigation = useNavigation();
-  const storeData = async value => {
-    try {
-      await AsyncStorage.setItem('user', true);
-    } catch (e) {
-      // saving error
-    }
-  };
-  const handleClick = () => {
-    if (navRoute) {
-      // storeData();
-      // console.log(first);
-      navigation.navigate(navRoute);
-    } else {
-      console.log(' chal  bhag yeha se');
-    }
-  };
+  // const storeData = async value => {
+  //   console.log('herrreee');
+  //   try {
+  //     await AsyncStorage.setItem('user', 'true');
+  //     navigation.navigate('RestaurantMain');
+  //   } catch (e) {
+  //     // saving error
+  //   }
+  // };
+
   return (
     <View style={[containerStyle]}>
       <LinearGradient
         colors={['#02ABEE6E', '#02ABEE', '#00F594']}
-        // colors={['#040B1B', '#045386']}
         style={[
           {borderRadius: 15, flexWrap: 'nowrap', margin: 2},
           linearTextStyle,
@@ -43,10 +38,7 @@ const ButtonsCommon = ({
         end={{x: 1, y: 0.5}}>
         <TouchableOpacity
           style={[styles.circleGradient, btnStyle]}
-          onPress={() => {
-            handleClick();
-            console.log('first');
-          }}>
+          onPress={onPress}>
           <Text style={[styles.btnText, btnTextStyle]}>{btnText}</Text>
         </TouchableOpacity>
       </LinearGradient>

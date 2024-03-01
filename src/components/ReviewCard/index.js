@@ -23,8 +23,8 @@ const ReviewCard = ({name, time, detail, img}) => {
             <Text style={styles.name}>{name}</Text>
             <Image
               source={require('../../assets/images/three_dots.png')}
-              style={{width: 15, height: 15}}
-              resizeMode="center"
+              style={{width: 12, height: 12, marginTop: 5}}
+              resizeMode="contain"
             />
             {/* <Text style={{color: Colors.WHITE}}>kdmsakd</Text> */}
           </View>

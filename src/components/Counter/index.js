@@ -10,23 +10,47 @@ const Counter = ({
   plusStyle,
   plusContainerStyle,
   counterTextStyle,
+  vertical = false,
 }) => {
   return (
-    <View style={styles.container}>
-      <TouchableOpacity style={[styles.minusContainer, minusContainerStyle]}>
-        <Image
-          source={require('../../assets/images/minus.png')}
-          style={[{width: 26, height: 3}, minusStyle]}
-        />
-      </TouchableOpacity>
+    <View>
+      {!vertical ? (
+        <View style={styles.container}>
+          <TouchableOpacity style={[styles.minusContainer, plusContainerStyle]}>
+            <Image
+              source={require('../../assets/images/plus.png')}
+              style={[{width: 20, height: 20}, plusStyle]}
+            />
+          </TouchableOpacity>
 
-      <Text style={[styles.counterTxt, counterTextStyle]}>30</Text>
-      <TouchableOpacity style={[styles.minusContainer, plusContainerStyle]}>
-        <Image
-          source={require('../../assets/images/plus.png')}
-          style={[{width: 20, height: 20}, plusStyle]}
-        />
-      </TouchableOpacity>
+          <Text style={[styles.counterTxt, counterTextStyle]}>30</Text>
+          <TouchableOpacity
+            style={[styles.minusContainer, minusContainerStyle]}>
+            <Image
+              source={require('../../assets/images/minus.png')}
+              style={[{width: 26, height: 3}, minusStyle]}
+            />
+          </TouchableOpacity>
+        </View>
+      ) : (
+        <View style={{alignItems: 'center'}}>
+          <TouchableOpacity style={[styles.minusContainer, plusContainerStyle]}>
+            <Image
+              source={require('../../assets/images/plus.png')}
+              style={[{width: 20, height: 20}, plusStyle]}
+            />
+          </TouchableOpacity>
+
+          <Text style={[styles.counterTxt, counterTextStyle]}>30</Text>
+          <TouchableOpacity
+            style={[styles.minusContainer, minusContainerStyle]}>
+            <Image
+              source={require('../../assets/images/minus.png')}
+              style={[{width: 26, height: 3}, minusStyle]}
+            />
+          </TouchableOpacity>
+        </View>
+      )}
     </View>
   );
 };

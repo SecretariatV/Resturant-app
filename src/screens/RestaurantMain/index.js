@@ -6,15 +6,15 @@ import {
   ScrollView,
   TouchableOpacity,
   Image,
+  Modal,
+  TouchableHighlight,
 } from 'react-native';
 import React, {useEffect, useState} from 'react';
 import {styles} from './styles';
 import BackgroundLayout from '../../components/BackgroundLayout';
 import LinearGradient from 'react-native-linear-gradient';
 import ActiveOrders from '../../assets/images/activeOrders.svg';
-import Search from '../../components/Search';
 import ResturantCard from '../../components/RestaurantCard';
-import {LinearTextGradient} from 'react-native-text-gradient';
 import scan_here from '../../assets/images/scan_here.png';
 import scan_arrow from '../../assets/images/scan_arrow.png';
 import SkipButton from '../../components/Buttons/SkipButton';
@@ -22,15 +22,62 @@ import {widthToDp} from '../../utils/Dimensions';
 import HeaderModed from '../../components/HeaderModed';
 import MenuNavButton from '../../components/MenuNavButton';
 import Hamburger from '../../assets/images/hamburger.png';
+import CloseFilterBtn from '../../assets/images/closeBtnFilter.svg';
+
 import Footer from '../../components/Footer';
 import SearchModded from '../../components/SearchModded';
-import restaurants from '../../utils/demodata'
+// import restaurants from '../../utils/demodata';
+// import {TouchableHighlight} from 'react-native-gesture-handler';
+import {BottomSheet} from '@rneui/themed';
+import ToggleButton from '../../components/ToggleButton';
+import FadedSeparator from '../../components/FadedSeparator';
+import {Colors} from '../../theme';
 const RestaurantMain = () => {
   const [modalVisible, setModalVisible] = useState(true);
   const [isVisible, setIsVisible] = useState(false);
   const [sliderValue, setSliderValue] = useState(0);
+  const restaurants = [
+    {
+      id: '1',
+      name: 'Resturant Name',
+      location: 'Location Here',
+      cuisine: 'French',
+    },
+    {
+      id: '2',
+      name: 'Resturant Name',
+      location: 'Location Here',
+      cuisine: 'Italian',
+    },
+    {
+      id: '3',
+      name: 'Resturant Name',
+      location: 'Location Here',
+      cuisine: 'Turkish',
+    },
+    {
+      id: '4',
+      name: 'Resturant Name',
+      location: 'Location Here',
+      cuisine: 'American',
+    },
 
- 
+    {
+      id: '5',
+      name: 'Resturant Name',
+      location: 'Location Here',
+      cuisine: 'French',
+    },
+
+    {
+      id: '6',
+      name: 'Resturant Name',
+      location: 'Location Here',
+      cuisine: 'French',
+    },
+
+    // Add more items as needed
+  ];
   useEffect(() => {
     getData();
   }, []);
@@ -52,6 +99,7 @@ const RestaurantMain = () => {
       cuisine={item.cuisine}
     />
   );
+
   const handleAboutToggle = () => {
     return false;
   };
@@ -108,7 +156,6 @@ const RestaurantMain = () => {
       <View
         style={{
           flexDirection: 'row',
-          justifyContent: 'space-between',
           alignItems: 'center',
           marginHorizontal: 15,
         }}>
@@ -117,6 +164,7 @@ const RestaurantMain = () => {
             flexDirection: 'row',
             justifyContent: 'space-between',
             alignItems: 'center',
+            width: '100%',
           }}>
           <View
             style={{
@@ -138,31 +186,36 @@ const RestaurantMain = () => {
             </LinearGradient>
           </View>
 
-          <LinearGradient
-            colors={['#01322B44', '#00F59444', '#00F59444', '#02ABEE44']}
-            useAngle={true}
-            angle={45}
-            style={{borderRadius: 15, flexWrap: 'nowrap'}}
-            start={{x: 0, y: 0.5}}
-            end={{x: 1, y: 0.5}}>
-            <View style={styles.circleGradient}>
-              <ActiveOrders width={20} height={20} />
-              <Text style={{color: Colors.GREEN}}>Active Order</Text>
-              {/* <Text style={styles.shareABillTxt}>Mark Anderson</Text> */}
-            </View>
-          </LinearGradient>
+          <View>
+            <LinearGradient
+              colors={['#01322B44', '#00F59444', '#00F59444', '#02ABEE44']}
+              useAngle={true}
+              angle={45}
+              style={{borderRadius: 15, flexWrap: 'nowrap'}}
+              start={{x: 0, y: 0.5}}
+              end={{x: 1, y: 0.5}}>
+              <View style={styles.circleGradient}>
+                <ActiveOrders width={20} height={20} />
+                <Text style={{color: Colors.GREEN}}>Active Order</Text>
+                {/* <Text style={styles.shareABillTxt}>Mark Anderson</Text> */}
+              </View>
+            </LinearGradient>
+          </View>
         </View>
 
-        <Search isVisible={isVisible} setIsVisible={setIsVisible} />
-        <FlatList
+        {/* <Search isVisible={isVisible} setIsVisible={setIsVisible} /> */}
+        {/* <FlatList
           showsVerticalScrollIndicator={false}
           style={{marginVertical: 5}}
           data={restaurants}
           renderItem={renderItem}
           keyExtractor={item => item.id} // Key extractor for each item
-        />
+        /> */}
+
+        {/* <Footer /> */}
       </View>
-      <Footer />
+
+      {/* <Footer /> */}
       <BottomSheet modalProps={{}} isVisible={isVisible}>
         <Image
           className="restaurant-filter-bg"
@@ -171,7 +224,7 @@ const RestaurantMain = () => {
         />
         <ScrollView
           className="restaurant-filter-container"
-        style={styles.restaurantFilterContainer}>
+          style={styles.restaurantFilterContainer}>
           <View style={[styles.filterSection, styles.filterHeading]}>
             <Text style={styles.filterHeadingText}>Filter</Text>
             <TouchableOpacity onPress={() => setIsVisible(false)}>
@@ -318,16 +371,18 @@ const RestaurantMain = () => {
           </View>
         </ScrollView>
       </BottomSheet>
-      {/* <Search /> */}
-      <SearchModded />
+      <SearchModded isVisible={isVisible} setIsVisible={setIsVisible} />
       <FlatList
         showsVerticalScrollIndicator={false}
-        style={{marginVertical: 5, marginHorizontal: 15}}
-        data={data}
+        style={{
+          marginVertical: 5,
+          marginHorizontal: 15,
+          // backgroundColor: 'red',
+        }}
+        data={restaurants}
         renderItem={renderItem}
         keyExtractor={item => item.id} // Key extractor for each item
       />
-
       <Footer />
     </View>
   );

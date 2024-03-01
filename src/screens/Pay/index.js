@@ -4,17 +4,19 @@ import {styles} from './styles';
 import BackgroundLayout from '../../components/BackgroundLayout';
 import HeaderCommon from '../../components/HeaderCommon';
 import Footer from '../../components/Footer';
+import HeaderModed from '../../components/HeaderModed';
 
 const Pay = () => {
   return (
     <View style={styles.container}>
       <BackgroundLayout />
-      <HeaderCommon
+      {/* <HeaderCommon
         showSkipBtn={true}
         showValet={true}
         showMenu={true}
         show={true}
-      />
+      /> */}
+      <HeaderModed />
       <View
         style={{
           flexDirection: 'row',

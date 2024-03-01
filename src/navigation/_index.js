@@ -1,16 +1,19 @@
-//packages
-import {View, Text, Image} from 'react-native';
-import React, {useEffect, useRef, useState} from 'react';
+import {
+  View,
+  Animated,
+  Text,
+  TouchableOpacity,
+  Image,
+  ImageBackground,
+  StyleSheet,
+} from 'react-native';
+import React, {useEffect, useState} from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {NavigationContainer} from '@react-navigation/native';
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-// import {createDrawerNavigator} from '@react-navigation/drawer';
-// import DrawerNavigation from '../screens/drawer/DrawerNavigation';
-
-// styles
-import {tabNavStyles} from './tabNavigatorStyles';
-// authstack screens
-import Splash from '../screens/Splash';
+import {
+  NavigationContainer,
+  createNavigationContainerRef,
+  useNavigation,
+} from '@react-navigation/native';
 import Welcome from '../screens/auth/Welcome';
 import Login from '../screens/auth/Login';
 import Signup from '../screens/auth/Signup';
@@ -23,85 +26,224 @@ import ForgotPassword from '../screens/auth/ForgotPassword';
 import CreatePassword from '../screens/auth/CreatePassword';
 import LoginTwo from '../screens/auth/LoginTwo';
 import Verification from '../screens/auth/Verification';
-
-// homestack screens
-import RestaurantMain from '../screens/RestaurantMain';
+import Splash from '../screens/Splash';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import QrCode from '../screens/QrCode';
-import Pay from '../screens/Pay';
-import Requests from '../screens/Requests';
-import Menu from '../screens/Menu';
-import Cart from '../screens/Cart';
-import Restaurant from '../screens/Restaurant';
-import MenuDetail from '../screens/MenuDetail';
-import IngredientCustomization from '../screens/IngredientCustomization';
-// import ResturantMenu from '../screens/ResturantMenu';
+// import {createDrawerNavigator} from '@react-navigation/drawer';
+import {SvgXml} from 'react-native-svg';
+// import DrawerNavigation from '../screens/drawer/DrawerNavigation';
 
-// utils
-import {heightToDp, widthToDp} from '../utils/Dimensions';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import {screenToTextSize} from '../utils/helper';
 // icons
 import BackBtn from '../assets/images/tabbar-back.svg';
 import TobBargb from '../assets/images/tabbar-bg.svg';
 import MenuBg from '../assets/images/tabbar-center.svg';
 import MenuIcon from '../assets/images/tabbar-menu.svg';
-import QrIcon from '../assets/images/tabbar-qr.svg';
+
+// tab screens
+import Home from '../screens/RestaurantMain';
+import Pay from '../screens/Pay';
+import Menu from '../screens/Menu';
+import Cart from '../screens/Cart';
+import Requests from '../screens/Requests';
+import {heightToDp, widthToDp} from '../utils/Dimensions';
+import Restaurant from '../screens/Restaurant';
+// import ResturantMenu from '../screens/ResturantMenu';
+import MenuDetail from '../screens/MenuDetail';
+import RestaurantMain from '../screens/RestaurantMain';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import IngredientCustomization from '../screens/IngredientCustomization';
 
 const Tab = createBottomTabNavigator();
 // const Drawer = createDrawerNavigator();
+
 const Stack = createNativeStackNavigator();
-const HomeStacked = createNativeStackNavigator();
-const handleLogin = async () => {
-  await AsyncStorage.setItem('userToken', 'some_token');
-  setIsLoggedIn(true);
+const RestaurantMainStack = createNativeStackNavigator();
+
+const relativeFont = numb => {
+  let screenSize = widthToDp(100);
+  return screenSize * (numb / 100);
 };
-const AuthStack = ({toggleLogin}) => {
+const AuthStack = () => {
   return (
     <Stack.Navigator
       screenOptions={{
         headerShown: false,
       }}
       initialRouteName={'Splash'}>
-      <Stack.Screen name="Splash" component={Splash} />
-      <Stack.Screen name="Welcome" component={Welcome} />
-      <Stack.Screen name="Signup" component={Signup} />
-      <Stack.Screen name="Login" component={Login} />
-      <Stack.Screen name="Privacy" component={Privacy} />
-      <Stack.Screen name="SettingList" component={Settinglist} />
-      <Stack.Screen name="Preferences" component={Preferences} />
-      <Stack.Screen name="EditPreferences" component={EditPreferences} />
-      <Stack.Screen name="PreferencesSuccess" component={PreferencesSuccess} />
-      <Stack.Screen name="ForgotPassword" component={ForgotPassword} />
-      <Stack.Screen name="CreatePassword" component={CreatePassword} />
+      <Stack.Screen
+        name="Splash"
+        options={{
+          headerShown: false,
+        }}
+        component={Splash}
+      />
+      <Stack.Screen
+        name="Welcome"
+        options={{
+          headerShown: false,
+        }}
+        component={Welcome}
+      />
+      <Stack.Screen
+        name="Signup"
+        options={{
+          headerShown: false,
+        }}
+        component={Signup}
+      />
+      <Stack.Screen
+        name="Login"
+        options={{
+          headerShown: false,
+        }}
+        component={Login}
+      />
+      <Stack.Screen
+        name="Privacy"
+        options={{
+          headerShown: false,
+        }}
+        component={Privacy}
+      />
+      <Stack.Screen
+        name="SettingList"
+        options={{
+          headerShown: false,
+        }}
+        component={Settinglist}
+      />
+      <Stack.Screen
+        name="Preferences"
+        options={{
+          headerShown: false,
+        }}
+        component={Preferences}
+      />
+      <Stack.Screen
+        name="EditPreferences"
+        options={{
+          headerShown: false,
+        }}
+        component={EditPreferences}
+      />
+      <Stack.Screen
+        name="PreferencesSuccess"
+        options={{
+          headerShown: false,
+        }}
+        component={PreferencesSuccess}
+      />
+      <Stack.Screen
+        name="ForgotPassword"
+        options={{
+          headerShown: false,
+        }}
+        component={ForgotPassword}
+      />
+      <Stack.Screen
+        name="CreatePassword"
+        options={{
+          headerShown: false,
+        }}
+        component={CreatePassword}
+      />
+
       <Stack.Screen
         name="LoginTwo"
+        options={{
+          headerShown: false,
+        }}
         component={LoginTwo}
-        initialParams={{onLogin: handleLogin}}
       />
-      <Stack.Screen name="Verification" component={Verification} />
+
+      <Stack.Screen
+        name="Verification"
+        options={{
+          headerShown: false,
+        }}
+        component={Verification}
+      />
+
+      {/* <Stack.Screen
+        name="Home"
+        options={{
+          headerShown: false,
+        }}
+        component={Home}
+      />
+      <Stack.Screen
+        name="QrCode"
+        options={{
+          headerShown: false,
+        }}
+        component={QrCode}
+      />
+
+      <Stack.Screen
+        name="Restaurant"
+        options={{
+          headerShown: false,
+        }}
+        component={Restaurant}
+      /> */}
     </Stack.Navigator>
   );
 };
-
-const HomeStack = ({activeRestaurant, toggleLogin}) => {
+// const RestaurantStack = () => {
+//   return (
+//     <RestaurantMainStack.Navigator
+//       // initialRouteName="IngredientCustomization"
+//       // initialRouteName="RestaurantMain"
+//       screenOptions={{
+//         headerShown: false,
+//       }}>
+//       <RestaurantMainStack.Screen
+//         name="RestaurantMain"
+//         component={RestaurantMain}
+//         options={{tabBarVisible: false}}
+//       />
+//     </RestaurantMainStack.Navigator>
+//   );
+// };
+const HomeStack = () => {
   return (
     <Stack.Navigator
+      // initialRouteName="IngredientCustomization"
       initialRouteName="TabNavigator"
       screenOptions={{
         headerShown: false,
       }}>
-      <Stack.Screen
-        name="TabNavigator"
-        initialParams={{toggleLogin}}
-        component={TabNavigator}
-      />
+      <Stack.Screen name="TabNavigator" component={TabNavigator} />
       <Stack.Screen name="MenuDetail" component={MenuDetail} />
       <Stack.Screen name="Menu" component={Menu} />
-      <Stack.Screen name="RestaurantMain" component={RestaurantMain} />
-      <Stack.Screen name="QrCode" component={QrCode} />
-      <Stack.Screen name="Restaurant" component={Restaurant} />
+      <Stack.Screen
+        name="RestaurantMain"
+        options={{
+          headerShown: false,
+        }}
+        component={RestaurantMain}
+      />
+      <Stack.Screen
+        name="QrCode"
+        options={{
+          headerShown: false,
+        }}
+        component={QrCode}
+      />
+
+      <Stack.Screen
+        name="Restaurant"
+        options={{
+          headerShown: false,
+        }}
+        component={Restaurant}
+      />
+
       <Stack.Screen
         name="IngredientCustomization"
+        options={{
+          headerShown: false,
+        }}
         component={IngredientCustomization}
       />
     </Stack.Navigator>
@@ -110,13 +252,12 @@ const HomeStack = ({activeRestaurant, toggleLogin}) => {
 
 // const DrawerNav = () => {};
 
-const TabNavigator = ({activeRestaurant}) => {
-  // const qRorMenu = activeRestaurant ? Menu : QrCode;
-  const qRorMenuText = activeRestaurant ? 'Menu' : 'QrCode';
+const TabNavigator = () => {
   return (
     <Tab.Navigator
-      initialRouteName="Menu"
-      backBehavior="history"
+      initialRouteName="RestaurantMain"
+      backBehavior="initialRoute"
+      style={{backgroundColor: '#f00'}}
       screenListeners={({navigation, route}) => ({
         tabPress: e => {},
       })}
@@ -125,11 +266,35 @@ const TabNavigator = ({activeRestaurant}) => {
         // tabBarHideOnKeyboard: true,
         tabBarPosition: 'bottom',
         tabBarShowLabel: false,
-        tabBarStyle: tabNavStyles.tabNavigatorBarStyle,
+        tabBarStyle: {
+          position: 'absolute',
+          bottom: 0,
+          left: 0,
+          right: 0,
+          elevation: 0,
+          // backgroundColor: '#2d2d3d',
+          backgroundColor: 'transparent',
+          borderTopWidth: 0,
+          borderColor: 'transparent',
+          paddingVertical: 10,
+          height: heightToDp(20),
+
+          // tabBarIconStyle: {display: 'none'},
+        },
       })}>
+      {/* <Tab.Screen
+        name="RestaurantMain"
+        component={RestaurantStack}
+        options={{
+          tabBarButton: () => null,
+          tabBarVisible: false,
+        }}
+
+      /> */}
+
       <Tab.Screen
         name="Back"
-        component={RestaurantMain}
+        component={Home}
         options={{
           tabBarIcon: ({focused}) => {
             return (
@@ -146,7 +311,7 @@ const TabNavigator = ({activeRestaurant}) => {
                   style={{width: 16, height: 16}}
                   source={require('../assets/images/tabbar-back.png')}
                 />
-                <Text style={{color: '#fff', fontSize: screenToTextSize(3)}}>
+                <Text style={{color: '#fff', fontSize: relativeFont(3)}}>
                   Back
                 </Text>
               </View>
@@ -160,60 +325,63 @@ const TabNavigator = ({activeRestaurant}) => {
         options={{
           tabBarIcon: ({focused}) => {
             return (
-              <View style={tabNavStyles.tabNavRequestBtn}>
+              <View
+                style={{
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  gap: 5,
+                  width: widthToDp(15),
+                  position: 'relative',
+                  left: -20,
+                }}>
                 <Image
                   style={{width: 16, height: 16}}
                   source={require('../assets/images/tabbar-request.png')}
                 />
-                <Text style={tabNavStyles.tabNavRequestBtnText}>Requests</Text>
+                <Text style={{color: '#fff', fontSize: relativeFont(3)}}>
+                  Requests
+                </Text>
               </View>
             );
           },
         }}
       />
       <Tab.Screen
-        name={qRorMenuText}
-        component={Menu}
+        name="QrCode"
+        component={QrCode}
         options={{
           tabBarIcon: ({focused}) => {
             return (
               <View
-                style={
-                  activeRestaurant
-                    ? tabNavStyles.tabNavMenuBtn
-                    : tabNavStyles.tabNavQrCodeScannerBtn
-                }>
-                {focused ? (
-                  <MenuIcon
-                    width={screenToTextSize(8)}
-                    style={{width: 12, height: 12}}
-                  />
-                ) : (
-                  <QrIcon
-                    width={screenToTextSize(8)}
-                    style={{width: 12, height: 12}}
-                  />
-                )}
+                style={{
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  gap: 5,
+                  width: widthToDp(16),
+                  height: heightToDp(16),
+                  backgroundColor: '#fff',
+                  borderColor: '#0ad6c0',
+                  borderWidth: 4,
+                  borderRadius: 50,
+                  justifyContent: 'center',
+                  alignContent: 'center',
+                  position: 'relative',
+                  top: -10,
+                  elevation: 5,
+                  shadowColor: '#000',
+                  shadowOffset: {
+                    width: 2,
+                    height: 2,
+                  },
+                }}>
+                <MenuIcon
+                  width={relativeFont(8)}
+                  style={{width: 12, height: 12}}
+                  source={require('../assets/images/tabbar-menu.svg')}
+                />
               </View>
             );
           },
-        }}
-      />
-      {/* <Tab.Screen
-        name="Menu"
-        component={Menu}
-        options={{
-          tabBarButton: () => null,
-          tabBarVisible: false,
-        }}
-      /> */}
-
-      <Tab.Screen
-        name="Restaurant"
-        component={Restaurant}
-        options={{
-          tabBarButton: () => null,
-          tabBarVisible: false,
         }}
       />
 
@@ -246,7 +414,7 @@ const TabNavigator = ({activeRestaurant}) => {
                   },
                 }}>
                 <MenuIcon
-                  width={screenToTextSize(8)}
+                  width={relativeFont(8)}
                   style={{width: 12, height: 12}}
                   source={require('../assets/images/tabbar-menu.svg')}
                 />
@@ -283,9 +451,9 @@ const TabNavigator = ({activeRestaurant}) => {
                     width: 2,
                     height: 2,
                   },
-                }}>activeRestaurant
+                }}>
                 <MenuIcon
-                  width={screenToTextSize(8)}
+                  width={relativeFont(8)}
                   style={{width: 12, height: 12}}
                   source={require('../assets/images/tabbar-menu.svg')}
                 />
@@ -313,7 +481,7 @@ const TabNavigator = ({activeRestaurant}) => {
                   style={{width: 16, height: 16}}
                   source={require('../assets/images/tabbar-cart.png')}
                 />
-                <Text style={{color: '#fff', fontSize: screenToTextSize(3)}}>
+                <Text style={{color: '#fff', fontSize: relativeFont(3)}}>
                   Cart
                 </Text>
               </View>
@@ -340,7 +508,7 @@ const TabNavigator = ({activeRestaurant}) => {
                   style={{width: 16, height: 16}}
                   source={require('../assets/images/tabbar-pay.png')}
                 />
-                <Text style={{color: '#fff', fontSize: screenToTextSize(3)}}>
+                <Text style={{color: '#fff', fontSize: relativeFont(3)}}>
                   Pay
                 </Text>
               </View>
@@ -352,40 +520,26 @@ const TabNavigator = ({activeRestaurant}) => {
   );
 };
 
+// const DrawerNavigator = () => {
+//   return (
+//     <Drawer.Navigator
+//       initialRouteName="Home"
+//       screenOptions={({route}) => ({
+//         headerShown: false,
+//       })}>
+//       <Drawer.Screen name="Home" component={TabNavigator} />
+//     </Drawer.Navigator>
+//   );
+// };
 const RootNavigator = () => {
   const [saveUser, setSaveUser] = useState(false);
-  const [activeRestaurant, setActiveRestaurant] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  useEffect(() => {
-    checkLoginStatus();
-  }, []);
   // const user = true;
   useEffect(() => {
     getData();
     console.log(saveUser, 'saveUser');
     return () => {};
-  }, [saveUser, activeRestaurant]);
+  }, [saveUser]);
 
-  const checkLoginStatus = async () => {
-    const userToken = await AsyncStorage.getItem('userToken');
-    setIsLoggedIn(!!userToken);
-  };
-
-  const navigationRef = useRef();
-
-  const resetToUserStack = () => {
-    navigationRef.current.reset({
-      index: 0,
-      routes: [{name: 'HomeStack'}],
-    });
-  };
-
-  const resetToAuthStack = () => {
-    navigationRef.current.reset({
-      index: 0,
-      routes: [{name: 'AuthStack'}],
-    });
-  };
   const getData = async () => {
     try {
       const user = await AsyncStorage.getItem('user');
@@ -405,15 +559,7 @@ const RootNavigator = () => {
         <Image resizeMethod='auto' resizeMode='contain' source={require('../assets/images/tabbar-bg.svg')} style={{ backgroundColor: 'transparent', width: widthToDp(100)}} />
       </View> */}
       {/* <DrawerNavigation /> */}
-      {/* {!saveUser ? HomeStack(activeRestaurant) : AuthStack()} */}
-      {saveUser ? (
-        <HomeStack />
-      ) : (
-        <AuthStack
-
-        // initialParams={{onLogin: handleLogin}}
-        />
-      )}
+      {!saveUser ? HomeStack() : AuthStack()}
     </NavigationContainer>
   );
 };

@@ -16,8 +16,11 @@ import star from '../../assets/images/star.png';
 import {styles} from './styles';
 import {Colors} from '../../theme';
 import {fonts} from '../../theme/FontFamily';
+import {useNavigation} from '@react-navigation/native';
 
 const ResturantCard = ({name, location, cuisine}) => {
+  const navigation = useNavigation();
+
   const image = {uri: 'https://legacy.reactjs.org/logo-og.png'};
 
   return (
@@ -61,7 +64,9 @@ const ResturantCard = ({name, location, cuisine}) => {
     //     </Text>
     //   </View>
     // </TouchableOpacity>
-    <View style={styles.container}>
+    <TouchableOpacity
+      style={styles.container}
+      onPress={() => navigation.navigate('Restaurant')}>
       <ImageBackground
         source={bg}
         style={styles.image}
@@ -127,7 +132,7 @@ const ResturantCard = ({name, location, cuisine}) => {
           </View>
         </View>
       </ImageBackground>
-    </View>
+    </TouchableOpacity>
   );
 };
 

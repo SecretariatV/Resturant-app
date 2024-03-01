@@ -30,8 +30,11 @@ import ButtonsCommonAlt from '../../components/Buttons/ButtonCommonAlt';
 import {ListItem} from '@rneui/themed';
 import ReviewCard from '../../components/ReviewCard/index.js';
 import {reviews} from '../../utils/demodata.js';
+import {useNavigation} from '@react-navigation/native';
 
 const MenuDetail = () => {
+  const navigation = useNavigation();
+
   const [expanded, setExpanded] = useState(true);
 
   const menuSwipe = [
@@ -46,6 +49,9 @@ const MenuDetail = () => {
     },
   ];
 
+  const handleSelectIngredient = () => {
+    navigation.navigate('IngredientCustomization');
+  };
   return (
     <View style={styles.container}>
       <BackgroundLayout />
@@ -105,7 +111,10 @@ const MenuDetail = () => {
         <Text style={styles.quantityTxt}>Select Quantity</Text>
         <Counter />
         <View style={{marginHorizontal: 15, marginBottom: 10}}>
-          <RestaurantButton btnText={'Select Ingredients'} />
+          <RestaurantButton
+            btnText={'Select Ingredients'}
+            onPress={() => handleSelectIngredient()}
+          />
 
           <BackgroundCard style={styles.backgroundBtnContainer}>
             <Text style={styles.quantityTxt}>Customization</Text>

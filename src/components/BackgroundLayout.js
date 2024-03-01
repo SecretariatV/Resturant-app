@@ -19,7 +19,7 @@ const BackgroundLayout = ({withImages}) => {
       source={
         withImages
           ? require('../assets/images/Splash.png')
-          : require('../assets/images/backgroundTwo.png')
+          : require('../assets/images/Bg.png')
       }
       style={styles.background_image}
     />

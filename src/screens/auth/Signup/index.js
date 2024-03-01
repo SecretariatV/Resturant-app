@@ -57,6 +57,10 @@ const Signup = ({showMenu}) => {
   //     }
   //   });
   // };
+  const handleDynamicNavigation = () => {
+    console.log('kmdsakas');
+    navigation.navigate('Login');
+  };
   return (
     <View style={styles.container}>
       <BackgroundLayout />
@@ -156,7 +160,10 @@ const Signup = ({showMenu}) => {
           />
         </View>
 
-        <ButtonsCommon btnText={'Sign Up'} navRoute="Login" />
+        <ButtonsCommon
+          btnText={'Sign Up'}
+          onPress={() => handleDynamicNavigation()}
+        />
         <SeparatorText separatorText="or Sign Up with" />
         <View
           className="social-login-icons-container"

@@ -2,9 +2,8 @@ import {StyleSheet} from 'react-native';
 import {fonts} from '../../theme/FontFamily';
 import {heightToDp, width, widthToDp} from '../../utils/Dimensions';
 import {Colors} from '../../theme';
-const forBoth = (anStyles, ioStyles) => {
-  return Platform.OS === 'android' ? anStyles : ioStyles;
-};
+import {getPlatformSpecificValue} from '../../utils/helper';
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -47,7 +46,8 @@ const styles = StyleSheet.create({
   categoryWiseContainer: {
     justifyContent: 'start',
     flexDirection: 'row',
-    height: heightToDp(80)
+    height: getPlatformSpecificValue(heightToDp(50), heightToDp(80)),
+    // backgroundColor: 'red',
   },
   verticalTabs: {
     flexDirection: 'row',
@@ -63,9 +63,11 @@ const styles = StyleSheet.create({
     top: 140,
     width: widthToDp(30),
     height: heightToDp(20),
+    // backgroundColor: 'red',
   },
   verticalTabBtns1: {
     width: widthToDp(20),
+    // paddingVertical: 10,
   },
   verticalTabBtns2: {
     width: widthToDp(35),
@@ -73,6 +75,7 @@ const styles = StyleSheet.create({
   flatlistWrapper: {
     width: widthToDp(80),
     marginLeft: 45,
+    // backgroundColor: 'red',
   },
   itemTypeGrad: {
     borderRadius: 20,
@@ -92,6 +95,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     width: '100%',
     fontSize: 12,
+    paddingVertical: heightToDp(1.5),
   },
   circleGradient: {
     margin: 1,
@@ -105,7 +109,7 @@ const styles = StyleSheet.create({
     borderRadius: 15,
   },
   filterHeading: {
-    flexDirection: forBoth('row', 'column'),
+    flexDirection: 'row',
     justifyContent: 'space-between',
     width: widthToDp(90),
   },
@@ -153,6 +157,8 @@ const styles = StyleSheet.create({
   },
   filterSection: {
     marginBottom: 10,
+    flexDirection: 'row',
+    // width: '100%',
   },
   priceRange: {
     flexDirection: 'column',
@@ -188,8 +194,9 @@ const styles = StyleSheet.create({
   linearBack: {
     borderRadius: 20,
     flexWrap: 'wrap',
-    width: '100%',
+    width: '90%',
     marginTop: 10,
+    // padding: 10,
     // b
   },
 
@@ -244,8 +251,9 @@ const styles = StyleSheet.create({
   },
   mainContainer: {
     flexDirection: 'row',
-    width: '80%',
+    width: '95%',
     justifyContent: 'space-between',
+    // backgroundColor: 'green',
   },
 
   subContainer: {

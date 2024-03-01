@@ -97,7 +97,7 @@ const styles = StyleSheet.create({
   },
 
   wrapper: {
-    marginTop: getPlatformSpecificValue(100, 0),
+    marginTop: 0,
   },
   slide1: {
     flex: 1,

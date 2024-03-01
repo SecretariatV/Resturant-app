@@ -1,4 +1,4 @@
-import {View, Text, ScrollView} from 'react-native';
+import {View, Text, ScrollView, Alert} from 'react-native';
 import React from 'react';
 import {styles} from './styles';
 import BackgroundLayout from '../../components/BackgroundLayout';
@@ -13,14 +13,21 @@ import {heightToDp, widthToDp} from '../../utils/Dimensions';
 import {Colors} from '../../theme';
 import {Ingredients, productQuantities} from '../../utils/demodata';
 import SizeButton from '../../components/SizeButton';
+import ButtonsCommon from '../../components/Buttons/ButtonCommon.js';
+import ButtonsCommonAlt from '../../components/Buttons/ButtonCommonAlt';
+import {useNavigation} from '@react-navigation/native';
 
 const IngredientCustomization = () => {
+  const navigation = useNavigation();
+
   // const productQuantities = [{
   //   productName:'Onion',
   //   qty:2,
   //   price:150
   // }]
-
+  const handleClose = () => {
+    navigation.navigate('MenuDetail');
+  };
   return (
     <View style={styles.container}>
       <BackgroundLayout />
@@ -104,7 +111,6 @@ const IngredientCustomization = () => {
         <BackgroundCard
           childrenStyle={{alignItems: 'flex-start'}}
           style={{marginTop: 10}}>
-          {/* <FadedSeparator /> */}
           <View style={styles.pricingTitle}>
             <Text style={styles.navbarPageTitle}>Description</Text>
             <Text style={styles.navbarPageTitle}>Qty</Text>
@@ -132,6 +138,28 @@ const IngredientCustomization = () => {
           </View>
         </BackgroundCard>
       </ScrollView>
+      <View
+        style={{
+          flexDirection: 'row',
+          width: '100%',
+          alignSelf: 'center',
+          // alignItems: 'center',
+          justifyContent: 'center',
+          position: 'absolute',
+          bottom: 30,
+        }}>
+        <ButtonsCommon
+          btnText={'Done'}
+          btnStyle={{width: widthToDp(40)}}
+          containerStyle={{marginRight: 10}}
+        />
+        <ButtonsCommonAlt
+          btnText={'Cancel'}
+          btnStyle={{width: widthToDp(40)}}
+          containerStyle={{marginLeft: 10}}
+          onPress={() => handleClose()}
+        />
+      </View>
     </View>
   );
 };

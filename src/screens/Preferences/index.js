@@ -5,8 +5,14 @@ import HeaderCommon from '../../components/HeaderCommon';
 import BackgroundLayout from '../../components/BackgroundLayout';
 import MenuCustomization from '../../components/MenuCustomization';
 import ButtonsCommon from '../../components/Buttons/ButtonCommon.js';
+import {useNavigation} from '@react-navigation/native';
 
 const Preferences = () => {
+  const navigation = useNavigation();
+
+  const handleDynamicNavigation = () => {
+    navigation.navigate('Preferences');
+  };
   return (
     <View style={styles.container}>
       <BackgroundLayout />
@@ -25,7 +31,8 @@ const Preferences = () => {
         // btnStyle={styles.saveButton}
         containerStyle={styles.saveButton}
         btnText={'Next'}
-        navRoute="PreferencesSuccess"
+        // navRoute="PreferencesSuccess"
+        onPress={() => handleDynamicNavigation()}
       />
     </View>
   );

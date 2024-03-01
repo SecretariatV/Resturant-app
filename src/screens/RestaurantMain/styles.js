@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
     borderRadius: 15,
   },
   filterHeading: {
-    flexDirection: forBoth('row', 'column'),
+    flexDirection: 'row',
     justifyContent: 'space-between',
     width: widthToDp(90),
   },
@@ -78,7 +78,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   priceRangeLabelBottom: {
-    marginBottom: 20
-  }
+    marginBottom: 20,
+  },
 });
 export {styles};

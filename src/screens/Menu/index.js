@@ -1,4 +1,11 @@
-import {View, Text, ScrollView, TouchableOpacity, FlatList} from 'react-native';
+import {
+  View,
+  Text,
+  ScrollView,
+  TouchableOpacity,
+  FlatList,
+  Alert,
+} from 'react-native';
 import React, {useState} from 'react';
 import {styles} from './styles';
 import BackgroundLayout from '../../components/BackgroundLayout';
@@ -26,20 +33,25 @@ import {Colors} from '../../theme';
 import SkipButton from '../../components/Buttons/SkipButton';
 import BackButton from '../../components/Buttons/BackButton';
 import CircleBackground from '../../components/CircleBackground';
+import Counter from '../../components/Counter';
+import {useNavigation} from '@react-navigation/native';
+
 const Menu = () => {
+  const navigation = useNavigation();
+
   const dishType = [
-    {
-      imgUrl: require('../../assets/images/fish_2.json'),
-    },
-    {
-      imgUrl: require('../../assets/images/fish_2.json'),
-    },
-    {
-      imgUrl: require('../../assets/images/fish_2.json'),
-    },
-    {
-      imgUrl: require('../../assets/images/fish_2.json'),
-    },
+    // {
+    //   imgUrl: require('../../assets/images/fish_2.json'),
+    // },
+    // {
+    //   imgUrl: require('../../assets/images/fish_2.json'),
+    // },
+    // {
+    //   imgUrl: require('../../assets/images/fish_2.json'),
+    // },
+    // {
+    //   imgUrl: require('../../assets/images/fish_2.json'),
+    // },
   ];
   const [modalVisible, setModalVisible] = useState(false);
   const [showFilter, setShowFilter] = useState(false);
@@ -51,6 +63,10 @@ const Menu = () => {
 
   const handleItemType = Itype => {
     setItemListType(Itype);
+  };
+
+  const handlePress = () => {
+    navigation.navigate('MenuDetail');
   };
   return (
     <SafeAreaProvider>
@@ -122,12 +138,13 @@ const Menu = () => {
                   <BackgroundCard
                     style={{
                       padding: 10,
-                      width: 150,
+                      width: 160,
                       height: heightToDp(100),
                       // margin: 10,
                     }}
                     childrenStyle={{borderRadius: 26}}
-                    linearBackStyle={{borderRadius: 26}}>
+                    linearBackStyle={{borderRadius: 26}}
+                    onPress={() => handlePress()}>
                     <LinearGradient
                       colors={['#5A5A75', '#27273500']}
                       useAngle
@@ -142,8 +159,6 @@ const Menu = () => {
                         ]}
                         //   onPress={() => (!showMenu ? handleButton() : null)}
                       >
-                        {/* {children} */}
-
                         <Image
                           source={require('../../assets/images/burger_one.png')}
                           style={{width: 100, height: 100}}
@@ -218,40 +233,56 @@ const Menu = () => {
             )}
           </View>
         </View>
-        <FlatList
-          data={dressCode}
-          style={styles.horizontalListStyle}
-          showsHorizontalScrollIndicator={false}
-          keyExtractor={(item, index) => item.id + index.toString()}
-          renderItem={({item, index}) => (
-            <BackgroundCard
-              style={{
-                padding: 10,
-                // width: 200,
-                // height: heightToDp(100),
-                // margin: 10,
-                // justifyContent: 'center',
-              }}
-              childrenStyle={{borderRadius: 26}}
-              linearBackStyle={{borderRadius: 26}}>
-              <View style={styles.mainContainer}>
-                <View style={styles.subContainer}>
-                  <View style={styles.productVerticalContainer}>
-                    <View style={{alignItems: 'center', flexDirection: 'row'}}>
-                      <Text style={styles.productTxt}>Burger</Text>
-                      <Text
-                        style={[styles.ratingTxt, styles.ratingTxtVertical]}>
-                        4.5
-                      </Text>
-                      <Image
-                        source={require('../../assets/images/star.png')}
-                        style={styles.starImg}
-                      />
+
+        <View
+          style={{
+            marginTop: 40,
+          }}>
+          <Text
+            style={{
+              marginLeft: 15,
+              fontSize: fonts.URBANIST_EXTRABOLD,
+              fontSize: 22,
+              color: Colors.GREEN,
+            }}>
+            Categories
+          </Text>
+          <FlatList
+            data={dressCode}
+            style={styles.horizontalListStyle}
+            showsHorizontalScrollIndicator={false}
+            keyExtractor={(item, index) => item.id + index.toString()}
+            renderItem={({item, index}) => (
+              <BackgroundCard
+                style={{
+                  padding: 10,
+                  // backgroundColor: 'red',
+                  // width: 200,
+                  // height: heightToDp(100),
+                  // margin: 10,
+                  // justifyContent: 'center',
+                }}
+                childrenStyle={{borderRadius: 26}}
+                linearBackStyle={{borderRadius: 26}}>
+                <View style={styles.mainContainer}>
+                  <View style={styles.subContainer}>
+                    <View style={styles.productVerticalContainer}>
+                      <View
+                        style={{alignItems: 'center', flexDirection: 'row'}}>
+                        <Text style={styles.productTxt}>Burger</Text>
+                        <Text
+                          style={[styles.ratingTxt, styles.ratingTxtVertical]}>
+                          4.5
+                        </Text>
+                        <Image
+                          source={require('../../assets/images/star.png')}
+                          style={styles.starImg}
+                        />
+                      </View>
                     </View>
-                  </View>
-                  <View style={{flexDirection: 'column'}}>
-                    <View style={{flexDirection: 'row'}}>
-                      {/* <View
+                    <View style={{flexDirection: 'column'}}>
+                      <View style={{flexDirection: 'row'}}>
+                        {/* <View
                         style={{
                           backgroundColor: '#2C2C2C',
                           width: widthToDp(7),
@@ -267,49 +298,72 @@ const Menu = () => {
                           style={{width: 20, height: 20, margin: 5}}
                         />
                       </View> */}
-                      {dishType.map((item, index) => (
-                        <CircleBackground
-                          style={
-                            index === 0 ? {marginLeft: 0} : {marginLeft: 5}
-                          }>
-                          <LottieView
-                            source={item.imgUrl}
-                            autoPlay
-                            // loop
-                            // Additional props for customization
-                            speed={1.5}
-                            resizeMode="contain"
-                            style={{width: 20, height: 20, margin: 5}}
-                          />
-                        </CircleBackground>
-                      ))}
+                        {dishType.map((item, index) => (
+                          <CircleBackground
+                            style={
+                              index === 0 ? {marginLeft: 0} : {marginLeft: 5}
+                            }
+                            key={index}>
+                            <LottieView
+                              source={item.imgUrl}
+                              autoPlay
+                              // loop
+                              // Additional props for customization
+                              loop={false}
+                              speed={1.5}
+                              resizeMode="contain"
+                              style={{width: 20, height: 20, margin: 5}}
+                            />
+                          </CircleBackground>
+                        ))}
+                      </View>
+                      <Text style={styles.price}>$100</Text>
                     </View>
-                    <Text style={styles.price}>$100</Text>
                   </View>
-                </View>
-                <LinearGradient
-                  colors={['#5A5A75', '#27273500']}
-                  useAngle
-                  angle={300}
-                  style={[styles.linearBack, styles.verticalLinearBack]}
-                  start={{x: 1, y: 0.5}}
-                  end={{x: 1, y: 0.5}}>
-                  <View
-                    style={[styles.circleTwoGradient]}
-                    //   onPress={() => (!showMenu ? handleButton() : null)}
-                  >
-                    {/* {children} */}
+                  <LinearGradient
+                    colors={['#5A5A75', '#27273500']}
+                    useAngle
+                    angle={300}
+                    style={[styles.linearBack, styles.verticalLinearBack]}
+                    start={{x: 1, y: 0.5}}
+                    end={{x: 1, y: 0.5}}>
+                    <View
+                      style={[styles.circleTwoGradient]}
+                      //   onPress={() => (!showMenu ? handleButton() : null)}
+                    >
+                      {/* {children} */}
 
-                    <Image
-                      source={require('../../assets/images/burger_one.png')}
-                      style={{width: 100, height: 100}}
+                      <Image
+                        source={require('../../assets/images/burger_one.png')}
+                        style={{width: 100, height: 100}}
+                      />
+                    </View>
+                  </LinearGradient>
+                  <View
+                    style={{alignItems: 'center', justifyContent: 'center'}}>
+                    <Counter
+                      vertical
+                      minusContainerStyle={{
+                        height: heightToDp(7),
+                        width: widthToDp(7),
+                        borderRadius: 8,
+                      }}
+                      plusContainerStyle={{
+                        height: heightToDp(6),
+                        width: widthToDp(6),
+                        borderRadius: 8,
+                        backgroundColor: Colors.GREEN,
+                      }}
+                      counterTextStyle={{margin: 15}}
+                      minusStyle={{width: 10, height: 2}}
+                      plusStyle={{width: 10, height: 10}}
                     />
                   </View>
-                </LinearGradient>
-              </View>
-            </BackgroundCard>
-          )}
-        />
+                </View>
+              </BackgroundCard>
+            )}
+          />
+        </View>
       </View>
       {/* <Footer /> */}
       <BottomSheet modalProps={{}} isVisible={showFilter}>
@@ -456,9 +510,6 @@ const Menu = () => {
           style={styles.restaurantFilterContainer}>
           <View style={[styles.filterSection, styles.filterHeading]}>
             <Text style={styles.filterHeadingText}>Filter</Text>
-            {/* <TouchableOpacity onPress={() => setShowRequest(false)}>
-              <CloseFilterBtn width={20} height={20} />
-            </TouchableOpacity> */}
           </View>
           <View class="personal-preference" style={styles.filterSection}>
             <Text style={styles.filterHeadingText}>
@@ -602,7 +653,7 @@ const Menu = () => {
           </View>
         </ScrollView>
       </BottomSheet>
-      {/* <Footer /> */}
+      <Footer />
     </SafeAreaProvider>
   );
 };

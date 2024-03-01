@@ -20,24 +20,6 @@ function Section({children, title}) {
   return (
     <View style={styles.sectionContainer}>
       <BackgroundLayout />
-      {/* <Text
-        style={[
-          styles.sectionTitle,
-          {
-            color: isDarkMode ? Colors.white : Colors.black,
-          },
-        ]}>
-        {title}
-      </Text>true
-      <Text
-        style={[
-          styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark,
-          },
-        ]}>
-        {children}
-      </Text> */}
     </View>
   );
 }
@@ -45,9 +27,7 @@ function Section({children, title}) {
 function App() {
   LogBox.ignoreLogs(['Warning: ...']); // Ignore log notification by message
   LogBox.ignoreAllLogs();
-  // useEffect(() => {
-  //   SplashScreen.hide();
-  // }, []);
+
   useEffect(() => {
     const init = async () => {
       // …do multiple sync or async tasks

@@ -3,11 +3,17 @@ import React from 'react';
 import LinearGradient from 'react-native-linear-gradient';
 import {styles} from './styles';
 
-const BackgroundCard = ({children, style, childrenStyle, linearBackStyle}) => {
+const BackgroundCard = ({
+  children,
+  style,
+  childrenStyle,
+  linearBackStyle,
+  onPress,
+}) => {
   return (
-    <View style={style}>
+    <TouchableOpacity style={style} onPress={onPress}>
       <LinearGradient
-        colors={['#FFFFFF22', '#FFFFFF22', '#00000022', '#00000022']}
+        colors={['#FFFFFF99', '#FFFFFF99', '#00000022', '#00000022']}
         useAngle
         angle={300}
         style={[styles.linearBack, linearBackStyle]}
@@ -24,7 +30,7 @@ const BackgroundCard = ({children, style, childrenStyle, linearBackStyle}) => {
           {children}
         </View>
       </LinearGradient>
-    </View>
+    </TouchableOpacity>
   );
 };
 
