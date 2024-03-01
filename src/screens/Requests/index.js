@@ -281,8 +281,8 @@ const Requests = () => {
 
   return (
     <View style={styles.container}>
-      <StatusBar barStyle="dark-content" />
-      {/* <StatusBar backgroundColor="#FF6347" barStyle="light-content"/> */}
+      <BackgroundLayout />
+      {/* <StatusBar barStyle="dark-content" />
       <SwipeListView
         data={listData}
         renderItem={renderItem}
@@ -299,7 +299,7 @@ const Requests = () => {
         onRightAction={onRightAction}
         onLeftActionStatusChange={onLeftActionStatusChange}
         onRightActionStatusChange={onRightActionStatusChange}
-      />
+      /> */}
     </View>
   );
 };
