@@ -66,7 +66,7 @@ const ResturantCard = ({name, location, cuisine}) => {
     // </TouchableOpacity>
     <TouchableOpacity
       style={styles.container}
-      onPress={() => navigation.navigate('Restaurant')}>
+      onPress={() => navigation.navigate('PayStack', {screen: 'Restaurant'})}>
       <ImageBackground
         source={bg}
         style={styles.image}

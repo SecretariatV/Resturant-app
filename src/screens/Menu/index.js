@@ -14,7 +14,6 @@ import MenuNavButton from '../../components/MenuNavButton';
 import Hamburger from '../../assets/images/hamburger.png';
 import HeartIcon from '../../assets/images/fav.png';
 import Footer from '../../components/Footer';
-import SearchIcon from '../../assets/images/searchIcon.svg';
 import LinearGradient from 'react-native-linear-gradient';
 import SearchModded from '../../components/SearchModded';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
@@ -27,11 +26,8 @@ import {dressCode} from '../../utils/demodata';
 import {Image} from 'react-native';
 import {heightToDp, widthToDp} from '../../utils/Dimensions';
 import LottieView from 'lottie-react-native';
-import fish from '../../assets/images/fish_2.json';
 import {fonts} from '../../theme/FontFamily';
 import {Colors} from '../../theme';
-import SkipButton from '../../components/Buttons/SkipButton';
-import BackButton from '../../components/Buttons/BackButton';
 import CircleBackground from '../../components/CircleBackground';
 import Counter from '../../components/Counter';
 import {useNavigation} from '@react-navigation/native';
@@ -40,18 +36,18 @@ const Menu = () => {
   const navigation = useNavigation();
 
   const dishType = [
-    // {
-    //   imgUrl: require('../../assets/images/fish_2.json'),
-    // },
-    // {
-    //   imgUrl: require('../../assets/images/fish_2.json'),
-    // },
-    // {
-    //   imgUrl: require('../../assets/images/fish_2.json'),
-    // },
-    // {
-    //   imgUrl: require('../../assets/images/fish_2.json'),
-    // },
+    {
+      imgUrl: require('../../assets/images/onion.json'),
+    },
+    {
+      imgUrl: require('../../assets/images/eggs.json'),
+    },
+    {
+      imgUrl: require('../../assets/images/fish.json'),
+    },
+    {
+      imgUrl: require('../../assets/images/nuts.json'),
+    },
   ];
   const [modalVisible, setModalVisible] = useState(false);
   const [showFilter, setShowFilter] = useState(false);
@@ -256,11 +252,6 @@ const Menu = () => {
               <BackgroundCard
                 style={{
                   padding: 10,
-                  // backgroundColor: 'red',
-                  // width: 200,
-                  // height: heightToDp(100),
-                  // margin: 10,
-                  // justifyContent: 'center',
                 }}
                 childrenStyle={{borderRadius: 26}}
                 linearBackStyle={{borderRadius: 26}}>
@@ -282,22 +273,6 @@ const Menu = () => {
                     </View>
                     <View style={{flexDirection: 'column'}}>
                       <View style={{flexDirection: 'row'}}>
-                        {/* <View
-                        style={{
-                          backgroundColor: '#2C2C2C',
-                          width: widthToDp(7),
-                          borderRadius: widthToDp(3.5),
-                        }}>
-                        <LottieView
-                          source={fish}
-                          autoPlay
-                          // loop
-                          // Additional props for customization
-                          speed={1.5}
-                          resizeMode="contain"
-                          style={{width: 20, height: 20, margin: 5}}
-                        />
-                      </View> */}
                         {dishType.map((item, index) => (
                           <CircleBackground
                             style={
@@ -312,12 +287,32 @@ const Menu = () => {
                               loop={false}
                               speed={1.5}
                               resizeMode="contain"
-                              style={{width: 20, height: 20, margin: 5}}
+                              style={{
+                                width: 20,
+                                height: 20,
+                                margin: 5,
+                                padding: 10,
+                              }}
                             />
                           </CircleBackground>
                         ))}
                       </View>
-                      <Text style={styles.price}>$100</Text>
+                      <View style={{flexDirection: 'row'}}>
+                        <Text
+                          style={[
+                            styles.price,
+                            {
+                              textDecorationLine: 'line-through',
+                              textDecorationStyle: 'solid',
+                              marginRight: 10,
+                              color: '#F7F7F899',
+                            },
+                          ]}>
+                          $100
+                        </Text>
+
+                        <Text style={styles.price}>$100</Text>
+                      </View>
                     </View>
                   </View>
                   <LinearGradient

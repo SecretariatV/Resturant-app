@@ -46,7 +46,7 @@ const styles = StyleSheet.create({
   categoryWiseContainer: {
     justifyContent: 'start',
     flexDirection: 'row',
-    height: getPlatformSpecificValue(heightToDp(50), heightToDp(80)),
+    height: getPlatformSpecificValue(heightToDp(60), heightToDp(80)),
     // backgroundColor: 'red',
   },
   verticalTabs: {

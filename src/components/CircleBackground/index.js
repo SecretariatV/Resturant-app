@@ -4,7 +4,7 @@ import {styles} from './styles';
 
 const CircleBackground = ({children, style}) => {
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, style]}>
       {children}
       {/* <LottieView
                           source={fish}

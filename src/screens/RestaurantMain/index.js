@@ -1,4 +1,3 @@
-import {SafeAreaProvider} from 'react-native-safe-area-context';
 import {
   View,
   Text,
@@ -26,13 +25,13 @@ import CloseFilterBtn from '../../assets/images/closeBtnFilter.svg';
 
 import Footer from '../../components/Footer';
 import SearchModded from '../../components/SearchModded';
-// import restaurants from '../../utils/demodata';
-// import {TouchableHighlight} from 'react-native-gesture-handler';
+
 import {BottomSheet} from '@rneui/themed';
 import ToggleButton from '../../components/ToggleButton';
 import FadedSeparator from '../../components/FadedSeparator';
 import {Colors} from '../../theme';
 import {useSelector} from 'react-redux';
+import GradientText from '../../components/GradientText';
 const RestaurantMain = () => {
   const [modalVisible, setModalVisible] = useState(true);
   const [isVisible, setIsVisible] = useState(false);
@@ -114,14 +113,6 @@ const RestaurantMain = () => {
           Alert.alert('Modal has been closed.');
         }}>
         <View style={{backgroundColor: 'rgba(0, 0, 0, 0.8)', flex: 1}}>
-          {/* <TouchableOpacity
-            style={{
-              alignItems: 'flex-end',
-              paddingTop: 50,
-            }}
-
-            // onPress={() => setModalVisible(!modalVisible)}
-          > */}
           <TouchableHighlight
             style={{alignItems: 'flex-end', paddingTop: widthToDp(15)}}
             onPress={() => {
@@ -129,21 +120,24 @@ const RestaurantMain = () => {
             }}>
             <SkipButton showCross={true} showValetImg={false} />
           </TouchableHighlight>
-          {/* </TouchableOpacity> */}
           <View
             style={{
               alignItems: 'center',
               justifyContent: 'center',
               flex: 1,
-
-              // backgroundColor: 'red',
             }}>
-            <Image source={scan_here} />
-            <Text style={{color: Colors.WHITE, margin: 15}}>
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been t...
+            <GradientText style={styles.customizeTxt}>Scan Here</GradientText>
+            <Text
+              style={{
+                color: Colors.WHITE,
+                // margin: 30,
+                marginTop: widthToDp(5),
+                width: '70%',
+                textAlign: 'center',
+              }}>
+              Scan the shareabill QR code on the table to start ordering.
             </Text>
-            {/* <View opacit> */}
+
             <Image source={scan_arrow} style={{width: 200, height: 200}} />
             {/* </View> */}
           </View>
@@ -203,17 +197,6 @@ const RestaurantMain = () => {
             </LinearGradient>
           </View>
         </View>
-
-        {/* <Search isVisible={isVisible} setIsVisible={setIsVisible} /> */}
-        {/* <FlatList
-          showsVerticalScrollIndicator={false}
-          style={{marginVertical: 5}}
-          data={restaurants}
-          renderItem={renderItem}
-          keyExtractor={item => item.id} // Key extractor for each item
-        /> */}
-
-        {/* <Footer /> */}
       </View>
 
       {/* <Footer /> */}
