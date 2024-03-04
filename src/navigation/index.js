@@ -46,6 +46,7 @@ import TobBargb from '../assets/images/tabbar-bg.svg';
 import MenuBg from '../assets/images/tabbar-center.svg';
 import MenuIcon from '../assets/images/tabbar-menu.svg';
 import QrIcon from '../assets/images/tabbar-qr.svg';
+import {useSelector} from 'react-redux';
 
 const Tab = createBottomTabNavigator();
 // const Drawer = createDrawerNavigator();
@@ -73,28 +74,22 @@ const AuthStack = ({toggleLogin}) => {
       <Stack.Screen name="PreferencesSuccess" component={PreferencesSuccess} />
       <Stack.Screen name="ForgotPassword" component={ForgotPassword} />
       <Stack.Screen name="CreatePassword" component={CreatePassword} />
-      <Stack.Screen
-        name="LoginTwo"
-        component={LoginTwo}
-        initialParams={{onLogin: handleLogin}}
-      />
+      <Stack.Screen name="LoginTwo" component={LoginTwo} />
       <Stack.Screen name="Verification" component={Verification} />
     </Stack.Navigator>
   );
 };
 
-const HomeStack = ({activeRestaurant, toggleLogin}) => {
+const HomeStack = ({activeRestaurant}) => {
   return (
     <Stack.Navigator
       initialRouteName="TabNavigator"
       screenOptions={{
         headerShown: false,
       }}>
-      <Stack.Screen
-        name="TabNavigator"
-        initialParams={{toggleLogin}}
-        component={TabNavigator}
-      />
+      {/* <Stack.Screen name="Splash" component={Splash} /> */}
+
+      <Stack.Screen name="TabNavigator" component={TabNavigator} />
       <Stack.Screen name="MenuDetail" component={MenuDetail} />
       <Stack.Screen name="Menu" component={Menu} />
       <Stack.Screen name="RestaurantMain" component={RestaurantMain} />
@@ -175,6 +170,9 @@ const TabNavigator = ({activeRestaurant}) => {
         name={qRorMenuText}
         component={Menu}
         options={{
+          tabBarLabel: ({focused}) => {
+            focused ? 'QrCode' : 'dadadad';
+          },
           tabBarIcon: ({focused}) => {
             return (
               <View
@@ -353,39 +351,27 @@ const TabNavigator = ({activeRestaurant}) => {
 };
 
 const RootNavigator = () => {
+  const user = useSelector(state => state.auth.user);
+  console.log(user, '========user Data======');
   const [saveUser, setSaveUser] = useState(false);
   const [activeRestaurant, setActiveRestaurant] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  useEffect(() => {
-    checkLoginStatus();
-  }, []);
+
   // const user = true;
+  // useEffect(() => {
+  //   getData();
+  //   console.log(saveUser, 'saveUser');
+  //   return () => {};
+  // }, [saveUser, activeRestaurant]);
   useEffect(() => {
-    getData();
-    console.log(saveUser, 'saveUser');
-    return () => {};
-  }, [saveUser, activeRestaurant]);
+    console.log(user, 'user');
+    if (user) {
+    }
+    // return () => {
+    //   second
+    // }
+  }, [user]);
 
-  const checkLoginStatus = async () => {
-    const userToken = await AsyncStorage.getItem('userToken');
-    setIsLoggedIn(!!userToken);
-  };
-
-  const navigationRef = useRef();
-
-  const resetToUserStack = () => {
-    navigationRef.current.reset({
-      index: 0,
-      routes: [{name: 'HomeStack'}],
-    });
-  };
-
-  const resetToAuthStack = () => {
-    navigationRef.current.reset({
-      index: 0,
-      routes: [{name: 'AuthStack'}],
-    });
-  };
   const getData = async () => {
     try {
       const user = await AsyncStorage.getItem('user');
@@ -406,7 +392,7 @@ const RootNavigator = () => {
       </View> */}
       {/* <DrawerNavigation /> */}
       {/* {!saveUser ? HomeStack(activeRestaurant) : AuthStack()} */}
-      {saveUser ? (
+      {user ? (
         <HomeStack />
       ) : (
         <AuthStack

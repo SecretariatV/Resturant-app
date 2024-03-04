@@ -20,26 +20,22 @@ import aLoginIcon from '../../../assets/images/aLoginIcon.png';
 import {useNavigation} from '@react-navigation/native';
 import ButtonsCommon from '../../../components/Buttons/ButtonCommon.js';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import {useDispatch, useSelector} from 'react-redux';
+import {setUser} from '../../../redux/actions/auth.js';
 const LoginTwo = ({route}) => {
+  const user = useSelector(state => state.auth.user);
+  console.log(user, 'login twoser Data======');
+  const dispatch = useDispatch();
+
   // const {onLogin} = route.params;
   console.log(route.params, 'route.params');
   const navigation = useNavigation();
   const [inputEmail, setInputEmail] = useState('');
   const [inputPass, setInputPass] = useState('');
-  const handleLogin = () => {
-    // Perform login actions
-    // Call onLogin to set isLoggedIn to true
-    onLogin();
-  };
+
   useEffect(() => {}, []);
-  const storeData = async value => {
-    console.log('herrreee');
-    try {
-      await AsyncStorage.setItem('user', 'true');
-      navigation.navigate('RestaurantMain');
-    } catch (e) {
-      // saving error
-    }
+  const storeData = () => {
+    dispatch(setUser());
   };
   return (
     <View style={styles.container}>

@@ -32,6 +32,7 @@ import {BottomSheet} from '@rneui/themed';
 import ToggleButton from '../../components/ToggleButton';
 import FadedSeparator from '../../components/FadedSeparator';
 import {Colors} from '../../theme';
+import {useSelector} from 'react-redux';
 const RestaurantMain = () => {
   const [modalVisible, setModalVisible] = useState(true);
   const [isVisible, setIsVisible] = useState(false);
