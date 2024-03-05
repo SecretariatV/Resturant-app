@@ -6157,7 +6157,7 @@ react-native-bootsplash@^5.3.0:
     ts-dedent "^2.2.0"
     xml-formatter "^3.6.0"
 
-react-native-camera@^4.2.1, react-native-camera@>=1.0.2:
+react-native-camera@>=1.0.2:
   version "4.2.1"
   resolved "https://registry.npmjs.org/react-native-camera/-/react-native-camera-4.2.1.tgz"
   integrity sha512-+Vkql24PFYQfsPRznJCvPwJQfyzCnjlcww/iZ4Ej80bgivKjL9eU0IMQIXp4yi6XCrKi4voWXxIDPMupQZKeIQ==
@@ -6266,6 +6266,11 @@ react-native-vector-icons@>7.0.0:
   dependencies:
     prop-types "^15.7.2"
     yargs "^16.1.1"
+
+react-native-vision-camera@^3.9.0:
+  version "3.9.0"
+  resolved "https://registry.npmjs.org/react-native-vision-camera/-/react-native-vision-camera-3.9.0.tgz"
+  integrity sha512-q0HejFTS56s5DXWHZhlWLLZMKn/8OXALrqET+FySPIKskwYEdJ5rOV2aDlD6hlo67qCNFGUIMZWGFFc9L2os1g==
 
 react-native@*, "react-native@^0.0.0-0 || >=0.60 <1.0", react-native@>=0.46, react-native@>=0.59.0, react-native@>=0.60.0, react-native@>=0.64.0, react-native@>=0.70.0, react-native@0.73.3:
   version "0.73.3"

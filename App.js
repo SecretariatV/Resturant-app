@@ -6,7 +6,7 @@
  */
 import 'react-native-gesture-handler';
 import React, {useEffect} from 'react';
-import {LogBox, StyleSheet, Text, useColorScheme, View} from 'react-native';
+import {LogBox, StyleSheet, useColorScheme, View} from 'react-native';
 
 import BackgroundLayout from './src/components/BackgroundLayout';
 

@@ -10,7 +10,7 @@ import FancyText from '../../../components/FancyText';
 import FancyInput from '../../../components/FancyInput';
 import SeparatorText from '../../../components/SeparatorText';
 import FadedSeparator from '../../../components/FadedSeparator';
-import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
+// import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
 
 // icons
 import userIcon from '../../../assets/images/userIcon.png';
