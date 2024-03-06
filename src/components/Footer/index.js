@@ -17,7 +17,6 @@ const Footer = () => {
         left: 0,
         right: 0,
         elevation: 1,
-        // zIndex: 1,
       }}
     />
   );

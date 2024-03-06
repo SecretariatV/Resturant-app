@@ -13,25 +13,41 @@ import {SceneMap, TabBar, TabView} from 'react-native-tab-view';
 import LinearGradient from 'react-native-linear-gradient';
 import {Colors} from '../../theme';
 import {fonts} from '../../theme/FontFamily.js';
-import {
-  cardData,
-  cartData,
-  paymentMode,
-  productQuantities,
-} from '../../utils/demodata.js';
-import BackgroundCard from '../../components/BackgroundCard/index.js';
-import {Image} from 'react-native';
-import FadedSeparator from '../../components/FadedSeparator/index.js';
+
 import GradientText from '../../components/GradientText/index.js';
 import MenuNavButton from '../../components/MenuNavButton/index.js';
 import Hamburger from '../../assets/images/hamburger.png';
-import RadioButtonCard from '../../components/RadioButtonCard/index.js';
 import Footer from '../../components/Footer/index.js';
 import {useNavigation} from '@react-navigation/native';
 import MyOrder from '../../components/MyOrder/index.js';
 
 const SecondRoute = () => (
-  <View style={{flex: 1, backgroundColor: 'transparent'}} />
+  <View style={{flex: 1, backgroundColor: 'transparent'}}>
+    <View style={styles.billContainer}>
+      <LinearGradient
+        colors={['#02ABEE6E', '#02ABEE8E', '#00F5946E']}
+        style={styles.totalBillBox}
+        start={{x: 0, y: 0.5}}
+        end={{x: 1, y: 0.5}}>
+        <View style={[styles.circleGradient]}>
+          <Text style={[styles.btnText]}>Total Bill</Text>
+        </View>
+      </LinearGradient>
+
+      <LinearGradient
+        colors={['#02ABEE4E', '#02ABEE8E', '#00A7F78D']}
+        style={styles.yourShareBox}
+        start={{x: 0, y: 0.5}}
+        end={{x: 1, y: 0.5}}>
+        <TouchableOpacity
+          style={[styles.circleGradient]}
+          // onPress={onPress}
+        >
+          <Text style={[styles.btnText]}>ldsal,d</Text>
+        </TouchableOpacity>
+      </LinearGradient>
+    </View>
+  </View>
 );
 
 const renderScene = SceneMap({
@@ -89,8 +105,7 @@ const PaymentOption = () => {
         initialLayout={{width: layout.width}}
         style={{backgroundColor: 'transparent'}}
       />
-      {/* <Footer /> */}
-      {/* <Text>PaymentOption</Text> */}
+      <Footer />
     </View>
   );
 };

@@ -137,5 +137,45 @@ const styles = StyleSheet.create({
     fontFamily: fonts.URBANIST_EXTRABOLD,
     fontSize: 22,
   },
+
+  //All order section Work====================================
+
+  circleGradient: {
+    justifyContent: 'center',
+
+    width: widthToDp(42),
+    height: heightToDp(25),
+
+    alignItems: 'center',
+    backgroundColor: '#00000077',
+    borderRadius: 22,
+  },
+
+  billContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    width: '100%',
+    justifyContent: 'space-between',
+    marginTop: 10,
+  },
+  totalBillBox: {
+    borderRadius: 22,
+    marginLeft: 10,
+    height: heightToDp(28),
+
+    width: widthToDp(46),
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+
+  yourShareBox: {
+    borderRadius: 22,
+    height: heightToDp(28),
+    marginRight: 10,
+
+    width: widthToDp(46),
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
 });
 export {styles};
