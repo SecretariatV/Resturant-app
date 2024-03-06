@@ -147,6 +147,8 @@ const RestaurantMain = () => {
 
       <HeaderModed
         slotLeft={<MenuNavButton icon={Hamburger} iconType="image" />}
+        slotCenter={<></>}
+        slotRight={<></>}
       />
       <View
         style={{
