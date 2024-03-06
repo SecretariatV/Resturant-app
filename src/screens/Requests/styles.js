@@ -16,7 +16,7 @@ const styles = StyleSheet.create({
   //   color: '#FFF',
   // },
   rowFront: {
-    // backgroundColor: 'orange',
+    backgroundColor: 'orange',
     borderRadius: 5,
     height: 100,
     margin: 5,

@@ -148,6 +148,8 @@ const RestaurantMain = () => {
       <BackgroundLayout />
       <HeaderModed
         slotLeft={<MenuNavButton icon={Hamburger} iconType="image" />}
+        slotCenter={<></>}
+        slotRight={<></>}
       />
       <View class="intro-header-container" style={styles.introHeader}>
         <View class="intro-header-wrapper" style={styles.introHeader.wrapper}>

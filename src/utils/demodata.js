@@ -195,6 +195,27 @@ export const cartData = [
   },
 ];
 
+export const cardData = [
+  {
+    cardName: 'Mastercard',
+  },
+  {
+    cardName: 'Apple Pay',
+  },
+  {
+    cardName: 'Google Pay',
+  },
+];
+
+export const paymentMode = [
+  {
+    cardName: 'Cash',
+  },
+  {
+    cardName: 'Wallet',
+  },
+];
+
 export default Notifications = [
   {
     id: 1,

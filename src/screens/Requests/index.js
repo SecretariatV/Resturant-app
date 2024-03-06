@@ -87,85 +87,102 @@ const Requests = () => {
         {cartData.map((item, index) => (
           // <Animated.View
           //   style={[styles.rowFront, {height: rowHeightAnimatedValue}]}>
-          <BackgroundCard
-            style={{marginTop: 10, marginHorizontal: 10}}
-            childrenStyle={{borderRadius: 26}}
-            linearBackStyle={{borderRadius: 26}}>
-            <View
-              style={{
-                marginHorizontal: 15,
-                // marginTop: 10,
-                // padding: 10,
-                // alignItems: 'center',
-                // justifyContent: 'center',
-              }}>
-              <View
-                style={{
-                  flexDirection: 'row',
-                  justifyContent: 'space-between',
-                  width: '100%',
-                  // marginTop: 15,
-                  marginVertical: 10,
-                  alignItems: 'center',
-                  // justifyContent: 'center',
-                }}>
-                <View
-                  style={{
-                    flexDirection: 'row',
+          // <BackgroundCard
+          //   style={{marginTop: 10, marginHorizontal: 10}}
+          //   childrenStyle={{borderRadius: 26}}
+          //   linearBackStyle={{borderRadius: 26}}>
+          //   <View
+          //     style={{
+          //       marginHorizontal: 15,
+          //       backgroundColor: 'red',
+          //       // marginTop: 10,
+          //       // padding: 10,
+          //       // alignItems: 'center',
+          //       // justifyContent: 'center',
+          //     }}>
+          //     <View
+          //       style={{
+          //         flexDirection: 'row',
+          //         justifyContent: 'space-between',
+          //         width: '100%',
+          //         // marginTop: 15,
+          //         marginVertical: 10,
+          //         alignItems: 'center',
+          //         // justifyContent: 'center',
+          //       }}>
+          //       <View
+          //         style={{
+          //           flexDirection: 'row',
 
-                    alignItems: 'center',
-                  }}>
-                  <View
-                    style={{
-                      backgroundColor: '#303F43',
-                      borderRadius: 8,
-                    }}>
-                    <Image
-                      source={require('../../assets/images/burger_one.png')}
-                      style={{width: widthToDp(20), height: heightToDp(20)}}
-                      resizeMode="contain"
-                    />
-                  </View>
-                  <View style={{}}>
-                    <Text style={[styles.navbarPageTitle, {marginLeft: 10}]}>
-                      {item.productName}
-                    </Text>
-                    <Text style={[styles.navbarPageTitle, {marginLeft: 10}]}>
-                      {item.price}
-                    </Text>
-                  </View>
-                </View>
-                <View style={{alignItems: 'center'}}>
-                  <View
-                    style={{
-                      flexDirection: 'row',
-                      // backgroundColor: 'red',
-                      alignItems: 'center',
-                      marginLeft: 10,
+          //           alignItems: 'center',
+          //         }}>
+          //         <View
+          //           style={{
+          //             backgroundColor: '#303F43',
+          //             borderRadius: 8,
+          //           }}>
+          //           <Image
+          //             source={require('../../assets/images/burger_one.png')}
+          //             style={{width: widthToDp(20), height: heightToDp(20)}}
+          //             resizeMode="contain"
+          //           />
+          //         </View>
+          //         <View style={{}}>
+          //           <Text style={[styles.navbarPageTitle, {marginLeft: 10}]}>
+          //             {item.productName}
+          //           </Text>
+          //           <Text style={[styles.navbarPageTitle, {marginLeft: 10}]}>
+          //             {item.price}
+          //           </Text>
+          //         </View>
+          //       </View>
+          //       <View style={{alignItems: 'center'}}>
+          //         <View
+          //           style={{
+          //             flexDirection: 'row',
+          //             // backgroundColor: 'red',
+          //             alignItems: 'center',
+          //             marginLeft: 10,
 
-                      // backgroundColor: 'green',
-                    }}>
-                    <Counter
-                      minusContainerStyle={{
-                        height: heightToDp(7),
-                        width: widthToDp(7),
-                        borderRadius: 8,
-                      }}
-                      plusContainerStyle={{
-                        height: heightToDp(7),
-                        width: widthToDp(7),
-                        borderRadius: 8,
-                        backgroundColor: Colors.GREEN,
-                      }}
-                      counterTextStyle={{margin: 15}}
-                      minusStyle={{width: 10, height: 2}}
-                      plusStyle={{width: 10, height: 10}}
-                    />
-                  </View>
-                </View>
+          //             // backgroundColor: 'green',
+          //           }}>
+          //           <Counter
+          //             minusContainerStyle={{
+          //               height: heightToDp(7),
+          //               width: widthToDp(7),
+          //               borderRadius: 8,
+          //             }}
+          //             plusContainerStyle={{
+          //               height: heightToDp(7),
+          //               width: widthToDp(7),
+          //               borderRadius: 8,
+          //               backgroundColor: Colors.GREEN,
+          //             }}
+          //             counterTextStyle={{margin: 15}}
+          //             minusStyle={{width: 10, height: 2}}
+          //             plusStyle={{width: 10, height: 10}}
+          //           />
+          //         </View>
+          //       </View>
+          //     </View>
+          //   </View>
+          // </BackgroundCard>
+
+          <Animated.View style={[styles.rowFront]}>
+            {/* <TouchableHighlight
+              style={styles.rowFrontVisible}
+              onPress={() => console.log('Element touched')}
+              underlayColor={'#aaa'}>
+              <View>
+                <Text style={styles.title} numberOfLines={1}>
+                  {data.title}
+                </Text>
+                <Text style={styles.details} numberOfLines={1}>
+                  {data.item.details}
+                </Text>
               </View>
-            </View>
-          </BackgroundCard>
+            </TouchableHighlight> */}
+          </Animated.View>
         ))}
       </>
     );
@@ -180,6 +197,13 @@ const Requests = () => {
         rowHeightAnimatedValue={rowHeightAnimatedValue}
         removeRow={() => deleteRow(rowMap, data.item.key)}
       />
+      // <View
+      //   style={{
+      //     backgroundColor: 'red',
+      //     height: 200,
+      //     padding: 15,
+      //     width: 100,
+      //   }}></View>
     );
   };
 
@@ -209,18 +233,13 @@ const Requests = () => {
     return (
       <Animated.View style={[styles.rowBack, {height: rowHeightAnimatedValue}]}>
         <Text>Left</Text>
-        {!leftActionActivated && (
+        {/* {!leftActionActivated && (
           <TouchableOpacity
             style={[styles.backRightBtn, styles.backRightBtnLeft]}
             onPress={onClose}>
-            {/* <MaterialCommunityIcons
-              name="close-circle-outline"
-              size={25}
-              style={styles.trash}
-              color="#fff"
-            /> */}
+           
           </TouchableOpacity>
-        )}
+        )} */}
         {!leftActionActivated && (
           <Animated.View
             style={[
@@ -250,11 +269,6 @@ const Requests = () => {
                   },
                 ]}>
                 <Text>delete</Text>
-                {/* <MaterialCommunityIcons
-                  name="trash-can-outline"
-                  size={25}
-                  color="#fff"
-                /> */}
               </Animated.View>
             </TouchableOpacity>
           </Animated.View>
@@ -282,11 +296,11 @@ const Requests = () => {
   return (
     <View style={styles.container}>
       <BackgroundLayout />
-      {/* <StatusBar barStyle="dark-content" />
-      <SwipeListView
+      <StatusBar barStyle="dark-content" />
+      {/* <SwipeListView
         data={listData}
         renderItem={renderItem}
-        renderHiddenItem={renderHiddenItem}
+        // renderHiddenItem={renderHiddenItem}
         leftOpenValue={75}
         rightOpenValue={-150}
         disableRightSwipe
@@ -299,6 +313,7 @@ const Requests = () => {
         onRightAction={onRightAction}
         onLeftActionStatusChange={onLeftActionStatusChange}
         onRightActionStatusChange={onRightActionStatusChange}
+        // style
       /> */}
     </View>
   );

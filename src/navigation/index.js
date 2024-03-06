@@ -48,15 +48,13 @@ import MenuIcon from '../assets/images/tabbar-menu.svg';
 import QrIcon from '../assets/images/tabbar-qr.svg';
 import {useSelector} from 'react-redux';
 import PaymentOption from '../screens/PaymentOption';
+import AddCard from '../screens/AddCard';
 
 const Tab = createBottomTabNavigator();
 // const Drawer = createDrawerNavigator();
 const Stack = createNativeStackNavigator();
 const HomeStacked = createNativeStackNavigator();
-const handleLogin = async () => {
-  await AsyncStorage.setItem('userToken', 'some_token');
-  setIsLoggedIn(true);
-};
+
 const AuthStack = ({toggleLogin}) => {
   return (
     <Stack.Navigator
@@ -84,7 +82,7 @@ const AuthStack = ({toggleLogin}) => {
 const HomeStack = ({activeRestaurant}) => {
   return (
     <Stack.Navigator
-      initialRouteName="TabNavigator"
+      initialRouteName="PaymentOption"
       screenOptions={{
         headerShown: false,
       }}>
@@ -103,6 +101,8 @@ const HomeStack = ({activeRestaurant}) => {
         component={IngredientCustomization}
       />
       <Stack.Screen name="PaymentOption" component={PaymentOption} />
+      <Stack.Screen name="AddCard" component={AddCard} />
+      {/* <Stack.Screen name="MyOrder" component={MyOrder} /> */}
     </Stack.Navigator>
   );
 };

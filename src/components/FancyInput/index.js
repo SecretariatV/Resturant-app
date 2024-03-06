@@ -12,6 +12,8 @@ const FancyInput = ({
   fieldPlaceHolder,
   fieldCallback,
   fieldIsPassword = false,
+  fieldInputStyle,
+  iconShow = true,
 }) => {
   const eyeOn = require('../../assets/images/eye-on.png');
   const eyeOff = require('../../assets/images/eye-off.png');
@@ -64,9 +66,9 @@ const FancyInput = ({
           <Text style={styles.fieldLabel}>{fieldLabel}</Text>
         </View>
         <View style={styles.inputWrapper}>
-          <Image source={iconImage} style={styles.fieldImage} />
+          {iconShow && <Image source={iconImage} style={styles.fieldImage} />}
           <TextInput
-            style={styles.fieldInput}
+            style={[styles.fieldInput, fieldInputStyle]}
             value={fieldValue}
             secureTextEntry={isSecureTextEntry}
             placeholder={fieldPlaceHolder}

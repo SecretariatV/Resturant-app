@@ -12,11 +12,12 @@ const Footer = () => {
       width={widthToDp(100)}
       style={{
         position: 'absolute',
-        bottom: width == 375 ? -38 : -35,
+
+        bottom: width == 375 ? -38 : -15,
         left: 0,
         right: 0,
         elevation: 1,
-        flex: 1,
+        // zIndex: 1,
       }}
     />
   );
