@@ -82,7 +82,7 @@ const AuthStack = ({toggleLogin}) => {
 const HomeStack = ({activeRestaurant}) => {
   return (
     <Stack.Navigator
-      initialRouteName="PaymentOption"
+      initialRouteName="TabNavigator"
       screenOptions={{
         headerShown: false,
       }}>
