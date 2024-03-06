@@ -1,6 +1,6 @@
 //packages
 import {View, Text, Image} from 'react-native';
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {NavigationContainer} from '@react-navigation/native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
@@ -46,13 +46,18 @@ import TobBargb from '../assets/images/tabbar-bg.svg';
 import MenuBg from '../assets/images/tabbar-center.svg';
 import MenuIcon from '../assets/images/tabbar-menu.svg';
 import QrIcon from '../assets/images/tabbar-qr.svg';
+import {useSelector} from 'react-redux';
+import PaymentOption from '../screens/PaymentOption';
 
 const Tab = createBottomTabNavigator();
 // const Drawer = createDrawerNavigator();
 const Stack = createNativeStackNavigator();
 const HomeStacked = createNativeStackNavigator();
-
-const AuthStack = () => {
+const handleLogin = async () => {
+  await AsyncStorage.setItem('userToken', 'some_token');
+  setIsLoggedIn(true);
+};
+const AuthStack = ({toggleLogin}) => {
   return (
     <Stack.Navigator
       screenOptions={{
@@ -72,45 +77,22 @@ const AuthStack = () => {
       <Stack.Screen name="CreatePassword" component={CreatePassword} />
       <Stack.Screen name="LoginTwo" component={LoginTwo} />
       <Stack.Screen name="Verification" component={Verification} />
-
-      {/* <Stack.Screen
-        name="RestaurantMain"
-        options={{
-          headerShown: false,
-        }}
-        component={RestaurantMain}
-      />
-      <Stack.Screen
-        name="QrCode"
-        options={{
-          headerShown: false,
-        }}
-        component={QrCode}
-      />
-
-      <Stack.Screen
-        name="Restaurant"
-        options={{
-          headerShown: false,
-        }}
-        component={Restaurant}
-      /> */}
     </Stack.Navigator>
   );
 };
 
-const HomeStack = activeRestaurant => {
+const HomeStack = ({activeRestaurant}) => {
   return (
     <Stack.Navigator
       initialRouteName="TabNavigator"
       screenOptions={{
         headerShown: false,
       }}>
-      <Stack.Screen
-        name="TabNavigator"
-        initialParams={{activeRestaurant: activeRestaurant}}
-        component={TabNavigator}
-      />
+      {/* <Stack.Screen name="Splash" component={Splash} /> */}
+
+      <Stack.Screen name="TabNavigator" component={TabNavigator} />
+      {/* <Stack.Screen name="SecondTabNavigator" component={SecondTabNavigator} /> */}
+
       <Stack.Screen name="MenuDetail" component={MenuDetail} />
       <Stack.Screen name="Menu" component={Menu} />
       <Stack.Screen name="RestaurantMain" component={RestaurantMain} />
@@ -120,6 +102,32 @@ const HomeStack = activeRestaurant => {
         name="IngredientCustomization"
         component={IngredientCustomization}
       />
+      <Stack.Screen name="PaymentOption" component={PaymentOption} />
+    </Stack.Navigator>
+  );
+};
+
+const PayStack = ({activeRestaurant}) => {
+  return (
+    <Stack.Navigator
+      initialRouteName="SecondTabNavigator"
+      screenOptions={{
+        headerShown: false,
+      }}>
+      {/* <Stack.Screen name="Splash" component={Splash} /> */}
+
+      <Stack.Screen name="SecondTabNavigator" component={SecondTabNavigator} />
+
+      <Stack.Screen name="MenuDetail" component={MenuDetail} />
+      <Stack.Screen name="Menu" component={Menu} />
+      <Stack.Screen name="RestaurantMain" component={RestaurantMain} />
+      <Stack.Screen name="QrCode" component={QrCode} />
+      <Stack.Screen name="Restaurant" component={Restaurant} />
+      <Stack.Screen
+        name="IngredientCustomization"
+        component={IngredientCustomization}
+      />
+      <Stack.Screen name="PaymentOption" component={PaymentOption} />
     </Stack.Navigator>
   );
 };
@@ -127,7 +135,7 @@ const HomeStack = activeRestaurant => {
 // const DrawerNav = () => {};
 
 const TabNavigator = ({activeRestaurant}) => {
-  const qRorMenu = activeRestaurant ? Menu : QrCode;
+  // const qRorMenu = activeRestaurant ? Menu : QrCode;
   const qRorMenuText = activeRestaurant ? 'Menu' : 'QrCode';
   return (
     <Tab.Navigator
@@ -189,9 +197,12 @@ const TabNavigator = ({activeRestaurant}) => {
       />
       <Tab.Screen
         name={qRorMenuText}
-        component={qRorMenu}
+        component={Menu}
         options={{
-          tabBarIcon: ({}) => {
+          tabBarLabel: ({focused}) => {
+            focused ? 'QrCode' : 'dadadad';
+          },
+          tabBarIcon: ({focused}) => {
             return (
               <View
                 style={
@@ -199,7 +210,7 @@ const TabNavigator = ({activeRestaurant}) => {
                     ? tabNavStyles.tabNavMenuBtn
                     : tabNavStyles.tabNavQrCodeScannerBtn
                 }>
-                {activeRestaurant ? (
+                {focused ? (
                   <MenuIcon
                     width={screenToTextSize(8)}
                     style={{width: 12, height: 12}}
@@ -213,6 +224,23 @@ const TabNavigator = ({activeRestaurant}) => {
               </View>
             );
           },
+        }}
+      />
+      {/* <Tab.Screen
+        name="Menu"
+        component={Menu}
+        options={{
+          tabBarButton: () => null,
+          tabBarVisible: false,
+        }}
+      /> */}
+
+      <Tab.Screen
+        name="Restaurant"
+        component={Restaurant}
+        options={{
+          tabBarButton: () => null,
+          tabBarVisible: false,
         }}
       />
 
@@ -351,28 +379,74 @@ const TabNavigator = ({activeRestaurant}) => {
   );
 };
 
-// const DrawerNavigator = () => {
-//   return (
-//     <Drawer.Navigator
-//       initialRouteName="RestaurantMain"
-//       screenOptions={({route}) => ({
-//         headerShown: false,
-//       })}>
-//       <Drawer.Screen name="RestaurantMain" component={TabNavigator} />
-//     </Drawer.Navigator>
-//   );
-// };
+const SecondTabNavigator = ({activeRestaurant}) => {
+  // const qRorMenu = activeRestaurant ? Menu : QrCode;
+  const qRorMenuText = activeRestaurant ? 'Menu' : 'QrCode';
+  return (
+    <Tab.Navigator
+      initialRouteName="Menu"
+      backBehavior="history"
+      screenListeners={({navigation, route}) => ({
+        tabPress: e => {},
+      })}
+      screenOptions={({route}) => ({
+        headerShown: false,
+        // tabBarHideOnKeyboard: true,
+        tabBarPosition: 'bottom',
+        tabBarShowLabel: false,
+        tabBarStyle: tabNavStyles.tabNavigatorBarStyle,
+      })}>
+      <Tab.Screen
+        name="Back"
+        component={RestaurantMain}
+        options={{
+          tabBarIcon: ({focused}) => {
+            return (
+              <View
+                style={{
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  gap: 5,
+                  width: widthToDp(15),
+                  position: 'relative',
+                  left: -10,
+                }}>
+                <Image
+                  style={{width: 16, height: 16}}
+                  source={require('../assets/images/tabbar-back.png')}
+                />
+                <Text style={{color: '#fff', fontSize: screenToTextSize(3)}}>
+                  Back
+                </Text>
+              </View>
+            );
+          },
+        }}
+      />
+    </Tab.Navigator>
+  );
+};
 const RootNavigator = () => {
+  const user = useSelector(state => state.auth.user);
+  console.log(user, '========user Data======');
   const [saveUser, setSaveUser] = useState(false);
   const [activeRestaurant, setActiveRestaurant] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   // const user = true;
+  // useEffect(() => {
+  //   getData();
+  //   console.log(saveUser, 'saveUser');
+  //   return () => {};
+  // }, [saveUser, activeRestaurant]);
   useEffect(() => {
-    getData();
-    console.log(saveUser, 'saveUser');
-    setActiveRestaurant(true);
-    return () => {};
-  }, [saveUser, activeRestaurant]);
+    console.log(user, 'user');
+    if (user) {
+    }
+    // return () => {
+    //   second
+    // }
+  }, [user]);
 
   const getData = async () => {
     try {
@@ -393,7 +467,15 @@ const RootNavigator = () => {
         <Image resizeMethod='auto' resizeMode='contain' source={require('../assets/images/tabbar-bg.svg')} style={{ backgroundColor: 'transparent', width: widthToDp(100)}} />
       </View> */}
       {/* <DrawerNavigation /> */}
-      {!saveUser ? HomeStack(activeRestaurant) : AuthStack()}
+      {/* {!saveUser ? HomeStack(activeRestaurant) : AuthStack()} */}
+      {user ? (
+        <HomeStack />
+      ) : (
+        <AuthStack
+
+        // initialParams={{onLogin: handleLogin}}
+        />
+      )}
     </NavigationContainer>
   );
 };

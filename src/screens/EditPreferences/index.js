@@ -7,8 +7,11 @@ import MenuCustomization from '../../components/MenuCustomization';
 import ToggleButton from '../../components/ToggleButton';
 import {widthToDp} from '../../utils/Dimensions';
 import ButtonsCommon from '../../components/Buttons/ButtonCommon.js';
+import {useNavigation} from '@react-navigation/native';
 
 const Preferences = () => {
+  const navigation = useNavigation();
+
   const diet = [
     {
       name: 'Gluten',
@@ -50,6 +53,10 @@ const Preferences = () => {
       name: 'Gluten',
     },
   ];
+
+  const handleDynamicNavigation = () => {
+    navigation.navigate('Preferences');
+  };
   return (
     <View style={styles.container}>
       <BackgroundLayout />
@@ -74,7 +81,8 @@ const Preferences = () => {
         // btnStyle={styles.saveButton}
         containerStyle={styles.saveButton}
         btnText={'Save'}
-        navRoute="Preferences"
+        onPress={() => handleDynamicNavigation()}
+        // navRoute="Preferences"
       />
 
       {/* <TouchableOpacity style={styles.saveButton}>

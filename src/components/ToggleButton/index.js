@@ -4,7 +4,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import {styles} from './styles';
 import {widthToDp} from '../../utils/Dimensions';
 
-const ToggleButton = ({name, show, onPress}) => {
+const ToggleButton = ({name, show, onPress = true}) => {
   const [isToggled, setIsToggled] = useState(false);
 
   const handleToggle = () => {

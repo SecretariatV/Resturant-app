@@ -10,9 +10,66 @@ const styles = StyleSheet.create({
   },
   navbarPageTitle: {
     color: Colors.WHITE,
-    fontWeight: fonts.URBANIST_BOLD,
-    fontSize: 20,
+    fontFamily: fonts.URBANIST_EXTRABOLD,
+    fontSize: 16,
     marginTop: 10,
+    alignSelf: 'center',
+  },
+
+  quantityTitle: {
+    color: Colors.WHITE,
+    fontFamily: fonts.URBANIST_REGULAR,
+    fontSize: 16,
+    marginTop: 10,
+    alignSelf: 'center',
+    alignItems: 'center',
+    textAlign: 'center',
+    marginLeft: 10,
+    // width: 50,
+    // backgroundColor: 'green',
+  },
+  headerTitle: {
+    color: Colors.WHITE,
+    fontFamily: fonts.URBANIST_EXTRABOLD,
+    fontSize: 20,
+    // marginTop: 10,
+    // alignSelf: 'center',
+  },
+  pricingTitle: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    width: '100%',
+    paddingHorizontal: 10,
+  },
+  pricingContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    width: '100%',
+    paddingHorizontal: 15,
+    alignItems: 'center',
+    // backgroundColor: 'red',
+  },
+  priceStyle: {
+    marginLeft: 10,
+    color: Colors.GREEN,
+    fontFamily: fonts.URBANIST_EXTRABOLD,
+    fontSize: 18,
+  },
+
+  totalText: {
+    // marginLeft: 10,
+
+    color: Colors.WHITE,
+    fontFamily: fonts.URBANIST_EXTRABOLD,
+    fontSize: 20,
+  },
+
+  totalPrice: {
+    // marginLeft: 10,
+
+    color: Colors.GREEN,
+    fontFamily: fonts.URBANIST_EXTRABOLD,
+    fontSize: 20,
   },
 });
 export {styles};

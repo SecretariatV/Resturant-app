@@ -8,28 +8,78 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingHorizontal: 15,
   },
-  circleGradient: {
-    margin: 1,
-
-    paddingVertical: 5,
-    paddingHorizontal: 5,
-    alignSelf: 'center',
+  // container: {
+  //   backgroundColor: '#f4f4f4',
+  //   flex: 1,
+  // },
+  // backTextWhite: {
+  //   color: '#FFF',
+  // },
+  rowFront: {
+    // backgroundColor: 'orange',
+    borderRadius: 5,
+    height: 100,
+    margin: 5,
+    marginBottom: 15,
+    shadowColor: '#999',
+    shadowOffset: {width: 0, height: 1},
+    shadowOpacity: 0.8,
+    shadowRadius: 2,
+    elevation: 5,
+  },
+  rowFrontVisible: {
+    // backgroundColor: 'green',
+    borderRadius: 5,
+    height: 60,
+    padding: 10,
+    marginBottom: 15,
+  },
+  rowBack: {
     alignItems: 'center',
-    backgroundColor: '#00000044',
-    borderRadius: 15,
+    // backgroundColor: 'green',
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    paddingLeft: 15,
+    margin: 5,
+    marginBottom: 15,
+    borderRadius: 5,
   },
-  shareABillTxt: {
-    fontFamily: fonts.URBANIST_EXTRABOLD,
-    color: '#00FC92',
-    fontSize: 22,
-    paddingHorizontal: 5,
-  },
-  saveButton: {
+  backRightBtn: {
+    alignItems: 'flex-end',
+    bottom: 0,
+    justifyContent: 'center',
     position: 'absolute',
-
-    bottom: 30,
-    left: 20,
-    right: 20,
+    top: 0,
+    width: 75,
+    paddingRight: 17,
+    // height: 100,
+  },
+  backRightBtnLeft: {
+    // backgroundColor: '#1f65ff',
+    right: 75,
+  },
+  backRightBtnRight: {
+    // backgroundColor: 'red',
+    right: 0,
+    borderTopRightRadius: 5,
+    borderBottomRightRadius: 5,
+  },
+  trash: {
+    height: 205,
+    width: 105,
+    marginRight: 7,
+    backgroundColor: 'red',
+  },
+  title: {
+    fontSize: 14,
+    fontWeight: 'bold',
+    marginBottom: 5,
+    color: '#666',
+  },
+  details: {
+    fontSize: 12,
+    color: '#999',
   },
 });
 export {styles};

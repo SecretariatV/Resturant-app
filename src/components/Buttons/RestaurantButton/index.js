@@ -3,7 +3,7 @@ import React from 'react';
 import {styles} from './styles';
 import LinearGradient from 'react-native-linear-gradient';
 
-const RestaurantButton = ({btnText, style}) => {
+const RestaurantButton = ({btnText, style, onPress}) => {
   return (
     <View style={style}>
       <LinearGradient
@@ -14,12 +14,7 @@ const RestaurantButton = ({btnText, style}) => {
         style={{borderRadius: 22, flexWrap: 'nowrap', margin: 2}}
         start={{x: 0, y: 0.5}}
         end={{x: 1, y: 0.5}}>
-        <TouchableOpacity
-          style={styles.circleGradient}
-          onPress={() => {
-            // handleClick();
-            // console.log('first');
-          }}>
+        <TouchableOpacity style={styles.circleGradient} onPress={onPress}>
           <Text style={styles.btnText}>{btnText}</Text>
         </TouchableOpacity>
       </LinearGradient>

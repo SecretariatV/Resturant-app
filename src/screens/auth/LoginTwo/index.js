@@ -1,5 +1,5 @@
 import {View, Text, ScrollView, TouchableOpacity, Image} from 'react-native';
-import React from 'react';
+import React, {useEffect} from 'react';
 import {useState} from 'react';
 import BackgroundLayout from '../../../components/BackgroundLayout';
 import {styles} from './styles';
@@ -20,11 +20,23 @@ import aLoginIcon from '../../../assets/images/aLoginIcon.png';
 import {useNavigation} from '@react-navigation/native';
 import ButtonsCommon from '../../../components/Buttons/ButtonCommon.js';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-const LoginTwo = () => {
+import {useDispatch, useSelector} from 'react-redux';
+import {setUser} from '../../../redux/actions/auth.js';
+const LoginTwo = ({route}) => {
+  const user = useSelector(state => state.auth.user);
+  console.log(user, 'login twoser Data======');
+  const dispatch = useDispatch();
+
+  // const {onLogin} = route.params;
+  console.log(route.params, 'route.params');
   const navigation = useNavigation();
   const [inputEmail, setInputEmail] = useState('');
   const [inputPass, setInputPass] = useState('');
 
+  useEffect(() => {}, []);
+  const storeData = () => {
+    dispatch(setUser());
+  };
   return (
     <View style={styles.container}>
       <BackgroundLayout />
@@ -92,7 +104,11 @@ const LoginTwo = () => {
           </LinearGradient>
         </View> */}
 
-        <ButtonsCommon btnText={'Sign In'} navRoute="RestaurantMain" />
+        <ButtonsCommon
+          btnText={'Sign In'}
+          // navRoute="Menu"
+          onPress={() => storeData()}
+        />
 
         <SeparatorText separatorText="or Sign In with" />
         <View
@@ -116,7 +132,8 @@ const LoginTwo = () => {
             Already have an account?{' '}
           </Text>
           <TouchableOpacity
-            onPress={() => navigation.navigate('RestaurantMain')}>
+          // onPress={() => navigation.navigate('RestaurantMain')}
+          >
             <Text style={styles.underline}>Sign in.</Text>
           </TouchableOpacity>
         </View>

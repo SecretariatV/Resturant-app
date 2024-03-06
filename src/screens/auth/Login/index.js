@@ -8,12 +8,22 @@ import ButtonsCommon from '../../../components/Buttons/ButtonCommon.js';
 import ButtonsCommonAlt from '../../../components/Buttons/ButtonCommonAlt/index.js';
 import HeaderModed from '../../../components/HeaderModed/index.js';
 import BackButton from '../../../components/Buttons/BackButton/index.js';
+import {useNavigation} from '@react-navigation/native';
 
 const Login = () => {
+  const navigation = useNavigation();
+
+  const handleDynamicNavigation = () => {
+    navigation.navigate('LoginTwo');
+  };
   return (
     <View style={styles.container}>
       <BackgroundLayout />
-      <HeaderModed slotLeft={<BackButton />} slotCenter={<></>} slotRight={<></>} />
+      <HeaderModed
+        slotLeft={<BackButton />}
+        slotCenter={<></>}
+        slotRight={<></>}
+      />
       <View
         style={{
           width: '100%',
@@ -41,7 +51,8 @@ const Login = () => {
           <ButtonsCommon
             btnText={'Sign In'}
             containerStyle={{width: widthToDp(90)}}
-            navRoute="LoginTwo"
+            // navRoute="LoginTwo"
+            onPress={() => handleDynamicNavigation()}
           />
         </View>
 

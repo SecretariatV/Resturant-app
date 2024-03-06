@@ -2,6 +2,7 @@ import {Platform, StyleSheet} from 'react-native';
 import {fonts} from '../../theme/FontFamily';
 import {width, widthToDp} from '../../utils/Dimensions';
 import {Colors} from '../../theme';
+import { screenToTextSize } from '../../utils/helper';
 
 const forBoth = (anStyles, ioStyles) => {
   return Platform.OS === 'android' ? anStyles : ioStyles;
@@ -12,27 +13,64 @@ const styles = StyleSheet.create({
     flex: 1,
     // paddingHorizontal: 15,
   },
-  circleGradient: {
+  introHeader: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginHorizontal: 15,
+    wrapper: {
+      width: widthToDp(90),
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      alignItems: 'start',
+    },
+    userNameContainer: {
+      flexDirection: 'row',
+      alignItems: 'center',
+    },
+    userName: {
+      fontSize: screenToTextSize(5),
+      color: '#fff',
+    },
+  },
+  gradientBoxContainer: {
     margin: 1,
     // width: '30%',
     flexDirection: 'row',
     paddingVertical: 5,
     paddingHorizontal: 5,
-    alignSelf: 'center',
-    alignItems: 'center',
+    alignSelf: 'start',
+    alignItems: 'start',
     backgroundColor: '#00000044',
-    borderRadius: 15,
+    borderRadius: 10,
   },
-  filterHeading: {
-    flexDirection: forBoth('row', 'column'),
-    justifyContent: 'space-between',
-    width: widthToDp(90),
-  },
-  shareABillTxt: {
+  gradientBoxText: {
     fontFamily: fonts.URBANIST_EXTRABOLD,
     color: '#00FC92',
-    fontSize: 20,
+    fontSize: screenToTextSize(5),
     paddingHorizontal: 5,
+  },
+  activeOrderBarContainer: {
+    alignItems: 'start',
+  },
+  activeOrderText: {
+    fontSize: screenToTextSize(3),
+    color: Colors.GREEN,
+    height: 15
+  },
+  activeOrderBar: {
+    marginLeft: 5,
+  },
+  activeOrderBarbg: {
+    backgroundColor: "#ccc",
+    borderRadius: 15,
+    width: '100%',
+    position: 'relative',
+    height: 2,
+  },
+  filterHeading: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    width: widthToDp(90),
   },
   saveButton: {
     position: 'absolute',
@@ -40,6 +78,11 @@ const styles = StyleSheet.create({
     bottom: 30,
     left: 20,
     right: 20,
+  },
+  customizeTxt: {
+    fontFamily: fonts.URBANIST_EXTRABOLD,
+    fontSize: 28,
+    textAlign: 'center',
   },
   restaurantFilterBg: {
     height: '100%',
@@ -78,7 +121,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   priceRangeLabelBottom: {
-    marginBottom: 20
-  }
+    marginBottom: 20,
+  },
 });
 export {styles};

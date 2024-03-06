@@ -4,8 +4,13 @@ import BackgroundLayout from '../../components/BackgroundLayout';
 import {styles} from './styles';
 import LinearGradient from 'react-native-linear-gradient';
 import ButtonsCommon from '../../components/Buttons/ButtonCommon.js';
+import {useNavigation} from '@react-navigation/native';
 
 const PreferencesSuccess = () => {
+  const navigation = useNavigation();
+  const handleDynamicNavigation = () => {
+    navigation.navigate('Preferences');
+  };
   return (
     <View style={styles.container}>
       <BackgroundLayout />
@@ -33,7 +38,9 @@ const PreferencesSuccess = () => {
         btnTextStyle={styles.closeButton}
         containerStyle={styles.saveButton}
         btnText={'Close'}
-        navRoute="EditPreferences"
+        onPress={() => handleDynamicNavigation()}
+
+        // navRoute="EditPreferences"
       />
     </View>
   );

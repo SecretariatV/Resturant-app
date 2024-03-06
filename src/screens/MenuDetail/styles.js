@@ -120,6 +120,17 @@ const styles = StyleSheet.create({
     marginRight: 5,
     marginLeft: 15,
   },
+  readyContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginLeft: 15,
+    marginTop: 10,
+  },
+  lottieStyle: {
+    width: 20,
+    height: 20,
+    margin: 5,
+  },
   price: {
     color: Colors.GREEN,
     fontSize: 37,
@@ -136,7 +147,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontFamily: fonts.URBANIST_REGULAR,
     color: Colors.WHITE,
-    marginTop: 10,
+    // marginTop: 10,
     marginLeft: 15,
   },
   backgroundBtnContainer: {

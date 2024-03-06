@@ -10,6 +10,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#2C2C2C',
     width: widthToDp(7),
     borderRadius: widthToDp(3.5),
+
     // marginLeft: 5,
   },
 });

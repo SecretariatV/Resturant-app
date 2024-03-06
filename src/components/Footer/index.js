@@ -6,16 +6,17 @@ import MenuBg from '../../assets/images/footer.svg';
 import {heightToDp, width, widthToDp} from '../../utils/Dimensions.js';
 
 const Footer = () => {
-  console.log(width, 'width');
+  console.log(width, 'width', 'widthtodp', widthToDp(100));
   return (
     <MenuBg
-      width={'100%'}
+      width={widthToDp(100)}
       style={{
         position: 'absolute',
-        bottom: width == 375 ? -38 : -15,
+        bottom: width == 375 ? -38 : -35,
         left: 0,
         right: 0,
         elevation: 1,
+        flex: 1,
       }}
     />
   );

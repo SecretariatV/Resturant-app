@@ -6,12 +6,15 @@
  */
 import 'react-native-gesture-handler';
 import React, {useEffect} from 'react';
-import {LogBox, StyleSheet, useColorScheme, View} from 'react-native';
+import {LogBox, StyleSheet, Text, useColorScheme, View} from 'react-native';
+import {persistor, store} from './src/redux/store';
 
 import BackgroundLayout from './src/components/BackgroundLayout';
 
 import BootSplash from 'react-native-bootsplash';
 import RootNavigator from './src/navigation';
+import {Provider} from 'react-redux';
+import {PersistGate} from 'redux-persist/integration/react';
 
 function Section({children, title}) {
   const isDarkMode = useColorScheme() === 'dark';
@@ -20,24 +23,6 @@ function Section({children, title}) {
   return (
     <View style={styles.sectionContainer}>
       <BackgroundLayout />
-      {/* <Text
-        style={[
-          styles.sectionTitle,
-          {
-            color: isDarkMode ? Colors.white : Colors.black,
-          },
-        ]}>
-        {title}
-      </Text>true
-      <Text
-        style={[
-          styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark,
-          },
-        ]}>
-        {children}
-      </Text> */}
     </View>
   );
 }
@@ -45,9 +30,7 @@ function Section({children, title}) {
 function App() {
   LogBox.ignoreLogs(['Warning: ...']); // Ignore log notification by message
   LogBox.ignoreAllLogs();
-  // useEffect(() => {
-  //   SplashScreen.hide();
-  // }, []);
+
   useEffect(() => {
     const init = async () => {
       // …do multiple sync or async tasks
@@ -60,9 +43,11 @@ function App() {
   }, []);
 
   return (
-    // <View style={{flex: 1}}>
-    <RootNavigator />
-    // </View>
+    <Provider store={store}>
+      <PersistGate persistor={persistor}>
+        <RootNavigator />
+      </PersistGate>
+    </Provider>
   );
 }
 

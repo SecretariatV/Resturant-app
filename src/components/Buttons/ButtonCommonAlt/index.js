@@ -8,9 +8,10 @@ const ButtonsCommonAlt = ({
   btnText,
   linearTextStyle,
   containerStyle,
+  onPress,
 }) => {
   return (
-    <View style={[containerStyle]}>
+    <TouchableOpacity style={[containerStyle]}>
       <LinearGradient
         // colors={['#02ABEE6E', '#02ABEE', '#00F594']}
         colors={['#045386', '#078891']}
@@ -30,12 +31,14 @@ const ButtonsCommonAlt = ({
           ]}
           start={{x: 0, y: 0.5}}
           end={{x: 1, y: 0.5}}>
-          <TouchableOpacity style={[styles.circleGradient, btnStyle]}>
+          <TouchableOpacity
+            style={[styles.circleGradient, btnStyle]}
+            onPress={onPress}>
             <Text style={styles.btnText}>{btnText}</Text>
           </TouchableOpacity>
         </LinearGradient>
       </LinearGradient>
-    </View>
+    </TouchableOpacity>
   );
 };
 

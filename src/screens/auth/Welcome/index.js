@@ -14,7 +14,7 @@ const Welcome = props => {
   const navigation = useNavigation();
   const handleDynamicNavigation = () => {
     console.log('kmdsakas');
-    navigation.navigate('Signup');
+    navigation.navigate('Login');
   };
 
   return (
@@ -84,7 +84,8 @@ const Welcome = props => {
           <View style={{marginTop: widthToDp(7)}}>
             <ButtonsCommon
               btnText={'Continue'}
-              navRoute={'Signup'}
+              // navRoute={'Signup'}
+              onPress={() => handleDynamicNavigation()}
               containerStyle={{width: widthToDp(90)}}
             />
           </View>
@@ -92,7 +93,10 @@ const Welcome = props => {
 
         <View style={styles.slide1}>
           <View style={{alignItems: 'center'}}>
-            <Image source={require('../../../assets/images/qr_code.png')} style={{height: heightToDp(70), resizeMode: 'contain'}}/>
+            <Image
+              source={require('../../../assets/images/qr_code.png')}
+              style={{height: heightToDp(70), resizeMode: 'contain'}}
+            />
             <Text style={styles.welcomeTxt}>Instant Access to </Text>
 
             <View style={{alignSelf: 'center', marginTop: 5}}>
