@@ -132,6 +132,7 @@ const Menu = () => {
                 horizontal
                 renderItem={({item, index}) => (
                   <BackgroundCard
+                    key={index}
                     style={{
                       padding: 10,
                       width: 160,
@@ -183,6 +184,7 @@ const Menu = () => {
                 horizontal
                 renderItem={({item, index}) => (
                   <BackgroundCard
+                    key={index}
                     style={{
                       padding: 10,
                       width: 200,

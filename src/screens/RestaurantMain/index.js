@@ -7,17 +7,16 @@ import {
   Image,
   Modal,
   TouchableHighlight,
+  SafeAreaView,
 } from 'react-native';
-import React, {useEffect, useState} from 'react';
 import {styles} from './styles';
-import BackgroundLayout from '../../components/BackgroundLayout';
 import LinearGradient from 'react-native-linear-gradient';
-import ActiveOrders from '../../assets/images/activeOrders.svg';
+// import ActiveOrders from '../../assets/images/activeOrders.svg';
+import ActiveOrders from '../../assets/images/activeOrderBox.svg';
 import ResturantCard from '../../components/RestaurantCard';
 import scan_here from '../../assets/images/scan_here.png';
 import scan_arrow from '../../assets/images/scan_arrow.png';
 import SkipButton from '../../components/Buttons/SkipButton';
-import {widthToDp} from '../../utils/Dimensions';
 import HeaderModed from '../../components/HeaderModed';
 import MenuNavButton from '../../components/MenuNavButton';
 import Hamburger from '../../assets/images/hamburger.png';
@@ -32,6 +31,9 @@ import FadedSeparator from '../../components/FadedSeparator';
 import {Colors} from '../../theme';
 import {useSelector} from 'react-redux';
 import GradientText from '../../components/GradientText';
+import {useEffect, useState} from 'react';
+import {widthToDp} from '../../utils/Dimensions';
+import BackgroundLayout from '../../components/BackgroundLayout';
 const RestaurantMain = () => {
   const [modalVisible, setModalVisible] = useState(true);
   const [isVisible, setIsVisible] = useState(false);
@@ -144,60 +146,74 @@ const RestaurantMain = () => {
         </View>
       </Modal>
       <BackgroundLayout />
-
       <HeaderModed
         slotLeft={<MenuNavButton icon={Hamburger} iconType="image" />}
         slotCenter={<></>}
         slotRight={<></>}
       />
-      <View
-        style={{
-          flexDirection: 'row',
-          alignItems: 'center',
-          marginHorizontal: 15,
-        }}>
-        <View
-          style={{
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-            width: '100%',
-          }}>
+      <View class="intro-header-container" style={styles.introHeader}>
+        <View class="intro-header-wrapper" style={styles.introHeader.wrapper}>
           <View
-            style={{
-              marginTop: 5,
-              flexDirection: 'row',
-              alignItems: 'center',
-            }}>
-            <Text style={{fontSize: 22, color: '#fff'}}>Hey</Text>
+            class="intro-user-name"
+            style={styles.introHeader.userNameContainer}>
+            <Text style={styles.introHeader.userName}>Hey</Text>
             <LinearGradient
               colors={['#01322B44', '#00F59444', '#00F59444', '#02ABEE44']}
               useAngle={true}
               angle={45}
-              style={{borderRadius: 15, flexWrap: 'nowrap'}}
+              style={{borderRadius: 10, flexWrap: 'nowrap'}}
               start={{x: 0, y: 0.5}}
               end={{x: 1, y: 0.5}}>
-              <View style={styles.circleGradient}>
-                <Text style={styles.shareABillTxt}>Mark Anderson</Text>
+              <View style={styles.gradientBoxContainer}>
+                <Text style={styles.gradientBoxText}>Mark Anderson</Text>
               </View>
             </LinearGradient>
           </View>
 
-          <View>
-            <LinearGradient
-              colors={['#01322B44', '#00F59444', '#00F59444', '#02ABEE44']}
-              useAngle={true}
-              angle={45}
-              style={{borderRadius: 15, flexWrap: 'nowrap'}}
-              start={{x: 0, y: 0.5}}
-              end={{x: 1, y: 0.5}}>
-              <View style={styles.circleGradient}>
-                <ActiveOrders width={20} height={20} />
-                <Text style={{color: Colors.GREEN}}>Active Order</Text>
-                {/* <Text style={styles.shareABillTxt}>Mark Anderson</Text> */}
+          <LinearGradient
+            class="intro-active-orders"
+            colors={['#01322B44', '#00F59444', '#00F59444', '#02ABEE44']}
+            useAngle={true}
+            angle={45}
+            style={{borderRadius: 10, flexWrap: 'wrap', }}
+            start={{x: 0, y: 0.5}}
+            end={{x: 1, y: 0.5}}>
+            <View
+              style={[
+                styles.gradientBoxContainer,
+                styles.activeOrderBarContainer,
+              ]}>
+              <ActiveOrders width={20} height={20} />
+              <View
+                class="active-order-text-and-bar"
+                style={styles.activeOrderBar}>
+                <Text style={styles.activeOrderText}>Active Order</Text>
+                <View
+                  class="active-order-bar-bg"
+                  style={styles.activeOrderBarbg}>
+                  <LinearGradient
+                    class="intro-active-orders"
+                    colors={[
+                      '#01322Bff',
+                      '#00F594ff',
+                      '#00F594ff',
+                      '#02ABEEff',
+                    ]}
+                    useAngle={true}
+                    angle={45}
+                    style={{
+                      borderRadius: 10,
+                      flexWrap: 'nowrap',
+                      height: 2,
+                      width: '45%',
+                    }}
+                    start={{x: 0, y: 0.5}}
+                    end={{x: 1, y: 0.5}}></LinearGradient>
+                </View>
               </View>
-            </LinearGradient>
-          </View>
+              {/* <Text style={styles.shareABillTxt}>Mark Anderson</Text> */}
+            </View>
+          </LinearGradient>
         </View>
       </View>
 
@@ -280,57 +296,120 @@ const RestaurantMain = () => {
                 show={false}
               />
             </View>
-            <FadedSeparator />
-          </View>
-          <View class="allergies">
-            <Text style={styles.filterHeadingText}>Allergies:</Text>
-            <View style={styles.cuisineTypeBtns}>
-              <ToggleButton
-                name={'About'}
-                onPress={() => handleAboutToggle()}
-                show={false}
-              />
-              <ToggleButton
-                name={'About'}
-                onPress={() => handleAboutToggle()}
-                show={false}
-              />
-              <ToggleButton
-                name={'About'}
-                onPress={() => handleAboutToggle()}
-                show={false}
-              />
+            <View class="personal-preference" style={styles.filterSection}>
+              <Text style={styles.filterHeadingText}>
+                Apply Personal Preference
+              </Text>
             </View>
-            <FadedSeparator />
-          </View>
-          <View class="allergies">
-            <Text style={styles.filterHeadingText}>Allergies:</Text>
-            <View style={styles.cuisineTypeBtns}>
-              <ToggleButton
-                name={'About'}
-                onPress={() => handleAboutToggle()}
-                show={false}
-              />
-              <ToggleButton
-                name={'About'}
-                onPress={() => handleAboutToggle()}
-                show={false}
-              />
-              <ToggleButton
-                name={'About'}
-                onPress={() => handleAboutToggle()}
-                show={false}
-              />
+            <View class="cuisine-type">
+              <Text style={styles.filterHeadingText}>Cuisine Type:</Text>
+              <ScrollView
+                horizontal
+                contentContainerStyle={styles.cuisineTypeBtnsContainerStyle}
+                style={styles.cuisineTypeBtns}>
+                <ToggleButton
+                  name={'About'}
+                  onPress={() => handleAboutToggle()}
+                  show={false}
+                />
+                <ToggleButton
+                  name={'About'}
+                  onPress={() => handleAboutToggle()}
+                  show={false}
+                />
+                <ToggleButton
+                  name={'About'}
+                  onPress={() => handleAboutToggle()}
+                  show={false}
+                />
+                <ToggleButton
+                  name={'About'}
+                  onPress={() => handleAboutToggle()}
+                  show={false}
+                />
+                <ToggleButton
+                  name={'About'}
+                  onPress={() => handleAboutToggle()}
+                  show={false}
+                />
+                <ToggleButton
+                  name={'About'}
+                  onPress={() => handleAboutToggle()}
+                  show={false}
+                />
+              </ScrollView>
+              <FadedSeparator />
             </View>
-            <FadedSeparator />
-          </View>
-          <View class="price-range" style={styles.priceRange}>
-            <View style={styles.priceRangeLabel}>
-              <Text>Price Range:</Text>
-              <Text>${sliderValue}</Text>
+            <View class="allergies">
+              <Text style={styles.filterHeadingText}>Allergies:</Text>
+              <View style={styles.cuisineTypeBtns}>
+                <ToggleButton
+                  name={'About'}
+                  onPress={() => handleAboutToggle()}
+                  show={false}
+                />
+                <ToggleButton
+                  name={'About'}
+                  onPress={() => handleAboutToggle()}
+                  show={false}
+                />
+                <ToggleButton
+                  name={'About'}
+                  onPress={() => handleAboutToggle()}
+                  show={false}
+                />
+              </View>
+              <FadedSeparator />
             </View>
-            <View style={styles.priceRangeSlider}>
-              {/* <RangeSlider
+            <View class="allergies">
+              <Text style={styles.filterHeadingText}>Allergies:</Text>
+              <View style={styles.cuisineTypeBtns}>
+                <ToggleButton
+                  name={'About'}
+                  onPress={() => handleAboutToggle()}
+                  show={false}
+                />
+                <ToggleButton
+                  name={'About'}
+                  onPress={() => handleAboutToggle()}
+                  show={false}
+                />
+                <ToggleButton
+                  name={'About'}
+                  onPress={() => handleAboutToggle()}
+                  show={false}
+                />
+              </View>
+              <FadedSeparator />
+            </View>
+            <View class="allergies">
+              <Text style={styles.filterHeadingText}>Allergies:</Text>
+              <View style={styles.cuisineTypeBtns}>
+                <ToggleButton
+                  name={'About'}
+                  onPress={() => handleAboutToggle()}
+                  show={false}
+                />
+                <ToggleButton
+                  name={'About'}
+                  onPress={() => handleAboutToggle()}
+                  show={false}
+                />
+                <ToggleButton
+                  name={'About'}
+                  onPress={() => handleAboutToggle()}
+                  show={false}
+                />
+              </View>
+              <FadedSeparator />
+            </View>
+            <View class="price-range" style={styles.priceRange}>
+              <View style={styles.priceRangeLabel}>
+                <Text>Price Range:</Text>
+                <Text>${sliderValue}</Text>
+              </View>
+              <View style={styles.priceRangeSlider}>
+                {/* <RangeSlider
                 minValue={0}
                 maxValue={100}
                 steps={1}
@@ -353,6 +432,7 @@ const RestaurantMain = () => {
                 thumbComponent={<SliderThumb />}
                 onValueChange={setSliderValue}
               /> */}
+              </View>
             </View>
           </View>
         </ScrollView>

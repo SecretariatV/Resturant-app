@@ -11,7 +11,7 @@ const styles = StyleSheet.create({
   },
   navbarPageTitle: {
     color: Colors.WHITE,
-    fontWeight: fonts.URBANIST_BOLD,
+    fontFamily: fonts.URBANIST_BOLD,
   },
   restaurantFilterBg: {
     height: '100%',

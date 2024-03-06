@@ -1,58 +1,40 @@
-import React, {useEffect, useState} from 'react';
-import {
-  TouchableOpacity,
-  Text,
-  Linking,
-  View,
-  Image,
-  ImageBackground,
-  BackHandler,
-  StyleSheet,
-  Dimensions,
-} from 'react-native';
-import QRCodeScanner from 'react-native-qrcode-scanner';
-// import styles from './styles';
+import { useEffect, useState } from 'react';
+import { View } from 'react-native';
+// import {Camera, CodeScanner, useCameraDevice, useCodeScanner} from 'react-native-vision-camera';
 
 const QrCode = () => {
-  useEffect(() => {
-    const deviceWidth = Dimensions.get('screen').width;
-    console.log(deviceWidth);
-  }, []);
-  const onSuccess = e => {
-    console.log('QR code scanned:', e.data);
-    // Handle the scanned QR code data here
-  };
+  // const [hasPermission, setHasPermission] = useState(null);
+  // const [checkCodeScanner, setCheckCodeScanner] = useState(null);
+  // const device = useCameraDevice('back');
+  // useEffect(() => {
+  //   (async () => {
+  //     const granted = await Camera.requestCameraPermissions();
+  //     setHasPermission(granted);
+  //   })();
+  // }, []);
 
-  return (
-    <View style={styles.container}>
-      <QRCodeScanner
-        onRead={onSuccess}
-        reactivate={true}
-        permissionDialogMessage="We need permission to access your camera"
-        reactivateTimeout={2000}
-        showMarker={true}
-        markerStyle={{borderColor: '#FFF', borderRadius: 10}}
-        bottomContent={
-          <Text style={styles.centerText}>
-            Place a QR code within the frame to scan it
-          </Text>
-        }
-      />
-    </View>
-  );
+  // const onCodeScanned = ({type, data, bounds}) => {
+  //   console.log(`Code type: ${type}`);
+  //   console.log(`Code data: ${data}`);
+  //   console.log(`Code bounds: ${bounds}`);
+  // };
+
+  // const codeScanner = useCodeScanner({
+  //   codeTypes: ['qr', 'ean-13'],
+  //   onCodeScanned: codes => {
+  //     console.log(`Scanned ${codes.length} codes!`);
+  //   },
+  // });
+
+  // return (
+  //   <View>
+  //     <CodeScanner
+  //       device={device}
+  //       onCodeScanned={onCodeScanned}
+  //       style={{width: '100%', height: '100%'}}
+  //     />
+  //   </View>
+  // );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  centerText: {
-    textAlign: 'center',
-    fontSize: 18,
-    color: '#FFF',
-  },
-});
 
 export default QrCode;
