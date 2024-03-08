@@ -115,7 +115,16 @@ const Cart = () => {
       {isModalVisible ? FullScreenModal() : <></>}
       <HeaderModed
         slotLeft={<MenuNavButton icon={Hamburger} iconType="image" />}
-        slotCenter={<></>}
+        slotCenter={
+          <Text
+            style={{
+              fontFamily: fonts.URBANIST_BOLD,
+              fontSize: 16,
+              color: Colors.WHITE,
+            }}>
+            Confirm Order
+          </Text>
+        }
         slotRight={<></>}
       />
       <ScrollView>
@@ -207,7 +216,10 @@ const Cart = () => {
             marginTop: 15,
             // m,
           }}>
-          <ButtonsCommon btnText={'Add more items'} />
+          <ButtonsCommon
+            btnText={'Add more items'}
+            onPress={() => navigation.navigate('Menu')}
+          />
         </View>
 
         <Text
@@ -224,6 +236,7 @@ const Cart = () => {
             style={{
               height: 120,
               width: '95%',
+              color: '#fff',
 
               // backgroundColor: 'red',
               borderWidth: 1,
@@ -239,14 +252,14 @@ const Cart = () => {
               // textAlignVertical: top',
             }}
             placeholder="type here"
-            placeholderTextColor={'#FFFFFF33'}
+            placeholderTextColor="#FFFFFF33"
             multiline={true}
           />
 
           <RestaurantButton
             btnText={'Order now'}
             style={{width: '95%'}}
-            onPress={() => toggleModal()}
+            onPress={() => navigation.navigate('PaymentOption')}
           />
         </View>
 

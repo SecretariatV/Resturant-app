@@ -82,7 +82,7 @@ const AuthStack = ({toggleLogin}) => {
 const HomeStack = ({activeRestaurant}) => {
   return (
     <Stack.Navigator
-      initialRouteName="TabNavigator"
+      initialRouteName="Tab"
       screenOptions={{
         headerShown: false,
       }}>
@@ -110,13 +110,13 @@ const HomeStack = ({activeRestaurant}) => {
 const PayStack = ({activeRestaurant}) => {
   return (
     <Stack.Navigator
-      initialRouteName="SecondTabNavigator"
+      initialRouteName="TabNavigator"
       screenOptions={{
         headerShown: false,
       }}>
       {/* <Stack.Screen name="Splash" component={Splash} /> */}
 
-      <Stack.Screen name="SecondTabNavigator" component={SecondTabNavigator} />
+      <Stack.Screen name="TabNavigator" component={TabNavigator} />
 
       <Stack.Screen name="MenuDetail" component={MenuDetail} />
       <Stack.Screen name="Menu" component={Menu} />
@@ -226,14 +226,14 @@ const TabNavigator = ({activeRestaurant}) => {
           },
         }}
       />
-      {/* <Tab.Screen
-        name="Menu"
-        component={Menu}
+      <Tab.Screen
+        name="MenuDetail"
+        component={MenuDetail}
         options={{
           tabBarButton: () => null,
           tabBarVisible: false,
         }}
-      /> */}
+      />
 
       <Tab.Screen
         name="Restaurant"
@@ -350,7 +350,7 @@ const TabNavigator = ({activeRestaurant}) => {
       />
       <Tab.Screen
         name="Pay"
-        component={Pay}
+        component={PaymentOption}
         options={{
           tabBarIcon: ({focused}) => {
             return (
@@ -433,12 +433,6 @@ const RootNavigator = () => {
   const [activeRestaurant, setActiveRestaurant] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  // const user = true;
-  // useEffect(() => {
-  //   getData();
-  //   console.log(saveUser, 'saveUser');
-  //   return () => {};
-  // }, [saveUser, activeRestaurant]);
   useEffect(() => {
     console.log(user, 'user');
     if (user) {
@@ -468,14 +462,7 @@ const RootNavigator = () => {
       </View> */}
       {/* <DrawerNavigation /> */}
       {/* {!saveUser ? HomeStack(activeRestaurant) : AuthStack()} */}
-      {user ? (
-        <HomeStack />
-      ) : (
-        <AuthStack
-
-        // initialParams={{onLogin: handleLogin}}
-        />
-      )}
+      {user ? <HomeStack /> : <AuthStack />}
     </NavigationContainer>
   );
 };

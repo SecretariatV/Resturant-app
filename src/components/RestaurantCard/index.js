@@ -21,8 +21,6 @@ import {useNavigation} from '@react-navigation/native';
 const ResturantCard = ({name, location, cuisine}) => {
   const navigation = useNavigation();
 
-  const image = {uri: 'https://legacy.reactjs.org/logo-og.png'};
-
   return (
     // <TouchableOpacity
     //   style={{
@@ -66,7 +64,7 @@ const ResturantCard = ({name, location, cuisine}) => {
     // </TouchableOpacity>
     <TouchableOpacity
       style={styles.container}
-      onPress={() => navigation.navigate('PayStack', {screen: 'Restaurant'})}>
+      onPress={() => navigation.navigate('Restaurant')}>
       <ImageBackground
         source={bg}
         style={styles.image}

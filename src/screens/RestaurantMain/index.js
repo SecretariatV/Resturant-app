@@ -34,6 +34,7 @@ import GradientText from '../../components/GradientText';
 import {useEffect, useState} from 'react';
 import {widthToDp} from '../../utils/Dimensions';
 import BackgroundLayout from '../../components/BackgroundLayout';
+import {getPlatformSpecificValue} from '../../utils/helper';
 const RestaurantMain = () => {
   const [modalVisible, setModalVisible] = useState(true);
   const [isVisible, setIsVisible] = useState(false);
@@ -175,7 +176,7 @@ const RestaurantMain = () => {
             colors={['#01322B44', '#00F59444', '#00F59444', '#02ABEE44']}
             useAngle={true}
             angle={45}
-            style={{borderRadius: 10, flexWrap: 'wrap', }}
+            style={{borderRadius: 10, flexWrap: 'wrap'}}
             start={{x: 0, y: 0.5}}
             end={{x: 1, y: 0.5}}>
             <View
@@ -183,7 +184,10 @@ const RestaurantMain = () => {
                 styles.gradientBoxContainer,
                 styles.activeOrderBarContainer,
               ]}>
-              <ActiveOrders width={20} height={20} />
+              <ActiveOrders
+                width={getPlatformSpecificValue(30, 20)}
+                height={getPlatformSpecificValue(30, 20)}
+              />
               <View
                 class="active-order-text-and-bar"
                 style={styles.activeOrderBar}>
