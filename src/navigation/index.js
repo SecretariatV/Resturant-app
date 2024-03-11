@@ -32,6 +32,7 @@ import Requests from '../screens/Requests';
 import Menu from '../screens/Menu';
 import Cart from '../screens/Cart';
 import Restaurant from '../screens/Restaurant';
+import Thankyou from '../screens/Thankyou';
 import MenuDetail from '../screens/MenuDetail';
 import IngredientCustomization from '../screens/IngredientCustomization';
 // import ResturantMenu from '../screens/ResturantMenu';
@@ -82,7 +83,7 @@ const AuthStack = ({toggleLogin}) => {
 const HomeStack = ({activeRestaurant}) => {
   return (
     <Stack.Navigator
-      initialRouteName="PaymentOption"
+      initialRouteName="Thankyou"
       screenOptions={{
         headerShown: false,
       }}>
@@ -102,6 +103,7 @@ const HomeStack = ({activeRestaurant}) => {
       />
       <Stack.Screen name="PaymentOption" component={PaymentOption} />
       <Stack.Screen name="AddCard" component={AddCard} />
+      <Stack.Screen name="Thankyou" component={Thankyou} />
       {/* <Stack.Screen name="MyOrder" component={MyOrder} /> */}
     </Stack.Navigator>
   );
@@ -238,6 +240,15 @@ const TabNavigator = ({activeRestaurant}) => {
       <Tab.Screen
         name="Restaurant"
         component={Restaurant}
+        options={{
+          tabBarButton: () => null,
+          tabBarVisible: false,
+        }}
+      />
+
+      <Tab.Screen
+        name="Thankyou"
+        component={Thankyou}
         options={{
           tabBarButton: () => null,
           tabBarVisible: false,

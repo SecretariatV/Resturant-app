@@ -12,7 +12,6 @@ const Footer = () => {
       width={widthToDp(100)}
       style={{
         position: 'absolute',
-
         bottom: width == 375 ? -38 : -15,
         left: 0,
         right: 0,
