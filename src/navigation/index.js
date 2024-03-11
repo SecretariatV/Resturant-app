@@ -49,6 +49,7 @@ import QrIcon from '../assets/images/tabbar-qr.svg';
 import {useSelector} from 'react-redux';
 import PaymentOption from '../screens/PaymentOption';
 import AddCard from '../screens/AddCard';
+import AmountPaid from '../screens/AmountPaid';
 
 const Tab = createBottomTabNavigator();
 // const Drawer = createDrawerNavigator();
@@ -82,7 +83,7 @@ const AuthStack = ({toggleLogin}) => {
 const HomeStack = ({activeRestaurant}) => {
   return (
     <Stack.Navigator
-      initialRouteName="Tab"
+      initialRouteName="AmountPaid"
       screenOptions={{
         headerShown: false,
       }}>
@@ -101,6 +102,8 @@ const HomeStack = ({activeRestaurant}) => {
         component={IngredientCustomization}
       />
       <Stack.Screen name="PaymentOption" component={PaymentOption} />
+      <Stack.Screen name="AmountPaid" component={AmountPaid} />
+
       <Stack.Screen name="AddCard" component={AddCard} />
       {/* <Stack.Screen name="MyOrder" component={MyOrder} /> */}
     </Stack.Navigator>
