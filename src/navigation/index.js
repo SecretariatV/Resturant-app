@@ -83,15 +83,12 @@ const AuthStack = ({toggleLogin}) => {
 const HomeStack = ({activeRestaurant}) => {
   return (
     <Stack.Navigator
-      initialRouteName="AmountPaid"
+      initialRouteName="TabNavigator"
       screenOptions={{
         headerShown: false,
       }}>
-      {/* <Stack.Screen name="Splash" component={Splash} /> */}
-
       <Stack.Screen name="TabNavigator" component={TabNavigator} />
-      {/* <Stack.Screen name="SecondTabNavigator" component={SecondTabNavigator} /> */}
-
+      <Stack.Screen name="Requests" component={Requests} />
       <Stack.Screen name="MenuDetail" component={MenuDetail} />
       <Stack.Screen name="Menu" component={Menu} />
       <Stack.Screen name="RestaurantMain" component={RestaurantMain} />
@@ -105,6 +102,8 @@ const HomeStack = ({activeRestaurant}) => {
       <Stack.Screen name="AmountPaid" component={AmountPaid} />
 
       <Stack.Screen name="AddCard" component={AddCard} />
+      {/* <Stack.Screen name="Requests" component={Requests} /> */}
+
       {/* <Stack.Screen name="MyOrder" component={MyOrder} /> */}
     </Stack.Navigator>
   );
