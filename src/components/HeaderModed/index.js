@@ -7,6 +7,7 @@ const HeaderModed = ({
   slotCenter = null,
   slotRight = null,
   bannerImage = null,
+  headerStyle,
 }) => {
   let bannerStylesHoc = bannerImage
     ? styles.headerHoc
@@ -17,7 +18,9 @@ const HeaderModed = ({
   return (
     <View className="header-hoc" style={bannerStylesHoc}>
       {bannerImage}
-      <View style={bannerStylesContainer} className="header-container">
+      <View
+        style={[bannerStylesContainer, headerStyle]}
+        className="header-container">
         <View style={styles.slotLeft} className="slot-left">
           {slotLeft}
         </View>

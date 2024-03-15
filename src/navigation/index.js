@@ -1,4 +1,5 @@
 //packages
+
 import {View, Text, Image} from 'react-native';
 import React, {useEffect, useRef, useState} from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
@@ -6,6 +7,7 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 // import {createDrawerNavigator} from '@react-navigation/drawer';
 // import DrawerNavigation from '../screens/drawer/DrawerNavigation';
+import {GestureHandlerRootView} from 'react-native-gesture-handler';
 
 // styles
 import {tabNavStyles} from './tabNavigatorStyles';
@@ -50,6 +52,9 @@ import {useSelector} from 'react-redux';
 import PaymentOption from '../screens/PaymentOption';
 import AddCard from '../screens/AddCard';
 import AmountPaid from '../screens/AmountPaid';
+import GeneratedQrCode from '../screens/GeneratedQrCode';
+import ProductReview from '../screens/ProductReview';
+import HomeScreens from '../screens/HomeScreens';
 
 const Tab = createBottomTabNavigator();
 // const Drawer = createDrawerNavigator();
@@ -87,24 +92,35 @@ const HomeStack = ({activeRestaurant}) => {
       screenOptions={{
         headerShown: false,
       }}>
-      <Stack.Screen name="TabNavigator" component={TabNavigator} />
-      <Stack.Screen name="Requests" component={Requests} />
-      <Stack.Screen name="MenuDetail" component={MenuDetail} />
-      <Stack.Screen name="Menu" component={Menu} />
-      <Stack.Screen name="RestaurantMain" component={RestaurantMain} />
-      <Stack.Screen name="QrCode" component={QrCode} />
-      <Stack.Screen name="Restaurant" component={Restaurant} />
-      <Stack.Screen
-        name="IngredientCustomization"
-        component={IngredientCustomization}
-      />
-      <Stack.Screen name="PaymentOption" component={PaymentOption} />
-      <Stack.Screen name="AmountPaid" component={AmountPaid} />
+      <Stack.Group screenOptions={{presentation: 'modal'}}>
+        <Stack.Screen name="MenuDetail" component={MenuDetail} />
+        <Stack.Screen
+          name="IngredientCustomization"
+          component={IngredientCustomization}
+        />
+      </Stack.Group>
+      <Stack.Group>
+        <Stack.Screen name="HomeScreens" component={HomeScreens} />
 
-      <Stack.Screen name="AddCard" component={AddCard} />
-      {/* <Stack.Screen name="Requests" component={Requests} /> */}
+        <Stack.Screen name="TabNavigator" component={TabNavigator} />
+        <Stack.Screen name="Requests" component={Requests} />
+        {/* <Stack.Screen name="MenuDetail" component={MenuDetail}  /> */}
+        <Stack.Screen name="Menu" component={Menu} />
+        <Stack.Screen name="RestaurantMain" component={RestaurantMain} />
+        <Stack.Screen name="QrCode" component={QrCode} />
+        <Stack.Screen name="Restaurant" component={Restaurant} />
 
-      {/* <Stack.Screen name="MyOrder" component={MyOrder} /> */}
+        <Stack.Screen name="PaymentOption" component={PaymentOption} />
+        <Stack.Screen name="AmountPaid" component={AmountPaid} />
+
+        <Stack.Screen name="AddCard" component={AddCard} />
+        {/* <Stack.Screen name="Requests" component={Requests} /> */}
+
+        {/* <Stack.Screen name="MyOrder" component={MyOrder} /> */}
+        <Stack.Screen name="Cart" component={Cart} />
+        <Stack.Screen name="GeneratedQrCode" component={GeneratedQrCode} />
+        <Stack.Screen name="ProductReview" component={ProductReview} />
+      </Stack.Group>
     </Stack.Navigator>
   );
 };
@@ -228,14 +244,14 @@ const TabNavigator = ({activeRestaurant}) => {
           },
         }}
       />
-      <Tab.Screen
+      {/* <Tab.Screen
         name="MenuDetail"
         component={MenuDetail}
         options={{
           tabBarButton: () => null,
           tabBarVisible: false,
         }}
-      />
+      /> */}
 
       <Tab.Screen
         name="Restaurant"
@@ -245,84 +261,15 @@ const TabNavigator = ({activeRestaurant}) => {
           tabBarVisible: false,
         }}
       />
-
-      {/* <Tab.Screen
-        name="Menu"
-        component={Menu}
+      <Tab.Screen
+        name="HomeScreens"
+        component={HomeScreens}
         options={{
-          tabBarIcon: ({focused}) => {
-            return (
-              <View
-                style={{
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                  gap: 5,
-                  width: widthToDp(16),
-                  height: heightToDp(16),
-                  backgroundColor: '#fff',
-                  borderColor: '#0ad6c0',
-                  borderWidth: 4,
-                  borderRadius: 50,
-                  justifyContent: 'center',
-                  alignContent: 'center',
-                  position: 'relative',
-                  top: -10,
-                  elevation: 5,
-                  shadowColor: '#000',
-                  shadowOffset: {
-                    width: 2,
-                    height: 2,
-                  },
-                }}>
-                <MenuIcon
-                  width={screenToTextSize(8)}
-                  style={{width: 12, height: 12}}
-                  source={require('../assets/images/tabbar-menu.svg')}
-                />
-              </View>
-            );
-          },
+          tabBarButton: () => null,
+          tabBarVisible: false,
         }}
-      /> */}
+      />
 
-      {/* <Tab.Screen
-        name="Menu"
-        component={Menu}
-        options={{
-          tabBarIcon: ({focused}) => {
-            return (
-              <View
-                style={{
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                  gap: 5,
-                  width: widthToDp(16),
-                  height: heightToDp(16),
-                  backgroundColor: '#fff',
-                  borderColor: '#0ad6c0',
-                  borderWidth: 4,
-                  borderRadius: 50,
-                  justifyContent: 'center',
-                  alignContent: 'center',
-                  position: 'relative',
-                  top: -10,
-                  elevation: 5,
-                  shadowColor: '#000',
-                  shadowOffset: {
-                    width: 2,
-                    height: 2,
-                  },
-                }}>activeRestaurant
-                <MenuIcon
-                  width={screenToTextSize(8)}
-                  style={{width: 12, height: 12}}
-                  source={require('../assets/images/tabbar-menu.svg')}
-                />
-              </View>
-            );
-          },
-        }}
-      /> */}
       <Tab.Screen
         name="Cart"
         component={Cart}
@@ -351,7 +298,7 @@ const TabNavigator = ({activeRestaurant}) => {
         }}
       />
       <Tab.Screen
-        name="Pay"
+        name="PaymentOption"
         component={PaymentOption}
         options={{
           tabBarIcon: ({focused}) => {
@@ -375,6 +322,15 @@ const TabNavigator = ({activeRestaurant}) => {
               </View>
             );
           },
+        }}
+      />
+
+      <Tab.Screen
+        name="ProductReview"
+        component={ProductReview}
+        options={{
+          tabBarButton: () => null,
+          tabBarVisible: false,
         }}
       />
     </Tab.Navigator>
@@ -444,28 +400,17 @@ const RootNavigator = () => {
     // }
   }, [user]);
 
-  const getData = async () => {
-    try {
-      const user = await AsyncStorage.getItem('user');
-      if (user !== null) {
-        setSaveUser(user);
-        console.log(user, 'value');
-        // value previously stored
-      }
-    } catch (e) {
-      console.log(e, 'e');
-      // error reading value
-    }
-  };
   return (
-    <NavigationContainer>
-      {/* <View style={{  backgroundColor: 'transparent'}}>
+    <GestureHandlerRootView style={{flex: 1}}>
+      <NavigationContainer>
+        {/* <View style={{  backgroundColor: 'transparent'}}>
         <Image resizeMethod='auto' resizeMode='contain' source={require('../assets/images/tabbar-bg.svg')} style={{ backgroundColor: 'transparent', width: widthToDp(100)}} />
       </View> */}
-      {/* <DrawerNavigation /> */}
-      {/* {!saveUser ? HomeStack(activeRestaurant) : AuthStack()} */}
-      {user ? <HomeStack /> : <AuthStack />}
-    </NavigationContainer>
+        {/* <DrawerNavigation /> */}
+        {/* {!saveUser ? HomeStack(activeRestaurant) : AuthStack()} */}
+        {user ? <HomeStack /> : <AuthStack />}
+      </NavigationContainer>
+    </GestureHandlerRootView>
   );
 };
 export default RootNavigator;

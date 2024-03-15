@@ -1,6 +1,6 @@
 import {StyleSheet} from 'react-native';
 import {fonts} from '../../theme/FontFamily';
-import {width, widthToDp} from '../../utils/Dimensions';
+import {heightToDp, width, widthToDp} from '../../utils/Dimensions';
 import {Colors} from '../../theme';
 
 const styles = StyleSheet.create({
@@ -15,18 +15,27 @@ const styles = StyleSheet.create({
     marginTop: 10,
     alignSelf: 'center',
   },
+  ingredientContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    width: '100%',
+    marginTop: 15,
+  },
+
+  ingredientSubContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
 
   quantityTitle: {
     color: Colors.WHITE,
     fontFamily: fonts.URBANIST_REGULAR,
     fontSize: 16,
     marginTop: 10,
-    alignSelf: 'center',
-    alignItems: 'center',
+
     textAlign: 'center',
-    marginLeft: 10,
-    // width: 50,
-    // backgroundColor: 'green',
+    // marginLeft: 10,
+    width: '40%',
   },
   headerTitle: {
     color: Colors.WHITE,
@@ -38,16 +47,17 @@ const styles = StyleSheet.create({
   pricingTitle: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    width: '100%',
-    paddingHorizontal: 10,
+    width: '95%',
+    // alignItems: 'center',
+
+    // paddingHorizontal: 10,
   },
   pricingContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    width: '100%',
-    paddingHorizontal: 15,
-    alignItems: 'center',
-    // backgroundColor: 'red',
+    width: '95%',
+    // paddingHorizontal: 15,
+    alignItems: 'flex-start',
   },
   priceStyle: {
     marginLeft: 10,
@@ -70,6 +80,37 @@ const styles = StyleSheet.create({
     color: Colors.GREEN,
     fontFamily: fonts.URBANIST_EXTRABOLD,
     fontSize: 20,
+  },
+
+  buttonContainer: {
+    flexDirection: 'row',
+    width: '100%',
+    alignSelf: 'center',
+    justifyContent: 'center',
+    position: 'absolute',
+    bottom: 30,
+  },
+
+  counterMain: {
+    width: '40%',
+    alignItems: 'center',
+    flexDirection: 'row',
+  },
+
+  counter: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  minus: {
+    height: heightToDp(7),
+    width: widthToDp(7),
+    borderRadius: 8,
+  },
+  plus: {
+    height: heightToDp(7),
+    width: widthToDp(7),
+    borderRadius: 8,
+    backgroundColor: Colors.GREEN,
   },
 });
 export {styles};

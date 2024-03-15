@@ -8,6 +8,7 @@ import ToggleButton from '../../components/ToggleButton';
 import {widthToDp} from '../../utils/Dimensions';
 import ButtonsCommon from '../../components/Buttons/ButtonCommon.js';
 import {useNavigation} from '@react-navigation/native';
+import BackButton from '../../components/NavButtons/BackButton/index.js';
 
 const Preferences = () => {
   const navigation = useNavigation();
@@ -60,10 +61,9 @@ const Preferences = () => {
   return (
     <View style={styles.container}>
       <BackgroundLayout />
-      <HeaderCommon
-        show={true}
-        title={'Edit Diet'}
-        logoStyle={{marginRight: widthToDp(10)}}
+      <HeaderModed
+        slotLeft={<BackButton />}
+        slotCenter={<Text style={styles.headerTitle}>Edit Preferences</Text>}
       />
       <Text style={styles.select}>Select Diet</Text>
       <View

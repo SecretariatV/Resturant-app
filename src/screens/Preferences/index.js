@@ -6,6 +6,7 @@ import BackgroundLayout from '../../components/BackgroundLayout';
 import MenuCustomization from '../../components/MenuCustomization';
 import ButtonsCommon from '../../components/Buttons/ButtonCommon.js';
 import {useNavigation} from '@react-navigation/native';
+import BackButton from '../../components/NavButtons/BackButton/index.js';
 
 const Preferences = () => {
   const navigation = useNavigation();
@@ -16,12 +17,16 @@ const Preferences = () => {
   return (
     <View style={styles.container}>
       <BackgroundLayout />
-      <HeaderCommon
+      {/* <HeaderCommon
         showSkipBtn={false}
         title={'Menu Customization'}
         showValet={false}
+      /> */}
+      <HeaderModed
+        slotLeft={<></>}
+        slotCenter={<Text style={styles.headerTitle}>Menu Customization</Text>}
+        slotRight={<></>}
       />
-
       <MenuCustomization label={'Diet'} show={false} />
 
       <MenuCustomization label={'Diet'} />

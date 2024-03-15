@@ -90,19 +90,6 @@ const LoginTwo = ({route}) => {
             <Text style={styles.underline}>Forgot Password</Text>
           </TouchableOpacity>
         </View>
-        {/* <View style={styles.signInBtn}>
-          <LinearGradient
-            colors={['#02ABEE6E', '#02ABEE', '#00F594']}
-            style={{borderRadius: 15, flexWrap: 'nowrap'}}
-            start={{x: 0, y: 0.5}}
-            end={{x: 1, y: 0.5}}>
-            <TouchableOpacity
-              style={styles.circleGradient}
-              onPress={() => navigation.navigate('Preferences')}>
-              <Text style={styles.signInBtn.btnTxt}>Sign In</Text>
-            </TouchableOpacity>
-          </LinearGradient>
-        </View> */}
 
         <ButtonsCommon
           btnText={'Sign In'}
@@ -138,53 +125,6 @@ const LoginTwo = ({route}) => {
           </TouchableOpacity>
         </View>
       </ScrollView>
-
-      {/* <LinearGradient
-        colors={[
-          'rgba(200,200,200, 0)',
-          'rgba(200,200,200, 0.30)',
-          'rgba(200,200,200, 0.7)',
-          'rgba(200,200,200, 0.7)',
-          'rgba(200,200,200, 0.30)',
-          'rgba(200,200,200, 0.0)',
-        ]}
-        style={{width: '100%'}}
-        start={{x: 0, y: 0.5}}
-        end={{x: 1, y: 0.5}}>
-        <View
-          style={{
-            borderBottomColor: 'transparent',
-            borderBottomWidth: 1,
-            width: '100%',
-            flexWrap: 'nowrap',
-            flexDirection: 'row',
-            alignItems: 'center',
-
-            // alignSelf: 'stretch',
-            // flex: 1,
-          }}>
-          <View style={{flex: 1, height: 1}}></View>
-        </View>
-      </LinearGradient> */}
-
-      {/* <LinearGradient
-        colors={['#00A7F700', '#00A7F7', '#00FC92', '#00FC9200']}
-        style={{width: '100%'}}
-        start={{x: 0, y: 0.5}}
-        end={{x: 1, y: 0.5}}>
-        <View
-          style={{
-            borderBottomColor: 'transparent',
-            borderBottomWidth: 1,
-            width: '100%',
-            flexWrap: 'nowrap',
-            flexDirection: 'row',
-            alignItems: 'center',
-
-          }}>
-          <View style={{flex: 1, height: 1}}></View>
-        </View>
-      </LinearGradient> */}
     </View>
   );
 };

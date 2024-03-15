@@ -7,8 +7,11 @@ import {styles} from './styles';
 import ButtonsCommon from '../../../components/Buttons/ButtonCommon.js';
 import ButtonsCommonAlt from '../../../components/Buttons/ButtonCommonAlt/index.js';
 import HeaderModed from '../../../components/HeaderModed/index.js';
-import BackButton from '../../../components/Buttons/BackButton/index.js';
+
+import Back from '../../../assets/images/back.svg';
 import {useNavigation} from '@react-navigation/native';
+import BackButton from '../../../components/NavButtons/BackButton/index.js';
+import HamBurgerButton from '../../../components/NavButtons/HamBurgerButton/index.js';
 
 const Login = () => {
   const navigation = useNavigation();
@@ -21,6 +24,7 @@ const Login = () => {
       <BackgroundLayout />
       <HeaderModed
         slotLeft={<BackButton />}
+        // slotLeft={<HamBurgerButton />}
         slotCenter={<></>}
         slotRight={<></>}
       />
@@ -57,7 +61,10 @@ const Login = () => {
         </View>
 
         <View style={{marginTop: widthToDp(5)}}>
-          <ButtonsCommonAlt btnText={'Sign Up'} />
+          <ButtonsCommonAlt
+            btnText={'Sign Up'}
+            onPress={() => navigation.navigate('Signup')}
+          />
         </View>
       </View>
     </View>

@@ -31,6 +31,7 @@ import {Colors} from '../../theme';
 import CircleBackground from '../../components/CircleBackground';
 import Counter from '../../components/Counter';
 import {useNavigation} from '@react-navigation/native';
+import HamBurgerButton from '../../components/NavButtons/HamBurgerButton';
 
 const Menu = () => {
   const navigation = useNavigation();
@@ -69,7 +70,7 @@ const Menu = () => {
       <View style={styles.container}>
         <BackgroundLayout />
         <HeaderModed
-          slotLeft={<MenuNavButton icon={Hamburger} iconType="image" />}
+          slotLeft={<HamBurgerButton />}
           slotCenter={<Text style={styles.navbarPageTitle}>Menu</Text>}
           slotRight={<MenuNavButton icon={HeartIcon} iconType="image" />}
         />
@@ -232,10 +233,7 @@ const Menu = () => {
           </View>
         </View>
 
-        <View
-          style={{
-            marginTop: 40,
-          }}>
+        <View>
           <Text
             style={{
               marginLeft: 15,

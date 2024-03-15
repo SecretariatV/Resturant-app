@@ -8,18 +8,13 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingHorizontal: 15,
   },
-  saveButton: {
-    position: 'absolute',
-
-    bottom: 30,
-    left: 20,
-    right: 20,
-  },
-
-  headerTitle: {
-    color: Colors.WHITE,
-    fontFamily: fonts.URBANIST_EXTRABOLD,
-    fontSize: 20,
+  to: {
+    width: '100%',
+    paddingHorizontal: 4,
+    paddingVertical: 2,
+    btnText: {
+      color: '#fff',
+    },
   },
 });
 export {styles};

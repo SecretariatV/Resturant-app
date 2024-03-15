@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
     // padding: 10,
     // height: 60,
     alignSelf: 'center',
-    paddingVertical: 5,
+    // paddingVertical: 5,
     backgroundColor: '#1A415899',
     // backgroundColor: 'transparent',
 

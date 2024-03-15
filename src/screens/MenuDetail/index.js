@@ -30,6 +30,8 @@ import CircleBackground from '../../components/CircleBackground/index.js';
 import LottieView from 'lottie-react-native';
 import Colors from '../../theme/Colors.js';
 import Footer from '../../components/Footer/index.js';
+import {fonts} from '../../theme/FontFamily.js';
+import HamBurgerButton from '../../components/NavButtons/HamBurgerButton/index.js';
 
 const MenuDetail = () => {
   const navigation = useNavigation();
@@ -67,40 +69,42 @@ const MenuDetail = () => {
   return (
     <View style={styles.container}>
       <BackgroundLayout />
-      <HeaderModed
-        slotLeft={<MenuNavButton icon={Hamburger} iconType="image" />}
-        slotCenter={<Text style={styles.headerText}>Menu</Text>}
-        slotRight={
-          <MenuNavButton
-            containerStyle={{width: 60}}
-            icon={Fav}
-            iconType="image"
-            iconStyle={{
-              width: widthToDp(8),
-              height: widthToDp(8),
-              // margin: 5,
-            }}
-          />
-        }
-      />
-      <View
-        style={{
-          height: heightToDp(60),
-          width: widthToDp(100),
-          marginTop: 70,
-        }}>
-        <Swiper style={{}} loop={false} showsPagination={true}>
-          {menuSwipe.map((item, index) => (
-            <View style={styles.slide1} key={index}>
-              <Image source={item.imgUrl} resizeMode="cover" style={{}} />
-              <View style={styles.arContainer}>
-                <Ar width={30} height={30} />
-              </View>
-            </View>
-          ))}
-        </Swiper>
-      </View>
       <ScrollView>
+        <HeaderModed
+          headerStyle={{paddingLeft: 15}}
+          // slotLeft={<HamBurgerButton />}
+          slotCenter={<></>}
+          slotRight={
+            <MenuNavButton
+              containerStyle={{width: 60}}
+              icon={Fav}
+              iconType="image"
+              iconStyle={{
+                width: widthToDp(8),
+                height: widthToDp(8),
+                // margin: 5,
+              }}
+            />
+          }
+        />
+        <View
+          style={{
+            height: heightToDp(60),
+            width: widthToDp(100),
+            marginTop: 15,
+          }}>
+          <Swiper style={{}} loop={false} showsPagination={true}>
+            {menuSwipe.map((item, index) => (
+              <View style={styles.slide1} key={index}>
+                <Image source={item.imgUrl} resizeMode="cover" style={{}} />
+              </View>
+            ))}
+          </Swiper>
+          <View style={styles.arContainer}>
+            <Ar width={30} height={30} />
+          </View>
+        </View>
+
         <View style={styles.menuContainer}>
           <View style={styles.menuSubContainer}>
             <Text style={styles.resturantName}>Burger</Text>
@@ -173,6 +177,7 @@ const MenuDetail = () => {
             <Text style={styles.quantityTxt}>Customization</Text>
             <RestaurantButton
               btnText={'Spicy Level'}
+              btnTextStyle={{fontFamily: fonts.URBANIST_SEMIBOLD}}
               style={{width: '90%', marginTop: 10, borderRadius: 16}}
             />
             <View style={styles.levelContainer}>
@@ -189,6 +194,7 @@ const MenuDetail = () => {
 
             <RestaurantButton
               btnText={'Portion size'}
+              btnTextStyle={{fontFamily: fonts.URBANIST_SEMIBOLD}}
               style={{width: '90%', marginTop: 10, borderRadius: 16}}
             />
             <View style={styles.levelContainer}>
@@ -213,6 +219,7 @@ const MenuDetail = () => {
 
             <ButtonsCommonAlt
               btnText={'Add to Cart'}
+              onPress={() => navigation.navigate('Cart')}
               containerStyle={{width: widthToDp(40), marginTop: 10}}
               btnStyle={{borderRadius: 22}}
               linearTextStyle={{borderRadius: 22}}
@@ -276,7 +283,7 @@ const MenuDetail = () => {
           </View>
         </View>
       </ScrollView>
-      <Footer />
+      {/* <Footer /> */}
     </View>
 
     // </View>

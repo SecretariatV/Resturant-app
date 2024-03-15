@@ -29,6 +29,7 @@ import {reviews} from '../../utils/demodata.js';
 import ReviewCard from '../../components/ReviewCard/index.js';
 import {width, widthToDp} from '../../utils/Dimensions.js';
 import {CheckBox} from '@rneui/themed';
+import HamBurgerButton from '../../components/NavButtons/HamBurgerButton/index.js';
 
 const FirstNestedRoute = () => (
   <View style={{flex: 1, alignItems: 'center'}}>
@@ -315,7 +316,8 @@ const PaymentOption = () => {
       <BackgroundLayout />
 
       <HeaderModed
-        slotLeft={<MenuNavButton icon={Hamburger} iconType="image" />}
+        headerStyle={{marginLeft: 15}}
+        slotLeft={<HamBurgerButton />}
         slotCenter={<Text style={styles.headerText}>Payment Option</Text>}
         slotRight={<></>}
       />
