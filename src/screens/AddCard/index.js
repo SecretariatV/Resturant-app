@@ -3,8 +3,7 @@ import React from 'react';
 import {styles} from './styles';
 import BackgroundLayout from '../../components/BackgroundLayout';
 import HeaderModed from '../../components/HeaderModed';
-import MenuNavButton from '../../components/MenuNavButton';
-import Hamburger from '../../assets/images/hamburger.png';
+
 import FancyInput from '../../components/FancyInput';
 import ButtonsCommon from '../../components/Buttons/ButtonCommon.js';
 import HamBurgerButton from '../../components/NavButtons/HamBurgerButton/index.js';

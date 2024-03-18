@@ -205,7 +205,7 @@ const Restaurant = () => {
     <View style={styles.container}>
       <BackgroundLayout />
       <HeaderModed
-        headerStyle={{marginLeft: 15}}
+        // headerStyle={{marginLeft: 15}}
         slotLeft={<HamBurgerButton />}
         slotCenter={<></>}
         slotRight={<></>}
@@ -246,14 +246,7 @@ const Restaurant = () => {
               colors={gradientColors}
               useAngle={true}
               angle={300}
-              style={{
-                borderRadius: 16,
-                flexWrap: 'nowrap',
-                marginVertical: 5,
-                marginRight: widthToDp(4),
-
-                alignSelf: 'flex-start',
-              }}
+              style={styles.aboutLinear}
               start={{x: 0, y: 0.5}}
               end={{x: 1, y: 0.5}}>
               <TouchableOpacity
@@ -279,14 +272,7 @@ const Restaurant = () => {
               colors={gradientColors}
               useAngle={true}
               angle={300}
-              style={{
-                borderRadius: 16,
-                flexWrap: 'nowrap',
-                marginVertical: 5,
-                marginRight: widthToDp(4),
-
-                alignSelf: 'flex-start',
-              }}
+              style={styles.reviewLinear}
               start={{x: 0, y: 0.5}}
               end={{x: 1, y: 0.5}}>
               <TouchableOpacity

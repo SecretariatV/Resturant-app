@@ -11,8 +11,6 @@ const forBoth = (anStyles, ioStyles) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    // paddingHorizontal: 15,
-    // marginVertical: 15,
   },
   introHeader: {
     flexDirection: 'row',
@@ -35,7 +33,6 @@ const styles = StyleSheet.create({
   },
   gradientBoxContainer: {
     margin: 1,
-    // width: '30%',
     flexDirection: 'row',
     paddingVertical: 5,
     paddingHorizontal: 5,
@@ -68,8 +65,6 @@ const styles = StyleSheet.create({
     position: 'relative',
     height: 2,
     marginTop: 5,
-    // justifyContent: 'center',
-    // alignItems: 'center',
   },
   filterHeading: {
     flexDirection: 'row',
@@ -111,7 +106,6 @@ const styles = StyleSheet.create({
   },
   cuisineTypeBtns: {
     flexDirection: 'row',
-    // justifyContent: 'flex-start',
   },
   cuisineTypeBtnsContainerStyle: {
     flexDirection: 'row',
@@ -126,6 +120,10 @@ const styles = StyleSheet.create({
   },
   priceRangeLabelBottom: {
     marginBottom: 20,
+  },
+  listStyle: {
+    marginBottom: 30,
+    marginHorizontal: 15,
   },
 });
 export {styles};

@@ -18,8 +18,7 @@ import scan_here from '../../assets/images/scan_here.png';
 import scan_arrow from '../../assets/images/scan_arrow.png';
 import SkipButton from '../../components/Buttons/SkipButton';
 import HeaderModed from '../../components/HeaderModed';
-import MenuNavButton from '../../components/MenuNavButton';
-import Hamburger from '../../assets/images/hamburger.png';
+
 import CloseFilterBtn from '../../assets/images/closeBtnFilter.svg';
 
 import Footer from '../../components/Footer';
@@ -218,13 +217,11 @@ const RestaurantMain = () => {
                     end={{x: 1, y: 0.5}}></LinearGradient>
                 </View>
               </View>
-              {/* <Text style={styles.shareABillTxt}>Mark Anderson</Text> */}
             </View>
           </LinearGradient>
         </View>
       </View>
 
-      {/* <Footer /> */}
       <BottomSheet modalProps={{}} isVisible={isVisible}>
         <Image
           className="restaurant-filter-bg"
@@ -447,11 +444,8 @@ const RestaurantMain = () => {
       <SearchModded isVisible={isVisible} setIsVisible={setIsVisible} />
       <FlatList
         showsVerticalScrollIndicator={false}
-        style={{
-          marginVertical: 5,
-          marginHorizontal: 15,
-          // backgroundColor: 'red',
-        }}
+        style={styles.listStyle}
+        contentContainerStyle={{paddingBottom: 80}}
         data={restaurants}
         renderItem={renderItem}
         keyExtractor={item => item.id} // Key extractor for each item

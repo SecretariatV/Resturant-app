@@ -3,9 +3,6 @@ import React from 'react';
 import {styles} from './styles';
 import BackgroundLayout from '../../components/BackgroundLayout';
 import HeaderModed from '../../components/HeaderModed';
-import MenuNavButton from '../../components/MenuNavButton';
-import Hamburger from '../../assets/images/hamburger.png';
-import back from '../../assets/images/back-two.png';
 
 import BackgroundCard from '../../components/BackgroundCard';
 import FadedSeparator from '../../components/FadedSeparator';
@@ -41,11 +38,7 @@ const IngredientCustomization = () => {
             {Ingredients.map((item, index) => (
               <View style={styles.ingredientContainer}>
                 <View style={styles.ingredientSubContainer}>
-                  <View
-                    style={{
-                      backgroundColor: '#303F43',
-                      borderRadius: 8,
-                    }}>
+                  <View style={styles.productContainer}>
                     <Image source={require('../../assets/images/onion.png')} />
                   </View>
 
@@ -63,7 +56,6 @@ const IngredientCustomization = () => {
                         minusStyle={{width: 10, height: 2}}
                         plusStyle={{width: 10, height: 10}}
                       />
-                      {/* <Text style={styles.priceStyle}>$5</Text> */}
                     </View>
                   ) : (
                     <View
@@ -108,14 +100,7 @@ const IngredientCustomization = () => {
             </View>
           ))}
           <FadedSeparator />
-          <View
-            style={{
-              flexDirection: 'row',
-              width: '100%',
-              justifyContent: 'space-between',
-              paddingHorizontal: 15,
-              marginBottom: 10,
-            }}>
+          <View style={styles.totalContainer}>
             <Text style={styles.totalText}>Total</Text>
 
             <Text style={styles.totalPrice}>$150</Text>

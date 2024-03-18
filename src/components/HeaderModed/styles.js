@@ -21,6 +21,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     height: heightToDp(15),
     marginTop: Platform.OS === 'ios' ? heightToDp(12) : 10,
+    paddingHorizontal: getPlatformSpecificValue(15, 0),
   },
   headerContainerNoBanner: {
     paddingHorizontal: getPlatformSpecificValue(0, 10),

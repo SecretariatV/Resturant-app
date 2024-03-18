@@ -15,6 +15,10 @@ const styles = StyleSheet.create({
     marginTop: 10,
     alignSelf: 'center',
   },
+  productContainer: {
+    backgroundColor: '#303F43',
+    borderRadius: 8,
+  },
   ingredientContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -41,22 +45,16 @@ const styles = StyleSheet.create({
     color: Colors.WHITE,
     fontFamily: fonts.URBANIST_EXTRABOLD,
     fontSize: 20,
-    // marginTop: 10,
-    // alignSelf: 'center',
   },
   pricingTitle: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     width: '95%',
-    // alignItems: 'center',
-
-    // paddingHorizontal: 10,
   },
   pricingContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     width: '95%',
-    // paddingHorizontal: 15,
     alignItems: 'flex-start',
   },
   priceStyle: {
@@ -66,17 +64,21 @@ const styles = StyleSheet.create({
     fontSize: 18,
   },
 
-  totalText: {
-    // marginLeft: 10,
+  totalContainer: {
+    flexDirection: 'row',
+    width: '100%',
+    justifyContent: 'space-between',
+    paddingHorizontal: 15,
+    marginBottom: 10,
+  },
 
+  totalText: {
     color: Colors.WHITE,
     fontFamily: fonts.URBANIST_EXTRABOLD,
     fontSize: 20,
   },
 
   totalPrice: {
-    // marginLeft: 10,
-
     color: Colors.GREEN,
     fontFamily: fonts.URBANIST_EXTRABOLD,
     fontSize: 20,

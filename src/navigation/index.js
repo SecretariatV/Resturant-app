@@ -125,33 +125,6 @@ const HomeStack = ({activeRestaurant}) => {
   );
 };
 
-const PayStack = ({activeRestaurant}) => {
-  return (
-    <Stack.Navigator
-      initialRouteName="TabNavigator"
-      screenOptions={{
-        headerShown: false,
-      }}>
-      {/* <Stack.Screen name="Splash" component={Splash} /> */}
-
-      <Stack.Screen name="TabNavigator" component={TabNavigator} />
-
-      <Stack.Screen name="MenuDetail" component={MenuDetail} />
-      <Stack.Screen name="Menu" component={Menu} />
-      <Stack.Screen name="RestaurantMain" component={RestaurantMain} />
-      <Stack.Screen name="QrCode" component={QrCode} />
-      <Stack.Screen name="Restaurant" component={Restaurant} />
-      <Stack.Screen
-        name="IngredientCustomization"
-        component={IngredientCustomization}
-      />
-      <Stack.Screen name="PaymentOption" component={PaymentOption} />
-    </Stack.Navigator>
-  );
-};
-
-// const DrawerNav = () => {};
-
 const TabNavigator = ({activeRestaurant}) => {
   // const qRorMenu = activeRestaurant ? Menu : QrCode;
   const qRorMenuText = activeRestaurant ? 'Menu' : 'QrCode';
@@ -337,53 +310,6 @@ const TabNavigator = ({activeRestaurant}) => {
   );
 };
 
-const SecondTabNavigator = ({activeRestaurant}) => {
-  // const qRorMenu = activeRestaurant ? Menu : QrCode;
-  const qRorMenuText = activeRestaurant ? 'Menu' : 'QrCode';
-  return (
-    <Tab.Navigator
-      initialRouteName="Menu"
-      backBehavior="history"
-      screenListeners={({navigation, route}) => ({
-        tabPress: e => {},
-      })}
-      screenOptions={({route}) => ({
-        headerShown: false,
-        // tabBarHideOnKeyboard: true,
-        tabBarPosition: 'bottom',
-        tabBarShowLabel: false,
-        tabBarStyle: tabNavStyles.tabNavigatorBarStyle,
-      })}>
-      <Tab.Screen
-        name="Back"
-        component={RestaurantMain}
-        options={{
-          tabBarIcon: ({focused}) => {
-            return (
-              <View
-                style={{
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                  gap: 5,
-                  width: widthToDp(15),
-                  position: 'relative',
-                  left: -10,
-                }}>
-                <Image
-                  style={{width: 16, height: 16}}
-                  source={require('../assets/images/tabbar-back.png')}
-                />
-                <Text style={{color: '#fff', fontSize: screenToTextSize(3)}}>
-                  Back
-                </Text>
-              </View>
-            );
-          },
-        }}
-      />
-    </Tab.Navigator>
-  );
-};
 const RootNavigator = () => {
   const user = useSelector(state => state.auth.user);
   console.log(user, '========user Data======');

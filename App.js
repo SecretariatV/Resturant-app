@@ -14,6 +14,7 @@ import BootSplash from 'react-native-bootsplash';
 import RootNavigator from './src/navigation';
 import {Provider} from 'react-redux';
 import {PersistGate} from 'redux-persist/integration/react';
+import {StatusBar} from 'react-native';
 
 function Section({children, title}) {
   const isDarkMode = useColorScheme() === 'dark';
@@ -43,6 +44,8 @@ function App() {
 
   return (
     <Provider store={store}>
+      <StatusBar barStyle="light-content" />
+
       <PersistGate persistor={persistor}>
         <RootNavigator />
       </PersistGate>
