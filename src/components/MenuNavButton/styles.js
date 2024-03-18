@@ -7,6 +7,7 @@ const styles = StyleSheet.create({
   menuBtnContainer: {
     alignItems: 'center',
     justifyContent: 'center',
+    // paddingLeft: 15
   },
   linearGradient: {
     borderRadius: 10,

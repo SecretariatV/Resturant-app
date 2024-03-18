@@ -2,12 +2,12 @@ import {StyleSheet} from 'react-native';
 import {fonts} from '../../theme/FontFamily';
 import {heightToDp, width, widthToDp} from '../../utils/Dimensions';
 import {Colors} from '../../theme';
-import {getPlatformSpecificValue} from '../../utils/helper';
+import {getPlatformSpecificValue, screenToTextSize} from '../../utils/helper';
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingHorizontal: 15,
+    // paddingHorizontal: 15,
   },
   navbarPageTitle: {
     color: Colors.WHITE,
@@ -56,21 +56,29 @@ const styles = StyleSheet.create({
   },
   uselessWrapper: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
+    // backgroundColor: '#f00',
+    alignItems: 'center',
+    justifyContent: 'space-evenly',
     transform: [{rotate: '-90deg'}],
     position: 'absolute',
-    left: -25,
-    top: 140,
-    width: widthToDp(30),
+    left: -90,
+    top: 90,
+    width: widthToDp(70),
     height: heightToDp(20),
     // backgroundColor: 'red',
   },
+  verticalTabBtnGrad: {
+    borderRadius: 10,
+    flexWrap: 'wrap',
+    width: '90%',
+    marginTop: 10,
+  },
   verticalTabBtns1: {
-    width: widthToDp(20),
+    width: widthToDp(25),
     // paddingVertical: 10,
   },
   verticalTabBtns2: {
-    width: widthToDp(35),
+    width: widthToDp(40),
   },
   flatlistWrapper: {
     width: widthToDp(80),
@@ -78,7 +86,7 @@ const styles = StyleSheet.create({
     // backgroundColor: 'red',
   },
   itemTypeGrad: {
-    borderRadius: 20,
+    borderRadius: 10,
     justifyContent: 'center',
     alignItems: 'center',
     width: '100%',
@@ -87,14 +95,14 @@ const styles = StyleSheet.create({
   categoryWiseTabItem: {
     textAlign: 'center',
     width: '100%',
-    fontSize: 12,
-    color: '#fff',
+    fontSize: screenToTextSize(4),
+    color: '#fff7',
   },
   categoryWiseTabItemActive: {
     color: '#000',
     textAlign: 'center',
     width: '100%',
-    fontSize: 12,
+    fontSize: screenToTextSize(4),
     paddingVertical: heightToDp(1.5),
   },
   circleGradient: {
@@ -105,7 +113,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 5,
     alignSelf: 'center',
     alignItems: 'center',
-    backgroundColor: '#00000044',
+    backgroundColor: '#00000099',
     borderRadius: 15,
   },
   filterHeading: {
@@ -174,6 +182,7 @@ const styles = StyleSheet.create({
     // height: 60,
     alignSelf: 'center',
     paddingVertical: 15,
+    
     // backgroundColor: '#1A4158',
     // backgroundColor: '#345B61',
     // backgroundColor: '#FFFFFF',
@@ -195,7 +204,7 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     flexWrap: 'wrap',
     width: '90%',
-    marginTop: 10,
+    marginTop: 2,
     // padding: 10,
     // b
   },

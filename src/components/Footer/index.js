@@ -4,19 +4,34 @@ import {styles} from './styles';
 // import MenuBg from '../../assets/images/tabbar-center.svg';
 import MenuBg from '../../assets/images/footer.svg';
 import {heightToDp, width, widthToDp} from '../../utils/Dimensions.js';
-
+import {getPlatformSpecificValue} from '../../utils/helper.js';
+import FooterImage from '../../assets/images/footer.png';
 const Footer = () => {
   console.log(width, 'width', 'widthtodp', widthToDp(100));
   return (
-    <MenuBg
-      width={widthToDp(100)}
+    // <MenuBg
+    //   width={widthToDp(100)}
+    //   style={{
+    //     position: 'absolute',
+    //     bottom: width == 375 ? getPlatformSpecificValue(-15, -15) : getPlatformSpecificValue(-32, -32) ,
+    //     left: 0,
+    //     right: 0,
+    //     elevation: 1,
+    //   }}
+    // />
+    <Image
+      source={FooterImage}
       style={{
         position: 'absolute',
-        bottom: width == 375 ? -38 : -15,
+        bottom:
+          width == 375
+            ? getPlatformSpecificValue(-145, -137)
+            : getPlatformSpecificValue(-135, -155),
         left: 0,
         right: 0,
-        elevation: 1,
-        // zIndex: 1,
+        // bottom: -155,
+        width: widthToDp(100),
+        objectFit: 'contain',
       }}
     />
   );

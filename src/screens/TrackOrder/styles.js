@@ -133,7 +133,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 16,
     paddingHorizontal: 8,
     paddingTop: 8,
-    marginBottom: 20
+    marginBottom: 20,
   },
   paymentUserBoxNamenPriceContainer: {
     flexDirection: 'row',
@@ -146,22 +146,19 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   sliderGradBar: {
-    backgroundColor: 'transparent',
-    // borderRadius: 15,
-    width: widthToDp(80),
-    position: 'absolute',
+    backgroundColor: '#41414c',
+    borderRadius: 15,
+    width: widthToDp(90),
     height: 8,
-    marginTop: 0,
-    top: 16,
-    left: 0,
-    zIndex: -1,
+    marginTop: 10,
+    marginBottom: 10,
     // justifyContent: 'center',
     // alignItems: 'center',
   },
   percentItemPrice: {
     color: Colors.GREEN,
     fontWeight: 'bold',
-    fontSize: screenToTextSize(5)
+    fontSize: screenToTextSize(5),
   },
   totalPrice: {
     // marginLeft: 10,
@@ -223,7 +220,7 @@ const styles = StyleSheet.create({
   amountTxt: {
     fontFamily: fonts.URBANIST_BOLD,
     fontSize: screenToTextSize(8),
-    marginTop: getPlatformSpecificValue(10,-5),
+    marginTop: getPlatformSpecificValue(10, -5),
   },
   shareABill: {
     fontSize: screenToTextSize(6),
@@ -274,6 +271,29 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
     width: '90%',
+  },
+  trackOrderCollapseHeader: {
+    color: Colors.WHITE,
+    fontSize: screenToTextSize(5),
+    fontFamily: fonts.URBANIST_BOLD,
+  },
+  trackOrderCollapseSubHeader: {
+    color: '#ffffffbb',
+    marginLeft: 5,
+    fontSize: screenToTextSize(4),
+    fontWeight: '100',
+    fontFamily: fonts.URBANIST_THIN,
+  },
+  starterItemsListContainer: {},
+  starterItemsListItem: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    marginVertical: 2,
+  },
+  starterItemsListItemText: {
+    color: '#fff',
+    fontSize: screenToTextSize(4),
   },
   scroll: {
     alignItems: 'center',

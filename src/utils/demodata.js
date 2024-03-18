@@ -216,6 +216,29 @@ export const paymentMode = [
   },
 ];
 
+export const approvedPayment = [
+  {
+    name: 'John',
+    staus: 'paid',
+    amount: '20',
+  },
+  {
+    name: 'Anderson',
+    staus: 'paid',
+    amount: '20',
+  },
+  {
+    name: 'Henry',
+    staus: 'unpaid',
+    amount: '20',
+  },
+  {
+    name: 'Robinson',
+    staus: 'paid',
+    amount: '20',
+  },
+];
+
 export default Notifications = [
   {
     id: 1,

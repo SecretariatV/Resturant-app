@@ -8,30 +8,34 @@ import {
 } from 'react-native';
 import React, {useState} from 'react';
 import {styles} from './styles';
+import LinearGradient from 'react-native-linear-gradient';
+import {Image} from 'react-native';
+import LottieView from 'lottie-react-native';
+import {dressCode} from '../../utils/demodata';
+import {useNavigation} from '@react-navigation/native';
+import {SafeAreaProvider} from 'react-native-safe-area-context';
+import {BottomSheet} from '@rneui/themed';
+// components
 import BackgroundLayout from '../../components/BackgroundLayout';
 import HeaderModed from '../../components/HeaderModed';
 import MenuNavButton from '../../components/MenuNavButton';
-import Hamburger from '../../assets/images/hamburger.png';
-import HeartIcon from '../../assets/images/fav.png';
 import Footer from '../../components/Footer';
-import LinearGradient from 'react-native-linear-gradient';
 import SearchModded from '../../components/SearchModded';
-import {SafeAreaProvider} from 'react-native-safe-area-context';
-import {BottomSheet} from '@rneui/themed';
-import CloseFilterBtn from '../../assets/images/closeBtnFilter.svg';
 import FadedSeparator from '../../components/FadedSeparator';
 import ToggleButton from '../../components/ToggleButton';
 import BackgroundCard from '../../components/BackgroundCard';
-import {dressCode} from '../../utils/demodata';
-import {Image} from 'react-native';
-import {heightToDp, widthToDp} from '../../utils/Dimensions';
-import LottieView from 'lottie-react-native';
-import {fonts} from '../../theme/FontFamily';
-import {Colors} from '../../theme';
 import CircleBackground from '../../components/CircleBackground';
 import Counter from '../../components/Counter';
-import {useNavigation} from '@react-navigation/native';
-
+//images
+import CloseFilterBtn from '../../assets/images/closeBtnFilter.svg';
+import Hamburger from '../../assets/images/hamburger.png';
+import HeartIcon from '../../assets/images/fav.png';
+import Star from '../../assets/images/star.svg';
+//utils
+import {heightToDp, widthToDp} from '../../utils/Dimensions';
+import {fonts} from '../../theme/FontFamily';
+import {Colors} from '../../theme';
+import { screenToTextSize } from '../../utils/helper';
 const Menu = () => {
   const navigation = useNavigation();
 
@@ -73,7 +77,7 @@ const Menu = () => {
           slotCenter={<Text style={styles.navbarPageTitle}>Menu</Text>}
           slotRight={<MenuNavButton icon={HeartIcon} iconType="image" />}
         />
-        <SearchModded isVisible={showFilter} setIsVisible={setShowFilter} />
+        {/* <SearchModded isVisible={showFilter} setIsVisible={setShowFilter} /> */}
         <View class="category-wise-menu" style={styles.categoryWiseContainer}>
           <View class="category-container" style={styles.verticalTabs}>
             <View class="useless-wrapper" style={styles.uselessWrapper}>
@@ -86,7 +90,7 @@ const Menu = () => {
                   }
                   useAngle
                   angle={300}
-                  style={styles.linearBack}
+                  style={styles.verticalTabBtnGrad}
                   start={{x: 1, y: 0.5}}
                   end={{x: 1, y: 0.5}}>
                   <Text
@@ -108,7 +112,7 @@ const Menu = () => {
                   }
                   useAngle
                   angle={300}
-                  style={styles.linearBack}
+                  style={styles.verticalTabBtnGrad}
                   start={{x: 1, y: 0.5}}
                   end={{x: 1, y: 0.5}}>
                   <Text
@@ -136,7 +140,7 @@ const Menu = () => {
                     style={{
                       padding: 10,
                       width: 160,
-                      height: heightToDp(100),
+                      height: heightToDp(80),
                       // margin: 10,
                     }}
                     childrenStyle={{borderRadius: 26}}
@@ -158,7 +162,7 @@ const Menu = () => {
                       >
                         <Image
                           source={require('../../assets/images/burger_one.png')}
-                          style={{width: 100, height: 100}}
+                          style={{width: 100, height: 100, objectFit: 'contain'}}
                         />
                       </View>
                     </LinearGradient>
@@ -232,15 +236,13 @@ const Menu = () => {
           </View>
         </View>
 
-        <View
-          style={{
-            marginTop: 40,
-          }}>
+        <View>
           <Text
             style={{
               marginLeft: 15,
-              fontSize: fonts.URBANIST_EXTRABOLD,
-              fontSize: 22,
+              fontSize: fonts.URBANIST_BOLD,
+              fontSize: screenToTextSize(6),
+              fontWeight: 'bold',
               color: Colors.GREEN,
             }}>
             Categories
@@ -251,113 +253,134 @@ const Menu = () => {
             showsHorizontalScrollIndicator={false}
             keyExtractor={(item, index) => item.id + index.toString()}
             renderItem={({item, index}) => (
-              <BackgroundCard
-                style={{
-                  padding: 10,
-                }}
-                childrenStyle={{borderRadius: 26}}
-                linearBackStyle={{borderRadius: 26}}>
-                <View style={styles.mainContainer}>
-                  <View style={styles.subContainer}>
-                    <View style={styles.productVerticalContainer}>
-                      <View
-                        style={{alignItems: 'center', flexDirection: 'row'}}>
-                        <Text style={styles.productTxt}>Burger</Text>
-                        <Text
-                          style={[styles.ratingTxt, styles.ratingTxtVertical]}>
-                          4.5
-                        </Text>
-                        <Image
-                          source={require('../../assets/images/star.png')}
-                          style={styles.starImg}
-                        />
-                      </View>
-                    </View>
-                    <View style={{flexDirection: 'column'}}>
-                      <View style={{flexDirection: 'row'}}>
-                        {dishType.map((item, index) => (
-                          <CircleBackground
-                            style={
-                              index === 0 ? {marginLeft: 0} : {marginLeft: 5}
-                            }
-                            key={index}>
-                            <LottieView
-                              source={item.imgUrl}
-                              autoPlay
-                              // loop
-                              // Additional props for customization
-                              loop={false}
-                              speed={1.5}
-                              resizeMode="contain"
-                              style={{
-                                width: 20,
-                                height: 20,
-                                margin: 5,
-                                padding: 10,
-                              }}
-                            />
-                          </CircleBackground>
-                        ))}
-                      </View>
-                      <View style={{flexDirection: 'row'}}>
-                        <Text
-                          style={[
-                            styles.price,
-                            {
-                              textDecorationLine: 'line-through',
-                              textDecorationStyle: 'solid',
-                              marginRight: 10,
-                              color: '#F7F7F899',
-                            },
-                          ]}>
-                          $100
-                        </Text>
+              // <BackgroundCard
+              //   style={{
+              //     padding: 10,
+              //   }}
+              //   childrenStyle={{borderRadius: 26}}
+              //   linearBackStyle={{borderRadius: 26}}>
+              //   <View style={styles.mainContainer}>
+              //     <View style={styles.subContainer}>
+              //       <View style={styles.productVerticalContainer}>
+              //         <View
+              //           style={{alignItems: 'center', flexDirection: 'row'}}>
+              //           <Text style={styles.productTxt}>Burger</Text>
+              //           <Text
+              //             style={[styles.ratingTxt, styles.ratingTxtVertical]}>
+              //             4.5
+              //           </Text>
+              //           <Image
+              //             source={require('../../assets/images/star.png')}
+              //             style={styles.starImg}
+              //           />
+              //         </View>
+              //       </View>
+              //       <View style={{flexDirection: 'column'}}>
+              //         <View style={{flexDirection: 'row'}}>
+              //           {dishType.map((item, index) => (
+              //             <CircleBackground
+              //               style={
+              //                 index === 0 ? {marginLeft: 0} : {marginLeft: 5}
+              //               }
+              //               key={index}>
+              //               <LottieView
+              //                 source={item.imgUrl}
+              //                 autoPlay
+              //                 // loop
+              //                 // Additional props for customization
+              //                 loop={false}
+              //                 speed={1.5}
+              //                 resizeMode="contain"
+              //                 style={{
+              //                   width: 20,
+              //                   height: 20,
+              //                   margin: 5,
+              //                   padding: 10,
+              //                 }}
+              //               />
+              //             </CircleBackground>
+              //           ))}
+              //         </View>
+              //         <View style={{flexDirection: 'row'}}>
+              //           <Text
+              //             style={[
+              //               styles.price,
+              //               {
+              //                 textDecorationLine: 'line-through',
+              //                 textDecorationStyle: 'solid',
+              //                 marginRight: 10,
+              //                 color: '#F7F7F899',
+              //               },
+              //             ]}>
+              //             $100
+              //           </Text>
 
-                        <Text style={styles.price}>$100</Text>
-                      </View>
+              //           <Text style={styles.price}>$100</Text>
+              //         </View>
+              //       </View>
+              //     </View>
+              //     <LinearGradient
+              //       colors={['#5A5A75', '#27273500']}
+              //       useAngle
+              //       angle={300}
+              //       style={[styles.linearBack, styles.verticalLinearBack]}
+              //       start={{x: 1, y: 0.5}}
+              //       end={{x: 1, y: 0.5}}>
+              //       <View
+              //         style={[styles.circleTwoGradient]}
+              //         //   onPress={() => (!showMenu ? handleButton() : null)}
+              //       >
+              //         {/* {children} */}
+
+              //         <Image
+              //           source={require('../../assets/images/burger_one.png')}
+              //           style={{width: 100, height: 100}}
+              //         />
+              //       </View>
+              //     </LinearGradient>
+              //     <View
+              //       style={{alignItems: 'center', justifyContent: 'center'}}>
+              //       <Counter
+              //         vertical
+              //         minusContainerStyle={{
+              //           height: heightToDp(7),
+              //           width: widthToDp(7),
+              //           borderRadius: 8,
+              //         }}
+              //         plusContainerStyle={{
+              //           height: heightToDp(6),
+              //           width: widthToDp(6),
+              //           borderRadius: 8,
+              //           backgroundColor: Colors.GREEN,
+              //         }}
+              //         counterTextStyle={{margin: 15}}
+              //         minusStyle={{width: 10, height: 2}}
+              //         plusStyle={{width: 10, height: 10}}
+              //       />
+              //     </View>
+              //   </View>
+              // </BackgroundCard>
+              <View class="menu-item">
+                  <View class="menu-item-detail">
+                    <View class="item-name-and-rating">
+                      <Text class="item-name">Burger</Text>
+                      <View class="item-rating"><Text>4.5</Text><Star /></View>
                     </View>
+                    <View class="item-categories"></View>
+                    <View class="item-price"></View>
                   </View>
-                  <LinearGradient
-                    colors={['#5A5A75', '#27273500']}
-                    useAngle
-                    angle={300}
-                    style={[styles.linearBack, styles.verticalLinearBack]}
-                    start={{x: 1, y: 0.5}}
-                    end={{x: 1, y: 0.5}}>
-                    <View
-                      style={[styles.circleTwoGradient]}
-                      //   onPress={() => (!showMenu ? handleButton() : null)}
-                    >
-                      {/* {children} */}
-
-                      <Image
+                  <View class="menu-item-image">
+                   <Image
                         source={require('../../assets/images/burger_one.png')}
                         style={{width: 100, height: 100}}
                       />
-                    </View>
-                  </LinearGradient>
-                  <View
-                    style={{alignItems: 'center', justifyContent: 'center'}}>
-                    <Counter
-                      vertical
-                      minusContainerStyle={{
-                        height: heightToDp(7),
-                        width: widthToDp(7),
-                        borderRadius: 8,
-                      }}
-                      plusContainerStyle={{
-                        height: heightToDp(6),
-                        width: widthToDp(6),
-                        borderRadius: 8,
-                        backgroundColor: Colors.GREEN,
-                      }}
-                      counterTextStyle={{margin: 15}}
-                      minusStyle={{width: 10, height: 2}}
-                      plusStyle={{width: 10, height: 10}}
-                    />
                   </View>
-                </View>
-              </BackgroundCard>
+                  <View class="menu-item-qty">
+                    <TouchableOpacity></TouchableOpacity>
+                    <Text>1</Text>
+                    <TouchableOpacity></TouchableOpacity>
+                  </View>
+              </View>
             )}
           />
         </View>

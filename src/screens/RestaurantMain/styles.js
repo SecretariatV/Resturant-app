@@ -2,7 +2,7 @@ import {Platform, StyleSheet} from 'react-native';
 import {fonts} from '../../theme/FontFamily';
 import {width, widthToDp} from '../../utils/Dimensions';
 import {Colors} from '../../theme';
-import { screenToTextSize } from '../../utils/helper';
+import {screenToTextSize} from '../../utils/helper';
 
 const forBoth = (anStyles, ioStyles) => {
   return Platform.OS === 'android' ? anStyles : ioStyles;
@@ -56,17 +56,20 @@ const styles = StyleSheet.create({
   activeOrderText: {
     fontSize: screenToTextSize(3),
     color: Colors.GREEN,
-    height: 15
+    height: 15,
   },
   activeOrderBar: {
     marginLeft: 5,
   },
   activeOrderBarbg: {
-    backgroundColor: "#ccc",
+    backgroundColor: '#ccc',
     borderRadius: 15,
     width: '100%',
     position: 'relative',
     height: 2,
+    marginTop: 5,
+    // justifyContent: 'center',
+    // alignItems: 'center',
   },
   filterHeading: {
     flexDirection: 'row',

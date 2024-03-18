@@ -30,7 +30,7 @@ import Footer from '../../components/Footer';
 const Restaurant = () => {
   const [expanded, setExpanded] = useState(true);
   const [activeTab, setActiveTab] = useState('about');
-  const [isToggled, setIsToggled] = useState(false);
+  const [isToggled, setIsToggled] = useState(true);
 
   useEffect(() => {
     console.log(activeTab, 'activeTab');

@@ -6,6 +6,7 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 // import {createDrawerNavigator} from '@react-navigation/drawer';
 // import DrawerNavigation from '../screens/drawer/DrawerNavigation';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
 // styles
 import {tabNavStyles} from './tabNavigatorStyles';
@@ -50,7 +51,11 @@ import QrIcon from '../assets/images/tabbar-qr.svg';
 import {useSelector} from 'react-redux';
 import PaymentOption from '../screens/PaymentOption';
 import AddCard from '../screens/AddCard';
+import AmountPaid from '../screens/AmountPaid';
+import HomeIcon from '../assets/images/home.svg'
 
+import TrackOrder from '../screens/TrackOrder';
+import HomeScreens from '../screens/HomeScreens';
 const Tab = createBottomTabNavigator();
 // const Drawer = createDrawerNavigator();
 const Stack = createNativeStackNavigator();
@@ -83,7 +88,7 @@ const AuthStack = ({toggleLogin}) => {
 const HomeStack = ({activeRestaurant}) => {
   return (
     <Stack.Navigator
-      initialRouteName="Thankyou"
+      initialRouteName="TabNavigator"
       screenOptions={{
         headerShown: false,
       }}>
@@ -102,8 +107,11 @@ const HomeStack = ({activeRestaurant}) => {
         component={IngredientCustomization}
       />
       <Stack.Screen name="PaymentOption" component={PaymentOption} />
+      <Stack.Screen name="AmountPaid" component={AmountPaid} />
+      <Stack.Screen name="TrackOrder" component={TrackOrder} />
       <Stack.Screen name="AddCard" component={AddCard} />
       <Stack.Screen name="Thankyou" component={Thankyou} />
+      <Stack.Screen name="HomeScreens" component={HomeScreens} />
       {/* <Stack.Screen name="MyOrder" component={MyOrder} /> */}
     </Stack.Navigator>
   );
@@ -112,13 +120,13 @@ const HomeStack = ({activeRestaurant}) => {
 const PayStack = ({activeRestaurant}) => {
   return (
     <Stack.Navigator
-      initialRouteName="SecondTabNavigator"
+      initialRouteName="TabNavigator"
       screenOptions={{
         headerShown: false,
       }}>
       {/* <Stack.Screen name="Splash" component={Splash} /> */}
 
-      <Stack.Screen name="SecondTabNavigator" component={SecondTabNavigator} />
+      <Stack.Screen name="TabNavigator" component={TabNavigator} />
 
       <Stack.Screen name="MenuDetail" component={MenuDetail} />
       <Stack.Screen name="Menu" component={Menu} />
@@ -137,7 +145,7 @@ const PayStack = ({activeRestaurant}) => {
 // const DrawerNav = () => {};
 
 const TabNavigator = ({activeRestaurant}) => {
-  // const qRorMenu = activeRestaurant ? Menu : QrCode;
+  const qRorMenu = activeRestaurant ? Menu : QrCode;
   const qRorMenuText = activeRestaurant ? 'Menu' : 'QrCode';
   return (
     <Tab.Navigator
@@ -154,7 +162,7 @@ const TabNavigator = ({activeRestaurant}) => {
         tabBarStyle: tabNavStyles.tabNavigatorBarStyle,
       })}>
       <Tab.Screen
-        name="Back"
+        name="RestaurantMain"
         component={RestaurantMain}
         options={{
           tabBarIcon: ({focused}) => {
@@ -169,9 +177,10 @@ const TabNavigator = ({activeRestaurant}) => {
                   left: -10,
                 }}>
                 <Image
-                  style={{width: 16, height: 16}}
-                  source={require('../assets/images/tabbar-back.png')}
+                  style={{width: 16, height: 16, opacity: 0.6}}
+                  source={require('../assets/images/home.png')}
                 />
+                {/* <HomeIcon width={25} height={25} style={{ opacity: 0.5, marginBottom: -5}}/> */}
                 <Text style={{color: '#fff', fontSize: screenToTextSize(3)}}>
                   Back
                 </Text>
@@ -198,7 +207,7 @@ const TabNavigator = ({activeRestaurant}) => {
         }}
       />
       <Tab.Screen
-        name={qRorMenuText}
+        name={"Menu"}
         component={Menu}
         options={{
           tabBarLabel: ({focused}) => {
@@ -228,14 +237,14 @@ const TabNavigator = ({activeRestaurant}) => {
           },
         }}
       />
-      {/* <Tab.Screen
-        name="Menu"
-        component={Menu}
+      <Tab.Screen
+        name="MenuDetail"
+        component={MenuDetail}
         options={{
           tabBarButton: () => null,
           tabBarVisible: false,
         }}
-      /> */}
+      />
 
       <Tab.Screen
         name="Restaurant"
@@ -249,6 +258,22 @@ const TabNavigator = ({activeRestaurant}) => {
       <Tab.Screen
         name="Thankyou"
         component={Thankyou}
+        options={{
+          tabBarButton: () => null,
+          tabBarVisible: false,
+        }}
+      />
+      <Tab.Screen
+        name="TrackOrder"
+        component={TrackOrder}
+        options={{
+          tabBarButton: () => null,
+          tabBarVisible: false,
+        }}
+      />
+      <Tab.Screen
+        name="HomeScreens"
+        component={HomeScreens}
         options={{
           tabBarButton: () => null,
           tabBarVisible: false,
@@ -349,7 +374,7 @@ const TabNavigator = ({activeRestaurant}) => {
                 }}>
                 <Image
                   style={{width: 16, height: 16}}
-                  source={require('../assets/images/tabbar-cart.png')}
+                  source={require('../assets/images/cart.png')}
                 />
                 <Text style={{color: '#fff', fontSize: screenToTextSize(3)}}>
                   Cart
@@ -360,8 +385,8 @@ const TabNavigator = ({activeRestaurant}) => {
         }}
       />
       <Tab.Screen
-        name="Pay"
-        component={Pay}
+        name="PaymentOption"
+        component={PaymentOption}
         options={{
           tabBarIcon: ({focused}) => {
             return (
@@ -376,7 +401,7 @@ const TabNavigator = ({activeRestaurant}) => {
                 }}>
                 <Image
                   style={{width: 16, height: 16}}
-                  source={require('../assets/images/tabbar-pay.png')}
+                  source={require('../assets/images/pay.png')}
                 />
                 <Text style={{color: '#fff', fontSize: screenToTextSize(3)}}>
                   Pay
@@ -444,12 +469,6 @@ const RootNavigator = () => {
   const [activeRestaurant, setActiveRestaurant] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  // const user = true;
-  // useEffect(() => {
-  //   getData();
-  //   console.log(saveUser, 'saveUser');
-  //   return () => {};
-  // }, [saveUser, activeRestaurant]);
   useEffect(() => {
     console.log(user, 'user');
     if (user) {
@@ -473,21 +492,17 @@ const RootNavigator = () => {
     }
   };
   return (
-    <NavigationContainer>
-      {/* <View style={{  backgroundColor: 'transparent'}}>
-        <Image resizeMethod='auto' resizeMode='contain' source={require('../assets/images/tabbar-bg.svg')} style={{ backgroundColor: 'transparent', width: widthToDp(100)}} />
-      </View> */}
-      {/* <DrawerNavigation /> */}
-      {/* {!saveUser ? HomeStack(activeRestaurant) : AuthStack()} */}
-      {user ? (
-        <HomeStack />
-      ) : (
-        <AuthStack
+    <GestureHandlerRootView style={{flex: 1}}>
+      <NavigationContainer>
+        {/* <View style={{  backgroundColor: 'transparent'}}>
+          <Image resizeMethod='auto' resizeMode='contain' source={require('../assets/images/tabbar-bg.svg')} style={{ backgroundColor: 'transparent', width: widthToDp(100)}} />
+        </View> */}
+        {/* <DrawerNavigation /> */}
+        {/* {!saveUser ? HomeStack(activeRestaurant) : AuthStack()} */}
+        {user ? <HomeStack /> : <AuthStack />}
+      </NavigationContainer>
 
-        // initialParams={{onLogin: handleLogin}}
-        />
-      )}
-    </NavigationContainer>
+    </GestureHandlerRootView>
   );
 };
 export default RootNavigator;

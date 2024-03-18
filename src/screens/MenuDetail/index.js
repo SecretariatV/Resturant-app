@@ -28,6 +28,8 @@ import {reviews} from '../../utils/demodata.js';
 import {useNavigation} from '@react-navigation/native';
 import CircleBackground from '../../components/CircleBackground/index.js';
 import LottieView from 'lottie-react-native';
+import Colors from '../../theme/Colors.js';
+import Footer from '../../components/Footer/index.js';
 
 const MenuDetail = () => {
   const navigation = useNavigation();
@@ -45,7 +47,20 @@ const MenuDetail = () => {
       imgUrl: require('../../assets/images/burger_one.png'),
     },
   ];
-
+  const dishType = [
+    {
+      imgUrl: require('../../assets/images/onion.json'),
+    },
+    {
+      imgUrl: require('../../assets/images/eggs.json'),
+    },
+    {
+      imgUrl: require('../../assets/images/fish.json'),
+    },
+    {
+      imgUrl: require('../../assets/images/nuts.json'),
+    },
+  ];
   const handleSelectIngredient = () => {
     navigation.navigate('IngredientCustomization');
   };
@@ -102,6 +117,30 @@ const MenuDetail = () => {
           Lorem Ipsum is simply dummy text of the printing and typesetting
           industry. Lorem Ipsum has been the..
         </Text>
+        <View style={{flexDirection: 'row', marginLeft: 15, marginTop: 10}}>
+          {dishType.map((item, index) => (
+            <CircleBackground
+              style={index === 0 ? {marginLeft: 0} : {marginLeft: 5}}
+              key={index}>
+              <LottieView
+                source={item.imgUrl}
+                autoPlay
+                // loop
+                // Additional props for customization
+                loop={false}
+                speed={1.5}
+                resizeMode="contain"
+                style={{
+                  width: 20,
+                  height: 20,
+                  margin: 5,
+                  padding: 10,
+                }}
+              />
+            </CircleBackground>
+          ))}
+        </View>
+
         <View style={styles.readyContainer}>
           <CircleBackground
             style={{alignItems: 'center', justifyContent: 'center'}}>
@@ -119,7 +158,11 @@ const MenuDetail = () => {
           <Text style={styles.readyTxt}>Ready in 15 Min</Text>
         </View>
         <Text style={styles.quantityTxt}>Select Quantity</Text>
-        <Counter />
+        <Counter
+          plusContainerStyle={{
+            backgroundColor: Colors.GREEN,
+          }}
+        />
         <View style={{marginHorizontal: 15, marginBottom: 10}}>
           <RestaurantButton
             btnText={'Select Ingredients'}
@@ -233,6 +276,7 @@ const MenuDetail = () => {
           </View>
         </View>
       </ScrollView>
+      <Footer />
     </View>
 
     // </View>

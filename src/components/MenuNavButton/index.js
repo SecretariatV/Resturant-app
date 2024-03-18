@@ -3,14 +3,23 @@ import React from 'react';
 import {styles} from './styles';
 import {heightToDp, widthToDp} from '../../utils/Dimensions.js';
 import LinearGradient from 'react-native-linear-gradient';
+import HomeScreens from '../../screens/HomeScreens/index.js';
+import {useNavigation} from '@react-navigation/native';
+
 
 const MenuNavButton = ({
   icon,
   iconType,
   iconStyle,
   containerStyle,
-  handleClick = () => {},
+  // handleClick = () => {},
 }) => {
+
+  const navigation = useNavigation();
+
+  const handleClick = () => {
+    navigation.navigate('HomeScreens');
+  };
   return (
     <View
       className="menu-btn-container"
