@@ -21,7 +21,7 @@ import BackgroundCard from '../../components/BackgroundCard';
 import {cartData, dressCode} from '../../utils/demodata';
 import Counter from '../../components/Counter';
 import {Colors} from '../../theme';
-import SwipeableList from 'react-native-swipeable-list';
+// import SwipeableList from 'react-native-swipeable-list';
 import ButtonsCommon from '../../components/Buttons/ButtonCommon.js';
 import {fonts} from '../../theme/FontFamily.js';
 import RestaurantButton from '../../components/Buttons/RestaurantButton/index.js';

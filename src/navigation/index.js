@@ -1,6 +1,6 @@
 //packages
 
-import {View, Text, Image} from 'react-native';
+import {View, Text, Image, StyleSheet} from 'react-native';
 import React, {useEffect, useRef, useState} from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {NavigationContainer} from '@react-navigation/native';
@@ -55,12 +55,49 @@ import AmountPaid from '../screens/AmountPaid';
 import GeneratedQrCode from '../screens/GeneratedQrCode';
 import ProductReview from '../screens/ProductReview';
 import HomeScreens from '../screens/HomeScreens';
+import FeedbackSuccess from '../screens/FeedbackSuccess';
+import {
+  createDrawerNavigator,
+  DrawerContentScrollView,
+  DrawerItemList,
+} from '@react-navigation/drawer';
+import CustomDrawer1 from '../screens/drawer/CustomDrawer';
+import {colors} from '../screens/drawer/constant';
 
 const Tab = createBottomTabNavigator();
 // const Drawer = createDrawerNavigator();
 const Stack = createNativeStackNavigator();
 const HomeStacked = createNativeStackNavigator();
+const Drawer = createDrawerNavigator(); // Create a Drawer navigator
 
+function CustomDrawerContent(props) {
+  return (
+    <DrawerContentScrollView {...props}>
+      <DrawerItemList {...props} />
+    </DrawerContentScrollView>
+  );
+}
+const DrawerScreens = () => {
+  return (
+    <Drawer.Navigator
+      screenOptions={{
+        headerShown: false,
+        drawerType: 'slide',
+        overlayColor: 'transparent',
+        swipeEdgeWidth: Platform.OS === 'android' && 180,
+        // sceneContainerStyle: styles.sceneStyles,
+
+        drawerStyle: {
+          backgroundColor: '#005E44',
+          width: widthToDp(85),
+        },
+      }}
+      drawerContent={props => <CustomDrawer1 {...props} />}>
+      <Drawer.Screen name="Home" component={HomeStack} />
+      {/* Add more screens as needed */}
+    </Drawer.Navigator>
+  );
+};
 const AuthStack = ({toggleLogin}) => {
   return (
     <Stack.Navigator
@@ -114,12 +151,11 @@ const HomeStack = ({activeRestaurant}) => {
         <Stack.Screen name="AmountPaid" component={AmountPaid} />
 
         <Stack.Screen name="AddCard" component={AddCard} />
-        {/* <Stack.Screen name="Requests" component={Requests} /> */}
 
-        {/* <Stack.Screen name="MyOrder" component={MyOrder} /> */}
         <Stack.Screen name="Cart" component={Cart} />
         <Stack.Screen name="GeneratedQrCode" component={GeneratedQrCode} />
         <Stack.Screen name="ProductReview" component={ProductReview} />
+        <Stack.Screen name="FeedbackSuccess" component={FeedbackSuccess} />
       </Stack.Group>
     </Stack.Navigator>
   );
@@ -334,9 +370,19 @@ const RootNavigator = () => {
       </View> */}
         {/* <DrawerNavigation /> */}
         {/* {!saveUser ? HomeStack(activeRestaurant) : AuthStack()} */}
-        {user ? <HomeStack /> : <AuthStack />}
+        {user ? <DrawerScreens /> : <AuthStack />}
       </NavigationContainer>
     </GestureHandlerRootView>
   );
 };
 export default RootNavigator;
+const styles = StyleSheet.create({
+  drawerStyles: {
+    width: 220,
+    backgroundColor: colors.sceneBg,
+    paddingTop: 40,
+  },
+  sceneStyles: {
+    backgroundColor: 'red',
+  },
+});
