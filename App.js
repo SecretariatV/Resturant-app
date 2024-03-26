@@ -4,7 +4,6 @@
  *
  * @format
  */
-import 'react-native-gesture-handler';
 import React, {useEffect} from 'react';
 import {LogBox, StyleSheet, Text, useColorScheme, View} from 'react-native';
 import {persistor, store} from './src/redux/store';

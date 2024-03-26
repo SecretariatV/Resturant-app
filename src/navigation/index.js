@@ -1,4 +1,5 @@
 //packages
+
 import {View, Text, Image} from 'react-native';
 import React, {useEffect, useRef, useState} from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
@@ -6,7 +7,7 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 // import {createDrawerNavigator} from '@react-navigation/drawer';
 // import DrawerNavigation from '../screens/drawer/DrawerNavigation';
-import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import {GestureHandlerRootView} from 'react-native-gesture-handler';
 
 // styles
 import {tabNavStyles} from './tabNavigatorStyles';
@@ -52,10 +53,12 @@ import {useSelector} from 'react-redux';
 import PaymentOption from '../screens/PaymentOption';
 import AddCard from '../screens/AddCard';
 import AmountPaid from '../screens/AmountPaid';
-import HomeIcon from '../assets/images/home.svg'
+import HomeIcon from '../assets/images/home.svg';
+import GeneratedQrCode from '../screens/GeneratedQrCode';
+import ProductReview from '../screens/ProductReview';
+import HomeScreens from '../screens/HomeScreens';
 
 import TrackOrder from '../screens/TrackOrder';
-import HomeScreens from '../screens/HomeScreens';
 const Tab = createBottomTabNavigator();
 // const Drawer = createDrawerNavigator();
 const Stack = createNativeStackNavigator();
@@ -86,67 +89,43 @@ const AuthStack = ({toggleLogin}) => {
 };
 
 const HomeStack = ({activeRestaurant}) => {
+  console.log('activeRestaurant', activeRestaurant, typeof activeRestaurant);
   return (
     <Stack.Navigator
       initialRouteName="TabNavigator"
       screenOptions={{
         headerShown: false,
       }}>
-      {/* <Stack.Screen name="Splash" component={Splash} /> */}
-
-      <Stack.Screen name="TabNavigator" component={TabNavigator} />
-      {/* <Stack.Screen name="SecondTabNavigator" component={SecondTabNavigator} /> */}
-
-      <Stack.Screen name="MenuDetail" component={MenuDetail} />
-      <Stack.Screen name="Menu" component={Menu} />
-      <Stack.Screen name="RestaurantMain" component={RestaurantMain} />
-      <Stack.Screen name="QrCode" component={QrCode} />
-      <Stack.Screen name="Restaurant" component={Restaurant} />
-      <Stack.Screen
-        name="IngredientCustomization"
-        component={IngredientCustomization}
-      />
-      <Stack.Screen name="PaymentOption" component={PaymentOption} />
-      <Stack.Screen name="AmountPaid" component={AmountPaid} />
-      <Stack.Screen name="TrackOrder" component={TrackOrder} />
-      <Stack.Screen name="AddCard" component={AddCard} />
-      <Stack.Screen name="Thankyou" component={Thankyou} />
-      <Stack.Screen name="HomeScreens" component={HomeScreens} />
-      {/* <Stack.Screen name="MyOrder" component={MyOrder} /> */}
+      <Stack.Group screenOptions={{presentation: 'modal'}}>
+        <Stack.Screen name="MenuDetail" component={MenuDetail} />
+        <Stack.Screen
+          name="IngredientCustomization"
+          component={IngredientCustomization}
+        />
+      </Stack.Group>
+      <Stack.Group>
+        <Stack.Screen name="HomeScreens" component={HomeScreens} />
+        <Stack.Screen name="TabNavigator" component={TabNavigator} />
+        <Stack.Screen name="Requests" component={Requests} />
+        <Stack.Screen name="Menu" component={Menu} />
+        <Stack.Screen name="RestaurantMain" component={RestaurantMain} />
+        <Stack.Screen name="QrCode" component={QrCode} />
+        <Stack.Screen name="Restaurant" component={Restaurant} />
+        <Stack.Screen name="PaymentOption" component={PaymentOption} />
+        <Stack.Screen name="AmountPaid" component={AmountPaid} />
+        <Stack.Screen name="TrackOrder" component={TrackOrder} />
+        <Stack.Screen name="AddCard" component={AddCard} />
+        <Stack.Screen name="Thankyou" component={Thankyou} />
+        <Stack.Screen name="Cart" component={Cart} />
+        <Stack.Screen name="GeneratedQrCode" component={GeneratedQrCode} />
+        <Stack.Screen name="ProductReview" component={ProductReview} />
+      </Stack.Group>
     </Stack.Navigator>
   );
 };
-
-const PayStack = ({activeRestaurant}) => {
-  return (
-    <Stack.Navigator
-      initialRouteName="TabNavigator"
-      screenOptions={{
-        headerShown: false,
-      }}>
-      {/* <Stack.Screen name="Splash" component={Splash} /> */}
-
-      <Stack.Screen name="TabNavigator" component={TabNavigator} />
-
-      <Stack.Screen name="MenuDetail" component={MenuDetail} />
-      <Stack.Screen name="Menu" component={Menu} />
-      <Stack.Screen name="RestaurantMain" component={RestaurantMain} />
-      <Stack.Screen name="QrCode" component={QrCode} />
-      <Stack.Screen name="Restaurant" component={Restaurant} />
-      <Stack.Screen
-        name="IngredientCustomization"
-        component={IngredientCustomization}
-      />
-      <Stack.Screen name="PaymentOption" component={PaymentOption} />
-    </Stack.Navigator>
-  );
-};
-
-// const DrawerNav = () => {};
 
 const TabNavigator = ({activeRestaurant}) => {
-  const qRorMenu = activeRestaurant ? Menu : QrCode;
-  const qRorMenuText = activeRestaurant ? 'Menu' : 'QrCode';
+ 
   return (
     <Tab.Navigator
       initialRouteName="Menu"
@@ -177,12 +156,12 @@ const TabNavigator = ({activeRestaurant}) => {
                   left: -10,
                 }}>
                 <Image
-                  style={{width: 16, height: 16, opacity: 0.6}}
+                  style={{width: 24, height: 24, opacity: 0.6}}
                   source={require('../assets/images/home.png')}
                 />
                 {/* <HomeIcon width={25} height={25} style={{ opacity: 0.5, marginBottom: -5}}/> */}
                 <Text style={{color: '#fff', fontSize: screenToTextSize(3)}}>
-                  Back
+                  Home
                 </Text>
               </View>
             );
@@ -197,7 +176,7 @@ const TabNavigator = ({activeRestaurant}) => {
             return (
               <View style={tabNavStyles.tabNavRequestBtn}>
                 <Image
-                  style={{width: 16, height: 16}}
+                  style={{width: 24, height: 24}}
                   source={require('../assets/images/tabbar-request.png')}
                 />
                 <Text style={tabNavStyles.tabNavRequestBtnText}>Requests</Text>
@@ -206,45 +185,51 @@ const TabNavigator = ({activeRestaurant}) => {
           },
         }}
       />
-      <Tab.Screen
-        name={"Menu"}
-        component={Menu}
-        options={{
-          tabBarLabel: ({focused}) => {
-            focused ? 'QrCode' : 'dadadad';
-          },
-          tabBarIcon: ({focused}) => {
-            return (
-              <View
-                style={
-                  activeRestaurant
-                    ? tabNavStyles.tabNavMenuBtn
-                    : tabNavStyles.tabNavQrCodeScannerBtn
-                }>
-                {focused ? (
+      {!activeRestaurant ? (
+        <Tab.Screen
+          name={'Menu'}
+          component={Menu}
+          options={{
+            tabBarLabel: 'Menu',
+            tabBarIcon: () => {
+              return (
+                <View style={tabNavStyles.tabNavMenuBtn}>
                   <MenuIcon
                     width={screenToTextSize(8)}
                     style={{width: 12, height: 12}}
                   />
-                ) : (
+                </View>
+              );
+            },
+          }}
+        />
+      ) : (
+        <Tab.Screen
+          name={'QrCode'}
+          component={QrCode}
+          options={{
+            tabBarLabel: 'QrCode',
+            tabBarIcon: () => {
+              return (
+                <View style={tabNavStyles.tabNavQrCodeScannerBtn}>
                   <QrIcon
                     width={screenToTextSize(8)}
-                    style={{width: 12, height: 12}}
+                    style={{width: 24, height: 24}}
                   />
-                )}
-              </View>
-            );
-          },
-        }}
-      />
-      <Tab.Screen
+                </View>
+              );
+            },
+          }}
+        />
+      )}
+      {/* <Tab.Screen
         name="MenuDetail"
         component={MenuDetail}
         options={{
           tabBarButton: () => null,
           tabBarVisible: false,
         }}
-      />
+      /> */}
 
       <Tab.Screen
         name="Restaurant"
@@ -280,83 +265,6 @@ const TabNavigator = ({activeRestaurant}) => {
         }}
       />
 
-      {/* <Tab.Screen
-        name="Menu"
-        component={Menu}
-        options={{
-          tabBarIcon: ({focused}) => {
-            return (
-              <View
-                style={{
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                  gap: 5,
-                  width: widthToDp(16),
-                  height: heightToDp(16),
-                  backgroundColor: '#fff',
-                  borderColor: '#0ad6c0',
-                  borderWidth: 4,
-                  borderRadius: 50,
-                  justifyContent: 'center',
-                  alignContent: 'center',
-                  position: 'relative',
-                  top: -10,
-                  elevation: 5,
-                  shadowColor: '#000',
-                  shadowOffset: {
-                    width: 2,
-                    height: 2,
-                  },
-                }}>
-                <MenuIcon
-                  width={screenToTextSize(8)}
-                  style={{width: 12, height: 12}}
-                  source={require('../assets/images/tabbar-menu.svg')}
-                />
-              </View>
-            );
-          },
-        }}
-      /> */}
-
-      {/* <Tab.Screen
-        name="Menu"
-        component={Menu}
-        options={{
-          tabBarIcon: ({focused}) => {
-            return (
-              <View
-                style={{
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                  gap: 5,
-                  width: widthToDp(16),
-                  height: heightToDp(16),
-                  backgroundColor: '#fff',
-                  borderColor: '#0ad6c0',
-                  borderWidth: 4,
-                  borderRadius: 50,
-                  justifyContent: 'center',
-                  alignContent: 'center',
-                  position: 'relative',
-                  top: -10,
-                  elevation: 5,
-                  shadowColor: '#000',
-                  shadowOffset: {
-                    width: 2,
-                    height: 2,
-                  },
-                }}>activeRestaurant
-                <MenuIcon
-                  width={screenToTextSize(8)}
-                  style={{width: 12, height: 12}}
-                  source={require('../assets/images/tabbar-menu.svg')}
-                />
-              </View>
-            );
-          },
-        }}
-      /> */}
       <Tab.Screen
         name="Cart"
         component={Cart}
@@ -411,57 +319,19 @@ const TabNavigator = ({activeRestaurant}) => {
           },
         }}
       />
-    </Tab.Navigator>
-  );
-};
 
-const SecondTabNavigator = ({activeRestaurant}) => {
-  // const qRorMenu = activeRestaurant ? Menu : QrCode;
-  const qRorMenuText = activeRestaurant ? 'Menu' : 'QrCode';
-  return (
-    <Tab.Navigator
-      initialRouteName="Menu"
-      backBehavior="history"
-      screenListeners={({navigation, route}) => ({
-        tabPress: e => {},
-      })}
-      screenOptions={({route}) => ({
-        headerShown: false,
-        // tabBarHideOnKeyboard: true,
-        tabBarPosition: 'bottom',
-        tabBarShowLabel: false,
-        tabBarStyle: tabNavStyles.tabNavigatorBarStyle,
-      })}>
       <Tab.Screen
-        name="Back"
-        component={RestaurantMain}
+        name="ProductReview"
+        component={ProductReview}
         options={{
-          tabBarIcon: ({focused}) => {
-            return (
-              <View
-                style={{
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                  gap: 5,
-                  width: widthToDp(15),
-                  position: 'relative',
-                  left: -10,
-                }}>
-                <Image
-                  style={{width: 16, height: 16}}
-                  source={require('../assets/images/tabbar-back.png')}
-                />
-                <Text style={{color: '#fff', fontSize: screenToTextSize(3)}}>
-                  Back
-                </Text>
-              </View>
-            );
-          },
+          tabBarButton: () => null,
+          tabBarVisible: false,
         }}
       />
     </Tab.Navigator>
   );
 };
+
 const RootNavigator = () => {
   const user = useSelector(state => state.auth.user);
   console.log(user, '========user Data======');
@@ -473,35 +343,23 @@ const RootNavigator = () => {
     console.log(user, 'user');
     if (user) {
     }
-    // return () => {
-    //   second
-    // }
+    setActiveRestaurant(false);
   }, [user]);
 
-  const getData = async () => {
-    try {
-      const user = await AsyncStorage.getItem('user');
-      if (user !== null) {
-        setSaveUser(user);
-        console.log(user, 'value');
-        // value previously stored
-      }
-    } catch (e) {
-      console.log(e, 'e');
-      // error reading value
-    }
-  };
   return (
     <GestureHandlerRootView style={{flex: 1}}>
       <NavigationContainer>
         {/* <View style={{  backgroundColor: 'transparent'}}>
-          <Image resizeMethod='auto' resizeMode='contain' source={require('../assets/images/tabbar-bg.svg')} style={{ backgroundColor: 'transparent', width: widthToDp(100)}} />
-        </View> */}
+        <Image resizeMethod='auto' resizeMode='contain' source={require('../assets/images/tabbar-bg.svg')} style={{ backgroundColor: 'transparent', width: widthToDp(100)}} />
+      </View> */}
         {/* <DrawerNavigation /> */}
         {/* {!saveUser ? HomeStack(activeRestaurant) : AuthStack()} */}
-        {user ? <HomeStack /> : <AuthStack />}
+        {user ? (
+          <HomeStack activeRestaurant={activeRestaurant} />
+        ) : (
+          <AuthStack />
+        )}
       </NavigationContainer>
-
     </GestureHandlerRootView>
   );
 };

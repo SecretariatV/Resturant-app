@@ -11,7 +11,7 @@ const styles = StyleSheet.create({
   },
   linearGradient: {
     borderRadius: 10,
-    opacity: 0.6
+    opacity: 0.6,
   },
   touchableBtnIMG: {
     borderRadius: 10,
@@ -19,9 +19,15 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
+  touchableBtnSVG: {
+    // borderRadius: 10,
+    // display: 'flex',
+    // justifyContent: 'center',
+    // alignItems: 'center',
+  },
   menuIcon: {
     width: widthToDp(10),
-    height: heightToDp(10)
+    height: heightToDp(10),
   },
   circleTwoGradient: {
     margin: 1,

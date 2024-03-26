@@ -6,7 +6,6 @@ import LinearGradient from 'react-native-linear-gradient';
 import HomeScreens from '../../screens/HomeScreens/index.js';
 import {useNavigation} from '@react-navigation/native';
 
-
 const MenuNavButton = ({
   icon,
   iconType,
@@ -14,7 +13,6 @@ const MenuNavButton = ({
   containerStyle,
   // handleClick = () => {},
 }) => {
-
   const navigation = useNavigation();
 
   const handleClick = () => {

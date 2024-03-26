@@ -9,13 +9,15 @@ import LinearGradient from 'react-native-linear-gradient';
 import {fonts} from '../../theme/FontFamily';
 import AmountStatusCard from '../../components/AmountStatusCard';
 import {approvedPayment} from '../../utils/demodata';
+import HamBurgerButton from '../../components/NavButtons/HamBurgerButton';
 
 const AmountPaid = () => {
   return (
     <View style={styles.container}>
       <BackgroundLayout />
       <HeaderModed
-        slotLeft={<MenuNavButton icon={Hamburger} iconType="image" />}
+        headerStyle={{marginLeft: 15}}
+        slotLeft={<HamBurgerButton />}
         slotCenter={<></>}
         slotRight={<></>}
       />

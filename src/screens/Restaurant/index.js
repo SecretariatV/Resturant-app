@@ -26,6 +26,7 @@ import {Colors} from '../../theme';
 import ReviewCard from '../../components/ReviewCard';
 import {reviews, ageGroup, cuisine, dressCode} from '../../utils/demodata';
 import Footer from '../../components/Footer';
+import HamBurgerButton from '../../components/NavButtons/HamBurgerButton';
 
 const Restaurant = () => {
   const [expanded, setExpanded] = useState(true);
@@ -204,16 +205,8 @@ const Restaurant = () => {
     <View style={styles.container}>
       <BackgroundLayout />
       <HeaderModed
-        slotLeft={
-          <MenuNavButton
-            icon={Hamburger}
-            iconType="image"
-            containerStyle={{
-              position: 'absolute',
-              top: 0,
-            }}
-          />
-        }
+        // headerStyle={{marginLeft: 15}}
+        slotLeft={<HamBurgerButton />}
         slotCenter={<></>}
         slotRight={<></>}
         bannerImage={

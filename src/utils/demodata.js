@@ -14,6 +14,25 @@ export const dressCode = [
   {
     codeType: 'Smart casual',
   },
+
+  {
+    codeType: 'Formal',
+  },
+  {
+    codeType: 'Smart casual',
+  },
+  {
+    codeType: 'Smart casual',
+  },
+  {
+    codeType: 'Formal',
+  },
+  {
+    codeType: 'Smart casual',
+  },
+  {
+    codeType: 'Smart casual',
+  },
 ];
 
 export const cuisine = [

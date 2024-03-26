@@ -29,6 +29,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import {useNavigation} from '@react-navigation/native';
 import {Modal} from 'react-native';
 import GradientText from '../../components/GradientText/index.js';
+import HamBurgerButton from '../../components/NavButtons/HamBurgerButton/index.js';
 
 const Cart = () => {
   const navigation = useNavigation();
@@ -114,7 +115,8 @@ const Cart = () => {
       /> */}
       {isModalVisible ? FullScreenModal() : <></>}
       <HeaderModed
-        slotLeft={<MenuNavButton icon={Hamburger} iconType="image" />}
+        headerStyle={{marginLeft: 15}}
+        slotLeft={<HamBurgerButton />}
         slotCenter={
           <Text
             style={{

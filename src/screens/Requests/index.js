@@ -1,320 +1,136 @@
-import {
-  View,
-  Text,
-  Animated,
-  TouchableOpacity,
-  TouchableHighlight,
-} from 'react-native';
-import React, {useState} from 'react';
-import {styles} from './styles';
+import {View, Text, Image, TouchableOpacity} from 'react-native';
+import React, {useEffect, useState} from 'react';
 import BackgroundLayout from '../../components/BackgroundLayout';
-import HeaderCommon from '../../components/HeaderCommon';
-import HeaderModed from '../../components/HeaderModed';
-import MenuNavButton from '../../components/MenuNavButton';
-import Hamburger from '../../assets/images/hamburger.png';
-import {StatusBar} from 'react-native';
-import {SwipeListView} from 'react-native-swipe-list-view';
-import Notifications, {cartData} from '../../utils/demodata';
-import BackgroundCard from '../../components/BackgroundCard';
-import {Image} from 'react-native';
+import {BottomSheet} from '@rneui/themed';
 import {heightToDp, widthToDp} from '../../utils/Dimensions';
-import Counter from '../../components/Counter';
+import ButtonsCommon from '../../components/Buttons/ButtonCommon.js';
+import ButtonsCommonAlt from '../../components/Buttons/ButtonCommonAlt';
 import {Colors} from '../../theme';
+import {fonts} from '../../theme/FontFamily.js';
+import CloseFilterBtn from '../../assets/images/closeBtnFilter.svg';
+import {useNavigation} from '@react-navigation/native';
+import {useIsFocused} from '@react-navigation/native';
+import Footer from '../../components/Footer/index.js';
+import {SafeAreaProvider} from 'react-native-safe-area-context';
+
 const Requests = () => {
-  const [listData, setListData] = useState(
-    cartData.map((NotificationItem, index) => ({
-      key: `${index}`,
-      title: NotificationItem.productName,
-      // details: NotificationItem.details,
-    })),
-  );
+  const isFocused = useIsFocused();
 
-  const closeRow = (rowMap, rowKey) => {
-    if (rowMap[rowKey]) {
-      rowMap[rowKey].closeRow();
+  const navigation = useNavigation();
+  const [showFilter, setShowFilter] = useState(true);
+  useEffect(() => {
+    console.log('called');
+
+    // Call only when screen open or when back on screen
+    if (isFocused) {
+      setShowFilter(true);
     }
-  };
-
-  const deleteRow = (rowMap, rowKey) => {
-    closeRow(rowMap, rowKey);
-    const newData = [...listData];
-    const prevIndex = listData.findIndex(item => item.key === rowKey);
-    newData.splice(prevIndex, 1);
-    setListData(newData);
-  };
-
-  const onRowDidOpen = rowKey => {
-    console.log('This row opened', rowKey);
-  };
-
-  const onLeftActionStatusChange = rowKey => {
-    console.log('onLeftActionStatusChange', rowKey);
-  };
-
-  const onRightActionStatusChange = rowKey => {
-    console.log('onRightActionStatusChange', rowKey);
-  };
-
-  const onRightAction = rowKey => {
-    console.log('onRightAction', rowKey);
-  };
-
-  const onLeftAction = rowKey => {
-    console.log('onLeftAction', rowKey);
-  };
-
-  const VisibleItem = props => {
-    const {
-      data,
-      rowHeightAnimatedValue,
-      removeRow,
-      leftActionState,
-      rightActionState,
-    } = props;
-
-    if (rightActionState) {
-      Animated.timing(rowHeightAnimatedValue, {
-        toValue: 0,
-        duration: 200,
-        useNativeDriver: false,
-      }).start(() => {
-        removeRow();
-      });
-    }
-
-    return (
-      <>
-        {cartData.map((item, index) => (
-          // <Animated.View
-          //   style={[styles.rowFront, {height: rowHeightAnimatedValue}]}>
-          // <BackgroundCard
-          //   style={{marginTop: 10, marginHorizontal: 10}}
-          //   childrenStyle={{borderRadius: 26}}
-          //   linearBackStyle={{borderRadius: 26}}>
-          //   <View
-          //     style={{
-          //       marginHorizontal: 15,
-          //       backgroundColor: 'red',
-          //       // marginTop: 10,
-          //       // padding: 10,
-          //       // alignItems: 'center',
-          //       // justifyContent: 'center',
-          //     }}>
-          //     <View
-          //       style={{
-          //         flexDirection: 'row',
-          //         justifyContent: 'space-between',
-          //         width: '100%',
-          //         // marginTop: 15,
-          //         marginVertical: 10,
-          //         alignItems: 'center',
-          //         // justifyContent: 'center',
-          //       }}>
-          //       <View
-          //         style={{
-          //           flexDirection: 'row',
-
-          //           alignItems: 'center',
-          //         }}>
-          //         <View
-          //           style={{
-          //             backgroundColor: '#303F43',
-          //             borderRadius: 8,
-          //           }}>
-          //           <Image
-          //             source={require('../../assets/images/burger_one.png')}
-          //             style={{width: widthToDp(20), height: heightToDp(20)}}
-          //             resizeMode="contain"
-          //           />
-          //         </View>
-          //         <View style={{}}>
-          //           <Text style={[styles.navbarPageTitle, {marginLeft: 10}]}>
-          //             {item.productName}
-          //           </Text>
-          //           <Text style={[styles.navbarPageTitle, {marginLeft: 10}]}>
-          //             {item.price}
-          //           </Text>
-          //         </View>
-          //       </View>
-          //       <View style={{alignItems: 'center'}}>
-          //         <View
-          //           style={{
-          //             flexDirection: 'row',
-          //             // backgroundColor: 'red',
-          //             alignItems: 'center',
-          //             marginLeft: 10,
-
-          //             // backgroundColor: 'green',
-          //           }}>
-          //           <Counter
-          //             minusContainerStyle={{
-          //               height: heightToDp(7),
-          //               width: widthToDp(7),
-          //               borderRadius: 8,
-          //             }}
-          //             plusContainerStyle={{
-          //               height: heightToDp(7),
-          //               width: widthToDp(7),
-          //               borderRadius: 8,
-          //               backgroundColor: Colors.GREEN,
-          //             }}
-          //             counterTextStyle={{margin: 15}}
-          //             minusStyle={{width: 10, height: 2}}
-          //             plusStyle={{width: 10, height: 10}}
-          //           />
-          //         </View>
-          //       </View>
-          //     </View>
-          //   </View>
-          // </BackgroundCard>
-
-          <Animated.View style={[styles.rowFront]}>
-            {/* <TouchableHighlight
-              style={styles.rowFrontVisible}
-              onPress={() => console.log('Element touched')}
-              underlayColor={'#aaa'}>
-              <View>
-                <Text style={styles.title} numberOfLines={1}>
-                  {data.title}
-                </Text>
-                <Text style={styles.details} numberOfLines={1}>
-                  {data.item.details}
-                </Text>
-              </View>
-            </TouchableHighlight> */}
-          </Animated.View>
-        ))}
-      </>
-    );
-  };
-
-  const renderItem = (data, rowMap) => {
-    const rowHeightAnimatedValue = new Animated.Value(60);
-
-    return (
-      <VisibleItem
-        data={data}
-        rowHeightAnimatedValue={rowHeightAnimatedValue}
-        removeRow={() => deleteRow(rowMap, data.item.key)}
-      />
-      // <View
-      //   style={{
-      //     backgroundColor: 'red',
-      //     height: 200,
-      //     padding: 15,
-      //     width: 100,
-      //   }}></View>
-    );
-  };
-
-  const HiddenItemWithActions = props => {
-    const {
-      swipeAnimatedValue,
-      leftActionActivated,
-      rightActionActivated,
-      rowActionAnimatedValue,
-      rowHeightAnimatedValue,
-      onClose,
-      onDelete,
-    } = props;
-
-    if (rightActionActivated) {
-      Animated.spring(rowActionAnimatedValue, {
-        toValue: 500,
-        useNativeDriver: false,
-      }).start();
-    } else {
-      Animated.spring(rowActionAnimatedValue, {
-        toValue: 75,
-        useNativeDriver: false,
-      }).start();
-    }
-
-    return (
-      <Animated.View style={[styles.rowBack, {height: rowHeightAnimatedValue}]}>
-        <Text>Left</Text>
-        {/* {!leftActionActivated && (
-          <TouchableOpacity
-            style={[styles.backRightBtn, styles.backRightBtnLeft]}
-            onPress={onClose}>
-           
-          </TouchableOpacity>
-        )} */}
-        {!leftActionActivated && (
-          <Animated.View
-            style={[
-              styles.backRightBtn,
-              styles.backRightBtnRight,
-              {
-                flex: 1,
-                width: rowActionAnimatedValue,
-              },
-            ]}>
-            <TouchableOpacity
-              style={[styles.backRightBtn, styles.backRightBtnRight]}
-              onPress={onDelete}>
-              <Animated.View
-                style={[
-                  styles.trash,
-                  {
-                    transform: [
-                      {
-                        scale: swipeAnimatedValue.interpolate({
-                          inputRange: [-90, -45],
-                          outputRange: [1, 0],
-                          extrapolate: 'clamp',
-                        }),
-                      },
-                    ],
-                  },
-                ]}>
-                <Text>delete</Text>
-              </Animated.View>
-            </TouchableOpacity>
-          </Animated.View>
-        )}
-      </Animated.View>
-    );
-  };
-
-  const renderHiddenItem = (data, rowMap) => {
-    const rowActionAnimatedValue = new Animated.Value(75);
-    const rowHeightAnimatedValue = new Animated.Value(60);
-
-    return (
-      <HiddenItemWithActions
-        data={data}
-        rowMap={rowMap}
-        rowActionAnimatedValue={rowActionAnimatedValue}
-        rowHeightAnimatedValue={rowHeightAnimatedValue}
-        onClose={() => closeRow(rowMap, data.item.key)}
-        onDelete={() => deleteRow(rowMap, data.item.key)}
-      />
-    );
-  };
-
+  }, [isFocused]);
   return (
-    <View style={styles.container}>
+    <View
+      style={{
+        flex: 1,
+      }}>
       <BackgroundLayout />
-      <StatusBar barStyle="dark-content" />
-      {/* <SwipeListView
-        data={listData}
-        renderItem={renderItem}
-        // renderHiddenItem={renderHiddenItem}
-        leftOpenValue={75}
-        rightOpenValue={-150}
-        disableRightSwipe
-        onRowDidOpen={onRowDidOpen}
-        leftActivationValue={100}
-        rightActivationValue={-200}
-        leftActionValue={0}
-        rightActionValue={-500}
-        onLeftAction={onLeftAction}
-        onRightAction={onRightAction}
-        onLeftActionStatusChange={onLeftActionStatusChange}
-        onRightActionStatusChange={onRightActionStatusChange}
-        // style
-      /> */}
+      <View
+        style={{
+          flex: 1,
+
+          justifyContent: 'center',
+          alignItems: 'center',
+          // backgroundColor: 'rgba(0, 0, 0, 0.5)',
+        }}>
+        <Text>Requests</Text>
+      </View>
+      <BottomSheet modalProps={{}} isVisible={showFilter}>
+        <View
+          style={{
+            // backgroundColor: 'green',
+            height: heightToDp(100),
+            borderTopLeftRadius: 25,
+            borderTopRightRadius: 25,
+          }}>
+          <Image
+            // className="restaurant-filter-bg"
+            // style={styles.restaurantFilterBg}
+            style={{
+              height: heightToDp(100),
+              width: widthToDp(100),
+              // resizeMode: 'stretch',
+              position: 'absolute',
+              bottom: 0,
+              borderTopLeftRadius: 25,
+              borderTopRightRadius: 25,
+              // backgroundColor: 'red',
+            }}
+            source={require('../../assets/images/bottom_bg.png')}
+          />
+          <View style={{marginHorizontal: 15, marginTop: 20}}>
+            <View
+              style={{
+                justifyContent: 'space-between',
+                flexDirection: 'row',
+              }}>
+              <Text
+                style={{
+                  fontSize: 22,
+                  color: Colors.WHITE,
+                  fontFamily: fonts.URBANIST_BOLD,
+                  marginBottom: 15,
+                }}>
+                Request
+              </Text>
+              <TouchableOpacity
+                onPress={() => {
+                  setShowFilter(false);
+                  navigation.goBack();
+                }}>
+                <CloseFilterBtn width={20} height={20} />
+              </TouchableOpacity>
+            </View>
+            <View>
+              <ButtonsCommon
+                btnText={'Call waiter'}
+                containerStyle={{marginTop: 10}}
+                btnTextStyle={{marginLeft: 10}}
+                img
+                imageSource={require('../../assets/images/waiter.png')}
+                btnStyle={{
+                  flexDirection: 'row',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                }}
+              />
+              <ButtonsCommon
+                btnText={'Coal change'}
+                containerStyle={{marginTop: 10}}
+                btnTextStyle={{marginLeft: 10}}
+                img
+                imageSource={require('../../assets/images/coal.png')}
+                btnStyle={{
+                  flexDirection: 'row',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                }}
+              />
+
+              <ButtonsCommon
+                btnText={'Ashtray'}
+                containerStyle={{marginTop: 10}}
+                btnTextStyle={{marginLeft: 20}}
+                img
+                imageSource={require('../../assets/images/ashtray.png')}
+                btnStyle={{
+                  flexDirection: 'row',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                }}
+              />
+            </View>
+          </View>
+        </View>
+      </BottomSheet>
+      <Footer />
     </View>
   );
 };

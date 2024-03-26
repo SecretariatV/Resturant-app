@@ -41,6 +41,8 @@ const SizeButton = ({
         style={[
           styles.sizeContainer,
           selectedButton === 'medium' && styles.selected,
+          ,
+          {marginLeft: 10},
         ]}>
         <Text
           style={[
@@ -56,6 +58,7 @@ const SizeButton = ({
         style={[
           styles.sizeContainer,
           selectedButton === 'large' && styles.selected,
+          {marginLeft: 10},
         ]}>
         <Text
           style={[

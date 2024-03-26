@@ -7,13 +7,15 @@ import MenuNavButton from '../../components/MenuNavButton';
 import Hamburger from '../../assets/images/hamburger.png';
 import FancyInput from '../../components/FancyInput';
 import ButtonsCommon from '../../components/Buttons/ButtonCommon.js';
+import HamBurgerButton from '../../components/NavButtons/HamBurgerButton/index.js';
 
 const AddCard = () => {
   return (
     <View style={styles.container}>
       <BackgroundLayout />
       <HeaderModed
-        slotLeft={<MenuNavButton icon={Hamburger} iconType="image" />}
+        headerStyle={{paddingLeft: 15}}
+        slotLeft={<HamBurgerButton />}
         slotCenter={<Text style={styles.headerText}>Add Card</Text>}
         slotRight={<></>}
       />

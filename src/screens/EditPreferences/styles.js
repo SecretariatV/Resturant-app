@@ -33,5 +33,12 @@ const styles = StyleSheet.create({
     color: 'white',
     fontWeight: 'bold',
   },
+  headerTitle: {
+    color: Colors.WHITE,
+    fontFamily: fonts.URBANIST_EXTRABOLD,
+    fontSize: 20,
+    // marginTop: 10,
+    // alignSelf: 'center',
+  },
 });
 export {styles};

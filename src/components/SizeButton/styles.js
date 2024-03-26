@@ -5,17 +5,16 @@ import {Colors} from '../../theme';
 
 const styles = StyleSheet.create({
   container: {
-    alignItems: 'center',
-    justifyContent: 'center',
+    // alignItems: 'center',
+    justifyContent: 'space-between',
     flexDirection: 'row',
-    marginRight: 10,
+    // marginRight: 25,
   },
   sizeContainer: {
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: '#1A1C27',
-    // padding: 10,
-    marginLeft: 10,
+    // marginLeft: widthToDp(1.5),
     height: heightToDp(7),
     width: widthToDp(7),
     borderRadius: 10,

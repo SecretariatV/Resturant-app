@@ -1,4 +1,4 @@
-import {View, Text, TouchableOpacity, Pressable} from 'react-native';
+import {View, Text, TouchableOpacity, Pressable, Image} from 'react-native';
 import React from 'react';
 import LinearGradient from 'react-native-linear-gradient';
 import {styles} from './styles';
@@ -15,17 +15,9 @@ const ButtonsCommon = ({
   onSignIn,
   onPress,
   navRoute = false,
+  img,
+  imageSource,
 }) => {
-  // const storeData = async value => {
-  //   console.log('herrreee');
-  //   try {
-  //     await AsyncStorage.setItem('user', 'true');
-  //     navigation.navigate('RestaurantMain');
-  //   } catch (e) {
-  //     // saving error
-  //   }
-  // };
-
   return (
     <View style={[containerStyle]}>
       <LinearGradient
@@ -39,6 +31,7 @@ const ButtonsCommon = ({
         <TouchableOpacity
           style={[styles.circleGradient, btnStyle]}
           onPress={onPress}>
+          {img ? <Image source={imageSource} /> : <></>}
           <Text style={[styles.btnText, btnTextStyle]}>{btnText}</Text>
         </TouchableOpacity>
       </LinearGradient>

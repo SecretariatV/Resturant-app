@@ -53,7 +53,11 @@ const styles = StyleSheet.create({
   arContainer: {
     justifyContent: 'flex-end',
     alignItems: 'flex-end',
-    width: widthToDp(80),
+    position: 'absolute',
+    width: width,
+    bottom: 10,
+    right: 5,
+    // backgroundColor: 'red',
   },
   arSubContainer: {
     backgroundColor: '#5D5D66',
@@ -153,18 +157,19 @@ const styles = StyleSheet.create({
   backgroundBtnContainer: {
     borderRadius: 36,
     marginTop: 10,
-    // paddingVertical: 10,
+    paddingVertical: 5,
   },
   levelContainer: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
     width: '70%',
-    marginVertical: 5,
+    marginVertical: 15,
   },
   levelTxt: {
     marginRight: 10,
     marginTop: 10,
+    color: '#828282',
   },
   customBtns: {
     flexDirection: 'row',

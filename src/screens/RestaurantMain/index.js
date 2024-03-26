@@ -35,6 +35,8 @@ import {useEffect, useState} from 'react';
 import {widthToDp} from '../../utils/Dimensions';
 import BackgroundLayout from '../../components/BackgroundLayout';
 import {getPlatformSpecificValue} from '../../utils/helper';
+import BackButton from '../../components/NavButtons/BackButton';
+import HamBurgerButton from '../../components/NavButtons/HamBurgerButton';
 const RestaurantMain = () => {
   const [modalVisible, setModalVisible] = useState(true);
   const [isVisible, setIsVisible] = useState(false);
@@ -148,7 +150,8 @@ const RestaurantMain = () => {
       </Modal>
       <BackgroundLayout />
       <HeaderModed
-        slotLeft={<MenuNavButton icon={Hamburger} iconType="image" />}
+        headerStyle={{marginLeft: 15}}
+        slotLeft={<HamBurgerButton />}
         slotCenter={<></>}
         slotRight={<></>}
       />

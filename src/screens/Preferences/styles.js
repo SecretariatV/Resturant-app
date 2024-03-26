@@ -15,5 +15,11 @@ const styles = StyleSheet.create({
     left: 20,
     right: 20,
   },
+
+  headerTitle: {
+    color: Colors.WHITE,
+    fontFamily: fonts.URBANIST_EXTRABOLD,
+    fontSize: 20,
+  },
 });
 export {styles};

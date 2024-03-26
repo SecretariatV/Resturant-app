@@ -30,10 +30,14 @@ import HundredPercentBar from '../../assets/images/hundredPercentBar.svg';
 import ReviewCard from '../../components/ReviewCard/index.js';
 import {reviews} from '../../utils/demodata.js';
 import {width, widthToDp} from '../../utils/Dimensions.js';
+import HamBurgerButton from '../../components/NavButtons/HamBurgerButton/index.js';
 
 import {useSharedValue, withDecay} from 'react-native-reanimated';
 import Slider from '@react-native-community/slider';
-import {getPlatformSpecificValue, screenToTextSize} from '../../utils/helper.js';
+import {
+  getPlatformSpecificValue,
+  screenToTextSize,
+} from '../../utils/helper.js';
 
 const ShareEqually = () => (
   <View style={{flex: 1, alignItems: 'center'}}>
@@ -393,7 +397,10 @@ const SecondRoute = () => {
     <TabBar
       {...props}
       indicatorStyle={{backgroundColor: 'transparent'}}
-      style={{backgroundColor: 'transparent', marginTop: getPlatformSpecificValue(10, 0)}}
+      style={{
+        backgroundColor: 'transparent',
+        marginTop: getPlatformSpecificValue(10, 0),
+      }}
       renderLabel={({route, focused, color}) => (
         <LinearGradient
           colors={
@@ -504,7 +511,8 @@ const PaymentOption = () => {
       <BackgroundLayout />
 
       <HeaderModed
-        slotLeft={<MenuNavButton icon={Hamburger} iconType="image" />}
+        headerStyle={{marginLeft: 15}}
+        slotLeft={<HamBurgerButton />}
         slotCenter={<Text style={styles.headerText}>Payment Option</Text>}
         slotRight={<></>}
       />

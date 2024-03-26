@@ -4,10 +4,10 @@ import {fonts} from '../../../theme/FontFamily';
 
 const styles = StyleSheet.create({
   circleGradient: {
-    margin: 2,
+    margin: 1,
     // width: 300,
     width: width * 0.868,
-
+    // backgroundColor: 'red',
     padding: 10,
     alignSelf: 'center',
     alignItems: 'center',

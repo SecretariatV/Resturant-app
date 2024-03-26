@@ -22,7 +22,10 @@ import gLoginIcon from '../../../assets/images/gLoginIcon.png';
 import aLoginIcon from '../../../assets/images/aLoginIcon.png';
 import {useNavigation} from '@react-navigation/native';
 import ButtonsCommon from '../../../components/Buttons/ButtonCommon.js';
-import BackButton from '../../../components/Buttons/BackButton/index.js';
+import MenuNavButton from '../../../components/MenuNavButton/index.js';
+import back from '../../../assets/images/back-two.png';
+import BackButton from '../../../components/NavButtons/BackButton/index.js';
+
 const Signup = ({showMenu}) => {
   const navigation = useNavigation();
 
