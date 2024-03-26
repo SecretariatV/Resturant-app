@@ -3,9 +3,11 @@ import {View, Text} from 'react-native';
 import {styles} from './styles';
 import LinearGradient from 'react-native-linear-gradient';
 
-const FadedSeparator = ({fancyGradBorderStyle}) => {
+const FadedSeparator = ({fancyGradBorderStyle, containerStyle}) => {
   return (
-    <View className="faded-separator-container" style={styles.container}>
+    <View
+      className="faded-separator-container"
+      style={[styles.container, containerStyle]}>
       <LinearGradient
         colors={['#ffffff00', '#ffffff66', '#ffffff66', '#ffffff00']}
         style={styles.fancyGrad}

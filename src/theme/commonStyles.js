@@ -1,4 +1,6 @@
 import {StyleSheet} from 'react-native';
+import {Colors} from '.';
+import {fonts} from './FontFamily';
 
 const commonStyles = StyleSheet.create({
   shadowLight: {
@@ -13,7 +15,12 @@ const commonStyles = StyleSheet.create({
   },
   defaultFontStyle: {
     color: '#000',
-  }
+  },
+  headerText: {
+    color: Colors.WHITE,
+    fontFamily: fonts.URBANIST_BOLD,
+    fontSize: 17,
+  },
 });
 
 export default commonStyles;

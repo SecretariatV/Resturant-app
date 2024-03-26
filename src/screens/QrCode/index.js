@@ -1,8 +1,38 @@
-import { useEffect, useState } from 'react';
-import { View } from 'react-native';
+import {useEffect, useState} from 'react';
+import {View} from 'react-native';
+import {
+  Camera,
+  useCameraDevice,
+  useCameraPermission,
+  useCodeScanner,
+} from 'react-native-vision-camera';
 // import {Camera, CodeScanner, useCameraDevice, useCodeScanner} from 'react-native-vision-camera';
 
 const QrCode = () => {
+  // const device = useCameraDevice('back');
+  // const [first, setfirst] = useState('');
+
+  // // var de =device
+  // const {hasPermission, requestPermission} = useCameraPermission();
+  // useEffect(() => {
+  //   setfirst(device);
+  // }, [device]);
+
+  // const codeScanner = useCodeScanner({
+  //   codeTypes: ['qr', 'ean-13'],
+  //   onCodeScanned: codes => {
+  //     console.log(`Scanned ${codes.length} codes!`);
+  //   },
+  // });
+
+  return (
+    // {device != null &&<Camera codeScanner={codeScanner} />}
+    <View></View>
+    // )
+    // <View>{device != null && <Camera codeScanner={codeScanner} />}</View>
+    //  <Camera codeScanner={codeScanner} />
+  );
+
   // const [hasPermission, setHasPermission] = useState(null);
   // const [checkCodeScanner, setCheckCodeScanner] = useState(null);
   // const device = useCameraDevice('back');

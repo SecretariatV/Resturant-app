@@ -18,7 +18,7 @@ import Welcome from '../screens/auth/Welcome';
 import Login from '../screens/auth/Login';
 import Signup from '../screens/auth/Signup';
 import Privacy from '../screens/auth/Privacy';
-import Settinglist from '../screens/settings/SettingList';
+import Settinglist from '../screens/Setting';
 import Preferences from '../screens/Preferences';
 import EditPreferences from '../screens/EditPreferences';
 import PreferencesSuccess from '../screens/PreferencesSuccess';

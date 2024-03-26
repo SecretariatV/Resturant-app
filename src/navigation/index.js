@@ -17,7 +17,7 @@ import Welcome from '../screens/auth/Welcome';
 import Login from '../screens/auth/Login';
 import Signup from '../screens/auth/Signup';
 import Privacy from '../screens/auth/Privacy';
-import Settinglist from '../screens/settings/SettingList';
+import Settinglist from '../screens/Setting';
 import Preferences from '../screens/Preferences';
 import EditPreferences from '../screens/EditPreferences';
 import PreferencesSuccess from '../screens/PreferencesSuccess';
@@ -63,6 +63,10 @@ import {
 } from '@react-navigation/drawer';
 import CustomDrawer1 from '../screens/drawer/CustomDrawer';
 import {colors} from '../screens/drawer/constant';
+import AccountDetail from '../screens/AccountDetail';
+import Setting from '../screens/Setting';
+import Reward from '../screens/Reward';
+import OrderHistory from '../screens/OrderHistory';
 
 const Tab = createBottomTabNavigator();
 // const Drawer = createDrawerNavigator();
@@ -94,6 +98,8 @@ const DrawerScreens = () => {
       }}
       drawerContent={props => <CustomDrawer1 {...props} />}>
       <Drawer.Screen name="Home" component={HomeStack} />
+      {/* <Drawer.Screen name="Setting" component={Setting} /> */}
+
       {/* Add more screens as needed */}
     </Drawer.Navigator>
   );
@@ -156,6 +162,10 @@ const HomeStack = ({activeRestaurant}) => {
         <Stack.Screen name="GeneratedQrCode" component={GeneratedQrCode} />
         <Stack.Screen name="ProductReview" component={ProductReview} />
         <Stack.Screen name="FeedbackSuccess" component={FeedbackSuccess} />
+        <Stack.Screen name="AccountDetail" component={AccountDetail} />
+        <Stack.Screen name="Setting" component={Setting} />
+        <Stack.Screen name="Reward" component={Reward} />
+        <Stack.Screen name="OrderHistory" component={OrderHistory} />
       </Stack.Group>
     </Stack.Navigator>
   );
@@ -253,14 +263,31 @@ const TabNavigator = ({activeRestaurant}) => {
           },
         }}
       />
-      {/* <Tab.Screen
-        name="MenuDetail"
-        component={MenuDetail}
+      <Tab.Screen
+        name="Setting"
+        component={Setting}
         options={{
           tabBarButton: () => null,
           tabBarVisible: false,
         }}
-      /> */}
+      />
+      <Tab.Screen
+        name="Reward"
+        component={Reward}
+        options={{
+          tabBarButton: () => null,
+          tabBarVisible: false,
+        }}
+      />
+
+      <Tab.Screen
+        name="OrderHistory"
+        component={OrderHistory}
+        options={{
+          tabBarButton: () => null,
+          tabBarVisible: false,
+        }}
+      />
 
       <Tab.Screen
         name="Restaurant"

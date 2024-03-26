@@ -21,8 +21,11 @@ import Language from '../../assets/images/globe.svg';
 import Help from '../../assets/images/help.svg';
 import Term from '../../assets/images/terms.svg';
 import Logout from '../../assets/images/logout.svg';
+import {useNavigation} from '@react-navigation/native';
 
 const CustomDrawer1 = props => {
+  const navigation = useNavigation();
+
   const scrollRef = useRef(null);
 
   const drawerProgress = useDrawerProgress();
@@ -131,7 +134,7 @@ const CustomDrawer1 = props => {
             </TouchableOpacity>
 
             <TouchableOpacity
-              // onPress={onPress}
+              onPress={() => navigation.navigate('OrderHistory')}
               accessibilityRole="button"
               style={[styles.drawerItem, styles.buttons]}>
               <View>
@@ -144,7 +147,7 @@ const CustomDrawer1 = props => {
             </TouchableOpacity>
 
             <TouchableOpacity
-              // onPress={onPress}
+              onPress={() => navigation.navigate('Reward')}
               accessibilityRole="button"
               style={[styles.drawerItem, styles.buttons]}>
               <View>
@@ -170,7 +173,7 @@ const CustomDrawer1 = props => {
             </TouchableOpacity>
 
             <TouchableOpacity
-              // onPress={onPress}
+              onPress={() => navigation.navigate('Setting')}
               accessibilityRole="button"
               style={[styles.drawerItem, styles.buttons]}>
               <View>
@@ -266,7 +269,7 @@ const styles = StyleSheet.create({
   },
   drawerGradient: {
     borderRightRadius: 15,
-    marginRight: 2,
+    // marginRight: 2,
     backgroundColor: 'transparent',
     flex: 1,
   },
@@ -335,10 +338,10 @@ const styles = StyleSheet.create({
     bottom: 0,
   },
   circleGradient: {
-    borderTopEndRadius: 15,
-    borderBottomStartRadius: 15,
+    // borderTopEndRadius: 15,
+    // borderBottomStartRadius: 15,
 
-    marginRight: 2,
+    // marginRight: 2,
 
     flex: 1,
 

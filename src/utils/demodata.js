@@ -200,17 +200,24 @@ export const restaurants = [
 export const cartData = [
   {
     productName: 'Burger',
-    price: 150,
   },
   {
     productName: 'Shawarma',
-
-    price: 150,
   },
   {
     productName: 'Onion',
-
-    price: 150,
+  },
+  {
+    productName: 'Shawarma',
+  },
+  {
+    productName: 'Onion',
+  },
+  {
+    productName: 'Shawarma',
+  },
+  {
+    productName: 'Onion',
   },
 ];
 
@@ -255,6 +262,42 @@ export const approvedPayment = [
     name: 'Robinson',
     staus: 'paid',
     amount: '20',
+  },
+];
+
+export const rewards = [
+  {
+    restaurant: 'Restaurant Name',
+    points: '22',
+  },
+  {
+    restaurant: 'Restaurant Name',
+    points: '50',
+  },
+  {
+    restaurant: 'Restaurant Name',
+    points: '30',
+  },
+  {
+    restaurant: 'Restaurant Name',
+    points: '22',
+  },
+
+  {
+    restaurant: 'Restaurant Name',
+    points: '22',
+  },
+  {
+    restaurant: 'Restaurant Name',
+    points: '22',
+  },
+  {
+    restaurant: 'Restaurant Name',
+    points: '22',
+  },
+  {
+    restaurant: 'Restaurant Name',
+    points: '22',
   },
 ];
 

@@ -2,12 +2,12 @@ import {StyleSheet} from 'react-native';
 import {fonts} from '../../theme/FontFamily';
 import {heightToDp, width, widthToDp} from '../../utils/Dimensions';
 import {Colors} from '../../theme';
-import {getPlatformSpecificValue} from '../../utils/helper';
+import {getPlatformSpecificValue, screenToTextSize} from '../../utils/helper';
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingHorizontal: 15,
+    // paddingHorizontal: 15,
   },
   navbarPageTitle: {
     color: Colors.WHITE,
@@ -43,10 +43,10 @@ const styles = StyleSheet.create({
     left: 20,
     right: 20,
   },
-  categoryWiseContainer: {
+  userWiseContainer: {
     justifyContent: 'start',
     flexDirection: 'row',
-    height: getPlatformSpecificValue(heightToDp(60), heightToDp(80)),
+    height: getPlatformSpecificValue(heightToDp(60), heightToDp(62)),
     // backgroundColor: 'red',
   },
   verticalTabs: {
@@ -56,29 +56,121 @@ const styles = StyleSheet.create({
   },
   uselessWrapper: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
+    // backgroundColor: '#f00',
+    alignItems: 'center',
+    justifyContent: 'space-evenly',
     transform: [{rotate: '-90deg'}],
     position: 'absolute',
-    left: -25,
-    top: 140,
-    width: widthToDp(30),
-    height: heightToDp(20),
-    // backgroundColor: 'red',
+    left: screenToTextSize(-18),
+    top: screenToTextSize(24),
+    width: widthToDp(55),
+    height: heightToDp(10),
+    flex: 1,
+    // backgroundColor: '#f00',
+  },
+  verticalTabBtnGrad: {
+    borderRadius: 10,
+    flexWrap: 'wrap',
+    width: '90%',
+    // marginTop: 10,
   },
   verticalTabBtns1: {
     width: widthToDp(20),
+    justifyContent: 'center',
+    alignItems: 'center',
+    // backgroundColor: '#f00',
     // paddingVertical: 10,
   },
   verticalTabBtns2: {
     width: widthToDp(35),
+    justifyContent: 'center',
+    alignItems: 'center',
+    // backgroundColor: '#f00',
   },
   flatlistWrapper: {
     width: widthToDp(80),
-    marginLeft: 45,
+    marginLeft: screenToTextSize(15),
     // backgroundColor: 'red',
+    justifyContent: 'center',
+    alignItems: 'center',
+    flex: 1,
+    height: screenToTextSize(60),
+    marginTop: screenToTextSize(0),
+  },
+  menuItemSmallbox: {
+    marginHorizontal: 5,
+    width: screenToTextSize(40),
+    height: screenToTextSize(55),
+    alignSelf: 'center',
+    backgroundColor: '#7074C422',
+    borderColor: '#fff4',
+    borderWidth: 1,
+    borderRadius: 20,
+    alignItems: 'center',
+    gap: 4,
+    justifyContent: 'space-between',
+    overflow: 'hidden',
+    imgCont: {
+      // backgroundColor: '#ff0',
+      flex: 1,
+      width: '100%',
+      height: '100%',
+      justifyContent: 'center',
+      alignItems: 'center',
+      resizeMode: 'cover',
+      paddingHorizontaal: screenToTextSize(10),
+    },
+    image: {
+      width: screenToTextSize(35),
+      height: screenToTextSize(35),
+      objectFit: 'contain',
+      backgroundColor: '#88888855',
+      borderRadius: 15,
+    },
+    nameCont: {
+      // flex: 1,
+      justifyContent: 'space-between',
+      width: '100%',
+      height: screenToTextSize(12),
+      alignItems: 'center',
+      flexDirection: 'row',
+      paddingHorizontal: screenToTextSize(2),
+      // backgroundColor: 'red',
+    },
+    itemName: {
+      color: '#fff',
+      fontSize: screenToTextSize(4),
+      fontFamily: fonts.URBANIST_BOLD,
+    },
+    ratingCont: {
+      // flex:1,
+      flexDirection: 'row',
+      justifyContent: 'center',
+      alignItems: 'center',
+      // width: '100%',
+      // height: screenToTextSize(12),
+      // paddingHorizontal: screenToTextSize(2),
+    },
+    rating: {
+      color: '#fff',
+      fontSize: screenToTextSize(4),
+      fontFamily: fonts.URBANIST_BOLD,
+    },
+  },
+  menuItemLongbox: {
+    detail: {},
+    nameRating: {},
+    itemName: {},
+    itemRating: {},
+    allergies: {},
+    itemPriceCont: {},
+    itemRegPrice: {},
+    itemRegPriceCrossed: {},
+    itemSalePrice: {},
+    itemRegPriceNotCrossed: {},
   },
   itemTypeGrad: {
-    borderRadius: 20,
+    borderRadius: 10,
     justifyContent: 'center',
     alignItems: 'center',
     width: '100%',
@@ -87,15 +179,15 @@ const styles = StyleSheet.create({
   categoryWiseTabItem: {
     textAlign: 'center',
     width: '100%',
-    fontSize: 12,
-    color: '#fff',
+    fontSize: screenToTextSize(3),
+    color: '#fff7',
   },
   categoryWiseTabItemActive: {
     color: '#000',
     textAlign: 'center',
     width: '100%',
-    fontSize: 12,
-    paddingVertical: heightToDp(1.5),
+    fontSize: screenToTextSize(3),
+    paddingVertical: heightToDp(1),
   },
   circleGradient: {
     margin: 1,
@@ -105,7 +197,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 5,
     alignSelf: 'center',
     alignItems: 'center',
-    backgroundColor: '#00000044',
+    backgroundColor: '#00000099',
     borderRadius: 15,
   },
   filterHeading: {
@@ -177,7 +269,6 @@ const styles = StyleSheet.create({
     // backgroundColor: '#1A4158',
     // backgroundColor: '#345B61',
     // backgroundColor: '#FFFFFF',
-
     borderRadius: 20,
     alignItems: 'center',
     justifyContent: 'center',
@@ -195,7 +286,7 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     flexWrap: 'wrap',
     width: '90%',
-    marginTop: 10,
+    marginTop: 2,
     // padding: 10,
     // b
   },
@@ -255,7 +346,6 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     // backgroundColor: 'green',
   },
-
   subContainer: {
     width: '40%',
     flexDirection: 'column',

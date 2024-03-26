@@ -1,21 +1,24 @@
 import {View, Text, Image, Switch} from 'react-native';
 import React, {useState} from 'react';
 import {styles} from './styles';
-import BackgroundLayout from '../../../components/BackgroundLayout';
-import HeaderCommon from '../../../components/HeaderCommon';
-import {widthToDp} from '../../../utils/Dimensions';
-import BottomLine from '../../../components/BottomLine';
+import BackgroundLayout from '../../components/BackgroundLayout';
+import HeaderCommon from '../../components/HeaderCommon';
+import {widthToDp} from '../../utils/Dimensions';
+import BottomLine from '../../components/BottomLine';
+import BackButton from '../../components/NavButtons/BackButton';
+import HeaderModed from '../../components/HeaderModed';
+import {commonStyles} from '../../theme';
 
-const Settinglist = () => {
+const AccountDetail = () => {
   const [isEnabled, setIsEnabled] = useState(false);
   const toggleSwitch = () => setIsEnabled(previousState => !previousState);
   return (
     <View style={styles.container}>
       <BackgroundLayout />
-      <HeaderCommon
-        show={true}
-        logoStyle={{marginRight: widthToDp(12)}}
-        title={'Settings'}
+      <HeaderModed
+        slotLeft={<BackButton />}
+        slotCenter={<Text style={commonStyles.headerText}>Account Detail</Text>}
+        slotRight={<></>}
       />
       <View style={styles.subContainer}>
         <View
@@ -25,7 +28,7 @@ const Settinglist = () => {
             // marginTop: widthToDp(5),
             marginBottom: widthToDp(2),
           }}>
-          <Image source={require('../../../assets/images/language_icon.png')} />
+          <Image source={require('../../assets/images/language_icon.png')} />
           <View style={{paddingHorizontal: 10}}>
             <Text style={styles.subTitle}>Language Selection</Text>
             <Text style={styles.subTitleTwo}>English (united States)</Text>
@@ -41,7 +44,7 @@ const Settinglist = () => {
             marginTop: widthToDp(5),
             marginBottom: widthToDp(2),
           }}>
-          <Image source={require('../../../assets/images/currency_icon.png')} />
+          <Image source={require('../../assets/images/currency_icon.png')} />
           <View style={{paddingHorizontal: 10}}>
             <Text style={styles.subTitle}>Currency Selection</Text>
             <Text style={styles.subTitleTwo}>USD</Text>
@@ -57,7 +60,7 @@ const Settinglist = () => {
             marginBottom: widthToDp(2),
           }}>
           <Image
-            source={require('../../../assets/images/notification_icon.png')}
+            source={require('../../assets/images/notification_icon.png')}
           />
           <View
             style={{
@@ -87,4 +90,4 @@ const Settinglist = () => {
   );
 };
 
-export default Settinglist;
+export default AccountDetail;
