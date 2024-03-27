@@ -27,6 +27,7 @@ import ReviewCard from '../../components/ReviewCard';
 import {reviews, ageGroup, cuisine, dressCode} from '../../utils/demodata';
 import Footer from '../../components/Footer';
 import HamBurgerButton from '../../components/NavButtons/HamBurgerButton';
+import { getPlatformSpecificValue } from '../../utils/helper';
 
 const Restaurant = () => {
   const [expanded, setExpanded] = useState(true);
@@ -177,7 +178,7 @@ const Restaurant = () => {
                   )}
                 />
               )}
-            </View>
+          </View>
 
             <LinearGradient
               colors={['#00000022', '#FFFFFFFF', '#FFFFFFFF']}
@@ -205,7 +206,7 @@ const Restaurant = () => {
     <View style={styles.container}>
       <BackgroundLayout />
       <HeaderModed
-        // headerStyle={{marginLeft: 15}}
+        //headerStyle={{marginLeft: getPlatformSpecificValue(15, 0)}}
         slotLeft={<HamBurgerButton />}
         slotCenter={<></>}
         slotRight={<></>}
@@ -246,14 +247,7 @@ const Restaurant = () => {
               colors={gradientColors}
               useAngle={true}
               angle={300}
-              style={{
-                borderRadius: 16,
-                flexWrap: 'nowrap',
-                marginVertical: 5,
-                marginRight: widthToDp(4),
-
-                alignSelf: 'flex-start',
-              }}
+              style={styles.aboutLinear}
               start={{x: 0, y: 0.5}}
               end={{x: 1, y: 0.5}}>
               <TouchableOpacity
@@ -279,14 +273,7 @@ const Restaurant = () => {
               colors={gradientColors}
               useAngle={true}
               angle={300}
-              style={{
-                borderRadius: 16,
-                flexWrap: 'nowrap',
-                marginVertical: 5,
-                marginRight: widthToDp(4),
-
-                alignSelf: 'flex-start',
-              }}
+              style={styles.reviewLinear}
               start={{x: 0, y: 0.5}}
               end={{x: 1, y: 0.5}}>
               <TouchableOpacity

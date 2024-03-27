@@ -10,7 +10,6 @@ const styles = StyleSheet.create({
     top: 5,
     bottom: 5,
     left: 10,
-    // right: 10,
     width: 100,
     height: 100,
   },
@@ -20,12 +19,10 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
-    // marginVertical: 3,
   },
   image: {
     flex: 1,
-    // width: widthToDp(100),
-    // justifyContent: 'center',
+
     marginVertical: 5,
     padding: 5,
     flexDirection: 'row',
@@ -36,13 +33,62 @@ const styles = StyleSheet.create({
     lineHeight: 84,
     fontWeight: 'bold',
     textAlign: 'center',
-    // backgroundColor: '#000000c0',
-    // borderRadius: 10,
   },
   lightText: {
     color: Colors.WHITE,
     fontSize: 16,
     fontFamily: fonts.URBANIST_THIN,
+  },
+  cardContainer: {
+    flexDirection: 'row',
+    width: widthToDp(60),
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+  name: {
+    color: Colors.WHITE,
+    fontSize: 18,
+    fontFamily: fonts.URBANIST_BOLD,
+  },
+
+  ratingContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+
+  rating: {
+    color: Colors.WHITE,
+    fontSize: 14,
+    fontFamily: fonts.URBANIST_BOLD,
+    paddingRight: 5,
+  },
+  starImg: {
+    width: 15,
+    height: 15,
+  },
+
+  location: {
+    color: '#CBCBCA',
+    marginVertical: 5,
+  },
+
+  cuisineContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+
+  cuisine: {
+    color: Colors.WHITE,
+    marginVertical: 5,
+  },
+
+  arrowContainer: {
+    width: '100%',
+    alignItems: 'flex-end',
+  },
+  arrow: {
+    width: 20,
+    height: 20,
   },
 });
 export {styles};

@@ -511,7 +511,7 @@ const PaymentOption = () => {
       <BackgroundLayout />
 
       <HeaderModed
-        headerStyle={{marginLeft: 15}}
+        //headerStyle={{marginLeft: getPlatformSpecificValue(15, 0)}}
         slotLeft={<HamBurgerButton />}
         slotCenter={<Text style={styles.headerText}>Payment Option</Text>}
         slotRight={<></>}

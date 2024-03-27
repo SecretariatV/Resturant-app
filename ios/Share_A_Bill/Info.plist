@@ -41,6 +41,10 @@
 	<string>Your message to user when the microsphone is accessed for the first time</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Your message to user when the photo library is accessed for the first time</string>
+	<key>NSCameraUsageDescription</key>
+<string>$(PRODUCT_NAME) needs access to your Camera.</string>
+
+
 	<key>UIAppFonts</key>
 	<array>
 		<string>Urbanist-Black.ttf</string>

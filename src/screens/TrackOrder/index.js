@@ -38,6 +38,7 @@ import FadedSeparator from '../../components/FadedSeparator/index.js';
 
 import Cross from '../../assets/images/cross.svg';
 import ButtonsCommon from '../../components/Buttons/ButtonCommon.js/index.js';
+import HamBurgerButton from '../../components/NavButtons/HamBurgerButton/index.js';
 const starterItems = ['Zesty Bruschetta Bites', 'Garlic Parmesan Wings', 'Caprese Skewers'];
 const mainItems = ['Burger', 'Shwarma', 'Mandi'];
 
@@ -55,13 +56,14 @@ const TrackOrder = () => {
       <BackgroundLayout />
 
       <HeaderModed
-        slotLeft={<MenuNavButton icon={Hamburger} iconType="image" />}
+        //headerStyle={{marginLeft: getPlatformSpecificValue(15, 0)}}
+        slotLeft={<HamBurgerButton />}
         slotCenter={<Text style={styles.headerText}>Track Order</Text>}
         slotRight={<></>}
       />
       <ScrollView contentContainerStyle={styles.scroll}>
         <BackgroundCard
-          style={{width: '95%'}}
+          style={{width: '95%', marginBottom: 10}}
           linearBackStyle={{borderRadius: 24}}
           childrenStyle={{borderRadius: 24}}>
           <View style={styles.itemContainer}>
@@ -137,7 +139,7 @@ const TrackOrder = () => {
         </BackgroundCard>
 
         <BackgroundCard
-          style={{width: '95%'}}
+          style={{width: '95%', marginBottom: 10}}
           linearBackStyle={{borderRadius: 24}}
           childrenStyle={{borderRadius: 24}}>
           <View style={styles.itemContainer}>
@@ -213,7 +215,7 @@ const TrackOrder = () => {
         </BackgroundCard>
 
         <BackgroundCard
-          style={{width: '95%'}}
+          style={{width: '95%', marginBottom: 10}}
           linearBackStyle={{borderRadius: 24}}
           childrenStyle={{borderRadius: 24}}>
           <View style={styles.itemContainer}>

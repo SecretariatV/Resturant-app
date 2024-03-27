@@ -178,5 +178,21 @@ const styles = StyleSheet.create({
   reviewList: {
     marginTop: 10,
   },
+  reviewLinear: {
+    borderRadius: 16,
+    flexWrap: 'nowrap',
+    marginVertical: 5,
+    marginRight: widthToDp(4),
+
+    alignSelf: 'flex-start',
+  },
+  aboutLinear: {
+    borderRadius: 16,
+    flexWrap: 'nowrap',
+    marginVertical: 5,
+    marginRight: widthToDp(4),
+
+    alignSelf: 'flex-start',
+  },
 });
 export {styles};

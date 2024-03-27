@@ -12,7 +12,6 @@ import BackgroundLayout from '../../components/BackgroundLayout';
 import HeaderModed from '../../components/HeaderModed';
 import MenuNavButton from '../../components/MenuNavButton';
 import Hamburger from '../../assets/images/hamburger.png';
-import Fav from '../../assets/images/fav.png';
 
 import {heightToDp, widthToDp} from '../../utils/Dimensions';
 import Swiper from 'react-native-swiper';
@@ -32,6 +31,8 @@ import Colors from '../../theme/Colors.js';
 import Footer from '../../components/Footer/index.js';
 import {fonts} from '../../theme/FontFamily.js';
 import HamBurgerButton from '../../components/NavButtons/HamBurgerButton/index.js';
+import FavouriteButton from '../../components/NavButtons/FavouriteButton/index.js';
+import { getPlatformSpecificValue } from '../../utils/helper.js';
 
 const MenuDetail = () => {
   const navigation = useNavigation();
@@ -71,21 +72,10 @@ const MenuDetail = () => {
       <BackgroundLayout />
       <ScrollView>
         <HeaderModed
-          headerStyle={{paddingLeft: 15}}
+          //headerStyle={{marginLeft: getPlatformSpecificValue(15, 0)}}
           // slotLeft={<HamBurgerButton />}
           slotCenter={<></>}
-          slotRight={
-            <MenuNavButton
-              containerStyle={{width: 60}}
-              icon={Fav}
-              iconType="image"
-              iconStyle={{
-                width: widthToDp(8),
-                height: widthToDp(8),
-                // margin: 5,
-              }}
-            />
-          }
+          slotRight={<FavouriteButton />}
         />
         <View
           style={{

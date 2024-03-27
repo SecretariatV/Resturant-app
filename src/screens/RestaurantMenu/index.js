@@ -7,7 +7,7 @@ import {
   Alert,
   ImageBackground,
 } from 'react-native';
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {BottomSheet} from '@rneui/themed';
 import {Image} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
@@ -34,28 +34,16 @@ import HeartIcon from '../../assets/images/fav.png';
 import Star from '../../assets/images/star.svg';
 //utils
 import {dressCode} from '../../utils/demodata';
-import {heightToDp, widthToDp} from '../../utils/Dimensions';
+import {height, heightToDp, widthToDp} from '../../utils/Dimensions';
 import {fonts} from '../../theme/FontFamily';
 import {Colors} from '../../theme';
-import {screenToTextSize} from '../../utils/helper';
+import {getPlatformSpecificValue, screenToTextSize} from '../../utils/helper';
+// import {View} from '@candlefinance/blur-view';
+import {Allergies} from '../../utils/demodata';
 
-const Menu = () => {
+const RestaurantMenu = () => {
   const navigation = useNavigation();
 
-  const dishType = [
-    {
-      imgUrl: require('../../assets/images/onion.json'),
-    },
-    {
-      imgUrl: require('../../assets/images/eggs.json'),
-    },
-    {
-      imgUrl: require('../../assets/images/fish.json'),
-    },
-    {
-      imgUrl: require('../../assets/images/nuts.json'),
-    },
-  ];
   const [modalVisible, setModalVisible] = useState(false);
   const [showFilter, setShowFilter] = useState(false);
   const [showRequest, setShowRequest] = useState(false);
@@ -80,15 +68,16 @@ const Menu = () => {
       <View style={styles.container}>
         <BackgroundLayout />
 
-        <ScrollView stickyHeaderIndices={[2]} style={{ paddingBottom: 20}} >
+        <ScrollView stickyHeaderIndices={[2]} style={{paddingBottom: 20}}>
           <HeaderModed
-            slotLeft={<HamBurgerButton onPress={navMenu} />}
+            //headerStyle={{marginLeft: getPlatformSpecificValue(15, 0)}}
+            slotLeft={<HamBurgerButton />}
             slotCenter={<Text style={styles.navbarPageTitle}>Menu</Text>}
             slotRight={<MenuNavButton icon={HeartIcon} iconType="img" />}
           />
-          <View class="user-wise-menu" style={styles.userWiseContainer}>
-            <View class="category-container" style={styles.verticalTabs}>
-              <View class="useless-wrapper" style={styles.uselessWrapper}>
+          <View className="user-wise-menu" style={styles.userWiseContainer}>
+            <View className="category-container" style={styles.verticalTabs}>
+              <View className="useless-wrapper" style={styles.uselessWrapper}>
                 <TouchableOpacity
                   style={styles.verticalTabBtns1}
                   onPress={() => handleItemType('top')}>
@@ -135,7 +124,7 @@ const Menu = () => {
                 </TouchableOpacity>
               </View>
             </View>
-            <View class="flatlist-wrapper" style={styles.flatlistWrapper}>
+            <View className="flatlist-wrapper" style={styles.flatlistWrapper}>
               {itemListType === 'top' && (
                 <FlatList
                   data={dressCode}
@@ -143,11 +132,13 @@ const Menu = () => {
                   keyExtractor={(item, index) => item.id + index.toString()}
                   horizontal
                   renderItem={({item, index}) => (
-                    <View
-                      class="menu-item-smallbox"
+                    <TouchableOpacity
+                      key={index}
+                      onPress={handlePress}
+                      className="menu-item-smallbox"
                       style={styles.menuItemSmallbox}>
                       <View
-                        class="menu-item-smallbox-imgCont"
+                        className="menu-item-smallbox-imgCont"
                         style={styles.menuItemSmallbox.imgCont}>
                         <Image
                           style={styles.menuItemSmallbox.image}
@@ -155,15 +146,15 @@ const Menu = () => {
                         />
                       </View>
                       <View
-                        class="menu-item-smallbox-nameCont"
+                        className="menu-item-smallbox-nameCont"
                         style={styles.menuItemSmallbox.nameCont}>
                         <Text
-                          class="menu-item-smallbox-name"
+                          className="menu-item-smallbox-name"
                           style={styles.menuItemSmallbox.itemName}>
                           Burger 1
                         </Text>
                         <View
-                          class="menu-item-smallbox-ratingCont"
+                          className="menu-item-smallbox-ratingCont"
                           style={styles.menuItemSmallbox.ratingCont}>
                           <Text style={styles.menuItemSmallbox.rating}>
                             4.5
@@ -171,7 +162,7 @@ const Menu = () => {
                           <Star width={20} />
                         </View>
                       </View>
-                    </View>
+                    </TouchableOpacity>
                   )}
                 />
               )}
@@ -183,10 +174,11 @@ const Menu = () => {
                   horizontal
                   renderItem={({item, index}) => (
                     <View
-                      class="menu-item-smallbox"
+                      key={index}
+                      className="menu-item-smallbox"
                       style={styles.menuItemSmallbox}>
                       <View
-                        class="menu-item-smallbox-imgCont"
+                        className="menu-item-smallbox-imgCont"
                         style={styles.menuItemSmallbox.imgCont}>
                         <Image
                           style={styles.menuItemSmallbox.image}
@@ -194,15 +186,15 @@ const Menu = () => {
                         />
                       </View>
                       <View
-                        class="menu-item-smallbox-nameCont"
+                        className="menu-item-smallbox-nameCont"
                         style={styles.menuItemSmallbox.nameCont}>
                         <Text
-                          class="menu-item-smallbox-name"
+                          className="menu-item-smallbox-name"
                           style={styles.menuItemSmallbox.itemName}>
                           Burger 2
                         </Text>
                         <View
-                          class="menu-item-smallbox-ratingCont"
+                          className="menu-item-smallbox-ratingCont"
                           style={styles.menuItemSmallbox.ratingCont}>
                           <Text style={styles.menuItemSmallbox.rating}>
                             2.5
@@ -216,7 +208,7 @@ const Menu = () => {
               )}
             </View>
           </View>
-          <View style={{}}>
+          <View blurTintColor="#0E0E15" colorTintOpacity={0.1} blurRadius={10}>
             <Text
               style={{
                 marginLeft: 15,
@@ -224,71 +216,124 @@ const Menu = () => {
                 fontSize: screenToTextSize(6),
                 fontWeight: 'bold',
                 color: Colors.GREEN,
+                paddingVertical: 20,
+                marginTop: 30,
               }}>
               Categories
             </Text>
           </View>
 
-          <View class="items-by-category" style={styles.categoryWiseContainer}>
+          <View
+            className="items-by-category"
+            style={styles.categoryWiseContainer}>
             <FlatList
               data={dressCode}
               style={styles.horizontalListStyle}
               showsHorizontalScrollIndicator={false}
+              scrollEnabled={false}
               keyExtractor={(item, index) => item.id + index.toString()}
               renderItem={({item, index}) => (
-                <View class="menu-item-longBox" style={styles.menuItemLongbox}>
+                <View
+                  key={index}
+                  className="vertical-product-list-item"
+                  style={styles.verticalPrdListItem}>
                   <View
-                    class="menu-item-longBox-detail"
-                    style={styles.menuItemLongbox.detail}>
+                    className="vertical-product-list-left-cont"
+                    style={styles.verticalPrdListItem.leftCont}>
                     <View
-                      class="menu-item-longBox-name-and-rating"
-                      style={styles.menuItemLongbox.nameRating}>
+                      className="product-name-cont"
+                      style={styles.verticalPrdListItem.prdNameCont}>
                       <Text
-                        class="menu-item-longBox-item-name"
-                        style={styles.menuItemLongbox.itemName}>
+                        className="product-name"
+                        style={styles.verticalPrdListItem.prdName}>
                         Burger
                       </Text>
-                      <View class="menu-item-longBox-item-rating">
-                        <Text style={styles.menuItemLongbox.itemRating}>
+                      <View
+                        className="product-rating-cont"
+                        style={styles.verticalPrdListItem.prdRatingCont}>
+                        <Text
+                          className="product-rating"
+                          style={styles.verticalPrdListItem.prdRating}>
                           4.5
                         </Text>
-                        <Star />
+                        <Star
+                          width={20}
+                          style={styles.verticalPrdListItem.prdRatingStar}
+                        />
                       </View>
                     </View>
                     <View
-                      class="item-allergies"
-                      style={styles.menuItemLongbox.allergies}></View>
+                      className="product-allergies-cont"
+                      style={styles.verticalPrdListItem.prdAllergiesCont}>
+                      {Allergies.map((item, index) => (
+                        <>
+                          <View
+                            key={index}
+                            className="allergies-bg"
+                            style={styles.verticalPrdListItem.prdAllergiesBg}>
+                            {/* <Text
+                              style={{
+                                color: '#000',
+                                backgroundColor: '#fff',
+                                width: 16,
+                              }}>
+                              {item.name}
+                            </Text> */}
+                            {item.imgUrl}
+                          </View>
+                        </>
+                      ))}
+                    </View>
                     <View
-                      class="item-price-cont"
-                      style={styles.menuItemLongbox.itemPriceCont}>
-                      <View
-                        class="item-price-sale"
-                        style={[styles.menuItemLongbox.itemRegPrice]}>
-                        <Text
-                          style={styles.menuItemLongbox.itemRegPriceCrossed}>
-                          $100
-                        </Text>
-                      </View>
-                      <View
-                        class="item-price-reg"
-                        style={styles.menuItemLongbox.itemSalePrice}>
-                        <Text
-                          style={styles.menuItemLongbox.itemRegPriceNotCrossed}>
-                          $100
-                        </Text>
-                      </View>
+                      className="product-pricing-cont"
+                      style={styles.verticalPrdListItem.prdPricingCont}>
+                      <Text
+                        style={[
+                          styles.price,
+                          {
+                            textDecorationLine: 'line-through',
+                            textDecorationStyle: 'solid',
+                            marginRight: 10,
+                            color: '#F7F7F899',
+                          },
+                        ]}>
+                        $100
+                      </Text>
+
+                      <Text style={styles.price}>$100</Text>
                     </View>
                   </View>
-                  <View class="menu-item-image">
-                    <Image
-                      source={require('../../assets/images/burger_one.png')}
-                      style={{width: 100, height: 100}}
-                    />
-                  </View>
-                  <View class="menu-item-qty-selector">
-                    <TouchableOpacity></TouchableOpacity>
-                    <Text>1</Text>
-                    <TouchableOpacity></TouchableOpacity>
+                  <View
+                    className="vertical-product-list-right-cont"
+                    style={styles.verticalPrdListItem.rightCont}>
+                    <View
+                      className="menu-item-large-imgCont"
+                      style={styles.verticalPrdListItem.imgCont}>
+                      <Image
+                        style={styles.verticalPrdListItem.image}
+                        source={require('../../assets/images/burger_one.png')}
+                      />
+                    </View>
+                    <View
+                      style={{alignItems: 'center', justifyContent: 'center'}}>
+                      <Counter
+                        vertical
+                        minusContainerStyle={{
+                          height: heightToDp(7),
+                          width: widthToDp(7),
+                          borderRadius: 8,
+                        }}
+                        plusContainerStyle={{
+                          height: heightToDp(6),
+                          width: widthToDp(6),
+                          borderRadius: 8,
+                          backgroundColor: Colors.GREEN,
+                        }}
+                        counterTextStyle={{margin: 15}}
+                        minusStyle={{width: 10, height: 2}}
+                        plusStyle={{width: 10, height: 10}}
+                      />
+                    </View>
                   </View>
                 </View>
               )}
@@ -312,12 +357,12 @@ const Menu = () => {
               <CloseFilterBtn width={20} height={20} />
             </TouchableOpacity>
           </View>
-          <View class="personal-preference" style={styles.filterSection}>
+          <View className="personal-preference" style={styles.filterSection}>
             <Text style={styles.filterHeadingText}>
               Apply Personal Preference
             </Text>
           </View>
-          <View class="cuisine-type">
+          <View className="cuisine-type">
             <Text style={styles.filterHeadingText}>Cuisine Type:</Text>
             <ScrollView
               horizontal
@@ -356,7 +401,7 @@ const Menu = () => {
             </ScrollView>
             <FadedSeparator />
           </View>
-          <View class="allergies">
+          <View className="allergies">
             <Text style={styles.filterHeadingText}>Allergies:</Text>
             <View style={styles.cuisineTypeBtns}>
               <ToggleButton
@@ -377,7 +422,7 @@ const Menu = () => {
             </View>
             <FadedSeparator />
           </View>
-          <View class="allergies">
+          <View className="allergies">
             <Text style={styles.filterHeadingText}>Allergies:</Text>
             <View style={styles.cuisineTypeBtns}>
               <ToggleButton
@@ -398,7 +443,7 @@ const Menu = () => {
             </View>
             <FadedSeparator />
           </View>
-          <View class="allergies">
+          <View className="allergies">
             <Text style={styles.filterHeadingText}>Allergies:</Text>
             <View style={styles.cuisineTypeBtns}>
               <ToggleButton
@@ -419,7 +464,7 @@ const Menu = () => {
             </View>
             <FadedSeparator />
           </View>
-          <View class="price-range" style={styles.priceRange}>
+          <View className="price-range" style={styles.priceRange}>
             <View style={styles.priceRangeLabel}>
               <Text>Price Range:</Text>
               <Text>$500</Text>
@@ -442,12 +487,12 @@ const Menu = () => {
           <View style={[styles.filterSection, styles.filterHeading]}>
             <Text style={styles.filterHeadingText}>Filter</Text>
           </View>
-          <View class="personal-preference" style={styles.filterSection}>
+          <View className="personal-preference" style={styles.filterSection}>
             <Text style={styles.filterHeadingText}>
               Apply Personal Preference
             </Text>
           </View>
-          <View class="cuisine-type">
+          <View className="cuisine-type">
             <Text style={styles.filterHeadingText}>Cuisine Type:</Text>
             <ScrollView
               horizontal
@@ -486,7 +531,7 @@ const Menu = () => {
             </ScrollView>
             <FadedSeparator />
           </View>
-          <View class="allergies">
+          <View className="allergies">
             <Text style={styles.filterHeadingText}>Allergies:</Text>
             <View style={styles.cuisineTypeBtns}>
               <ToggleButton
@@ -507,7 +552,7 @@ const Menu = () => {
             </View>
             <FadedSeparator />
           </View>
-          <View class="allergies">
+          <View className="allergies">
             <Text style={styles.filterHeadingText}>Allergies:</Text>
             <View style={styles.cuisineTypeBtns}>
               <ToggleButton
@@ -528,7 +573,7 @@ const Menu = () => {
             </View>
             <FadedSeparator />
           </View>
-          <View class="allergies">
+          <View className="allergies">
             <Text style={styles.filterHeadingText}>Allergies:</Text>
             <View style={styles.cuisineTypeBtns}>
               <ToggleButton
@@ -549,7 +594,7 @@ const Menu = () => {
             </View>
             <FadedSeparator />
           </View>
-          <View class="price-range" style={styles.priceRange}>
+          <View className="price-range" style={styles.priceRange}>
             <View style={styles.priceRangeLabel}>
               <Text>Price Range:</Text>
               <Text>$500</Text>
@@ -589,4 +634,4 @@ const Menu = () => {
   );
 };
 
-export default Menu;
+export default RestaurantMenu;

@@ -3,7 +3,7 @@ import React from 'react';
 import LinearGradient from 'react-native-linear-gradient';
 import {styles} from './styles';
 import {useNavigation} from '@react-navigation/native';
-import Menu from '../../../assets/images/hamburger.svg';
+import MenuIcon from '../../../assets/images/hamburger.svg';
 
 const BackButton = ({showMenu}) => {
   const navigation = useNavigation();
@@ -31,7 +31,7 @@ const BackButton = ({showMenu}) => {
           ]}
           onPress={() => (!showMenu ? handleButton() : null)}>
           {showMenu ? (
-            <Menu width={40} height={40} style={{marginTop: 5}} />
+            <MenuIcon width={40} height={40} style={{marginTop: 5}} />
           ) : (
             <Image
               source={require('../../../assets/images/back_arrow.png')}

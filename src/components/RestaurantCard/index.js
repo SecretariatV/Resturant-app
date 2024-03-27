@@ -6,7 +6,6 @@ import {
   ImageBackground,
 } from 'react-native';
 import React from 'react';
-import {heightToDp, widthToDp} from '../../utils/Dimensions';
 import bg from '../../assets/images/restaurant_back.png';
 import arrow from '../../assets/images/arrow.png';
 
@@ -14,54 +13,13 @@ import logoImage from '../../assets/images/resturant_log.png';
 import star from '../../assets/images/star.png';
 
 import {styles} from './styles';
-import {Colors} from '../../theme';
-import {fonts} from '../../theme/FontFamily';
+
 import {useNavigation} from '@react-navigation/native';
 
 const ResturantCard = ({name, location, cuisine}) => {
   const navigation = useNavigation();
 
   return (
-    // <TouchableOpacity
-    //   style={{
-    //     width: widthToDp(100),
-    //     marginVertical: 5,
-    //     flexDirection: 'row',
-    //   }}>
-    //   <Image source={bg} resizeMode="cover" />
-    //   <Image source={logoImage} style={styles.logoImage} />
-    //   <View
-    //     style={{
-    //       position: 'absolute',
-    //       top: 10,
-    //       left: -20,
-    //       right: 0,
-    //       bottom: 0,
-
-    //       alignItems: 'center',
-    //     }}>
-    //     <Text
-    //       style={{
-    //         color: Colors.WHITE,
-    //         fontSize: 18,
-    //         fontFamily: fonts.URBANIST_BOLD,
-    //       }}>
-    //       {name}
-    //     </Text>
-
-    //     <Text
-    //       style={{
-    //         color: Colors.WHITE,
-    //         fontSize: 16,
-    //         fontFamily: fonts.URBANIST_THIN,
-    //         textAlign: 'left',
-    //         // backgroundColor: 'red',
-    //         left: -15,
-    //       }}>
-    //       {location}
-    //     </Text>
-    //   </View>
-    // </TouchableOpacity>
     <TouchableOpacity
       style={styles.container}
       onPress={() => navigation.navigate('Restaurant')}>
@@ -70,63 +28,22 @@ const ResturantCard = ({name, location, cuisine}) => {
         style={styles.image}
         imageStyle={{borderRadius: 10}}>
         {/* <Text style={styles.text}>Inside</Text> */}
-        <Image source={logoImage} style={{margin: 5}} />
+        <Image source={logoImage} style={{margin: 5, resizeMode: 'contain'}} />
         <View style={{margin: 5}}>
-          <View
-            style={{
-              flexDirection: 'row',
-              //   backgroundColor: 'red',
-              width: widthToDp(60),
-              justifyContent: 'space-between',
-              alignItems: 'center',
-            }}>
-            <Text
-              style={{
-                color: Colors.WHITE,
-                fontSize: 18,
-                fontFamily: fonts.URBANIST_BOLD,
-              }}>
-              {name}
-            </Text>
-            <View
-              style={{
-                flexDirection: 'row',
-                alignItems: 'center',
-              }}>
-              <Text
-                style={{
-                  color: Colors.WHITE,
-                  fontSize: 14,
-                  fontFamily: fonts.URBANIST_BOLD,
-                  paddingRight: 5,
-                }}>
-                4.5
-              </Text>
-              <Image source={star} style={{width: 15, height: 15}} />
+          <View style={styles.cardContainer}>
+            <Text style={styles.name}>{name}</Text>
+            <View style={styles.ratingContainer}>
+              <Text style={styles.rating}>4.5</Text>
+              <Image source={star} style={styles.starImg} />
             </View>
           </View>
-          <Text
-            style={[styles.lightText, {color: '#CBCBCA', marginVertical: 5}]}>
-            {location}
-          </Text>
-          <View style={{flexDirection: 'row', alignItems: 'center'}}>
-            <Text style={{color: Colors.WHITE, marginVertical: 5}}>
-              Cuisine Type:{' '}
-            </Text>
+          <Text style={[styles.lightText, styles.location]}>{location}</Text>
+          <View style={styles.cuisineContainer}>
+            <Text style={styles.cuisine}>Cuisine Type: </Text>
             <Text style={styles.lightText}>{cuisine}</Text>
           </View>
-          <View
-            style={{
-              width: '100%',
-              alignItems: 'flex-end',
-              //   backgroundColor: 'red',
-            }}>
-            <Image
-              source={arrow}
-              width={20}
-              height={20}
-              style={{width: 20, height: 20}}
-            />
+          <View style={styles.arrowContainer}>
+            <Image source={arrow} width={20} height={20} style={styles.arrow} />
           </View>
         </View>
       </ImageBackground>
