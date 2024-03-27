@@ -67,6 +67,7 @@ import AccountDetail from '../screens/AccountDetail';
 import Setting from '../screens/Setting';
 import Reward from '../screens/Reward';
 import OrderHistory from '../screens/OrderHistory';
+import OrderHistoryDetail from '../screens/OrderHistoryDetail';
 
 const Tab = createBottomTabNavigator();
 // const Drawer = createDrawerNavigator();
@@ -166,6 +167,10 @@ const HomeStack = ({activeRestaurant}) => {
         <Stack.Screen name="Setting" component={Setting} />
         <Stack.Screen name="Reward" component={Reward} />
         <Stack.Screen name="OrderHistory" component={OrderHistory} />
+        <Stack.Screen
+          name="OrderHistoryDetail"
+          component={OrderHistoryDetail}
+        />
       </Stack.Group>
     </Stack.Navigator>
   );
@@ -283,6 +288,15 @@ const TabNavigator = ({activeRestaurant}) => {
       <Tab.Screen
         name="OrderHistory"
         component={OrderHistory}
+        options={{
+          tabBarButton: () => null,
+          tabBarVisible: false,
+        }}
+      />
+
+      <Tab.Screen
+        name="OrderHistoryDetail"
+        component={OrderHistoryDetail}
         options={{
           tabBarButton: () => null,
           tabBarVisible: false,

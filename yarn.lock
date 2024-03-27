@@ -1166,11 +1166,6 @@
   resolved "https://registry.npmjs.org/@bcoe/v8-coverage/-/v8-coverage-0.2.3.tgz"
   integrity sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==
 
-"@candlefinance/blur-view@^0.5.3":
-  version "0.5.3"
-  resolved "https://registry.npmjs.org/@candlefinance/blur-view/-/blur-view-0.5.3.tgz"
-  integrity sha512-cadAtDYUAXtw3rpn2B+/pGkdbR6FRzOS2JHyR6rMbrdI9kNybM8lXPeMT8RfwDAal8j/lHacgcA6nw3n97QHpw==
-
 "@egjs/hammerjs@^2.0.17":
   version "2.0.17"
   resolved "https://registry.npmjs.org/@egjs/hammerjs/-/hammerjs-2.0.17.tgz"

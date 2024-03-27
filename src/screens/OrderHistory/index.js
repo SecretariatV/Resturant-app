@@ -1,4 +1,4 @@
-import {View, Text, Image, FlatList} from 'react-native';
+import {View, Text, Image, FlatList, TouchableOpacity} from 'react-native';
 import React, {useEffect, useRef, useState} from 'react';
 import BackgroundLayout from '../../components/BackgroundLayout';
 import {styles} from './styles';
@@ -12,11 +12,16 @@ import {rewards} from '../../utils/demodata';
 import Footer from '../../components/Footer';
 import RestaurantButton from '../../components/Buttons/RestaurantButton';
 import {fonts} from '../../theme/FontFamily';
+import {useNavigation} from '@react-navigation/native';
+
 const OrderHistory = () => {
+  const navigation = useNavigation();
+
   const [points, setPoints] = useState(500);
 
   const renderItem = ({item, index}) => (
-    <View
+    <TouchableOpacity
+      onPress={() => navigation.navigate('OrderHistoryDetail')}
       class="menu-item-smallbox"
       style={styles.menuItemSmallbox}
       key={index}>
@@ -56,7 +61,7 @@ const OrderHistory = () => {
         btnText={'Leave a Review'}
         style={{width: '95%', marginBottom: 10}}
       />
-    </View>
+    </TouchableOpacity>
   );
   return (
     <View style={styles.container}>

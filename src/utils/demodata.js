@@ -200,24 +200,31 @@ export const restaurants = [
 export const cartData = [
   {
     productName: 'Burger',
+    price: '50',
   },
   {
     productName: 'Shawarma',
+    price: '50',
   },
   {
     productName: 'Onion',
+    price: '50',
   },
   {
     productName: 'Shawarma',
+    price: '50',
   },
   {
     productName: 'Onion',
+    price: '50',
   },
   {
     productName: 'Shawarma',
+    price: '50',
   },
   {
     productName: 'Onion',
+    price: '50',
   },
 ];
 

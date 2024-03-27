@@ -175,7 +175,7 @@ const Cart = () => {
                       {item.productName}
                     </Text>
                     <Text style={[styles.navbarPageTitle, {marginLeft: 10}]}>
-                      {item.price}
+                      ${item.price}
                     </Text>
                   </View>
                 </View>

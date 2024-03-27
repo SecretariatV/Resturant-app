@@ -69,7 +69,9 @@ const Signup = ({showMenu}) => {
       <BackgroundLayout />
 
       {/* <HeaderCommon show={true} showMenu={false} /> */}
-      <HeaderModed slotLeft={<BackButton />} />
+      <HeaderModed
+        slotLeft={<BackButton onPress={() => navigation.goBack()} />}
+      />
       <ScrollView style={styles.regFormScrollView}>
         <View className="join-screen-header-text">
           <View

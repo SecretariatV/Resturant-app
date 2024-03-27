@@ -145,7 +145,8 @@ const Menu = () => {
                   keyExtractor={(item, index) => item.id + index.toString()}
                   horizontal
                   renderItem={({item, index}) => (
-                    <View
+                    <TouchableOpacity
+                      onPress={() => navigation.navigate('MenuDetail')}
                       class="menu-item-smallbox"
                       style={styles.menuItemSmallbox}>
                       <View
@@ -173,7 +174,7 @@ const Menu = () => {
                           <Star width={20} />
                         </View>
                       </View>
-                    </View>
+                    </TouchableOpacity>
                   )}
                 />
               )}
