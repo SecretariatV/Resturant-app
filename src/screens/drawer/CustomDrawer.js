@@ -4,7 +4,7 @@ import {useDrawerProgress} from '@react-navigation/drawer';
 import Animated, {interpolate, useAnimatedStyle} from 'react-native-reanimated';
 import {colors, constant} from './constant';
 import LinearGradient from 'react-native-linear-gradient';
-import {BlurView} from '@candlefinance/blur-view';
+// import {View} from '@candlefinance/blur-view';
 import {fonts} from '../../theme/FontFamily';
 import {Colors} from '../../theme';
 import {screenToTextSize} from '../../utils/helper';
@@ -47,7 +47,6 @@ const CustomDrawer1 = props => {
         opacity,
       };
     });
-
   return (
     <LinearGradient
       colors={['#0E0E15', '#0E0E15', '#0E0E15', '#00F59411']}
@@ -58,7 +57,7 @@ const CustomDrawer1 = props => {
       end={{x: 1, y: 0.5}}>
       <View style={styles.circleGradient}>
         <View style={[styles.view, styles.borderStyle]}>
-          <BlurView
+          <View
             blurTintColor="#0E0E15" // has to be hex with opacity
             colorTintOpacity={0.1}
             blurRadius={10}
@@ -82,22 +81,26 @@ const CustomDrawer1 = props => {
             <View style={{}}>
               <Text style={styles.headerTitle}>Mark Anderson</Text>
               <View style={styles.userMenu}>
-                <View
-                  class="active-order-bar-bg"
-                  style={styles.activeOrderBarbg}>
-                  <LinearGradient
-                    class="intro-active-orders"
-                    colors={[
-                      '#01322Bff',
-                      '#00F594ff',
-                      '#00F594ff',
-                      '#02ABEEff',
-                    ]}
-                    useAngle={true}
-                    angle={45}
-                    style={styles.levelGradient}
-                    start={{x: 0, y: 0.5}}
-                    end={{x: 1, y: 0.5}}></LinearGradient>
+                <View class="level-bar-color-bg" style={styles.levelBarColorBg}>
+                  <View class="level-bar-bg-dark" style={styles.levelBarBgDark}>
+                    <View
+                      class="active-order-bar-bg"
+                      style={styles.activeOrderBarbg}>
+                      <LinearGradient
+                        class="intro-active-orders"
+                        colors={[
+                          '#01322Bff',
+                          '#00F594ff',
+                          '#00F594ff',
+                          '#02ABEEff',
+                        ]}
+                        useAngle={true}
+                        angle={45}
+                        style={[styles.levelGradient, {width: '50%'}]}
+                        start={{x: 0, y: 0.5}}
+                        end={{x: 1, y: 0.5}}></LinearGradient>
+                    </View>
+                  </View>
                 </View>
                 <GradientText style={{marginLeft: 10}}>Level</GradientText>
                 <LinearGradient
@@ -287,11 +290,26 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginTop: widthToDp(0.8),
   },
+  levelBarColorBg: {
+    backgroundColor: '#00ffa8',
+    width: screenToTextSize(21),
+    position: 'relative',
+    borderRadius: 50,
+    height: screenToTextSize(3),
+    padding: 2,
+  },
+  levelBarBgDark: {
+    backgroundColor: '#012a25',
+    width: screenToTextSize(20),
+    position: 'relative',
+    borderRadius: 50,
+    height: screenToTextSize(2),
+  },
   levelGradient: {
     borderRadius: 10,
     flexWrap: 'nowrap',
-    height: 2,
-    width: '65%',
+    height: 3,
+    // width: '50%',
   },
   activeOrderBarContainer: {
     alignItems: 'start',
@@ -305,12 +323,12 @@ const styles = StyleSheet.create({
     marginLeft: 5,
   },
   activeOrderBarbg: {
-    backgroundColor: '#ccc',
+    backgroundColor: '#012a25',
     borderRadius: 15,
-    width: '30%',
-    // position: 'relative',
-    height: 2,
-    marginTop: 5,
+    width: '100%',
+    position: 'absolute',
+    height: 3,
+    marginTop: 2,
   },
   absolute: {
     position: 'absolute',

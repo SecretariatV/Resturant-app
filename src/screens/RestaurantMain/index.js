@@ -9,34 +9,38 @@ import {
   TouchableHighlight,
   SafeAreaView,
 } from 'react-native';
-import {styles} from './styles';
 import LinearGradient from 'react-native-linear-gradient';
-// import ActiveOrders from '../../assets/images/activeOrders.svg';
-import ActiveOrders from '../../assets/images/activeOrderBox.svg';
-import ResturantCard from '../../components/RestaurantCard';
-import scan_here from '../../assets/images/scan_here.png';
-import scan_arrow from '../../assets/images/scan_arrow.png';
+import {BottomSheet} from '@rneui/themed';
+import {useEffect, useState} from 'react';
+import {useSelector} from 'react-redux';
+import {Colors} from '../../theme';
+import {styles} from './styles';
+import { useNavigation } from '@react-navigation/native';
+
 import SkipButton from '../../components/Buttons/SkipButton';
 import HeaderModed from '../../components/HeaderModed';
-
-import CloseFilterBtn from '../../assets/images/closeBtnFilter.svg';
-
-import Footer from '../../components/Footer';
-import SearchModded from '../../components/SearchModded';
-
-import {BottomSheet} from '@rneui/themed';
-import ToggleButton from '../../components/ToggleButton';
-import FadedSeparator from '../../components/FadedSeparator';
-import {Colors} from '../../theme';
-import {useSelector} from 'react-redux';
-import GradientText from '../../components/GradientText';
-import {useEffect, useState} from 'react';
-import {widthToDp} from '../../utils/Dimensions';
-import BackgroundLayout from '../../components/BackgroundLayout';
-import {getPlatformSpecificValue} from '../../utils/helper';
+import ActiveOrders from '../../assets/images/activeOrderBox.svg';
+import ResturantCard from '../../components/RestaurantCard';
 import BackButton from '../../components/NavButtons/BackButton';
 import HamBurgerButton from '../../components/NavButtons/HamBurgerButton';
+import SearchModded from '../../components/SearchModded';
+import ToggleButton from '../../components/ToggleButton';
+import FadedSeparator from '../../components/FadedSeparator';
+import GradientText from '../../components/GradientText';
+import BackgroundLayout from '../../components/BackgroundLayout';
+import Footer from '../../components/Footer';
+
+// import ActiveOrders from '../../assets/images/activeOrders.svg';
+import scan_here from '../../assets/images/scan_here.png';
+import scan_arrow from '../../assets/images/scan_arrow.png';
+import CloseFilterBtn from '../../assets/images/closeBtnFilter.svg';
+
+import {widthToDp} from '../../utils/Dimensions';
+import {getPlatformSpecificValue} from '../../utils/helper';
 const RestaurantMain = () => {
+
+   const navigation = useNavigation();
+
   const [modalVisible, setModalVisible] = useState(true);
   const [isVisible, setIsVisible] = useState(false);
   const [sliderValue, setSliderValue] = useState(0);
@@ -149,7 +153,7 @@ const RestaurantMain = () => {
       </Modal>
       <BackgroundLayout />
       <HeaderModed
-        headerStyle={{marginLeft: 15}}
+        //headerStyle={{marginLeft: getPlatformSpecificValue(15, 0)}}
         slotLeft={<HamBurgerButton />}
         slotCenter={<></>}
         slotRight={<></>}
@@ -190,7 +194,8 @@ const RestaurantMain = () => {
                 width={getPlatformSpecificValue(30, 20)}
                 height={getPlatformSpecificValue(30, 20)}
               />
-              <View
+              <TouchableOpacity
+                onPress={() => navigation.navigate('TrackOrder')}
                 class="active-order-text-and-bar"
                 style={styles.activeOrderBar}>
                 <Text style={styles.activeOrderText}>Active Order</Text>
@@ -216,7 +221,7 @@ const RestaurantMain = () => {
                     start={{x: 0, y: 0.5}}
                     end={{x: 1, y: 0.5}}></LinearGradient>
                 </View>
-              </View>
+              </TouchableOpacity>
             </View>
           </LinearGradient>
         </View>

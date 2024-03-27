@@ -30,6 +30,7 @@ import {useNavigation} from '@react-navigation/native';
 import {Modal} from 'react-native';
 import GradientText from '../../components/GradientText/index.js';
 import HamBurgerButton from '../../components/NavButtons/HamBurgerButton/index.js';
+import { getPlatformSpecificValue } from '../../utils/helper.js';
 
 const Cart = () => {
   const navigation = useNavigation();
@@ -115,7 +116,7 @@ const Cart = () => {
       /> */}
       {isModalVisible ? FullScreenModal() : <></>}
       <HeaderModed
-        headerStyle={{marginLeft: 15}}
+        //headerStyle={{marginLeft: getPlatformSpecificValue(15, 0)}}
         slotLeft={<HamBurgerButton />}
         slotCenter={
           <Text

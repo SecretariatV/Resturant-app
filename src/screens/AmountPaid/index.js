@@ -10,13 +10,14 @@ import {fonts} from '../../theme/FontFamily';
 import AmountStatusCard from '../../components/AmountStatusCard';
 import {approvedPayment} from '../../utils/demodata';
 import HamBurgerButton from '../../components/NavButtons/HamBurgerButton';
+import { getPlatformSpecificValue } from '../../utils/helper';
 
 const AmountPaid = () => {
   return (
     <View style={styles.container}>
       <BackgroundLayout />
       <HeaderModed
-        headerStyle={{marginLeft: 15}}
+        //headerStyle={{marginLeft: getPlatformSpecificValue(15, 0)}}
         slotLeft={<HamBurgerButton />}
         slotCenter={<></>}
         slotRight={<></>}

@@ -21,9 +21,9 @@ const styles = StyleSheet.create({
     // height: 60,
     alignSelf: 'center',
     // paddingVertical: 5,
-    backgroundColor: '#1A415899',
-    // backgroundColor: 'transparent',
-
+    backgroundColor: '#FFFFFF22',
+    borderColor: '#fff4',
+    borderWidth: 1,
     borderRadius: 20,
     alignItems: 'center',
     justifyContent: 'center',

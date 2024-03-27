@@ -1,13 +1,18 @@
 //packages
 
-import {View, Text, Image, StyleSheet} from 'react-native';
+import {View, Text, Image, StyleSheet, TouchableOpacity} from 'react-native';
 import React, {useEffect, useRef, useState} from 'react';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
+// import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import {createStackNavigator} from '@react-navigation/stack';
 import {NavigationContainer} from '@react-navigation/native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-// import {createDrawerNavigator} from '@react-navigation/drawer';
-// import DrawerNavigation from '../screens/drawer/DrawerNavigation';
 import {GestureHandlerRootView} from 'react-native-gesture-handler';
+import {
+  createDrawerNavigator,
+  DrawerContentScrollView,
+  DrawerItemList,
+} from '@react-navigation/drawer';
+import {BottomSheet} from '@rneui/themed';
 
 // styles
 import {tabNavStyles} from './tabNavigatorStyles';
@@ -31,24 +36,13 @@ import RestaurantMain from '../screens/RestaurantMain';
 import QrCode from '../screens/QrCode';
 import Pay from '../screens/Pay';
 import Requests from '../screens/Requests';
-import Menu from '../screens/Menu';
+import RestaurantMenu from '../screens/RestaurantMenu';
 import Cart from '../screens/Cart';
 import Restaurant from '../screens/Restaurant';
+import Thankyou from '../screens/Thankyou';
 import MenuDetail from '../screens/MenuDetail';
 import IngredientCustomization from '../screens/IngredientCustomization';
 // import ResturantMenu from '../screens/ResturantMenu';
-
-// utils
-import {heightToDp, widthToDp} from '../utils/Dimensions';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import {screenToTextSize} from '../utils/helper';
-// icons
-import BackBtn from '../assets/images/tabbar-back.svg';
-import TobBargb from '../assets/images/tabbar-bg.svg';
-import MenuBg from '../assets/images/tabbar-center.svg';
-import MenuIcon from '../assets/images/tabbar-menu.svg';
-import QrIcon from '../assets/images/tabbar-qr.svg';
-import {useSelector} from 'react-redux';
 import PaymentOption from '../screens/PaymentOption';
 import AddCard from '../screens/AddCard';
 import AmountPaid from '../screens/AmountPaid';
@@ -56,11 +50,6 @@ import GeneratedQrCode from '../screens/GeneratedQrCode';
 import ProductReview from '../screens/ProductReview';
 import HomeScreens from '../screens/HomeScreens';
 import FeedbackSuccess from '../screens/FeedbackSuccess';
-import {
-  createDrawerNavigator,
-  DrawerContentScrollView,
-  DrawerItemList,
-} from '@react-navigation/drawer';
 import CustomDrawer1 from '../screens/drawer/CustomDrawer';
 import {colors} from '../screens/drawer/constant';
 import AccountDetail from '../screens/AccountDetail';
@@ -68,11 +57,23 @@ import Setting from '../screens/Setting';
 import Reward from '../screens/Reward';
 import OrderHistory from '../screens/OrderHistory';
 import OrderHistoryDetail from '../screens/OrderHistoryDetail';
+import TrackOrder from '../screens/TrackOrder';
 
+// utils
+import {widthToDp} from '../utils/Dimensions';
+import {screenToTextSize} from '../utils/helper';
+// icons
+import MenuIcon from '../assets/images/tabbar-menu.svg';
+import QrIcon from '../assets/images/tabbar-qr.svg';
+import {useSelector} from 'react-redux';
+import HomeIcon from '../assets/images/home.svg';
+import ButtonsCommon from '../components/Buttons/ButtonCommon.js';
+import CloseFilterBtn from '../assets/images/closeBtnFilter.svg';
 const Tab = createBottomTabNavigator();
 // const Drawer = createDrawerNavigator();
-const Stack = createNativeStackNavigator();
-const HomeStacked = createNativeStackNavigator();
+// const Stack = createNativeStackNavigator();
+const Stack = createStackNavigator();
+// const HomeStacked = createNativeStackNavigator();
 const Drawer = createDrawerNavigator(); // Create a Drawer navigator
 
 function CustomDrawerContent(props) {
@@ -83,13 +84,14 @@ function CustomDrawerContent(props) {
   );
 }
 const DrawerScreens = () => {
+  //  console.log('srm2', setRequestModal);
   return (
     <Drawer.Navigator
       screenOptions={{
         headerShown: false,
         drawerType: 'slide',
         overlayColor: 'transparent',
-        swipeEdgeWidth: Platform.OS === 'android' && 180,
+        swipeEdgeWidth: Platform.OS === 'android' && 50,
         // sceneContainerStyle: styles.sceneStyles,
 
         drawerStyle: {
@@ -130,6 +132,7 @@ const AuthStack = ({toggleLogin}) => {
 };
 
 const HomeStack = ({activeRestaurant}) => {
+  console.log('activeRestaurant', activeRestaurant, typeof activeRestaurant);
   return (
     <Stack.Navigator
       initialRouteName="TabNavigator"
@@ -137,28 +140,34 @@ const HomeStack = ({activeRestaurant}) => {
         headerShown: false,
       }}>
       <Stack.Group screenOptions={{presentation: 'modal'}}>
-        <Stack.Screen name="MenuDetail" component={MenuDetail} />
+        <Stack.Screen
+          name="MenuDetail"
+          component={MenuDetail}
+          options={() => ({
+            presentation: 'modal',
+          })}
+        />
         <Stack.Screen
           name="IngredientCustomization"
           component={IngredientCustomization}
+          options={() => ({
+            presentation: 'modal',
+          })}
         />
       </Stack.Group>
       <Stack.Group>
         <Stack.Screen name="HomeScreens" component={HomeScreens} />
-
         <Stack.Screen name="TabNavigator" component={TabNavigator} />
         <Stack.Screen name="Requests" component={Requests} />
-        {/* <Stack.Screen name="MenuDetail" component={MenuDetail}  /> */}
-        <Stack.Screen name="Menu" component={Menu} />
+        <Stack.Screen name="RestaurantMenu" component={RestaurantMenu} />
         <Stack.Screen name="RestaurantMain" component={RestaurantMain} />
         <Stack.Screen name="QrCode" component={QrCode} />
         <Stack.Screen name="Restaurant" component={Restaurant} />
-
         <Stack.Screen name="PaymentOption" component={PaymentOption} />
         <Stack.Screen name="AmountPaid" component={AmountPaid} />
-
+        <Stack.Screen name="TrackOrder" component={TrackOrder} />
         <Stack.Screen name="AddCard" component={AddCard} />
-
+        <Stack.Screen name="Thankyou" component={Thankyou} />
         <Stack.Screen name="Cart" component={Cart} />
         <Stack.Screen name="GeneratedQrCode" component={GeneratedQrCode} />
         <Stack.Screen name="ProductReview" component={ProductReview} />
@@ -177,11 +186,9 @@ const HomeStack = ({activeRestaurant}) => {
 };
 
 const TabNavigator = ({activeRestaurant}) => {
-  // const qRorMenu = activeRestaurant ? Menu : QrCode;
-  const qRorMenuText = activeRestaurant ? 'Menu' : 'QrCode';
   return (
     <Tab.Navigator
-      initialRouteName="Menu"
+      initialRouteName="RestaurantMenu"
       backBehavior="history"
       screenListeners={({navigation, route}) => ({
         tabPress: e => {},
@@ -194,7 +201,7 @@ const TabNavigator = ({activeRestaurant}) => {
         tabBarStyle: tabNavStyles.tabNavigatorBarStyle,
       })}>
       <Tab.Screen
-        name="Back"
+        name="RestaurantMain"
         component={RestaurantMain}
         options={{
           tabBarIcon: ({focused}) => {
@@ -209,11 +216,12 @@ const TabNavigator = ({activeRestaurant}) => {
                   left: -10,
                 }}>
                 <Image
-                  style={{width: 16, height: 16}}
-                  source={require('../assets/images/tabbar-back.png')}
+                  style={{width: 24, height: 24, opacity: 0.6}}
+                  source={require('../assets/images/home.png')}
                 />
+                {/* <HomeIcon width={25} height={25} style={{ opacity: 0.5, marginBottom: -5}}/> */}
                 <Text style={{color: '#fff', fontSize: screenToTextSize(3)}}>
-                  Back
+                  Home
                 </Text>
               </View>
             );
@@ -228,7 +236,7 @@ const TabNavigator = ({activeRestaurant}) => {
             return (
               <View style={tabNavStyles.tabNavRequestBtn}>
                 <Image
-                  style={{width: 16, height: 16}}
+                  style={{width: 24, height: 24}}
                   source={require('../assets/images/tabbar-request.png')}
                 />
                 <Text style={tabNavStyles.tabNavRequestBtnText}>Requests</Text>
@@ -236,38 +244,52 @@ const TabNavigator = ({activeRestaurant}) => {
             );
           },
         }}
+        // listeners={() => ({
+        //   tabPress: e => {
+        //     console.log('listern is working');
+        //     e.preventDefault();
+        //     // setShowFilter(true);
+        //   },
+        // })}
       />
-      <Tab.Screen
-        name={qRorMenuText}
-        component={Menu}
-        options={{
-          tabBarLabel: ({focused}) => {
-            focused ? 'QrCode' : 'dadadad';
-          },
-          tabBarIcon: ({focused}) => {
-            return (
-              <View
-                style={
-                  activeRestaurant
-                    ? tabNavStyles.tabNavMenuBtn
-                    : tabNavStyles.tabNavQrCodeScannerBtn
-                }>
-                {focused ? (
+      {!activeRestaurant ? (
+        <Tab.Screen
+          name={'RestaurantMenu'}
+          component={RestaurantMenu}
+          options={{
+            tabBarLabel: 'RestaurantMenu',
+            tabBarIcon: () => {
+              return (
+                <View style={tabNavStyles.tabNavMenuBtn}>
                   <MenuIcon
                     width={screenToTextSize(8)}
                     style={{width: 12, height: 12}}
                   />
-                ) : (
+                </View>
+              );
+            },
+          }}
+        />
+      ) : (
+        <Tab.Screen
+          name={'QrCode'}
+          component={QrCode}
+          options={{
+            tabBarLabel: 'QrCode',
+            tabBarIcon: () => {
+              return (
+                <View style={tabNavStyles.tabNavQrCodeScannerBtn}>
                   <QrIcon
                     width={screenToTextSize(8)}
-                    style={{width: 12, height: 12}}
+                    style={{width: 24, height: 24}}
                   />
-                )}
-              </View>
-            );
-          },
-        }}
-      />
+                </View>
+              );
+            },
+          }}
+        />
+      )}
+
       <Tab.Screen
         name="Setting"
         component={Setting}
@@ -311,6 +333,23 @@ const TabNavigator = ({activeRestaurant}) => {
           tabBarVisible: false,
         }}
       />
+
+      <Tab.Screen
+        name="Thankyou"
+        component={Thankyou}
+        options={{
+          tabBarButton: () => null,
+          tabBarVisible: false,
+        }}
+      />
+      <Tab.Screen
+        name="TrackOrder"
+        component={TrackOrder}
+        options={{
+          tabBarButton: () => null,
+          tabBarVisible: false,
+        }}
+      />
       <Tab.Screen
         name="HomeScreens"
         component={HomeScreens}
@@ -337,7 +376,7 @@ const TabNavigator = ({activeRestaurant}) => {
                 }}>
                 <Image
                   style={{width: 16, height: 16}}
-                  source={require('../assets/images/tabbar-cart.png')}
+                  source={require('../assets/images/cart.png')}
                 />
                 <Text style={{color: '#fff', fontSize: screenToTextSize(3)}}>
                   Cart
@@ -364,7 +403,7 @@ const TabNavigator = ({activeRestaurant}) => {
                 }}>
                 <Image
                   style={{width: 16, height: 16}}
-                  source={require('../assets/images/tabbar-pay.png')}
+                  source={require('../assets/images/pay.png')}
                 />
                 <Text style={{color: '#fff', fontSize: screenToTextSize(3)}}>
                   Pay
@@ -393,37 +432,71 @@ const RootNavigator = () => {
   const [saveUser, setSaveUser] = useState(false);
   const [activeRestaurant, setActiveRestaurant] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [showFilter, setShowFilter] = useState(false);
 
   useEffect(() => {
     console.log(user, 'user');
     if (user) {
     }
-    // return () => {
-    //   second
-    // }
   }, [user]);
 
   return (
     <GestureHandlerRootView style={{flex: 1}}>
       <NavigationContainer>
-        {/* <View style={{  backgroundColor: 'transparent'}}>
-        <Image resizeMethod='auto' resizeMode='contain' source={require('../assets/images/tabbar-bg.svg')} style={{ backgroundColor: 'transparent', width: widthToDp(100)}} />
-      </View> */}
-        {/* <DrawerNavigation /> */}
-        {/* {!saveUser ? HomeStack(activeRestaurant) : AuthStack()} */}
         {user ? <DrawerScreens /> : <AuthStack />}
+        {user ? (
+          <BottomSheet modalProps={{}} isVisible={showFilter}>
+            <View style={tabNavStyles.bottomSheetContainer}>
+              <Image
+                style={tabNavStyles.bottomImg}
+                source={require('../assets/images/bottom_bg.png')}
+              />
+              <View style={tabNavStyles.bottomView}>
+                <View style={tabNavStyles.bottomSubView}>
+                  <Text style={tabNavStyles.requestText}>Request</Text>
+                  <TouchableOpacity
+                    onPress={() => {
+                      setShowFilter(false);
+                      // navigation.goBack();
+                    }}>
+                    <CloseFilterBtn width={20} height={20} />
+                  </TouchableOpacity>
+                </View>
+                <View>
+                  <ButtonsCommon
+                    btnText={'Call waiter'}
+                    containerStyle={{marginTop: 10}}
+                    btnTextStyle={{marginLeft: 10}}
+                    img
+                    imageSource={require('../assets/images/waiter.png')}
+                    btnStyle={tabNavStyles.btnStyle}
+                  />
+                  <ButtonsCommon
+                    btnText={'Coal change'}
+                    containerStyle={{marginTop: 10}}
+                    btnTextStyle={{marginLeft: 10}}
+                    img
+                    imageSource={require('../assets/images/coal.png')}
+                    btnStyle={tabNavStyles.btnStyle}
+                  />
+
+                  <ButtonsCommon
+                    btnText={'Ashtray'}
+                    containerStyle={{marginTop: 10}}
+                    btnTextStyle={{marginLeft: 20}}
+                    img
+                    imageSource={require('../assets/images/ashtray.png')}
+                    btnStyle={tabNavStyles.btnStyle}
+                  />
+                </View>
+              </View>
+            </View>
+          </BottomSheet>
+        ) : (
+          <></>
+        )}
       </NavigationContainer>
     </GestureHandlerRootView>
   );
 };
 export default RootNavigator;
-const styles = StyleSheet.create({
-  drawerStyles: {
-    width: 220,
-    backgroundColor: colors.sceneBg,
-    paddingTop: 40,
-  },
-  sceneStyles: {
-    backgroundColor: 'red',
-  },
-});

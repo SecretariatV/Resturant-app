@@ -43,6 +43,7 @@ function App() {
   }, []);
 
   return (
+    
     <Provider store={store}>
       <StatusBar barStyle="light-content" />
 
