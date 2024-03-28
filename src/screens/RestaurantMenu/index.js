@@ -14,7 +14,8 @@ import LinearGradient from 'react-native-linear-gradient';
 import LottieView from 'lottie-react-native';
 import {styles} from './styles';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
-import {useNavigation} from '@react-navigation/native';
+import {useNavigation} from '@react-navigation/native'; 
+import {BlurView} from '@react-native-community/blur';
 // components
 import BackgroundLayout from '../../components/BackgroundLayout';
 import BackgroundCard from '../../components/BackgroundCard';
@@ -42,13 +43,30 @@ import {getPlatformSpecificValue, screenToTextSize} from '../../utils/helper';
 import {Allergies} from '../../utils/demodata';
 
 const RestaurantMenu = () => {
-  const navigation = useNavigation();
-
+  const navigation = useNavigation(); 
   const [modalVisible, setModalVisible] = useState(false);
   const [showFilter, setShowFilter] = useState(false);
   const [showRequest, setShowRequest] = useState(false);
   const [itemListType, setItemListType] = useState('top');
-
+ 
+    const categories = [
+      {
+        name: 'Breakfast',
+        slug: 'breakfast',
+        items: dressCode,
+      },
+      {
+        name: 'Lunch',
+        slug: 'lunch',
+        items: dressCode,
+      },
+      {
+        name: 'Main Course',
+        slug: 'main_course',
+        items: dressCode,
+      },
+    ];
+ 
   let activeColors = ['#00A7F7', '#00FC92'];
   let inActiveColors = ['#00A7F700', '#00FC9200'];
 
@@ -67,10 +85,8 @@ const RestaurantMenu = () => {
     <SafeAreaProvider>
       <View style={styles.container}>
         <BackgroundLayout />
-
         <ScrollView stickyHeaderIndices={[2]} style={{paddingBottom: 20}}>
           <HeaderModed
-            //headerStyle={{marginLeft: getPlatformSpecificValue(15, 0)}}
             slotLeft={<HamBurgerButton />}
             slotCenter={<Text style={styles.navbarPageTitle}>Menu</Text>}
             slotRight={<MenuNavButton icon={HeartIcon} iconType="img" />}
@@ -208,7 +224,7 @@ const RestaurantMenu = () => {
               )}
             </View>
           </View>
-          <View blurTintColor="#0E0E15" colorTintOpacity={0.1} blurRadius={10}>
+          <BlurView blurType="light" overlayColor="#ffffff00" blurAmount={10}>
             <Text
               style={{
                 marginLeft: 15,
@@ -221,7 +237,7 @@ const RestaurantMenu = () => {
               }}>
               Categories
             </Text>
-          </View>
+          </BlurView>
 
           <View
             className="items-by-category"
@@ -342,293 +358,6 @@ const RestaurantMenu = () => {
         </ScrollView>
       </View>
       {/* <Footer /> */}
-      <BottomSheet modalProps={{}} isVisible={showFilter}>
-        <Image
-          className="restaurant-filter-bg"
-          style={styles.restaurantFilterBg}
-          source={require('../../assets/images/backgroundTwo.png')}
-        />
-        <ScrollView
-          className="restaurant-filter-container"
-          style={styles.restaurantFilterContainer}>
-          <View style={[styles.filterSection, styles.filterHeading]}>
-            <Text style={styles.filterHeadingText}>Filter</Text>
-            <TouchableOpacity onPress={() => setShowFilter(false)}>
-              <CloseFilterBtn width={20} height={20} />
-            </TouchableOpacity>
-          </View>
-          <View className="personal-preference" style={styles.filterSection}>
-            <Text style={styles.filterHeadingText}>
-              Apply Personal Preference
-            </Text>
-          </View>
-          <View className="cuisine-type">
-            <Text style={styles.filterHeadingText}>Cuisine Type:</Text>
-            <ScrollView
-              horizontal
-              contentContainerStyle={styles.cuisineTypeBtnsContainerStyle}
-              style={styles.cuisineTypeBtns}>
-              <ToggleButton
-                name={'About'}
-                onPress={() => handleAboutToggle()}
-                show={false}
-              />
-              <ToggleButton
-                name={'About'}
-                onPress={() => handleAboutToggle()}
-                show={false}
-              />
-              <ToggleButton
-                name={'About'}
-                onPress={() => handleAboutToggle()}
-                show={false}
-              />
-              <ToggleButton
-                name={'About'}
-                onPress={() => handleAboutToggle()}
-                show={false}
-              />
-              <ToggleButton
-                name={'About'}
-                onPress={() => handleAboutToggle()}
-                show={false}
-              />
-              <ToggleButton
-                name={'About'}
-                onPress={() => handleAboutToggle()}
-                show={false}
-              />
-            </ScrollView>
-            <FadedSeparator />
-          </View>
-          <View className="allergies">
-            <Text style={styles.filterHeadingText}>Allergies:</Text>
-            <View style={styles.cuisineTypeBtns}>
-              <ToggleButton
-                name={'About'}
-                onPress={() => handleAboutToggle()}
-                show={false}
-              />
-              <ToggleButton
-                name={'About'}
-                onPress={() => handleAboutToggle()}
-                show={false}
-              />
-              <ToggleButton
-                name={'About'}
-                onPress={() => handleAboutToggle()}
-                show={false}
-              />
-            </View>
-            <FadedSeparator />
-          </View>
-          <View className="allergies">
-            <Text style={styles.filterHeadingText}>Allergies:</Text>
-            <View style={styles.cuisineTypeBtns}>
-              <ToggleButton
-                name={'About'}
-                onPress={() => handleAboutToggle()}
-                show={false}
-              />
-              <ToggleButton
-                name={'About'}
-                onPress={() => handleAboutToggle()}
-                show={false}
-              />
-              <ToggleButton
-                name={'About'}
-                onPress={() => handleAboutToggle()}
-                show={false}
-              />
-            </View>
-            <FadedSeparator />
-          </View>
-          <View className="allergies">
-            <Text style={styles.filterHeadingText}>Allergies:</Text>
-            <View style={styles.cuisineTypeBtns}>
-              <ToggleButton
-                name={'About'}
-                onPress={() => handleAboutToggle()}
-                show={false}
-              />
-              <ToggleButton
-                name={'About'}
-                onPress={() => handleAboutToggle()}
-                show={false}
-              />
-              <ToggleButton
-                name={'About'}
-                onPress={() => handleAboutToggle()}
-                show={false}
-              />
-            </View>
-            <FadedSeparator />
-          </View>
-          <View className="price-range" style={styles.priceRange}>
-            <View style={styles.priceRangeLabel}>
-              <Text>Price Range:</Text>
-              <Text>$500</Text>
-            </View>
-            <View style={styles.priceRangeSlider}></View>
-
-            <View style={styles.priceRangeLabelBottom}></View>
-          </View>
-        </ScrollView>
-      </BottomSheet>
-      <BottomSheet modalProps={{}} isVisible={showRequest}>
-        <Image
-          className="restaurant-filter-bg"
-          style={styles.restaurantFilterBg}
-          source={require('../../assets/images/backgroundTwo.png')}
-        />
-        <ScrollView
-          className="restaurant-filter-container"
-          style={styles.restaurantFilterContainer}>
-          <View style={[styles.filterSection, styles.filterHeading]}>
-            <Text style={styles.filterHeadingText}>Filter</Text>
-          </View>
-          <View className="personal-preference" style={styles.filterSection}>
-            <Text style={styles.filterHeadingText}>
-              Apply Personal Preference
-            </Text>
-          </View>
-          <View className="cuisine-type">
-            <Text style={styles.filterHeadingText}>Cuisine Type:</Text>
-            <ScrollView
-              horizontal
-              contentContainerStyle={styles.cuisineTypeBtnsContainerStyle}
-              style={styles.cuisineTypeBtns}>
-              <ToggleButton
-                name={'About'}
-                onPress={() => handleAboutToggle()}
-                show={false}
-              />
-              <ToggleButton
-                name={'About'}
-                onPress={() => handleAboutToggle()}
-                show={false}
-              />
-              <ToggleButton
-                name={'About'}
-                onPress={() => handleAboutToggle()}
-                show={false}
-              />
-              <ToggleButton
-                name={'About'}
-                onPress={() => handleAboutToggle()}
-                show={false}
-              />
-              <ToggleButton
-                name={'About'}
-                onPress={() => handleAboutToggle()}
-                show={false}
-              />
-              <ToggleButton
-                name={'About'}
-                onPress={() => handleAboutToggle()}
-                show={false}
-              />
-            </ScrollView>
-            <FadedSeparator />
-          </View>
-          <View className="allergies">
-            <Text style={styles.filterHeadingText}>Allergies:</Text>
-            <View style={styles.cuisineTypeBtns}>
-              <ToggleButton
-                name={'About'}
-                onPress={() => handleAboutToggle()}
-                show={false}
-              />
-              <ToggleButton
-                name={'About'}
-                onPress={() => handleAboutToggle()}
-                show={false}
-              />
-              <ToggleButton
-                name={'About'}
-                onPress={() => handleAboutToggle()}
-                show={false}
-              />
-            </View>
-            <FadedSeparator />
-          </View>
-          <View className="allergies">
-            <Text style={styles.filterHeadingText}>Allergies:</Text>
-            <View style={styles.cuisineTypeBtns}>
-              <ToggleButton
-                name={'About'}
-                onPress={() => handleAboutToggle()}
-                show={false}
-              />
-              <ToggleButton
-                name={'About'}
-                onPress={() => handleAboutToggle()}
-                show={false}
-              />
-              <ToggleButton
-                name={'About'}
-                onPress={() => handleAboutToggle()}
-                show={false}
-              />
-            </View>
-            <FadedSeparator />
-          </View>
-          <View className="allergies">
-            <Text style={styles.filterHeadingText}>Allergies:</Text>
-            <View style={styles.cuisineTypeBtns}>
-              <ToggleButton
-                name={'About'}
-                onPress={() => handleAboutToggle()}
-                show={false}
-              />
-              <ToggleButton
-                name={'About'}
-                onPress={() => handleAboutToggle()}
-                show={false}
-              />
-              <ToggleButton
-                name={'About'}
-                onPress={() => handleAboutToggle()}
-                show={false}
-              />
-            </View>
-            <FadedSeparator />
-          </View>
-          <View className="price-range" style={styles.priceRange}>
-            <View style={styles.priceRangeLabel}>
-              <Text>Price Range:</Text>
-              <Text>$500</Text>
-            </View>
-            <View style={styles.priceRangeSlider}>
-              {/* <RangeSlider
-                minValue={0}
-                maxValue={100}
-                steps={1}
-                activeBackgroundComponent={
-                  <View
-                    style={{
-                      backgroundColor: '#f00',
-                      width: widthToDp(100),
-                    }}
-                  />
-                }
-                inactiveBackgroundComponent={
-                  <View
-                    style={{
-                      backgroundColor: '#f0f',
-                      width: widthToDp(100),
-                    }}
-                  />
-                }
-                thumbComponent={<SliderThumb />}
-                onValueChange={setSliderValue}
-              /> */}
-            </View>
-
-            <View style={styles.priceRangeLabelBottom}></View>
-          </View>
-        </ScrollView>
-      </BottomSheet>
       <Footer />
     </SafeAreaProvider>
   );

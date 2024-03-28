@@ -93,6 +93,11 @@ const HomeScreens = () => {
           onPress={() => handleNavigate('Thankyou')}>
           <Text style={styles.to.btnText}>Thankyou</Text>
         </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.to}
+          onPress={() => handleNavigate('RestaurantReview')}>
+          <Text style={styles.to.btnText}>RestaurantReview</Text>
+        </TouchableOpacity>
         {/* <TouchableOpacity style={styles.to} onPress={() => handleNavigate('MenuDetail')}>
           <Text style={styles.to.btnText}  >MenuDetail</Text>
         </TouchableOpacity>

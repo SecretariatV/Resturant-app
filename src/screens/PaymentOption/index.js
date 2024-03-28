@@ -471,6 +471,8 @@ const renderScene = SceneMap({
   first: MyOrder,
   second: SecondRoute,
 });
+
+console.log(renderScene);
 const renderTabBar = props => (
   <TabBar
     {...props}
