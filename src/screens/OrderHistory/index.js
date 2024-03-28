@@ -13,6 +13,7 @@ import Footer from '../../components/Footer';
 import RestaurantButton from '../../components/Buttons/RestaurantButton';
 import {fonts} from '../../theme/FontFamily';
 import {useNavigation} from '@react-navigation/native';
+import {heightToDp} from '../../utils/Dimensions';
 
 const OrderHistory = () => {
   const navigation = useNavigation();
@@ -71,7 +72,12 @@ const OrderHistory = () => {
         slotCenter={<Text style={commonStyles.headerText}>Order History</Text>}
         slotRight={<></>}
       />
-      <View style={{width: '100%', alignItems: 'center', marginBottom: 200}}>
+      <View
+        style={{
+          width: '100%',
+          alignItems: 'center',
+          paddingBottom: heightToDp(45),
+        }}>
         <FlatList
           showsVerticalScrollIndicator={false}
           style={{marginTop: 10}}

@@ -7,7 +7,8 @@ import {screenToTextSize} from '../../utils/helper';
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingHorizontal: 15,
+
+    // paddingHorizontal: 15,
   },
   rewardContainer: {
     flexDirection: 'row',
@@ -82,6 +83,72 @@ const styles = StyleSheet.create({
       fontSize: screenToTextSize(4),
       fontFamily: fonts.URBANIST_BOLD,
     },
+  },
+  orderBox: {
+    backgroundColor: '#2C2D3A',
+    width: '90%',
+    marginVertical: 10,
+    alignItems: 'center',
+    borderRadius: 12,
+  },
+  orderNo: {
+    fontFamily: fonts.URBANIST_MEDIUM,
+    fontSize: screenToTextSize(3),
+    color: Colors.WHITE,
+    marginTop: 5,
+  },
+  orderNoTxt: {
+    fontFamily: fonts.URBANIST_BOLD,
+    fontSize: screenToTextSize(4),
+    color: Colors.WHITE,
+    marginVertical: 5,
+  },
+  orderDateBox: {
+    width: '90%',
+    marginBottom: 15,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    // backgroundColor: 'red',
+  },
+  date: {
+    color: Colors.WHITE,
+    fontFamily: fonts.URBANIST_REGULAR,
+  },
+  dateHeading: {
+    color: 'rgba(255, 255, 255, 0.72)',
+    fontFamily: fonts.URBANIST_REGULAR,
+  },
+  itemText: {
+    fontSize: screenToTextSize(4),
+    color: Colors.WHITE,
+    fontFamily: fonts.URBANIST_BOLD,
+    marginLeft: 10,
+  },
+  taxContainer: {
+    marginLeft: 10,
+  },
+  tax: {
+    color: 'rgba(255, 255, 255, 0.72)',
+    fontFamily: fonts.URBANIST_MEDIUM,
+    marginLeft: 10,
+
+    // ma,
+  },
+  productPrice: {
+    fontSize: screenToTextSize(4),
+    color: Colors.WHITE,
+    fontFamily: fonts.URBANIST_BOLD,
+  },
+  taxPrice: {
+    fontSize: screenToTextSize(4),
+    color: 'rgba(255, 255, 255, 0.72)',
+    fontFamily: fonts.URBANIST_BOLD,
+    alignSelf: 'flex-end',
+  },
+  grandtotal: {
+    fontSize: screenToTextSize(4),
+    fontFamily: fonts.URBANIST_BOLD,
   },
 });
 export {styles};

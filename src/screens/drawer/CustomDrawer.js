@@ -132,7 +132,10 @@ const CustomDrawer1 = props => {
                   <Fav width={28} height={28} />
                   <Text style={[styles.label]}>Favorites</Text>
                 </View>
-                <FadedSeparator fancyGradBorderStyle={styles.fancyLine} />
+                <FadedSeparator
+                  fancyGradBorderStyle={styles.fancyLine}
+                  containerStyle={{marginVertical: 15}}
+                />
               </View>
             </TouchableOpacity>
 
@@ -145,7 +148,10 @@ const CustomDrawer1 = props => {
                   <History width={28} height={28} />
                   <Text style={[styles.label]}>Order History</Text>
                 </View>
-                <FadedSeparator fancyGradBorderStyle={styles.fancyLine} />
+                <FadedSeparator
+                  fancyGradBorderStyle={styles.fancyLine}
+                  containerStyle={{marginVertical: 15}}
+                />
               </View>
             </TouchableOpacity>
 
@@ -158,7 +164,10 @@ const CustomDrawer1 = props => {
                   <Reward width={28} height={28} />
                   <Text style={[styles.label]}>Rewards</Text>
                 </View>
-                <FadedSeparator fancyGradBorderStyle={styles.fancyLine} />
+                <FadedSeparator
+                  fancyGradBorderStyle={styles.fancyLine}
+                  containerStyle={{marginVertical: 15}}
+                />
               </View>
             </TouchableOpacity>
 
@@ -171,7 +180,10 @@ const CustomDrawer1 = props => {
                   <Wallet width={28} height={28} />
                   <Text style={[styles.label]}>Wallet</Text>
                 </View>
-                <FadedSeparator fancyGradBorderStyle={styles.fancyLine} />
+                <FadedSeparator
+                  fancyGradBorderStyle={styles.fancyLine}
+                  containerStyle={{marginVertical: 15}}
+                />
               </View>
             </TouchableOpacity>
 
@@ -184,7 +196,10 @@ const CustomDrawer1 = props => {
                   <Setting width={28} height={28} />
                   <Text style={[styles.label]}>Settings</Text>
                 </View>
-                <FadedSeparator fancyGradBorderStyle={styles.fancyLine} />
+                <FadedSeparator
+                  fancyGradBorderStyle={styles.fancyLine}
+                  containerStyle={{marginVertical: 15}}
+                />
               </View>
             </TouchableOpacity>
 
@@ -197,7 +212,10 @@ const CustomDrawer1 = props => {
                   <Notification width={28} height={28} />
                   <Text style={[styles.label]}>Notification</Text>
                 </View>
-                <FadedSeparator fancyGradBorderStyle={styles.fancyLine} />
+                <FadedSeparator
+                  fancyGradBorderStyle={styles.fancyLine}
+                  containerStyle={{marginVertical: 15}}
+                />
               </View>
             </TouchableOpacity>
 
@@ -210,7 +228,10 @@ const CustomDrawer1 = props => {
                   <Language width={28} height={28} />
                   <Text style={[styles.label]}>Language Selection</Text>
                 </View>
-                <FadedSeparator fancyGradBorderStyle={styles.fancyLine} />
+                <FadedSeparator
+                  fancyGradBorderStyle={styles.fancyLine}
+                  containerStyle={{marginVertical: 15}}
+                />
               </View>
             </TouchableOpacity>
           </Animated.ScrollView>
@@ -227,7 +248,10 @@ const CustomDrawer1 = props => {
                     <Help width={28} height={28} />
                     <Text style={[styles.label]}>Help Center</Text>
                   </View>
-                  <FadedSeparator fancyGradBorderStyle={styles.fancyLine} />
+                  <FadedSeparator
+                    fancyGradBorderStyle={styles.fancyLine}
+                    containerStyle={{marginVertical: 15}}
+                  />
                 </View>
               </TouchableOpacity>
 
@@ -240,7 +264,10 @@ const CustomDrawer1 = props => {
                     <Term width={28} height={28} />
                     <Text style={[styles.label]}>Terms & Conditions</Text>
                   </View>
-                  <FadedSeparator fancyGradBorderStyle={styles.fancyLine} />
+                  <FadedSeparator
+                    fancyGradBorderStyle={styles.fancyLine}
+                    containerStyle={{marginVertical: 15}}
+                  />
                 </View>
               </TouchableOpacity>
 
@@ -253,7 +280,10 @@ const CustomDrawer1 = props => {
                     <Logout width={28} height={28} />
                     <Text style={[styles.label]}>Logout</Text>
                   </View>
-                  <FadedSeparator fancyGradBorderStyle={styles.fancyLine} />
+                  <FadedSeparator
+                    fancyGradBorderStyle={styles.fancyLine}
+                    containerStyle={{marginVertical: 15}}
+                  />
                 </View>
               </TouchableOpacity>
             </Animated.View>

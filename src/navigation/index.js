@@ -2,8 +2,8 @@
 
 import {View, Text, Image, StyleSheet, TouchableOpacity} from 'react-native';
 import React, {useEffect, useRef, useState} from 'react';
-// import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {createStackNavigator} from '@react-navigation/stack';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
+// import {createStackNavigator} from '@react-navigation/stack';
 import {NavigationContainer} from '@react-navigation/native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {GestureHandlerRootView} from 'react-native-gesture-handler';
@@ -71,8 +71,8 @@ import ButtonsCommon from '../components/Buttons/ButtonCommon.js';
 import CloseFilterBtn from '../assets/images/closeBtnFilter.svg';
 const Tab = createBottomTabNavigator();
 // const Drawer = createDrawerNavigator();
-// const Stack = createNativeStackNavigator();
-const Stack = createStackNavigator();
+const Stack = createNativeStackNavigator();
+// const Stack = createStackNavigator();
 // const HomeStacked = createNativeStackNavigator();
 const Drawer = createDrawerNavigator(); // Create a Drawer navigator
 
@@ -143,9 +143,9 @@ const HomeStack = ({activeRestaurant}) => {
         <Stack.Screen
           name="MenuDetail"
           component={MenuDetail}
-          options={() => ({
-            presentation: 'modal',
-          })}
+          // options={() => ({
+          //   presentation: 'modal',
+          // })}
         />
         <Stack.Screen
           name="IngredientCustomization"

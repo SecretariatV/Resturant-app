@@ -32,7 +32,8 @@ import Footer from '../../components/Footer/index.js';
 import {fonts} from '../../theme/FontFamily.js';
 import HamBurgerButton from '../../components/NavButtons/HamBurgerButton/index.js';
 import FavouriteButton from '../../components/NavButtons/FavouriteButton/index.js';
-import { getPlatformSpecificValue } from '../../utils/helper.js';
+import {getPlatformSpecificValue} from '../../utils/helper.js';
+import BackButton from '../../components/NavButtons/BackButton/index.js';
 
 const MenuDetail = () => {
   const navigation = useNavigation();
@@ -73,7 +74,7 @@ const MenuDetail = () => {
       <ScrollView>
         <HeaderModed
           //headerStyle={{marginLeft: getPlatformSpecificValue(15, 0)}}
-          // slotLeft={<HamBurgerButton />}
+          slotLeft={<BackButton onPress={() => navigation.goBack()} />}
           slotCenter={<></>}
           slotRight={<FavouriteButton />}
         />

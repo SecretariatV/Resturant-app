@@ -2,7 +2,7 @@ import FishAllergy from '../assets/images/fish_allergy.svg';
 import EggsAllergy from '../assets/images/eggs_allergy.svg';
 import NutsAllergy from '../assets/images/nuts_allergy.svg';
 import OnionAllergy from '../assets/images/onion_allergy.svg';
-import { screenToTextSize } from './helper';
+import {screenToTextSize} from './helper';
 
 export const dressCode = [
   {
@@ -314,27 +314,44 @@ export const rewards = [
   },
 ];
 
-
 export const Allergies = [
   {
     name: 'Eggs',
     slug: 'eggs',
-    imgUrl: <EggsAllergy/>,
+    imgUrl: <EggsAllergy />,
   },
   {
     name: 'Fish',
     slug: 'fish',
-    imgUrl: <FishAllergy/>,
+    imgUrl: <FishAllergy />,
   },
   {
     name: 'Nuts',
     slug: 'nuts',
-    imgUrl: <NutsAllergy/>,
+    imgUrl: <NutsAllergy />,
   },
   {
     name: 'Onions',
     slug: 'onions',
-    imgUrl: <OnionAllergy/>,
+    imgUrl: <OnionAllergy />,
+  },
+];
+
+export const orderHistory = [
+  {
+    product: 'Burger',
+    price: '50',
+    tax: '5',
+  },
+  {
+    product: 'Burger',
+    price: '50',
+    tax: '5',
+  },
+  {
+    product: 'Burger',
+    price: '50',
+    tax: '5',
   },
 ];
 
@@ -394,4 +411,3 @@ export default Notifications = [
     details: 'A new Snacks Corner is being loved by more people around you.',
   },
 ];
-
