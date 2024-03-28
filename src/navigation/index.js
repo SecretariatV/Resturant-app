@@ -68,6 +68,7 @@ import {useSelector} from 'react-redux';
 import HomeIcon from '../assets/images/home.svg';
 import ButtonsCommon from '../components/Buttons/ButtonCommon.js';
 import CloseFilterBtn from '../assets/images/closeBtnFilter.svg';
+import RestaurantReview from '../screens/RestaurantReview/index.js';
 const Tab = createBottomTabNavigator();
 // const Drawer = createDrawerNavigator();
 // const Stack = createNativeStackNavigator();
@@ -403,6 +404,14 @@ const TabNavigator = ({activeRestaurant}) => {
       <Tab.Screen
         name="ProductReview"
         component={ProductReview}
+        options={{
+          tabBarButton: () => null,
+          tabBarVisible: false,
+        }}
+      />
+      <Tab.Screen
+        name="RestaurantReview"
+        component={RestaurantReview}
         options={{
           tabBarButton: () => null,
           tabBarVisible: false,
