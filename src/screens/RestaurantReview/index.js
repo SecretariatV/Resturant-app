@@ -19,7 +19,7 @@ import {fonts} from '../../theme/FontFamily';
 import {Rating} from 'react-native-ratings';
 import ButtonsCommon from '../../components/Buttons/ButtonCommon.js';
 import ButtonsCommonAlt from '../../components/Buttons/ButtonCommonAlt';
-import {width, widthToDp} from '../../utils/Dimensions';
+import {heightToDp, width, widthToDp} from '../../utils/Dimensions';
 import Footer from '../../components/Footer';
 import {Modal} from 'react-native';
 import CloseFilterBtn from '../../assets/images/closeBtnFilter.svg';
@@ -33,7 +33,10 @@ import LinearGradient from 'react-native-linear-gradient';
 import ReviewIcon from '../../assets/images/reviewIcon.svg';
 import ReviewStar from '../../assets/images/reviewStar.svg';
 import {screenToTextSize} from '../../utils/helper.js';
+import {useNavigation} from '@react-navigation/native';
 const RestaurantReview = () => {
+  const navigation = useNavigation();
+
   const [reviewComment, setReviewComment] = useState('');
   const [reviewRating, setReviewRating] = useState(0);
   const [min, setmin] = useState(0);
@@ -177,34 +180,58 @@ const RestaurantReview = () => {
               <GradientText style={styles.reviewTextCommentLabel}>
                 Let Us Know How We Can Serve You Better
               </GradientText>
-              <TextInput
+              {/* <TextInput
                 style={{
                   borderWidth: 1,
                   borderColor: '#cccccc55',
                   borderRadius: 26,
                   marginBottom: 20,
                   marginTop: 15,
-                  paddingLeft: 15
+                  paddingLeft: 15,
                 }}
                 multiline={true}
                 numberOfLines={1}
-                placeholder='Comment'
+                placeholder="Comment"
                 placeholderTextColor="white"
-                height={100}
+                // height={100}
                 onChangeText={text => setReviewComment({text})}
                 value={reviewComment}
+              /> */}
+
+              <TextInput
+                numberOfLines={4} // adjust as needed
+                style={{
+                  height: 100,
+                  width: '100%',
+                  color: '#fff',
+
+                  borderWidth: 1,
+                  borderColor: '#FFFFFF33',
+                  marginHorizontal: 15,
+                  paddingLeft: 10,
+                  borderRadius: 18,
+
+                  alignSelf: 'center',
+                  marginVertical: 10,
+                }}
+                textAlignVertical="top"
+                onChangeText={text => setReviewComment({text})}
+                value={reviewComment}
+                placeholder="Comment"
+                placeholderTextColor="#FFFFFF33"
+                multiline={true}
               />
             </View>
           </View>
           <View style={styles.reviewSubmitButtonContainer}>
-            <ButtonsCommon
-              btnText={'Cancel'}
-              btnStyle={{width: widthToDp(42)}} 
-            />
             <ButtonsCommonAlt
+              btnText={'Cancel'}
+              btnStyle={{width: widthToDp(42)}}
+            />
+            <ButtonsCommon
               btnText={'Next'}
-              btnStyle={{width: widthToDp(42)}} 
-              onPress={() => handleClose()}
+              btnStyle={{width: widthToDp(42)}}
+              onPress={() => navigation.navigate('ProductReview')}
             />
           </View>
         </View>

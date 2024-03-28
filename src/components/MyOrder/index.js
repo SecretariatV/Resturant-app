@@ -28,6 +28,7 @@ import Hamburger from '../../assets/images/hamburger.png';
 import RadioButtonCard from '../../components/RadioButtonCard/index.js';
 import Footer from '../../components/Footer/index.js';
 import {useNavigation} from '@react-navigation/native';
+import ButtonsCommon from '../Buttons/ButtonCommon.js/index.js';
 
 const MyOrder = () => {
   const navigation = useNavigation();
@@ -155,6 +156,12 @@ const MyOrder = () => {
               </View>
             ))}
           </View>
+
+          <ButtonsCommon
+            containerStyle={{width: '95%', marginBottom: 10}}
+            btnText={'Pay'}
+            onPress={() => navigation.navigate('Thankyou')}
+          />
         </BackgroundCard>
       </ScrollView>
       {/* <Footer /> */}

@@ -9,6 +9,7 @@ import {fonts} from '../../theme/FontFamily';
 import {Colors} from '../../theme';
 import ButtonsCommon from '../../components/Buttons/ButtonCommon.js';
 import HamBurgerButton from '../../components/NavButtons/HamBurgerButton';
+import {widthToDp} from '../../utils/Dimensions.js';
 
 const FeedbackSuccess = () => {
   return (
@@ -62,7 +63,7 @@ const FeedbackSuccess = () => {
             fontSize: 26,
             color: Colors.WHITE,
             textAlign: 'center',
-            width: '70%',
+            width: widthToDp(70),
             marginTop: 15,
           }}>
           Feedback Submitted successfully

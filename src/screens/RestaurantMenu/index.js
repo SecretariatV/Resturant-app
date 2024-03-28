@@ -14,7 +14,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import LottieView from 'lottie-react-native';
 import {styles} from './styles';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
-import {useNavigation} from '@react-navigation/native'; 
+import {useNavigation} from '@react-navigation/native';
 import {BlurView} from '@react-native-community/blur';
 // components
 import BackgroundLayout from '../../components/BackgroundLayout';
@@ -41,32 +41,33 @@ import {Colors} from '../../theme';
 import {getPlatformSpecificValue, screenToTextSize} from '../../utils/helper';
 // import {View} from '@candlefinance/blur-view';
 import {Allergies} from '../../utils/demodata';
+import FavouriteButton from '../../components/NavButtons/FavouriteButton';
 
 const RestaurantMenu = () => {
-  const navigation = useNavigation(); 
+  const navigation = useNavigation();
   const [modalVisible, setModalVisible] = useState(false);
   const [showFilter, setShowFilter] = useState(false);
   const [showRequest, setShowRequest] = useState(false);
   const [itemListType, setItemListType] = useState('top');
- 
-    const categories = [
-      {
-        name: 'Breakfast',
-        slug: 'breakfast',
-        items: dressCode,
-      },
-      {
-        name: 'Lunch',
-        slug: 'lunch',
-        items: dressCode,
-      },
-      {
-        name: 'Main Course',
-        slug: 'main_course',
-        items: dressCode,
-      },
-    ];
- 
+
+  const categories = [
+    {
+      name: 'Breakfast',
+      slug: 'breakfast',
+      items: dressCode,
+    },
+    {
+      name: 'Lunch',
+      slug: 'lunch',
+      items: dressCode,
+    },
+    {
+      name: 'Main Course',
+      slug: 'main_course',
+      items: dressCode,
+    },
+  ];
+
   let activeColors = ['#00A7F7', '#00FC92'];
   let inActiveColors = ['#00A7F700', '#00FC9200'];
 
@@ -89,7 +90,7 @@ const RestaurantMenu = () => {
           <HeaderModed
             slotLeft={<HamBurgerButton />}
             slotCenter={<Text style={styles.navbarPageTitle}>Menu</Text>}
-            slotRight={<MenuNavButton icon={HeartIcon} iconType="img" />}
+            slotRight={<FavouriteButton />}
           />
           <View className="user-wise-menu" style={styles.userWiseContainer}>
             <View className="category-container" style={styles.verticalTabs}>
@@ -224,10 +225,14 @@ const RestaurantMenu = () => {
               )}
             </View>
           </View>
-          <BlurView blurType="light" overlayColor="#ffffff00" blurAmount={10}>
+          <BlurView
+            blurType="ultraThinMaterialDark"
+            overlayColor="#ffffff00"
+            reducedTransparencyFallbackColor="#f00"
+            downsampleFactor={25}>
             <Text
               style={{
-                marginLeft: 15,
+                paddingLeft: screenToTextSize(5),
                 fontSize: fonts.URBANIST_BOLD,
                 fontSize: screenToTextSize(6),
                 fontWeight: 'bold',

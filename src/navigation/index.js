@@ -157,7 +157,14 @@ const HomeStack = ({activeRestaurant}) => {
         />
       </Stack.Group>
       <Stack.Group>
-        <Stack.Screen name="HomeScreens" component={HomeScreens} />
+        <Stack.Screen
+          name="HomeScreens"
+          component={HomeScreens}
+          // options={{
+          //   animationTypeForReplace: 'pop',
+          //   animation: 'slide_from_right',
+          // }}
+        />
         <Stack.Screen name="TabNavigator" component={TabNavigator} />
         <Stack.Screen name="Requests" component={Requests} />
         <Stack.Screen name="RestaurantMenu" component={RestaurantMenu} />
@@ -189,7 +196,7 @@ const HomeStack = ({activeRestaurant}) => {
 const TabNavigator = ({activeRestaurant}) => {
   return (
     <Tab.Navigator
-      initialRouteName="RestaurantMenu"
+      initialRouteName="RestaurantMain"
       backBehavior="history"
       screenListeners={({navigation, route}) => ({
         tabPress: e => {},

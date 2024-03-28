@@ -26,19 +26,27 @@ import CloseFilterBtn from '../../assets/images/closeBtnFilter.svg';
 import FancyInput from '../../components/FancyInput';
 import userIcon from '../../assets/images/userIcon.png';
 import HamBurgerButton from '../../components/NavButtons/HamBurgerButton/index.js';
+import {useNavigation} from '@react-navigation/native';
 
 const ProductReview = () => {
+  const navigation = useNavigation();
+
   const [text, setText] = useState('');
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
   const [inputEmail, setInputEmail] = useState('');
+
+  const handleButton = () => {
+    setIsModalVisible(false);
+    navigation.navigate('FeedbackSuccess');
+  };
 
   const FullScreenModal = () => {
     return (
       <Modal
         animationType="slide"
         transparent={true}
-        visible={true}
+        visible={isModalVisible}
 
         // onRequestClose={onClose}
       >
@@ -53,7 +61,7 @@ const ProductReview = () => {
               justifyContent: 'center',
             }}>
             <TouchableOpacity
-              onPress={() => setIsVisible(false)}
+              onPress={() => setIsModalVisible(false)}
               style={{alignSelf: 'flex-end', margin: 10}}>
               <CloseFilterBtn width={27} height={27} />
             </TouchableOpacity>
@@ -80,7 +88,7 @@ const ProductReview = () => {
               <ButtonsCommon
                 btnText={'Done'}
                 containerStyle={{width: '90%', marginBottom: 20}}
-                onPress={() => setIsModalVisible(false)}
+                onPress={() => handleButton()}
               />
             </View>
           </View>
@@ -177,36 +185,17 @@ const ProductReview = () => {
               justifyContent: 'space-between',
               width: '100%',
             }}>
-            {/* <ButtonsCommon
-              btnText={'Cancel'}
-              btnStyle={{width: widthToDp(40)}}
-              onPress={() => setIsVisible(true)}
-              containerStyle={
-                {
-                  // marginRight: 10,
-                }
-              }
-              // onPress={() => handleClose()}
-            /> */}
-            {/* <ButtonsCommonAlt
-              btnText={'Send'}
-              btnStyle={{width: widthToDp(100)}}
-              // containerStyle={{backgroundColor: 'red'}}
-              onPress={() => Alert.alert('ssadassds')}
-
-              // containerStyle={{marginLeft: 10}}
-            /> */}
-
-            <ButtonsCommon
-              btnText={'Done'}
-              btnStyle={{width: widthToDp(40)}}
-              containerStyle={{marginRight: 10}}
-            />
             <ButtonsCommonAlt
               btnText={'Cancel'}
               btnStyle={{width: widthToDp(40)}}
               containerStyle={{marginLeft: 10}}
-              onPress={() => handleClose()}
+              onPress={() => navigation.navigate('RestaurantReview')}
+            />
+            <ButtonsCommon
+              btnText={'Send'}
+              btnStyle={{width: widthToDp(40)}}
+              containerStyle={{marginRight: 10}}
+              onPress={() => setIsModalVisible(true)}
             />
           </View>
         </View>

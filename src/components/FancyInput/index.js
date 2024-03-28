@@ -13,6 +13,7 @@ const FancyInput = ({
   fieldCallback,
   fieldIsPassword = false,
   fieldInputStyle,
+  containerStyle,
   iconShow = true,
 }) => {
   const eyeOn = require('../../assets/images/eye-on.png');
@@ -60,7 +61,9 @@ const FancyInput = ({
     setisSecureTextEntry(!isSecureTextEntry);
   };
   return (
-    <View className="fancy-input-container" style={styles.container}>
+    <View
+      className="fancy-input-container"
+      style={[styles.container, containerStyle]}>
       <View className="fancy-text-wrapper" style={[styles.wrapper]}>
         <View className="fancy-text-label">
           <Text style={styles.fieldLabel}>{fieldLabel}</Text>

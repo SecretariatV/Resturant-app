@@ -4,7 +4,7 @@ import {fonts} from '../../theme/FontFamily';
 import {heightToDp, width, widthToDp} from '../../utils/Dimensions';
 
 import {Colors} from '../../theme';
-import { screenToTextSize } from '../../utils/helper';
+import {screenToTextSize} from '../../utils/helper';
 
 const styles = StyleSheet.create({
   container: {
@@ -23,16 +23,21 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     width: widthToDp(80),
     fontSize: screenToTextSize(5),
+    marginVertical: 10,
   },
   gradientTextColored: {
     color: '#00FC92',
     fontSize: screenToTextSize(5),
+    fontFamily: fonts.URBANIST_BOLD,
+    textAlign: 'left',
   },
   gradientTextContainer: {
     // position: 'relative',
   },
   gradientText: {
     fontSize: 32,
+    fontFamily: fonts.URBANIST_BOLD,
+    // color: '#00FC92',
   },
   bannerImage: {
     top: -20,
@@ -40,7 +45,7 @@ const styles = StyleSheet.create({
     height: heightToDp(100),
   },
   restaurantScrollView: {
-    marginTop: heightToDp(20),
+    // marginTop: heightToDp(20),
   },
   restaurantContentContainer: {
     justifyContent: 'flex-end',
@@ -202,6 +207,49 @@ const styles = StyleSheet.create({
   },
   reviewList: {
     marginTop: 10,
+  },
+
+  btnGradient: {
+    margin: 2,
+
+    padding: 10,
+    alignItems: 'center',
+
+    borderRadius: 22,
+  },
+  input: {
+    borderBottomColor: 'transparent',
+
+    borderBottomWidth: 1,
+    width: '100%',
+    flexWrap: 'nowrap',
+    flexDirection: 'row',
+    alignItems: 'center',
+    // width: '100%',
+    height: 1,
+    flex: 1,
+  },
+  btnText: {
+    color: Colors.BLACK,
+    fontFamily: fonts.URBANIST_REGULAR,
+    fontSize: 14,
+  },
+  billPayment: {
+    fontSize: 34,
+    color: Colors.BLACK,
+    fontFamily: fonts.URBANIST_EXTRABOLD,
+  },
+  reciept: {
+    fontFamily: fonts.URBANIST_SEMIBOLD,
+    fontSize: 20,
+    color: Colors.WHITE,
+    alignSelf: 'flex-start',
+    paddingLeft: screenToTextSize(5),
+  },
+  lottieStyle: {
+    width: widthToDp(50),
+    height: widthToDp(50),
+    margin: 5,
   },
 });
 export {styles};
