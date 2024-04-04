@@ -71,6 +71,7 @@ const MyOrder = () => {
                       style={{
                         fontSize: 22,
                         fontFamily: fonts.URBANIST_REGULAR,
+                        color: '#F7F7F899',
                       }}>
                       Qty <Text style={styles.qty}>3</Text>
                     </Text>

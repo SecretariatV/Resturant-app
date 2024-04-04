@@ -10,16 +10,25 @@ import FancyInput from '../../../components/FancyInput';
 import userIcon from '../../../assets/images/userIcon.png';
 
 import ButtonsCommon from '../../../components/Buttons/ButtonCommon.js';
+import HeaderModed from '../../../components/HeaderModed/index.js';
+import BackButton from '../../../components/NavButtons/BackButton/index.js';
+import {useNavigation} from '@react-navigation/native';
 
 const ForgotPassword = () => {
+  const navigation = useNavigation();
+
   const [inputName, setInputName] = useState('');
   const [inputLname, setInputLname] = useState('');
 
   return (
     <View style={styles.container}>
       <BackgroundLayout />
-
-      <HeaderCommon show={true} />
+      <HeaderModed
+        headerStyle={{paddingHorizontal: 0}}
+        slotLeft={<BackButton onPress={() => navigation.goBack()} />}
+        slotCenter={<></>}
+        slotRight={<></>}
+      />
       <ScrollView
         style={styles.regFormScrollView}
         showsVerticalScrollIndicator={false}>
@@ -54,7 +63,10 @@ const ForgotPassword = () => {
             fieldCallback={setInputName}
           />
         </View>
-        <ButtonsCommon btnText={'Send Code'} />
+        <ButtonsCommon
+          btnText={'Send Code'}
+          onPress={() => navigation.navigate('Verification')}
+        />
       </ScrollView>
     </View>
   );

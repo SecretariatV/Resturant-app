@@ -355,6 +355,53 @@ export const orderHistory = [
   },
 ];
 
+export const restaurantActivity = [
+  {
+    name: 'Restaurant Name',
+    date: 'May 28, 2024',
+    amount: '100',
+  },
+  {
+    name: 'Restaurant Name',
+    date: 'May 28, 2024',
+    amount: '100',
+  },
+  {
+    name: 'Restaurant Name',
+    date: 'May 28, 2024',
+    amount: '100',
+  },
+  {
+    name: 'Restaurant Name',
+    date: 'May 28, 2024',
+    amount: '100',
+  },
+  {
+    name: 'Restaurant Name',
+    date: 'May 28, 2024',
+    amount: '100',
+  },
+];
+
+export const ArReels = [
+  {
+    id: '1',
+    source: require('../assets/images/pizza_ar.png'),
+  },
+  {
+    id: '1',
+    source: require('../assets/images/pizza_ar.png'),
+  },
+  {
+    id: '1',
+    source: require('../assets/images/pizza_ar.png'),
+  },
+  {
+    id: '1',
+    source: require('../assets/images/pizza_ar.png'),
+  },
+];
+
 export default Notifications = [
   {
     id: 1,

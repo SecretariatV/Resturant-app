@@ -11,7 +11,7 @@ const BackgroundCard = ({
   onPress,
 }) => {
   return (
-    <TouchableOpacity style={style} onPress={onPress}>
+    <View style={style} onPress={onPress}>
       {/* <LinearGradient
         colors={['#FFFFFF99', '#FFFFFF99', '#00000022', '#00000022']}
         useAngle
@@ -19,18 +19,18 @@ const BackgroundCard = ({
         style={[styles.linearBack, linearBackStyle]}
         start={{x: 1, y: 0.5}}
         end={{x: 1, y: 0.5}}> */}
-        <View
-          style={[
-            // !showMenu && styles.menuGradient,
-            styles.circleTwoGradient,
-            childrenStyle,
-          ]}
-          //   onPress={() => (!showMenu ? handleButton() : null)}
-        >
-          {children}
-        </View>
+      <View
+        style={[
+          // !showMenu && styles.menuGradient,
+          styles.circleTwoGradient,
+          childrenStyle,
+        ]}
+        //   onPress={() => (!showMenu ? handleButton() : null)}
+      >
+        {children}
+      </View>
       {/* </LinearGradient> */}
-    </TouchableOpacity>
+    </View>
   );
 };
 

@@ -30,7 +30,7 @@ import {useNavigation} from '@react-navigation/native';
 import {Modal} from 'react-native';
 import GradientText from '../../components/GradientText/index.js';
 import HamBurgerButton from '../../components/NavButtons/HamBurgerButton/index.js';
-import { getPlatformSpecificValue } from '../../utils/helper.js';
+import {getPlatformSpecificValue} from '../../utils/helper.js';
 
 const Cart = () => {
   const navigation = useNavigation();
@@ -175,7 +175,11 @@ const Cart = () => {
                     <Text style={[styles.navbarPageTitle, {marginLeft: 10}]}>
                       {item.productName}
                     </Text>
-                    <Text style={[styles.navbarPageTitle, {marginLeft: 10}]}>
+                    <Text
+                      style={[
+                        styles.priceStyle,
+                        {marginLeft: 10, marginTop: 5},
+                      ]}>
                       ${item.price}
                     </Text>
                   </View>
@@ -221,7 +225,7 @@ const Cart = () => {
           }}>
           <ButtonsCommon
             btnText={'Add more items'}
-            onPress={() => navigation.navigate('Menu')}
+            onPress={() => navigation.navigate('RestaurantMenu')}
           />
         </View>
 

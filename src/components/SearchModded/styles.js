@@ -23,7 +23,6 @@ const styles = StyleSheet.create({
     paddingVertical: 5,
     paddingHorizontal: horizontalPadding,
     alignItems: 'center',
-    // ma: 15,
     backgroundColor: '#0008',
     borderRadius: 12,
     flexDirection: 'row',
@@ -35,7 +34,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     paddingLeft: 10,
-    height: heightToDp(12),
+    height: heightToDp(10),
   },
   btnText: {
     color: '#ffffff',

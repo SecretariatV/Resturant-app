@@ -1,10 +1,8 @@
 import {View, Text, Image} from 'react-native';
 import React from 'react';
 import {styles} from './styles';
-// import {Rating} from '@rneui/themed';
-import {Rating, AirbnbRating} from 'react-native-ratings';
+import {Rating} from 'react-native-ratings';
 import FadedSeparator from '../FadedSeparator';
-import {Colors} from '../../theme';
 import {widthToDp} from '../../utils/Dimensions';
 
 const ReviewCard = ({name, time, detail, img}) => {
@@ -21,18 +19,16 @@ const ReviewCard = ({name, time, detail, img}) => {
               width: widthToDp(80),
             }}>
             <Text style={styles.name}>{name}</Text>
-            <Image
+            {/* <Image
               source={require('../../assets/images/three_dots.png')}
               style={{width: 12, height: 12, marginTop: 5}}
               resizeMode="contain"
-            />
-            {/* <Text style={{color: Colors.WHITE}}>kdmsakd</Text> */}
+            /> */}
           </View>
           <View
             style={{
               flexDirection: 'row',
               alignItems: 'center',
-              //   justifyContent: 'center',
             }}>
             <Rating imageSize={20} ratingCount={5} tintColor="#03020C" />
             <Text style={styles.time}>{time}</Text>

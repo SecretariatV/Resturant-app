@@ -22,13 +22,14 @@ import ButtonsCommon from '../../../components/Buttons/ButtonCommon.js';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {useDispatch, useSelector} from 'react-redux';
 import {setUser} from '../../../redux/actions/auth.js';
+import HeaderModed from '../../../components/HeaderModed/index.js';
+import BackButton from '../../../components/NavButtons/BackButton/index.js';
 const LoginTwo = ({route}) => {
   const user = useSelector(state => state.auth.user);
   console.log(user, 'login twoser Data======');
   const dispatch = useDispatch();
 
   // const {onLogin} = route.params;
-  console.log(route.params, 'route.params');
   const navigation = useNavigation();
   const [inputEmail, setInputEmail] = useState('');
   const [inputPass, setInputPass] = useState('');
@@ -40,8 +41,12 @@ const LoginTwo = ({route}) => {
   return (
     <View style={styles.container}>
       <BackgroundLayout />
-
-      <HeaderCommon show={true} logoStyle={{opacity: 0}} />
+      <HeaderModed
+        headerStyle={{paddingHorizontal: 0}}
+        slotLeft={<BackButton onPress={() => navigation.goBack()} />}
+        slotCenter={<></>}
+        slotRight={<></>}
+      />
       <ScrollView style={styles.regFormScrollView}>
         <View className="join-screen-header-text">
           <View
@@ -113,15 +118,12 @@ const LoginTwo = ({route}) => {
             <Image source={aLoginIcon} style={styles.socialLoginBtnIcons} />
           </TouchableOpacity>
         </View>
-        <FadedSeparator />
         <View class="already-account-text" style={styles.alreadyAccount}>
           <Text style={styles.alreadyAccount.textContent}>
-            Already have an account?{' '}
+            You don't have an account?{' '}
           </Text>
-          <TouchableOpacity
-          // onPress={() => navigation.navigate('RestaurantMain')}
-          >
-            <Text style={styles.underline}>Sign in.</Text>
+          <TouchableOpacity onPress={() => navigation.navigate('Signup')}>
+            <Text style={styles.underline}>Sign Up.</Text>
           </TouchableOpacity>
         </View>
       </ScrollView>

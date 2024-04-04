@@ -5,7 +5,8 @@ import {Colors} from '../../../theme';
 
 const styles = StyleSheet.create({
   container: {
-    marginBottom: 10,
+    // marginBottom: 10,
+    marginVertical: 10,
   },
   fancyGrad: {
     width: '100%',

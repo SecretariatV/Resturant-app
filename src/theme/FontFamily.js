@@ -5,5 +5,6 @@ export const fonts = {
   URBANIST_BOLD: 'Urbanist-Bold',
 
   URBANIST_MEDIUM: 'Urbanist-Medium',
+  URBANIST_LIGHT: 'Urbanist-Light',
   URBANIST_THIN: 'Urbanist-Thin',
 };

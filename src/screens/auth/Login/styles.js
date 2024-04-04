@@ -2,7 +2,7 @@ import {StyleSheet} from 'react-native';
 import {fonts} from '../../../theme/FontFamily';
 import {heightToDp, width, widthToDp} from '../../../utils/Dimensions';
 import {Colors} from '../../../theme';
-import { screenToTextSize } from '../../../utils/helper';
+import {screenToTextSize} from '../../../utils/helper';
 
 const styles = StyleSheet.create({
   container: {
@@ -48,7 +48,7 @@ const styles = StyleSheet.create({
     color: Colors.WHITE,
     fontFamily: fonts.URBANIST_REGULAR,
     fontSize: screenToTextSize(5),
-    textAlign: 'center'
+    textAlign: 'center',
   },
 });
 

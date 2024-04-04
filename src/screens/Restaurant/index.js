@@ -27,7 +27,7 @@ import ReviewCard from '../../components/ReviewCard';
 import {reviews, ageGroup, cuisine, dressCode} from '../../utils/demodata';
 import Footer from '../../components/Footer';
 import HamBurgerButton from '../../components/NavButtons/HamBurgerButton';
-import { getPlatformSpecificValue } from '../../utils/helper';
+import {getPlatformSpecificValue} from '../../utils/helper';
 
 const Restaurant = () => {
   const [expanded, setExpanded] = useState(true);
@@ -131,7 +131,14 @@ const Restaurant = () => {
             <Dress width={32} height={32} style={{marginRight: 5}} />
             <Text style={styles.headingText}>Location</Text>
           </View>
-          <Image source={require('../../assets/images/map.png')} />
+          <Image
+            source={require('../../assets/images/map.png')}
+            style={{
+              width: widthToDp(90),
+              marginTop: 10,
+              alignSelf: 'center',
+            }}
+          />
         </>
       );
     } else if (activeTab === 'review') {
@@ -178,7 +185,7 @@ const Restaurant = () => {
                   )}
                 />
               )}
-          </View>
+            </View>
 
             <LinearGradient
               colors={['#00000022', '#FFFFFFFF', '#FFFFFFFF']}
@@ -241,7 +248,12 @@ const Restaurant = () => {
             industry. Lorem Ipsum has been the..
           </Text>
         </View>
-        <View class="restaurant-meta-details" style={{marginHorizontal: 15}}>
+        <View
+          class="restaurant-meta-details"
+          style={{
+            marginHorizontal: 15,
+            marginBottom: heightToDp(25),
+          }}>
           <View class="restaurant-meta-tabs" style={styles.btnsContainer}>
             <LinearGradient
               colors={gradientColors}

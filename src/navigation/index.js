@@ -70,11 +70,12 @@ import HomeIcon from '../assets/images/home.svg';
 import ButtonsCommon from '../components/Buttons/ButtonCommon.js';
 import CloseFilterBtn from '../assets/images/closeBtnFilter.svg';
 import RestaurantReview from '../screens/RestaurantReview/index.js';
+import Wallet from '../screens/Wallet/index.js';
+import Profile from '../screens/Profile/index.js';
 const Tab = createBottomTabNavigator();
-// const Drawer = createDrawerNavigator();
 const Stack = createNativeStackNavigator();
 // const Stack = createStackNavigator();
-// const HomeStacked = createNativeStackNavigator();
+const SettingStacked = createNativeStackNavigator();
 const Drawer = createDrawerNavigator(); // Create a Drawer navigator
 
 function CustomDrawerContent(props) {
@@ -131,7 +132,19 @@ const AuthStack = ({toggleLogin}) => {
     </Stack.Navigator>
   );
 };
+const SettingStack = () => {
+  return (
+    <SettingStacked.Navigator
+      initialRouteName="Setting"
+      screenOptions={{
+        headerShown: false,
+      }}>
+      <SettingStacked.Screen name="Setting" component={Setting} />
 
+      <SettingStacked.Screen name="Profile" component={Profile} />
+    </SettingStacked.Navigator>
+  );
+};
 const HomeStack = ({activeRestaurant}) => {
   console.log('activeRestaurant', activeRestaurant, typeof activeRestaurant);
   return (
@@ -141,30 +154,16 @@ const HomeStack = ({activeRestaurant}) => {
         headerShown: false,
       }}>
       <Stack.Group screenOptions={{presentation: 'modal'}}>
-        <Stack.Screen
-          name="MenuDetail"
-          component={MenuDetail}
-          // options={() => ({
-          //   presentation: 'modal',
-          // })}
-        />
+        <Stack.Screen name="MenuDetail" component={MenuDetail} />
         <Stack.Screen
           name="IngredientCustomization"
           component={IngredientCustomization}
-          options={() => ({
-            presentation: 'modal',
-          })}
         />
       </Stack.Group>
       <Stack.Group>
-        <Stack.Screen
-          name="HomeScreens"
-          component={HomeScreens}
-          // options={{
-          //   animationTypeForReplace: 'pop',
-          //   animation: 'slide_from_right',
-          // }}
-        />
+        {/* <Stack.Screen name="MenuDetail" component={MenuDetail} /> */}
+
+        <Stack.Screen name="HomeScreens" component={HomeScreens} />
         <Stack.Screen name="TabNavigator" component={TabNavigator} />
         <Stack.Screen name="Requests" component={Requests} />
         <Stack.Screen name="RestaurantMenu" component={RestaurantMenu} />
@@ -184,6 +183,10 @@ const HomeStack = ({activeRestaurant}) => {
         <Stack.Screen name="Setting" component={Setting} />
         <Stack.Screen name="Reward" component={Reward} />
         <Stack.Screen name="OrderHistory" component={OrderHistory} />
+        <Stack.Screen name="Wallet" component={Wallet} />
+        {/* <Stack.Screen name="Wallet" component={Wallet} /> */}
+
+        <Stack.Screen name="SettingStack" component={SettingStack} />
         <Stack.Screen
           name="OrderHistoryDetail"
           component={OrderHistoryDetail}
@@ -306,6 +309,23 @@ const TabNavigator = ({activeRestaurant}) => {
           tabBarVisible: false,
         }}
       />
+      {/* <Tab.Screen
+        name="settingStack"
+        component={settingStack}
+        options={{
+          tabBarButton: () => null,
+          tabBarVisible: false,
+        }}
+      /> */}
+      {/* 
+      <Tab.Screen
+        name="IngredientCustomization"
+        component={IngredientCustomization}
+        options={{
+          tabBarButton: () => null,
+          tabBarVisible: false,
+        }}
+      /> */}
       <Tab.Screen
         name="Reward"
         component={Reward}
@@ -318,6 +338,15 @@ const TabNavigator = ({activeRestaurant}) => {
       <Tab.Screen
         name="OrderHistory"
         component={OrderHistory}
+        options={{
+          tabBarButton: () => null,
+          tabBarVisible: false,
+        }}
+      />
+
+      <Tab.Screen
+        name="Wallet"
+        component={Wallet}
         options={{
           tabBarButton: () => null,
           tabBarVisible: false,

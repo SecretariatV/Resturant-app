@@ -36,6 +36,8 @@ const starterItems = [
 const mainItems = ['Burger', 'Shwarma', 'Mandi'];
 
 const TrackOrder = () => {
+  const navigation = useNavigation();
+
   const [expanded, setExpanded] = useState(true);
   const [starterExpanded, setStarterExpanded] = useState(true);
   const [mainExpanded, setMainExpanded] = useState(true);
@@ -256,6 +258,7 @@ const TrackOrder = () => {
         <ButtonsCommon
           btnText={'Proceed to pay'}
           containerStyle={{width: widthToDp(95), marginTop: 15}}
+          onPress={() => navigation.navigate('PaymentOption')}
         />
       </ScrollView>
       <Footer />

@@ -23,8 +23,8 @@ const Login = () => {
     <View style={styles.container}>
       <BackgroundLayout />
       <HeaderModed
+        headerStyle={{paddingHorizontal: 0}}
         slotLeft={<BackButton onPress={() => navigation.goBack()} />}
-        // slotLeft={<HamBurgerButton />}
         slotCenter={<></>}
         slotRight={<></>}
       />

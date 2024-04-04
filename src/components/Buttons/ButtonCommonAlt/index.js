@@ -26,7 +26,7 @@ const ButtonsCommonAlt = ({
           // useAngle={true}
           // angle={45}
           style={[
-            {borderRadius: 20, flexWrap: 'nowrap', margin: 2},
+            {borderRadius: 20, flexWrap: 'nowrap', margin: 1},
             linearTextStyle,
           ]}
           start={{x: 0, y: 0.5}}

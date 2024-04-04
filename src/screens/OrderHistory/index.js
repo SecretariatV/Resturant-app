@@ -28,39 +28,24 @@ const OrderHistory = () => {
       key={index}>
       <View style={styles.rewardContainer}>
         <Image source={require('../../assets/images/rest_profile.png')} />
-        <View
-          style={{
-            justifyContent: 'space-between',
-            flexDirection: 'row',
-            width: '70%',
-            alignItems: 'center',
-          }}>
-          <View
-            style={{
-              justifyContent: 'center',
-              marginLeft: 10,
-            }}>
+        <View style={styles.historyDetail} className="history-detail">
+          <View className="rest-detail" style={styles.restDetail}>
             <Text style={styles.rewardText}>{item.restaurant}</Text>
             <GradientText style={{marginTop: 5}}>
               <Text>22/1/2024</Text>
             </GradientText>
           </View>
           <View>
-            <Text
-              style={{
-                color: Colors.GREEN,
-                fontSize: 22,
-                fontFamily: fonts.URBANIST_BOLD,
-              }}>
-              $300
-            </Text>
+            <Text style={styles.amount}>$300</Text>
           </View>
         </View>
       </View>
 
       <RestaurantButton
+        onPress={() => navigation.navigate('RestaurantReview')}
         btnText={'Leave a Review'}
-        style={{width: '95%', marginBottom: 10}}
+        style={styles.reviewBtn}
+        className="review-btn"
       />
     </TouchableOpacity>
   );
@@ -72,12 +57,7 @@ const OrderHistory = () => {
         slotCenter={<Text style={commonStyles.headerText}>Order History</Text>}
         slotRight={<></>}
       />
-      <View
-        style={{
-          width: '100%',
-          alignItems: 'center',
-          paddingBottom: heightToDp(45),
-        }}>
+      <View style={styles.subContainer} className="sub-container">
         <FlatList
           showsVerticalScrollIndicator={false}
           style={{marginTop: 10}}

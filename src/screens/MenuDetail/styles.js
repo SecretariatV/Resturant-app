@@ -6,6 +6,7 @@ import {Colors} from '../../theme';
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    // backgroundColor: 'red',
     // paddingHorizontal: 15,
   },
   headerText: {
@@ -180,6 +181,26 @@ const styles = StyleSheet.create({
   },
   reviewList: {
     marginTop: 10,
+  },
+  headingText: {
+    color: Colors.WHITE,
+    fontFamily: fonts.URBANIST_SEMIBOLD,
+    fontSize: 20,
+    marginLeft: 5,
+    marginBottom: 10,
+  },
+  circleGradient: {
+    margin: 2,
+
+    padding: 10,
+    alignItems: 'center',
+
+    borderRadius: 22,
+  },
+  btnText: {
+    color: Colors.BLACK,
+    fontFamily: fonts.URBANIST_SEMIBOLD,
+    fontSize: 16,
   },
 });
 export {styles};

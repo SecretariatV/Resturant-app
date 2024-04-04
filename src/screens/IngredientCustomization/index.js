@@ -15,6 +15,7 @@ import ButtonsCommon from '../../components/Buttons/ButtonCommon.js';
 import ButtonsCommonAlt from '../../components/Buttons/ButtonCommonAlt';
 import {useNavigation} from '@react-navigation/native';
 import BackButton from '../../components/NavButtons/BackButton/index.js';
+import Footer from '../../components/Footer/index.js';
 
 const IngredientCustomization = () => {
   const navigation = useNavigation();
@@ -120,6 +121,7 @@ const IngredientCustomization = () => {
           onPress={() => handleClose()}
         />
       </View>
+      {/* <Footer /> */}
     </View>
   );
 };

@@ -1,6 +1,6 @@
 import {StyleSheet} from 'react-native';
 import {fonts} from '../../theme/FontFamily';
-import {width, widthToDp} from '../../utils/Dimensions';
+import {heightToDp, width, widthToDp} from '../../utils/Dimensions';
 import {Colors} from '../../theme';
 import {screenToTextSize} from '../../utils/helper';
 
@@ -8,6 +8,11 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingHorizontal: 15,
+  },
+  subContainer: {
+    width: '100%',
+    alignItems: 'center',
+    paddingBottom: heightToDp(45),
   },
   rewardContainer: {
     flexDirection: 'row',
@@ -82,6 +87,26 @@ const styles = StyleSheet.create({
       fontSize: screenToTextSize(4),
       fontFamily: fonts.URBANIST_BOLD,
     },
+  },
+
+  historyDetail: {
+    justifyContent: 'space-between',
+    flexDirection: 'row',
+    width: '70%',
+    alignItems: 'center',
+  },
+  restDetail: {
+    justifyContent: 'center',
+    marginLeft: 10,
+  },
+  amount: {
+    color: Colors.GREEN,
+    fontSize: 22,
+    fontFamily: fonts.URBANIST_BOLD,
+  },
+  reviewBtn: {
+    width: '95%',
+    marginBottom: 10,
   },
 });
 export {styles};

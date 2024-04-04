@@ -13,8 +13,11 @@ import MenuCustomize from '../../assets/images/menu_customization.svg';
 import FadedSeparator from '../../components/FadedSeparator';
 import HamBurgerButton from '../../components/NavButtons/HamBurgerButton';
 import Footer from '../../components/Footer';
+import {useNavigation} from '@react-navigation/native';
 
 const Setting = () => {
+  const navigation = useNavigation();
+
   return (
     <View style={styles.container}>
       <BackgroundLayout />
@@ -24,7 +27,11 @@ const Setting = () => {
         slotRight={<></>}
       />
       <View style={styles.subContainer}>
-        <TouchableOpacity style={styles.sectionContainer}>
+        <TouchableOpacity
+          style={styles.sectionContainer}
+          onPress={() =>
+            navigation.navigate('SettingStack', {screen: 'Profile'})
+          }>
           <User />
 
           <View style={styles.sectionTxt}>

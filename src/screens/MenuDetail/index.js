@@ -166,11 +166,28 @@ const MenuDetail = () => {
 
           <BackgroundCard style={styles.backgroundBtnContainer}>
             <Text style={styles.quantityTxt}>Customization</Text>
-            <RestaurantButton
+            {/* <RestaurantButton
               btnText={'Spicy Level'}
               btnTextStyle={{fontFamily: fonts.URBANIST_SEMIBOLD}}
               style={{width: '90%', marginTop: 10, borderRadius: 16}}
-            />
+            /> */}
+
+            <LinearGradient
+              colors={['#00F69299', '#00A7F7FF']}
+              useAngle={true}
+              angle={820}
+              style={{
+                borderRadius: 12,
+                flexWrap: 'nowrap',
+                marginTop: 10,
+                width: '90%',
+              }}
+              start={{x: 0, y: 0.5}}
+              end={{x: 1, y: 0.5}}>
+              <View style={styles.circleGradient}>
+                <Text style={[styles.btnText]}>Spicy Level</Text>
+              </View>
+            </LinearGradient>
             <View style={styles.levelContainer}>
               <TouchableOpacity>
                 <Text style={styles.levelTxt}>Low</Text>
@@ -183,11 +200,22 @@ const MenuDetail = () => {
               </TouchableOpacity>
             </View>
 
-            <RestaurantButton
-              btnText={'Portion size'}
-              btnTextStyle={{fontFamily: fonts.URBANIST_SEMIBOLD}}
-              style={{width: '90%', marginTop: 10, borderRadius: 16}}
-            />
+            <LinearGradient
+              colors={['#00F69299', '#00A7F7FF']}
+              useAngle={true}
+              angle={820}
+              style={{
+                borderRadius: 12,
+                flexWrap: 'nowrap',
+                marginTop: 10,
+                width: '90%',
+              }}
+              start={{x: 0, y: 0.5}}
+              end={{x: 1, y: 0.5}}>
+              <View style={styles.circleGradient}>
+                <Text style={[styles.btnText]}>Portion Size</Text>
+              </View>
+            </LinearGradient>
             <View style={styles.levelContainer}>
               <TouchableOpacity>
                 <Text style={styles.levelTxt}>Low</Text>
@@ -200,24 +228,28 @@ const MenuDetail = () => {
               </TouchableOpacity>
             </View>
           </BackgroundCard>
+
           <View style={styles.customBtns}>
             <ButtonsCommon
               btnText={'Quick Order'}
-              containerStyle={{width: widthToDp(40), marginTop: 10}}
-              btnStyle={{borderRadius: 22}}
-              linearTextStyle={{borderRadius: 22}}
+              containerStyle={{width: widthToDp(43), marginTop: 10}}
+              btnStyle={{borderRadius: 20}}
+              linearTextStyle={{borderRadius: 20}}
             />
 
             <ButtonsCommonAlt
               btnText={'Add to Cart'}
               onPress={() => navigation.navigate('Cart')}
-              containerStyle={{width: widthToDp(40), marginTop: 10}}
-              btnStyle={{borderRadius: 22}}
-              linearTextStyle={{borderRadius: 22}}
+              containerStyle={{width: widthToDp(43), marginTop: 10}}
+              btnStyle={{borderRadius: 20}}
+              linearTextStyle={{borderRadius: 20}}
             />
           </View>
 
           <View style={{marginBottom: 10}}>
+            {/* <Text></Text> */}
+            <Text style={styles.headingText}>Reviews</Text>
+
             <View>
               <LinearGradient
                 colors={['#00000022', '#FFFFFFFF', '#FFFFFFFF']}

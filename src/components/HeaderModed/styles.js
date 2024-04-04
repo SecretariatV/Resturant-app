@@ -14,7 +14,7 @@ const styles = StyleSheet.create({
   },
   headerContainer: {
     position: 'absolute',
-    paddingHorizontal: getPlatformSpecificValue(15,15),
+    paddingHorizontal: getPlatformSpecificValue(15, 15),
     zIndex: 10,
     width: '100%',
     justifyContent: 'space-between',
@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
     marginTop: Platform.OS === 'ios' ? heightToDp(12) : 10,
   },
   headerContainerNoBanner: {
-    paddingHorizontal: getPlatformSpecificValue(15,15),
+    paddingHorizontal: getPlatformSpecificValue(15, 15),
     zIndex: 10,
     width: '100%',
     justifyContent: 'space-between',

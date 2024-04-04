@@ -2,18 +2,19 @@ import {View, Text, TouchableOpacity} from 'react-native';
 import React, {useState} from 'react';
 import {styles} from './styles';
 import BackgroundLayout from '../../../components/BackgroundLayout';
-import HeaderCommon from '../../../components/HeaderCommon';
 import {
   CodeField,
   Cursor,
   useBlurOnFulfill,
   useClearByFocusCell,
 } from 'react-native-confirmation-code-field';
-import LinearGradient from 'react-native-linear-gradient';
-import FancyInput from '../../../components/FancyInput';
 import ButtonsCommon from '../../../components/Buttons/ButtonCommon.js';
-import BottomLine from '../../../components/BottomLine';
+import {useNavigation} from '@react-navigation/native';
+import HeaderModed from '../../../components/HeaderModed/index.js';
+import BackButton from '../../../components/NavButtons/BackButton/index.js';
 const Verification = () => {
+  const navigation = useNavigation();
+
   const CELL_COUNT = 4;
 
   const [value, setValue] = useState('');
@@ -25,7 +26,12 @@ const Verification = () => {
   return (
     <View style={styles.container}>
       <BackgroundLayout />
-      <HeaderCommon show={true} />
+      <HeaderModed
+        headerStyle={{paddingHorizontal: 0}}
+        slotLeft={<BackButton onPress={() => navigation.goBack()} />}
+        slotCenter={<></>}
+        slotRight={<></>}
+      />
       <Text style={styles.forgotTxt}>Verification</Text>
       <View style={{marginTop: 5}}>
         <Text style={styles.underJoinTxt}>We sent a code to your Email</Text>
@@ -90,7 +96,11 @@ const Verification = () => {
         </TouchableOpacity>
       </View>
 
-      <ButtonsCommon btnText={'Verify'} containerStyle={{marginTop: 30}} />
+      <ButtonsCommon
+        btnText={'Verify'}
+        containerStyle={{marginTop: 30}}
+        onPress={() => navigation.navigate('CreatePassword')}
+      />
     </View>
   );
 };

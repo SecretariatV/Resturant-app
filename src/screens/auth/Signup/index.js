@@ -70,6 +70,7 @@ const Signup = ({showMenu}) => {
 
       {/* <HeaderCommon show={true} showMenu={false} /> */}
       <HeaderModed
+        headerStyle={{paddingHorizontal: 0}}
         slotLeft={<BackButton onPress={() => navigation.goBack()} />}
       />
       <ScrollView style={styles.regFormScrollView}>

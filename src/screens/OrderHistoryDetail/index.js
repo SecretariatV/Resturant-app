@@ -14,8 +14,11 @@ import {orderHistory} from '../../utils/demodata';
 import {ScrollView} from 'react-native-gesture-handler';
 import ButtonsCommon from '../../components/Buttons/ButtonCommon.js';
 import {heightToDp} from '../../utils/Dimensions';
+import {useNavigation} from '@react-navigation/native';
 
 const OrderHistoryDetail = () => {
+  const navigation = useNavigation();
+
   return (
     <View style={styles.container}>
       <BackgroundLayout />
@@ -62,6 +65,7 @@ const OrderHistoryDetail = () => {
             </View>
 
             <RestaurantButton
+              onPress={() => navigation.navigate('RestaurantReview')}
               btnText={'Leave a Review'}
               style={{width: '95%', marginBottom: 10}}
             />

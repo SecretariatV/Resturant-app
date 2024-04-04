@@ -9,7 +9,7 @@ const styles = StyleSheet.create({
     // paddingHorizontal: 15,
   },
   navbarPageTitle: {
-    color: Colors.GREEN,
+    color: Colors.WHITE,
     fontFamily: fonts.URBANIST_EXTRABOLD,
     fontSize: 19,
     marginTop: 10,
