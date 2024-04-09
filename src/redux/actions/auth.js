@@ -9,11 +9,11 @@ export const addError = res => {
   };
 };
 
-export const setUser = () => {
+export const setUser = res => {
   return dispatch => {
     dispatch({
       type: types.SIGN_IN,
-      payload: 'true',
+      payload: res,
     });
   };
 };

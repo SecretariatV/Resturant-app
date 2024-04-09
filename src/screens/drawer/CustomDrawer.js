@@ -22,8 +22,12 @@ import Help from '../../assets/images/help.svg';
 import Term from '../../assets/images/terms.svg';
 import Logout from '../../assets/images/logout.svg';
 import {useNavigation} from '@react-navigation/native';
+import {useDispatch} from 'react-redux';
+import {setUser} from '../../redux/actions/auth';
 
 const CustomDrawer1 = props => {
+  const dispatch = useDispatch();
+
   const navigation = useNavigation();
 
   const scrollRef = useRef(null);
@@ -272,7 +276,9 @@ const CustomDrawer1 = props => {
               </TouchableOpacity>
 
               <TouchableOpacity
-                // onPress={onPress}
+                onPress={() => {
+                  console.log(' logout'), dispatch(setUser(false));
+                }}
                 accessibilityRole="button"
                 style={[styles.drawerItem, styles.buttons]}>
                 <View>

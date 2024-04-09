@@ -3,6 +3,7 @@ import {fonts} from '../../../theme/FontFamily';
 import {width, widthToDp} from '../../../utils/Dimensions';
 import {getPlatformSpecificValue} from '../../../utils/helper';
 import {screenToTextSize} from '../../../utils/helper';
+import {Colors} from '../../../theme';
 
 const styles = StyleSheet.create({
   container: {
@@ -52,7 +53,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 15,
     alignSelf: 'center',
     alignItems: 'center',
-    backgroundColor: '#00000099',
+    backgroundColor: '#18A8BD',
     borderRadius: 15,
   },
 
@@ -86,7 +87,7 @@ const styles = StyleSheet.create({
   },
   dotContainer: {
     alignItems: 'center',
-    marginTop: widthToDp(5),
+    marginTop: widthToDp(10),
     flexDirection: 'row',
     alignSelf: 'center',
   },
@@ -121,6 +122,34 @@ const styles = StyleSheet.create({
     color: '#fff',
     fontSize: 30,
     fontWeight: 'bold',
+  },
+
+  dropdown: {
+    // margin: 6,
+    height: 44,
+    width: 80,
+    backgroundColor: '#343852',
+    borderRadius: 22,
+    paddingHorizontal: 5,
+  },
+  imageStyle: {
+    width: 20,
+    height: 12,
+    // borderRadius: 12,
+    // backgroundColor: 'red',
+  },
+  placeholderStyle: {
+    fontSize: 16,
+  },
+  selectedTextStyle: {
+    fontSize: 14,
+    marginLeft: 2,
+    fontFamily: fonts.URBANIST_REGULAR,
+    // color: Colors.GREEN,
+  },
+  iconStyle: {
+    width: 20,
+    height: 20,
   },
 });
 export {styles};

@@ -36,7 +36,7 @@ const LoginTwo = ({route}) => {
 
   useEffect(() => {}, []);
   const storeData = () => {
-    dispatch(setUser());
+    dispatch(setUser(true));
   };
   return (
     <View style={styles.container}>

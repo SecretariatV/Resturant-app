@@ -408,31 +408,7 @@ const RestaurantMain = () => {
                 <Text>Price Range:</Text>
                 <Text>${sliderValue}</Text>
               </View>
-              <View style={styles.priceRangeSlider}>
-                {/* <RangeSlider
-                minValue={0}
-                maxValue={100}
-                steps={1}
-                activeBackgroundComponent={
-                  <View
-                    style={{
-                      backgroundColor: '#f00',
-                      width: widthToDp(100),
-                    }}
-                  />
-                }
-                inactiveBackgroundComponent={
-                  <View
-                    style={{
-                      backgroundColor: '#f0f',
-                      width: widthToDp(100),
-                    }}
-                  />
-                }
-                thumbComponent={<SliderThumb />}
-                onValueChange={setSliderValue}
-              /> */}
-              </View>
+              <View style={styles.priceRangeSlider}></View>
             </View>
           </View>
         </ScrollView>
@@ -441,7 +417,7 @@ const RestaurantMain = () => {
       <FlatList
         showsVerticalScrollIndicator={false}
         style={styles.listStyle}
-        contentContainerStyle={{paddingBottom: 80}}
+        // contentContainerStyle={{paddingBottom: 0}}
         data={restaurants}
         renderItem={renderItem}
         keyExtractor={item => item.id} // Key extractor for each item

@@ -310,7 +310,6 @@ const Restaurant = () => {
           {renderScreen()}
         </View>
       </ScrollView>
-      {/* <Footer /> */}
     </View>
   );
 };

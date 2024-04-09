@@ -8,11 +8,11 @@ const styles = StyleSheet.create({
     // width: 300,
     // width: width * 0.868,
 
-    padding: 10,
+    padding: 15,
     // alignSelf: 'center',
     alignItems: 'center',
     backgroundColor: '#00000099',
-    borderRadius: 15,
+    borderRadius: 22,
   },
   input: {
     // backgroundColor: 'white',

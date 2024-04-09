@@ -44,11 +44,11 @@ const Welcome = props => {
 
           <View style={{flexDirection: 'row'}}>
             <Text style={styles.byeTxt}>
-              "Say goodbye to waiting{' '}
+              "Say goodbye{' '}
               <Text style={styles.byeTxtTwo}>
-                and hello to instant, hassle-free dining. Shareabill brings you
-                a revolutionary platform to enhance your restaurant and
-                hospitality”
+                to waiting and hello to instant, hassle-free dining. Shareabill
+                brings you a revolutionary platform to enhance your restaurant
+                and hospitality”
               </Text>
             </Text>
           </View>

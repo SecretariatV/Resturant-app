@@ -15,7 +15,7 @@ const styles = StyleSheet.create({
     height: heightToDp(100),
   },
   restaurantScrollView: {
-    marginTop: heightToDp(20),
+    // marginTop: heightToDp(20),
   },
   restaurantContentContainer: {
     justifyContent: 'flex-end',

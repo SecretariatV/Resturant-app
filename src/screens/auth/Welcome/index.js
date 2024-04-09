@@ -1,6 +1,5 @@
 import {View, Text, Image} from 'react-native';
-import React, {useEffect} from 'react';
-import HeaderCommon from '../../../components/HeaderCommon';
+import React, {useEffect, useState} from 'react';
 import HeaderModed from '../../../components/HeaderModed/index.js';
 import BackgroundLayout from '../../../components/BackgroundLayout';
 import {styles} from './styles';
@@ -9,8 +8,46 @@ import {width, widthToDp, heightToDp} from '../../../utils/Dimensions';
 import Swiper from 'react-native-swiper';
 import ButtonsCommon from '../../../components/Buttons/ButtonCommon.js';
 import {useNavigation} from '@react-navigation/native';
+import {SelectCountry} from 'react-native-element-dropdown';
 
+const local_data = [
+  {
+    value: '1',
+    lable: 'EN',
+    image: require('../../../assets/images/US.png'),
+  },
+  // {
+  //   value: '2',
+  //   lable: 'Country 2',
+  //   image: {
+  //     uri: 'https://www.vigcenter.com/public/all/images/default-image.jpg',
+  //   },
+  // },
+  // {
+  //   value: '3',
+  //   lable: 'Country 3',
+  //   image: {
+  //     uri: 'https://www.vigcenter.com/public/all/images/default-image.jpg',
+  //   },
+  // },
+  // {
+  //   value: '4',
+  //   lable: 'Country 4',
+  //   image: {
+  //     uri: 'https://www.vigcenter.com/public/all/images/default-image.jpg',
+  //   },
+  // },
+  // {
+  //   value: '5',
+  //   lable: 'Country 5',
+  //   image: {
+  //     uri: 'https://www.vigcenter.com/public/all/images/default-image.jpg',
+  //   },
+  // },
+];
 const Welcome = props => {
+  const [country, setCountry] = useState('1');
+
   const navigation = useNavigation();
   const handleDynamicNavigation = () => {
     console.log('kmdsakas');
@@ -23,9 +60,40 @@ const Welcome = props => {
       <HeaderModed
         slotLeft={<></>}
         slotCenter={
-          <Image source={require('../../../assets/images/logo.png')} />
+          <Image
+            source={require('../../../assets/images/image-two.png')}
+            style={{
+              resizeMode: 'contain',
+              width: widthToDp(45),
+              height: widthToDp(100),
+            }}
+          />
         }
-        slotRight={<></>}
+        slotRight={
+          <>
+            <SelectCountry
+              style={styles.dropdown}
+              selectedTextStyle={styles.selectedTextStyle}
+              placeholderStyle={styles.placeholderStyle}
+              imageStyle={styles.imageStyle}
+              iconStyle={styles.iconStyle}
+              containerStyle={{backgroundColor: 'red'}}
+              itemContainerStyle={{backgroundColor: 'red'}}
+              itemTextStyle={{color: 'red'}}
+              maxHeight={200}
+              value={country}
+              data={local_data}
+              valueField="value"
+              labelField="lable"
+              imageField="image"
+              placeholder="Select country"
+              searchPlaceholder="Search..."
+              onChange={e => {
+                setCountry(e.value);
+              }}
+            />
+          </>
+        }
       />
       {/* <HeaderCommon show={false} /> */}
 
@@ -61,22 +129,22 @@ const Welcome = props => {
 
           <View style={{flexDirection: 'row'}}>
             <Text style={styles.byeTxt}>
-              "Say goodbye to waiting{' '}
+              "Say goodbye{' '}
               <Text style={styles.byeTxtTwo}>
-                and hello to instant, hassle-free dining. Shareabill brings you
-                a revolutionary platform to enhance your restaurant and
-                hospitality”
+                to waiting and hello to instant, hassle-free dining. Shareabill
+                brings you a revolutionary platform to enhance your restaurant
+                and hospitality”
               </Text>
             </Text>
           </View>
           <View style={styles.dotContainer}>
-            <LinearGradient
+            {/* <LinearGradient
               colors={['#28A79B', '#02ABEE']}
               style={styles.greenDot}
               start={{x: 0, y: 0.5}}
-              end={{x: 1, y: 0.5}}>
-              <View style={styles.sliderDot}></View>
-            </LinearGradient>
+              end={{x: 1, y: 0.5}}> */}
+            <View style={styles.sliderDot}></View>
+            {/* </LinearGradient> */}
 
             <View style={styles.sliderDotTwo}></View>
           </View>

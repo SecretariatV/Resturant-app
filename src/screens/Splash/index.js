@@ -3,6 +3,7 @@ import React, {useEffect, useState} from 'react';
 import {styles} from './styles';
 import BackgroundLayout from '../../components/BackgroundLayout';
 import {useNavigation} from '@react-navigation/native';
+import {widthToDp} from '../../utils/Dimensions';
 
 const Splash = () => {
   const navigation = useNavigation();
@@ -37,8 +38,14 @@ const Splash = () => {
       {/* <Image source={require('../../assets/images/backgroundTwo.png')} /> */}
       {/* <BackgroundLayout /> */}
       <Animated.Image
-        style={[{transform: [{scale: imscale}]}]}
-        source={require('../../assets/images/logo.png')}
+        style={[
+          {
+            resizeMode: 'contain',
+            width: widthToDp(45),
+            transform: [{scale: imscale}],
+          },
+        ]}
+        source={require('../../assets/images/image-two.png')}
       />
       {/* <Image source={require('../../assets/images/logo.png')} /> */}
     </View>

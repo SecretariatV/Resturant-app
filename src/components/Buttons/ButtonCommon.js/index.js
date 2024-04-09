@@ -24,7 +24,7 @@ const ButtonsCommon = ({
       <LinearGradient
         colors={['#02ABEE6E', '#02ABEE', '#00F594']}
         style={[
-          {borderRadius: 15, flexWrap: 'nowrap', margin: 2},
+          {borderRadius: 22, flexWrap: 'nowrap', margin: 2},
           linearTextStyle,
         ]}
         start={{x: 0, y: 0.5}}
