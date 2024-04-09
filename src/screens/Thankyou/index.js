@@ -131,7 +131,7 @@ const Thankyou = () => {
           />
         </View>
       </ScrollView>
-      <Footer />
+      {/* <Footer /> */}
     </View>
   );
 };

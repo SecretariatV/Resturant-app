@@ -261,7 +261,7 @@ const TrackOrder = () => {
           onPress={() => navigation.navigate('PaymentOption')}
         />
       </ScrollView>
-      <Footer />
+      {/* <Footer /> */}
     </View>
   );
 };

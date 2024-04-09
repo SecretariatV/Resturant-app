@@ -57,7 +57,7 @@ const Setting = () => {
         </TouchableOpacity>
         <FadedSeparator containerStyle={styles.separator} />
       </View>
-      <Footer />
+      {/* <Footer /> */}
     </View>
   );
 };

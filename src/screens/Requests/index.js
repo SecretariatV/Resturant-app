@@ -75,7 +75,7 @@ const Requests = () => {
           </View>
         </View>
       </BottomSheet>
-      <Footer />
+      {/* <Footer /> */}
     </View>
   );
 };

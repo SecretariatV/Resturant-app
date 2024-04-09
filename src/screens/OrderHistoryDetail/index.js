@@ -205,7 +205,7 @@ const OrderHistoryDetail = () => {
           />
         </View>
       </ScrollView>
-      <Footer />
+      {/* <Footer /> */}
     </View>
   );
 };

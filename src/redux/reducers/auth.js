@@ -2,8 +2,8 @@ import types from '../types';
 
 const initialState = {
   user: null,
-  //   Error: null,
-  //   userData: null,
+  qr: false,
+  request: false,
 };
 export const auth = (state = initialState, action) => {
   switch (action.type) {
@@ -13,6 +13,10 @@ export const auth = (state = initialState, action) => {
     case types.USER_DATA:
       return {...state, userData: action.payload};
 
+    case types.QR_CODE:
+      return {...state, qr: action.payload};
+    case types.REQUEST:
+      return {...state, request: action.payload};
     default:
       return state;
   }

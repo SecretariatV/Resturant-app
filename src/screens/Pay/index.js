@@ -25,7 +25,7 @@ const Pay = () => {
         }}>
         <Text>Pay</Text>
       </View>
-      <Footer />
+      {/* <Footer /> */}
     </View>
   );
 };

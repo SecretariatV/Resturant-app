@@ -12,10 +12,10 @@ import {
 import LinearGradient from 'react-native-linear-gradient';
 import {BottomSheet} from '@rneui/themed';
 import {useEffect, useState} from 'react';
-import {useSelector} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import {Colors} from '../../theme';
 import {styles} from './styles';
-import { useNavigation } from '@react-navigation/native';
+import {useNavigation} from '@react-navigation/native';
 
 import SkipButton from '../../components/Buttons/SkipButton';
 import HeaderModed from '../../components/HeaderModed';
@@ -37,9 +37,10 @@ import CloseFilterBtn from '../../assets/images/closeBtnFilter.svg';
 
 import {widthToDp} from '../../utils/Dimensions';
 import {getPlatformSpecificValue} from '../../utils/helper';
+import {setQrCode} from '../../redux/actions/auth';
 const RestaurantMain = () => {
-
-   const navigation = useNavigation();
+  const navigation = useNavigation();
+  const dispatch = useDispatch();
 
   const [modalVisible, setModalVisible] = useState(true);
   const [isVisible, setIsVisible] = useState(false);
@@ -87,19 +88,9 @@ const RestaurantMain = () => {
     // Add more items as needed
   ];
   useEffect(() => {
-    getData();
+    dispatch(setQrCode(false));
   }, []);
-  const getData = async () => {
-    try {
-      const value = await AsyncStorage.getItem('user');
-      if (value !== null) {
-        console.log(value, 'myyyyyyyy');
-        // value previously stored
-      }
-    } catch (e) {
-      // error reading value
-    }
-  };
+
   const renderItem = ({item}) => (
     <ResturantCard
       name={item.name}
@@ -455,7 +446,7 @@ const RestaurantMain = () => {
         renderItem={renderItem}
         keyExtractor={item => item.id} // Key extractor for each item
       />
-      <Footer />
+      {/* <Footer /> */}
     </View>
   );
 };

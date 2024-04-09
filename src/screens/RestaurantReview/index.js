@@ -236,7 +236,7 @@ const RestaurantReview = () => {
           </View>
         </View>
       </ScrollView>
-      <Footer />
+      {/* <Footer /> */}
     </View>
   );
 };

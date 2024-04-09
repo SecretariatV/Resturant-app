@@ -17,6 +17,7 @@ const ButtonsCommon = ({
   navRoute = false,
   img,
   imageSource,
+  imgStyle,
 }) => {
   return (
     <View style={[containerStyle]}>
@@ -31,7 +32,7 @@ const ButtonsCommon = ({
         <TouchableOpacity
           style={[styles.circleGradient, btnStyle]}
           onPress={onPress}>
-          {img ? <Image source={imageSource} /> : <></>}
+          {img ? <Image source={imageSource} style={[imgStyle]} /> : <></>}
           <Text style={[styles.btnText, btnTextStyle]}>{btnText}</Text>
         </TouchableOpacity>
       </LinearGradient>

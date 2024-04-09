@@ -42,13 +42,29 @@ import {getPlatformSpecificValue, screenToTextSize} from '../../utils/helper';
 // import {View} from '@candlefinance/blur-view';
 import {Allergies} from '../../utils/demodata';
 import FavouriteButton from '../../components/NavButtons/FavouriteButton';
+import {useDispatch, useSelector} from 'react-redux';
+import {setQrCode} from '../../redux/actions/auth';
 
 const RestaurantMenu = () => {
+  const dispatch = useDispatch();
   const navigation = useNavigation();
   const [modalVisible, setModalVisible] = useState(false);
   const [showFilter, setShowFilter] = useState(false);
   const [showRequest, setShowRequest] = useState(false);
   const [itemListType, setItemListType] = useState('top');
+  const qr = useSelector(state => state.auth.qr);
+
+  useEffect(() => {
+    console.log(qr, 'restaurant menu user');
+    if (qr) {
+    }
+  }, [qr]);
+  console.log(qr, 'userrrrr');
+  useEffect(() => {
+    // return () => {
+    //   dispatch(setQrCode(false));
+    // };
+  }, []);
 
   const categories = [
     {
@@ -363,7 +379,7 @@ const RestaurantMenu = () => {
         </ScrollView>
       </View>
       {/* <Footer /> */}
-      <Footer />
+      {/* <Footer /> */}
     </SafeAreaProvider>
   );
 };

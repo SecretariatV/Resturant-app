@@ -428,7 +428,7 @@ const Cart = () => {
         backgroundColor={'transparent'}
       /> */}
       </ScrollView>
-      <Footer />
+      {/* <Footer /> */}
     </View>
   );
 };

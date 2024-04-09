@@ -100,7 +100,7 @@ const Wallet = () => {
         </View>
       </ScrollView>
 
-      <Footer />
+      {/* <Footer /> */}
     </View>
   );
 };

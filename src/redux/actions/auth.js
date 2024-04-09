@@ -17,3 +17,22 @@ export const setUser = () => {
     });
   };
 };
+
+export const setQrCode = res => {
+  console.log('action respons', res);
+  return dispatch => {
+    dispatch({
+      type: types.QR_CODE,
+      payload: res,
+    });
+  };
+};
+export const setRequestBtn = res => {
+  console.log('REQ respons', res);
+  return dispatch => {
+    dispatch({
+      type: types.REQUEST,
+      payload: res,
+    });
+  };
+};

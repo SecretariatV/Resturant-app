@@ -526,7 +526,7 @@ const PaymentOption = () => {
         initialLayout={{width: layout.width}}
         style={{backgroundColor: 'transparent'}}
       />
-      <Footer />
+      {/* <Footer /> */}
     </View>
   );
 };

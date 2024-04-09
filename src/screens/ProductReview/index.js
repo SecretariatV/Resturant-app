@@ -200,7 +200,7 @@ const ProductReview = () => {
           </View>
         </View>
       </ScrollView>
-      <Footer />
+      {/* <Footer /> */}
     </View>
   );
 };

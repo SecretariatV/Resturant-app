@@ -12,7 +12,7 @@ const styles = StyleSheet.create({
   subContainer: {
     width: '100%',
     alignItems: 'center',
-    paddingBottom: heightToDp(45),
+    paddingBottom: heightToDp(25),
   },
   rewardContainer: {
     flexDirection: 'row',

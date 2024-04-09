@@ -88,7 +88,7 @@ const Reward = () => {
           renderItem={renderItem}
         />
       </View>
-      <Footer />
+      {/* <Footer /> */}
     </View>
   );
 };

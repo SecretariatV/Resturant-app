@@ -13,7 +13,6 @@ import Footer from '../../components/Footer';
 import RestaurantButton from '../../components/Buttons/RestaurantButton';
 import {fonts} from '../../theme/FontFamily';
 import {useNavigation} from '@react-navigation/native';
-import {heightToDp} from '../../utils/Dimensions';
 
 const OrderHistory = () => {
   const navigation = useNavigation();
@@ -65,7 +64,7 @@ const OrderHistory = () => {
           renderItem={renderItem}
         />
       </View>
-      <Footer />
+      {/* <Footer /> */}
     </View>
   );
 };

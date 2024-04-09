@@ -1,8 +1,9 @@
-import {StyleSheet} from 'react-native';
+import {Platform, StyleSheet} from 'react-native';
 import {heightToDp, widthToDp} from '../utils/Dimensions';
 import {fonts} from '../theme/FontFamily';
 import {screenToTextSize} from '../utils/helper';
-import Colors from '../constants/Colors';
+import {Colors} from '../theme';
+// import Colors from '../constants/Colors';
 
 const tabNavStyles = StyleSheet.create({
   tabNavigatorBarStyle: {
@@ -108,6 +109,43 @@ const tabNavStyles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+
+  tabContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    alignItems: 'center',
+    position: 'relative',
+
+    // borderTopWidth: 1,
+    // borderTopColor: '#ddd',
+  },
+  tabItem: {
+    flex: 1,
+    // width: widthToDp(100),
+    alignItems: 'center',
+    // position: 'absolute',
+    // bottom: 10,
+    // position: 'absolute',
+    // bottom: 10,
+    paddingBottom: Platform.OS === 'ios' ? 15 : 0,
+    // paddingRight: 5,
+    // gap: 10,
+    justifyContent: 'center',
+    // paddingHorizontal: widthToDp(2),
+    // marginLeft: 5,
+    // borderBottomWidth: 3,
+    flexDirection: 'row',
+    // backgroundColor: 'yellow',
+    // backgroundColor: `#f0${Math.random(2)}cc`,
+    // width: widthToDp(30),
+    // backgroundColor: 'red',
+    // alignSelf:'csenter'
+  },
+  screenContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 });
 export {tabNavStyles};
