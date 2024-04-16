@@ -61,12 +61,12 @@ const CustomDrawer1 = props => {
       end={{x: 1, y: 0.5}}>
       <View style={styles.circleGradient}>
         <View style={[styles.view, styles.borderStyle]}>
-          <View
+          {/* <View
             blurTintColor="#0E0E15" // has to be hex with opacity
             colorTintOpacity={0.1}
             blurRadius={10}
             style={styles.absolute}
-          />
+          /> */}
 
           {/* header */}
           <Animated.View
@@ -139,6 +139,7 @@ const CustomDrawer1 = props => {
                 <FadedSeparator
                   fancyGradBorderStyle={styles.fancyLine}
                   containerStyle={{marginVertical: 15}}
+                  active
                 />
               </View>
             </TouchableOpacity>
@@ -155,6 +156,7 @@ const CustomDrawer1 = props => {
                 <FadedSeparator
                   fancyGradBorderStyle={styles.fancyLine}
                   containerStyle={{marginVertical: 15}}
+                  active
                 />
               </View>
             </TouchableOpacity>
@@ -171,6 +173,7 @@ const CustomDrawer1 = props => {
                 <FadedSeparator
                   fancyGradBorderStyle={styles.fancyLine}
                   containerStyle={{marginVertical: 15}}
+                  active
                 />
               </View>
             </TouchableOpacity>
@@ -187,6 +190,7 @@ const CustomDrawer1 = props => {
                 <FadedSeparator
                   fancyGradBorderStyle={styles.fancyLine}
                   containerStyle={{marginVertical: 15}}
+                  active
                 />
               </View>
             </TouchableOpacity>
@@ -203,6 +207,7 @@ const CustomDrawer1 = props => {
                 <FadedSeparator
                   fancyGradBorderStyle={styles.fancyLine}
                   containerStyle={{marginVertical: 15}}
+                  active
                 />
               </View>
             </TouchableOpacity>
@@ -219,6 +224,7 @@ const CustomDrawer1 = props => {
                 <FadedSeparator
                   fancyGradBorderStyle={styles.fancyLine}
                   containerStyle={{marginVertical: 15}}
+                  active
                 />
               </View>
             </TouchableOpacity>
@@ -235,65 +241,66 @@ const CustomDrawer1 = props => {
                 <FadedSeparator
                   fancyGradBorderStyle={styles.fancyLine}
                   containerStyle={{marginVertical: 15}}
+                  active
                 />
               </View>
             </TouchableOpacity>
           </Animated.ScrollView>
-          {/* footer */}
-          <TouchableOpacity>
-            <Animated.View
-              style={[styles.view, styles.marginBottom, viewStyles2('bottom')]}>
-              <TouchableOpacity
-                // onPress={onPress}
-                accessibilityRole="button"
-                style={[styles.drawerItem, styles.buttons]}>
-                <View>
-                  <View style={styles.buttonView}>
-                    <Help width={28} height={28} />
-                    <Text style={[styles.label]}>Help Center</Text>
-                  </View>
-                  <FadedSeparator
-                    fancyGradBorderStyle={styles.fancyLine}
-                    containerStyle={{marginVertical: 15}}
-                  />
+          <Animated.View
+            style={[styles.view, styles.marginBottom, viewStyles2('bottom')]}>
+            <TouchableOpacity
+              // onPress={onPress}
+              accessibilityRole="button"
+              style={[styles.drawerItem, styles.buttons]}>
+              <View>
+                <View style={styles.buttonView}>
+                  <Help width={28} height={28} />
+                  <Text style={[styles.label]}>Help Center</Text>
                 </View>
-              </TouchableOpacity>
+                <FadedSeparator
+                  fancyGradBorderStyle={styles.fancyLine}
+                  containerStyle={{marginVertical: 15}}
+                  active
+                />
+              </View>
+            </TouchableOpacity>
 
-              <TouchableOpacity
-                // onPress={onPress}
-                accessibilityRole="button"
-                style={[styles.drawerItem, styles.buttons]}>
-                <View>
-                  <View style={styles.buttonView}>
-                    <Term width={28} height={28} />
-                    <Text style={[styles.label]}>Terms & Conditions</Text>
-                  </View>
-                  <FadedSeparator
-                    fancyGradBorderStyle={styles.fancyLine}
-                    containerStyle={{marginVertical: 15}}
-                  />
+            <TouchableOpacity
+              // onPress={onPress}
+              accessibilityRole="button"
+              style={[styles.drawerItem, styles.buttons]}>
+              <View>
+                <View style={styles.buttonView}>
+                  <Term width={28} height={28} />
+                  <Text style={[styles.label]}>Terms & Conditions</Text>
                 </View>
-              </TouchableOpacity>
+                <FadedSeparator
+                  fancyGradBorderStyle={styles.fancyLine}
+                  containerStyle={{marginVertical: 15}}
+                  active
+                />
+              </View>
+            </TouchableOpacity>
 
-              <TouchableOpacity
-                onPress={() => {
-                  console.log(' logout'), dispatch(setUser(false));
-                }}
-                accessibilityRole="button"
-                style={[styles.drawerItem, styles.buttons]}>
-                <View>
-                  <View style={styles.buttonView}>
-                    <Logout width={28} height={28} />
-                    <Text style={[styles.label]}>Logout</Text>
-                  </View>
-                  <FadedSeparator
-                    fancyGradBorderStyle={styles.fancyLine}
-                    containerStyle={{marginVertical: 15}}
-                  />
+            <TouchableOpacity
+              onPress={() => {
+                console.log(' logout'), dispatch(setUser(false));
+              }}
+              accessibilityRole="button"
+              style={[styles.drawerItem, styles.buttons]}>
+              <View>
+                <View style={styles.buttonView}>
+                  <Logout width={28} height={28} />
+                  <Text style={[styles.label]}>Logout</Text>
                 </View>
-              </TouchableOpacity>
-            </Animated.View>
-          </TouchableOpacity>
+                <FadedSeparator
+                  fancyGradBorderStyle={styles.fancyLine}
+                  containerStyle={{marginVertical: 15}}
+                  active
+                />
+              </View>
+            </TouchableOpacity>
+          </Animated.View>
         </View>
       </View>
     </LinearGradient>

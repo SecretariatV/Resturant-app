@@ -70,11 +70,13 @@ const styles = StyleSheet.create({
   location: {
     color: '#CBCBCA',
     marginVertical: 5,
+    marginLeft: 10,
   },
 
   cuisineContainer: {
     flexDirection: 'row',
     alignItems: 'center',
+    justifyContent: 'space-between',
   },
 
   cuisine: {
@@ -87,8 +89,8 @@ const styles = StyleSheet.create({
     alignItems: 'flex-end',
   },
   arrow: {
-    width: 20,
-    height: 20,
+    width: 30,
+    height: 30,
   },
 });
 export {styles};

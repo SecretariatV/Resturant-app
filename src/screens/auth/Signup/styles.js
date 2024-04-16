@@ -15,16 +15,18 @@ const styles = StyleSheet.create({
     fontSize: 20,
   },
   joinTxt: {
-    fontSize: 24,
-    fontWeight: '400',
+    fontSize: 32,
+    fontFamily: fonts.URBANIST_MEDIUM,
     color: '#fff',
   },
   underJoinTxt: {
-    fontSize: 14,
+    fontSize: 16,
+    fontFamily: fonts.URBANIST_REGULAR,
     color: '#fff',
     marginTop: 5,
     marginBottom: 15,
-    lineHeight: 18,
+    width: '90%',
+    // lineHeight: 18,
   },
   circleGradient: {
     margin: 1,
@@ -49,6 +51,7 @@ const styles = StyleSheet.create({
   imageUploader: {
     position: 'relative',
     width: 80,
+    marginVertical: 15,
   },
   imageUploaderPlus: {
     width: 20,

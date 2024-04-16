@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
     width: '100%',
     backgroundColor: 'rgba(255, 255, 255, 0.10)',
     borderWidth: 1,
-    paddingVertical: heightToDp(15),
+    paddingVertical: heightToDp(18),
     // paddingHorizontal: 30,
     borderColor: '#FFFFFF3a',
     borderRadius: 20,
@@ -47,7 +47,7 @@ const styles = StyleSheet.create({
     marginTop: 20,
     color: Colors.WHITE,
     fontFamily: fonts.URBANIST_REGULAR,
-    fontSize: screenToTextSize(5),
+    fontSize: screenToTextSize(5.5),
     textAlign: 'center',
   },
 });

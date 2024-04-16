@@ -1,4 +1,4 @@
-import {View, Text} from 'react-native';
+import {View, Text, Image} from 'react-native';
 import React from 'react';
 import BackgroundLayout from '../../../components/BackgroundLayout';
 import HeaderCommon from '../../../components/HeaderCommon';
@@ -25,7 +25,16 @@ const Login = () => {
       <HeaderModed
         headerStyle={{paddingHorizontal: 0}}
         slotLeft={<BackButton onPress={() => navigation.goBack()} />}
-        slotCenter={<></>}
+        slotCenter={
+          <Image
+            source={require('../../../assets/images/image-two.png')}
+            style={{
+              resizeMode: 'contain',
+              width: widthToDp(45),
+              height: widthToDp(100),
+            }}
+          />
+        }
         slotRight={<></>}
       />
       <View
@@ -38,7 +47,7 @@ const Login = () => {
         <View style={styles.outerBox}>
           <View style={styles.innerBox}>
             <Text style={styles.startedTxt}>
-              Let's Get Started with .
+              Let's Get Started with{' '}
               <Text style={styles.startedTxtTwo}>Shareabill</Text>
             </Text>
             <Text style={styles.startedTxtThree}>

@@ -30,10 +30,10 @@ const styles = StyleSheet.create({
   searchBarTextInput: {
     width: widthToDp(80 - horizontalPadding),
     color: '#fff',
-    backgroundColor: 'transparent',
     alignItems: 'center',
     justifyContent: 'center',
     paddingLeft: 10,
+    marginHorizontal: 5,
     height: heightToDp(10),
   },
   btnText: {

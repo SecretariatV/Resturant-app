@@ -215,16 +215,10 @@ const CustomTabBar = ({state, descriptors, navigation}) => (
     <Footer />
     <View
       style={{
-        // backgroundColor: 'red',
         width: widthToDp(100),
         flexDirection: 'row',
-
-        // flex: 1,
-        // position: 'absolute',
-        // bottom: 20,
       }}>
       {state.routes.map((route, index) => {
-        console.log(route, 'routerouteroute');
         const {options} = descriptors[route.key];
         const label =
           options.tabBarLabel !== undefined
@@ -255,10 +249,7 @@ const CustomTabBar = ({state, descriptors, navigation}) => (
             accessibilityLabel={options.tabBarAccessibilityLabel}
             testID={options.tabBarTestID}
             onPress={onPress}
-            style={[
-              tabNavStyles.tabItem,
-              // {borderBottomColor: isFocused ? '#007bff' : 'transparent'},
-            ]}>
+            style={[tabNavStyles.tabItem]}>
             {label === 'HomeStack' && (
               <View
                 style={{
@@ -268,9 +259,10 @@ const CustomTabBar = ({state, descriptors, navigation}) => (
                   width: widthToDp(15),
                   position: 'relative',
                   left: -10,
+                  bottom: 5,
                 }}>
                 <Image
-                  style={{width: 24, height: 24, opacity: 0.6}}
+                  style={{width: 30, height: 30, opacity: 0.6}}
                   source={require('../assets/images/home.png')}
                 />
                 {/* <HomeIcon width={25} height={25} style={{ opacity: 0.5, marginBottom: -5}}/> */}
@@ -282,7 +274,7 @@ const CustomTabBar = ({state, descriptors, navigation}) => (
             {label === 'Requests' && (
               <View style={tabNavStyles.tabNavRequestBtn}>
                 <Image
-                  style={{width: 24, height: 24}}
+                  style={{width: 30, height: 30}}
                   source={require('../assets/images/tabbar-request.png')}
                 />
                 <Text style={tabNavStyles.tabNavRequestBtnText}>Requests</Text>
@@ -315,9 +307,10 @@ const CustomTabBar = ({state, descriptors, navigation}) => (
                   width: widthToDp(15),
                   position: 'relative',
                   right: -10,
+                  bottom: 5,
                 }}>
                 <Image
-                  style={{width: 16, height: 16}}
+                  style={{width: 30, height: 30}}
                   source={require('../assets/images/cart.png')}
                 />
                 <Text style={{color: '#fff', fontSize: screenToTextSize(3)}}>
@@ -334,23 +327,18 @@ const CustomTabBar = ({state, descriptors, navigation}) => (
                   gap: 5,
                   width: widthToDp(15),
                   position: 'relative',
-                  right: -10,
+                  // right: -,
+                  bottom: 5,
                 }}>
                 <Image
-                  style={{width: 16, height: 16}}
-                  source={require('../assets/images/pay.png')}
+                  style={{resizeMode: 'contain', width: 30, height: 30}}
+                  source={require('../assets/images/tabbar-pay.png')}
                 />
                 <Text style={{color: '#fff', fontSize: screenToTextSize(3)}}>
                   Pay
                 </Text>
               </View>
             )}
-
-            {/* {label === 'HomeStack' && <HomeIconTwo />}
-
-          {label === 'HomeStack' && <HomeIconTwo />}
-
-          {label === 'Profile' && <ProfileIcon />} */}
           </TouchableOpacity>
         );
       })}
@@ -358,27 +346,19 @@ const CustomTabBar = ({state, descriptors, navigation}) => (
   </View>
 );
 
-const TabNavigator = ({activeRestaurant}) => {
-  // console.log(user, 'login twoser Data======');
+const TabNavigator = () => {
   const dispatch = useDispatch();
   const qr = useSelector(state => state.auth.qr);
   const req = useSelector(state => state.auth.request);
 
   useEffect(() => {
     console.log(req, 'my request');
-    // console.log(qr, 'user');
     if (qr) {
     }
   }, [qr]);
   console.log(qr, 'qr userrrrr');
   return (
     <Tab.Navigator
-      // tabBar={props => (
-      //   <>
-      //     <MenuBg />
-      //     {/* <BottomTabBar {...props} /> */}
-      //   </>
-      // )}
       tabBar={props => <CustomTabBar {...props} />}
       // initialRouteName={qr ? 'RestaurantMain' : 'QrCode'}
       backBehavior="history"
@@ -590,151 +570,6 @@ const TabNavigator = ({activeRestaurant}) => {
           },
         }}
       />
-
-      {/* <Tab.Screen
-        name="Setting"
-        component={Setting}
-        options={{
-          tabBarButton: () => null,
-          tabBarVisible: false,
-        }}
-      />
-  
-
-      <Tab.Screen
-        name="Reward"
-        component={Reward}
-        options={{
-          tabBarButton: () => null,
-          tabBarVisible: false,
-        }}
-      />
-
-      <Tab.Screen
-        name="OrderHistory"
-        component={OrderHistory}
-        options={{
-          tabBarButton: () => null,
-          tabBarVisible: true,
-        }}
-      />
-
-      <Tab.Screen
-        name="Wallet"
-        component={Wallet}
-        options={{
-          tabBarButton: () => null,
-          tabBarVisible: false,
-        }}
-      />
-
-      <Tab.Screen
-        name="OrderHistoryDetail"
-        component={OrderHistoryDetail}
-        options={{
-          tabBarButton: () => null,
-          tabBarVisible: false,
-        }}
-      />
-
-   
-
-      <Tab.Screen
-        name="Thankyou"
-        component={Thankyou}
-        options={{
-          tabBarButton: () => null,
-          tabBarVisible: false,
-        }}
-      />
-      <Tab.Screen
-        name="TrackOrder"
-        component={TrackOrder}
-        options={{
-          tabBarButton: () => null,
-          tabBarVisible: false,
-        }}
-      />
-      <Tab.Screen
-        name="HomeScreens"
-        component={HomeScreens}
-        options={{
-          tabBarButton: () => null,
-          tabBarVisible: false,
-        }}
-      />
-
-      <Tab.Screen
-        name="Cart"
-        component={Cart}
-        options={{
-          tabBarIcon: ({focused}) => {
-            return (
-              <View
-                style={{
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                  gap: 5,
-                  width: widthToDp(15),
-                  position: 'relative',
-                  right: -20,
-                }}>
-                <Image
-                  style={{width: 16, height: 16}}
-                  source={require('../assets/images/cart.png')}
-                />
-                <Text style={{color: '#fff', fontSize: screenToTextSize(3)}}>
-                  Cart
-                </Text>
-              </View>
-            );
-          },
-        }}
-      />
-      <Tab.Screen
-        name="PaymentOption"
-        component={PaymentOption}
-        options={{
-          tabBarIcon: ({focused}) => {
-            return (
-              <View
-                style={{
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                  gap: 5,
-                  width: widthToDp(15),
-                  position: 'relative',
-                  right: -10,
-                }}>
-                <Image
-                  style={{width: 16, height: 16}}
-                  source={require('../assets/images/pay.png')}
-                />
-                <Text style={{color: '#fff', fontSize: screenToTextSize(3)}}>
-                  Pay
-                </Text>
-              </View>
-            );
-          },
-        }}
-      />
-
-      <Tab.Screen
-        name="ProductReview"
-        component={ProductReview}
-        options={{
-          tabBarButton: () => null,
-          tabBarVisible: false,
-        }}
-      />
-      <Tab.Screen
-        name="RestaurantReview"
-        component={RestaurantReview}
-        options={{
-          tabBarButton: () => null,
-          tabBarVisible: false,
-        }}
-      /> */}
     </Tab.Navigator>
   );
 };
@@ -744,12 +579,6 @@ const RootNavigator = () => {
 
   const user = useSelector(state => state.auth.user);
   const req = useSelector(state => state.auth.request);
-
-  // console.log(user, '========user Data======');
-  const [saveUser, setSaveUser] = useState(false);
-  const [activeRestaurant, setActiveRestaurant] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [showFilter, setShowFilter] = useState(false);
 
   useEffect(() => {
     console.log(req, 'ruse effeeq');

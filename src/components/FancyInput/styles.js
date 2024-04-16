@@ -26,6 +26,10 @@ const styles = StyleSheet.create({
   },
   fieldInput: {
     color: '#fff',
+    fontFamily: fonts.URBANIST_SEMIBOLD,
+    fontSize: 16,
+    // backgroundColor: 'red',
+    width: '100%',
     // paddingLeft: 15,
     // textAlign:'center',
     padding: widthToDp(5),

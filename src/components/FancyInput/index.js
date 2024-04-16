@@ -20,10 +20,10 @@ const FancyInput = ({
   const eyeOff = require('../../assets/images/eye-off.png');
   const activeGrad = [
     '#02ABEE00',
-    '#02ABEEff',
-    '#02ABEE',
     '#00F594ff',
-    '#00F59400',
+    '#00F594',
+    '#02ABEEff',
+    '#02ABEE00',
   ];
   const inactiveGrad = [
     'rgba(255,255,255, 0)',

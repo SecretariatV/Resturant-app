@@ -73,7 +73,9 @@ const Signup = ({showMenu}) => {
         headerStyle={{paddingHorizontal: 0}}
         slotLeft={<BackButton onPress={() => navigation.goBack()} />}
       />
-      <ScrollView style={styles.regFormScrollView}>
+      <ScrollView
+        style={styles.regFormScrollView}
+        showsVerticalScrollIndicator={false}>
         <View className="join-screen-header-text">
           <View
             className="join-screen-intro-wrapper"
@@ -82,7 +84,7 @@ const Signup = ({showMenu}) => {
             <FancyText
               textSize={styles.joinTxt.fontSize}
               textColor="#00FC92"
-              gradientColors={['#02ABEE66', '#02ABEE66', '#00F59466']}
+              gradientColors={['#00F59433', '#00F59466', '#02ABEE66']}
               fancyText="Shareabill"
             />
             <Text style={styles.joinTxt}>for</Text>
@@ -95,7 +97,7 @@ const Signup = ({showMenu}) => {
           <View className="join-screen-under-intro-para">
             <Text style={styles.underJoinTxt}>
               Create your Shareabill account to embark on a journey of
-              personalized dining experiences.{' '}
+              personalized dining experiences.
             </Text>
           </View>
         </View>
@@ -123,7 +125,7 @@ const Signup = ({showMenu}) => {
           </View>
           <FancyInput
             iconImage={userIcon}
-            fieldLabel="Name"
+            fieldLabel="First Name"
             fieldValue={inputName}
             fieldPlaceHolder="Enter your First name"
             fieldCallback={setInputName}
@@ -137,7 +139,7 @@ const Signup = ({showMenu}) => {
           />
           <FancyInput
             iconImage={userIcon}
-            fieldLabel="Username"
+            fieldLabel="User name"
             fieldValue={inputUname}
             fieldPlaceHolder="Enter your Username"
             fieldCallback={setInputUname}
@@ -160,7 +162,7 @@ const Signup = ({showMenu}) => {
             iconImage={passIcon}
             fieldLabel="Password"
             fieldValue={inputPass}
-            fieldPlaceHolder="Enter your Password"
+            fieldPlaceHolder="Password Here"
             fieldCallback={setInputPass}
             fieldIsPassword={true}
           />

@@ -170,7 +170,7 @@ const Welcome = props => {
             <View style={{alignSelf: 'center', marginTop: 5}}>
               <LinearGradient
                 colors={['#02ABEE6E', '#02ABEE', '#00F594']}
-                style={{borderRadius: 15, flexWrap: 'nowrap'}}
+                style={{borderRadius: 10, flexWrap: 'nowrap'}}
                 start={{x: 0, y: 0.5}}
                 end={{x: 1, y: 0.5}}>
                 <View style={styles.circleGradient}>

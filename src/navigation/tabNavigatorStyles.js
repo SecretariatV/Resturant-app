@@ -25,6 +25,7 @@ const tabNavStyles = StyleSheet.create({
     width: widthToDp(15),
     position: 'relative',
     left: -20,
+    bottom: 5,
   },
   tabNavRequestBtnText: {
     color: '#fff',
@@ -43,6 +44,7 @@ const tabNavStyles = StyleSheet.create({
     alignContent: 'center',
     position: 'relative',
     top: -10,
+
     elevation: 5,
     shadowColor: '#000',
     shadowOffset: {
@@ -128,7 +130,7 @@ const tabNavStyles = StyleSheet.create({
     // bottom: 10,
     // position: 'absolute',
     // bottom: 10,
-    paddingBottom: Platform.OS === 'ios' ? 15 : 0,
+    paddingBottom: Platform.OS === 'ios' ? 13 : 0,
     // paddingRight: 5,
     // gap: 10,
     justifyContent: 'center',

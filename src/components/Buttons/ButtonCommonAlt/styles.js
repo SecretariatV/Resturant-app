@@ -5,21 +5,13 @@ import {fonts} from '../../../theme/FontFamily';
 const styles = StyleSheet.create({
   circleGradient: {
     margin: 1,
-    // width: 300,
     width: width * 0.868,
-    // backgroundColor: 'red',
-    padding: 10,
+    padding: 15,
     alignSelf: 'center',
     alignItems: 'center',
-    // backgroundColor: '#00000099',
     borderRadius: 20,
   },
   input: {
-    // backgroundColor: 'white',
-    // padding: 10,
-    // margin: 5,
-    // height: 30,
-    // zIndex: -1,
     borderBottomColor: 'transparent',
 
     borderBottomWidth: 1,
@@ -27,7 +19,6 @@ const styles = StyleSheet.create({
     flexWrap: 'nowrap',
     flexDirection: 'row',
     alignItems: 'center',
-    // width: '100%',
     height: 1,
     flex: 1,
   },

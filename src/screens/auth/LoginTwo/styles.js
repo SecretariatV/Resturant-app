@@ -16,17 +16,17 @@ const styles = StyleSheet.create({
   },
   joinTxt: {
     fontSize: 32,
-    fontWeight: '400',
     color: '#fff',
     fontFamily: fonts.URBANIST_MEDIUM,
   },
   underJoinTxt: {
-    fontSize: 16,
+    fontSize: 18,
     color: '#fff',
-    marginTop: 5,
+    marginTop: 10,
     marginBottom: 15,
     lineHeight: 18,
-    fontFamily: fonts.URBANIST_REGULAR,
+    fontFamily: fonts.URBANIST_MEDIUM,
+    // fontWeight: 400,
   },
   underline: {
     textDecorationLine: 'underline',
@@ -113,6 +113,8 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     textContent: {
       color: '#fff',
+      fontFamily: fonts.URBANIST_BOLD,
+      fontSize: 14,
     },
     btn: {
       marginHorizontal: 4,

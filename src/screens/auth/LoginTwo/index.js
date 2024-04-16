@@ -11,7 +11,7 @@ import SeparatorText from '../../../components/SeparatorText';
 import FadedSeparator from '../../../components/FadedSeparator';
 // icons
 import userIcon from '../../../assets/images/userIcon.png';
-import emailIcon from '../../../assets/images/emailIcon.png';
+// import emailIcon from '../../../assets/images/emailIcon.png';
 import phoneIcon from '../../../assets/images/phoneIcon.png';
 import passIcon from '../../../assets/images/passIcon.png';
 import fbLoginIcon from '../../../assets/images/fbLoginIcon.png';
@@ -60,8 +60,8 @@ const LoginTwo = ({route}) => {
             <FancyText
               textSize={styles.joinTxt.fontSize}
               textColor="#00FC92"
-              gradientColors={['#02ABEE66', '#02ABEE66', '#00F59466']}
-              fancyText="Shareabill"
+              gradientColors={['#00F59433', '#00F59466', '#02ABEE66']}
+              fancyText="Shareabill."
             />
           </View>
           <View className="join-screen-under-intro-para">
@@ -74,7 +74,7 @@ const LoginTwo = ({route}) => {
         </View>
         <View className="join-screen-form">
           <FancyInput
-            iconImage={emailIcon}
+            iconImage={userIcon}
             fieldLabel="Email"
             fieldValue={inputEmail}
             fieldPlaceHolder="Enter your Email"
@@ -84,7 +84,7 @@ const LoginTwo = ({route}) => {
             iconImage={passIcon}
             fieldLabel="Password"
             fieldValue={inputPass}
-            fieldPlaceHolder="Enter your Password"
+            fieldPlaceHolder="Password Here"
             fieldCallback={setInputPass}
             fieldIsPassword={true}
           />

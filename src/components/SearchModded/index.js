@@ -19,7 +19,7 @@ const SearchModded = ({isVisible, setIsVisible}) => {
         start={{x: 0, y: 0.5}}
         end={{x: 1, y: 0.5}}>
         <View style={styles.searchBarInnerContainer}>
-          <SearchIcon />
+          <SearchIcon width={widthToDp(5)} height={heightToDp(5)} />
           <TextInput
             class="searchbar-text-input"
             style={styles.searchBarTextInput}

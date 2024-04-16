@@ -15,6 +15,7 @@ import star from '../../assets/images/star.png';
 import {styles} from './styles';
 
 import {useNavigation} from '@react-navigation/native';
+import Location from '../../assets/images/location.svg';
 
 const ResturantCard = ({name, location, cuisine}) => {
   const navigation = useNavigation();
@@ -26,7 +27,7 @@ const ResturantCard = ({name, location, cuisine}) => {
       <ImageBackground
         source={bg}
         style={styles.image}
-        imageStyle={{borderRadius: 10}}>
+        imageStyle={{borderRadius: 16}}>
         {/* <Text style={styles.text}>Inside</Text> */}
         <Image source={logoImage} style={{margin: 5, resizeMode: 'contain'}} />
         <View style={{margin: 5}}>
@@ -37,13 +38,25 @@ const ResturantCard = ({name, location, cuisine}) => {
               <Image source={star} style={styles.starImg} />
             </View>
           </View>
-          <Text style={[styles.lightText, styles.location]}>{location}</Text>
-          <View style={styles.cuisineContainer}>
-            <Text style={styles.cuisine}>Cuisine Type: </Text>
-            <Text style={styles.lightText}>{cuisine}</Text>
+          <View style={{flexDirection: 'row', alignItems: 'center'}}>
+            <Location />
+
+            <Text style={[styles.lightText, styles.location]}>{location}</Text>
           </View>
-          <View style={styles.arrowContainer}>
-            <Image source={arrow} width={20} height={20} style={styles.arrow} />
+          <View style={styles.cuisineContainer}>
+            <View style={{flexDirection: 'row', alignItems: 'center'}}>
+              <Text style={styles.cuisine}>Cuisine Type: </Text>
+              <Text style={styles.lightText}>{cuisine}</Text>
+            </View>
+
+            <View style={{alignItems: 'center'}}>
+              <Image
+                source={arrow}
+                width={30}
+                height={30}
+                style={styles.arrow}
+              />
+            </View>
           </View>
         </View>
       </ImageBackground>

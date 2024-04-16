@@ -1,7 +1,7 @@
 import {StyleSheet} from 'react-native';
-import {fonts} from '../../../theme/FontFamily';
 import {widthToDp} from '../../utils/Dimensions';
 import {Colors} from '../../../theme';
+import {fonts} from '../../theme/FontFamily';
 
 const styles = StyleSheet.create({
   container: {
@@ -44,6 +44,8 @@ const styles = StyleSheet.create({
   },
   separatorText: {
     color: '#fff',
+    fontSize: 16,
+    fontFamily: fonts.URBANIST_MEDIUM,
   },
 });
 

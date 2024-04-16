@@ -18,6 +18,8 @@ const FancyText = ({
         <LinearGradient
           colors={gradientColors}
           style={styles.lingrad}
+          // useAngle={true}
+          // angle={90}
           start={{x: 0, y: 0.5}}
           end={{x: 1, y: 0.5}}>
           <View style={styles.textWrapper}>

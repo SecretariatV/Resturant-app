@@ -16,18 +16,20 @@ import BackgroundLayout from '../../components/BackgroundLayout';
 
 import HeaderModed from '../../components/HeaderModed';
 import MenuNavButton from '../../components/MenuNavButton';
-import Hamburger from '../../assets/images/hamburger.png';
 import Clock from '../../assets/images/clock.svg';
 import Dress from '../../assets/images/dress.svg';
+import Age from '../../assets/images/age.svg';
+
+import CusineSvg from '../../assets/images/cuisineServe.svg';
+// import CusineImg from '../../assets/images/cuisineServeImg';
+import Location from '../../assets/images/locWithBack.svg';
 
 import resturant_cover from '../../assets/images/restaurant_cover.png';
 import FadedSeparator from '../../components/FadedSeparator';
 import {Colors} from '../../theme';
 import ReviewCard from '../../components/ReviewCard';
 import {reviews, ageGroup, cuisine, dressCode} from '../../utils/demodata';
-import Footer from '../../components/Footer';
 import HamBurgerButton from '../../components/NavButtons/HamBurgerButton';
-import {getPlatformSpecificValue} from '../../utils/helper';
 
 const Restaurant = () => {
   const [expanded, setExpanded] = useState(true);
@@ -83,7 +85,8 @@ const Restaurant = () => {
           </View>
           <FadedSeparator />
           <View style={styles.timeContainer}>
-            <Dress width={32} height={32} style={{marginRight: 5}} />
+            <CusineSvg />
+            {/* <Image source={require('../../assets/images/cusineServeImg.png')} /> */}
             <Text style={styles.headingText}>Cuisine Served</Text>
           </View>
           <View style={{flexDirection: 'row', flexWrap: 'wrap', marginTop: 5}}>
@@ -106,7 +109,10 @@ const Restaurant = () => {
             ))}
           </View>
           <FadedSeparator />
-          <Text style={styles.headingText}>Age Group</Text>
+          <View style={{flexDirection: 'row', alignItems: 'center'}}>
+            <Age />
+            <Text style={styles.headingText}>Age Group</Text>
+          </View>
           <View style={{flexDirection: 'row', flexWrap: 'wrap', marginTop: 5}}>
             {ageGroup.map(item => (
               <View
@@ -128,7 +134,7 @@ const Restaurant = () => {
           </View>
           <FadedSeparator />
           <View style={styles.timeContainer}>
-            <Dress width={32} height={32} style={{marginRight: 5}} />
+            <Location width={32} height={32} style={{marginRight: 5}} />
             <Text style={styles.headingText}>Location</Text>
           </View>
           <Image
@@ -213,7 +219,6 @@ const Restaurant = () => {
     <View style={styles.container}>
       <BackgroundLayout />
       <HeaderModed
-        //headerStyle={{marginLeft: getPlatformSpecificValue(15, 0)}}
         slotLeft={<HamBurgerButton />}
         slotCenter={<></>}
         slotRight={<></>}
@@ -280,7 +285,7 @@ const Restaurant = () => {
                 </Text>
               </TouchableOpacity>
             </LinearGradient>
-
+            {/* <HamBurgerButton /> */}
             <LinearGradient
               colors={gradientColors}
               useAngle={true}
