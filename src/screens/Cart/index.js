@@ -1,22 +1,11 @@
-import {
-  View,
-  Text,
-  Image,
-  TouchableOpacity,
-  TextInput,
-  FlatList,
-  ScrollView,
-} from 'react-native';
+import {View, Text, Image, TextInput, FlatList, ScrollView} from 'react-native';
 import React, {useState} from 'react';
 import {styles} from './styles';
 import BackgroundLayout from '../../components/BackgroundLayout';
-import HeaderCommon from '../../components/HeaderCommon';
-import MenuBg from '../../assets/images/tabbar-center.svg';
+
 import {heightToDp, widthToDp} from '../../utils/Dimensions';
 import HeaderModed from '../../components/HeaderModed';
-import MenuNavButton from '../../components/MenuNavButton';
-import Hamburger from '../../assets/images/hamburger.png';
-import Footer from '../../components/Footer';
+
 import BackgroundCard from '../../components/BackgroundCard';
 import {cartData, dressCode} from '../../utils/demodata';
 import Counter from '../../components/Counter';
@@ -30,7 +19,6 @@ import {useNavigation} from '@react-navigation/native';
 import {Modal} from 'react-native';
 import GradientText from '../../components/GradientText/index.js';
 import HamBurgerButton from '../../components/NavButtons/HamBurgerButton/index.js';
-import {getPlatformSpecificValue} from '../../utils/helper.js';
 
 const Cart = () => {
   const navigation = useNavigation();
@@ -85,17 +73,6 @@ const Cart = () => {
               onPress={() => setIsModalVisible(false)}
             />
           </View>
-
-          {/* <View style={styles.modalContent}>
-            <Text style={styles.modalText}>
-              This is the content of the modal
-            </Text>
-            <TouchableOpacity
-            //  onPress={onClose}
-            >
-              <Text style={styles.closeButton}>Close</Text>
-            </TouchableOpacity>
-          </View> */}
         </View>
       </Modal>
     );
@@ -104,16 +81,7 @@ const Cart = () => {
   return (
     <View style={styles.container}>
       <BackgroundLayout />
-      {/* <MenuBg
-        width={widthToDp(100)}
-        style={{
-          position: 'absolute',
-          bottom: -10,
-          left: 0,
-          right: 0,
-          elevation: 1,
-        }}
-      /> */}
+
       {isModalVisible ? FullScreenModal() : <></>}
       <HeaderModed
         //headerStyle={{marginLeft: getPlatformSpecificValue(15, 0)}}
@@ -139,10 +107,6 @@ const Cart = () => {
             <View
               style={{
                 marginHorizontal: 15,
-                // marginTop: 10,
-                // padding: 10,
-                // alignItems: 'center',
-                // justifyContent: 'center',
               }}>
               <View
                 style={{
@@ -283,8 +247,7 @@ const Cart = () => {
               style={{
                 padding: 10,
                 width: 160,
-                height: heightToDp(100),
-                // margin: 10,
+                marginBottom: 10,
               }}
               childrenStyle={{borderRadius: 26}}
               linearBackStyle={{borderRadius: 26}}
@@ -296,13 +259,7 @@ const Cart = () => {
                 style={styles.linearBack}
                 start={{x: 1, y: 0.5}}
                 end={{x: 1, y: 0.5}}>
-                <View
-                  style={[
-                    // !showMenu && styles.menuGradient,
-                    styles.circleTwoGradient,
-                  ]}
-                  //   onPress={() => (!showMenu ? handleButton() : null)}
-                >
+                <View style={[styles.circleTwoGradient]}>
                   <Image
                     source={require('../../assets/images/burger_one.png')}
                     style={{width: 100, height: 100}}

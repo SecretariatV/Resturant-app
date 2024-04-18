@@ -105,28 +105,6 @@ const HomeScreens = () => {
           <Text style={styles.to.btnText}  >MenuDetail</Text>
         </TouchableOpacity> */}
       </ScrollView>
-      <View
-        style={{
-          flexDirection: 'row',
-          width: '100%',
-          alignSelf: 'center',
-          // alignItems: 'center',
-          justifyContent: 'center',
-          position: 'absolute',
-          bottom: 30,
-        }}>
-        <ButtonsCommon
-          btnText={'Done'}
-          btnStyle={{width: widthToDp(40)}}
-          containerStyle={{marginRight: 10}}
-        />
-        <ButtonsCommonAlt
-          btnText={'Cancel'}
-          btnStyle={{width: widthToDp(40)}}
-          containerStyle={{marginLeft: 10}}
-          onPress={() => handleClose()}
-        />
-      </View>
     </View>
   );
 };

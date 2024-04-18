@@ -116,6 +116,7 @@ const IngredientCustomization = () => {
             btnText={'Done'}
             btnStyle={{width: widthToDp(40)}}
             containerStyle={{marginRight: 10}}
+            onPress={() => handleClose()}
           />
           <ButtonsCommonAlt
             btnText={'Cancel'}

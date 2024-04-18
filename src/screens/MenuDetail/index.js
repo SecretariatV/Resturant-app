@@ -5,6 +5,8 @@ import {
   TouchableOpacity,
   ScrollView,
   FlatList,
+  Alert,
+  Pressable,
 } from 'react-native';
 import React, {useState} from 'react';
 import {styles} from './styles';
@@ -34,11 +36,13 @@ import HamBurgerButton from '../../components/NavButtons/HamBurgerButton/index.j
 import FavouriteButton from '../../components/NavButtons/FavouriteButton/index.js';
 import {getPlatformSpecificValue} from '../../utils/helper.js';
 import BackButton from '../../components/NavButtons/BackButton/index.js';
+import {SelectCountry} from 'react-native-element-dropdown';
 
 const MenuDetail = () => {
   const navigation = useNavigation();
 
   const [expanded, setExpanded] = useState(true);
+  const [value, setValue] = useState('1');
 
   const menuSwipe = [
     {
@@ -64,6 +68,18 @@ const MenuDetail = () => {
     {
       imgUrl: require('../../assets/images/nuts.json'),
     },
+  ];
+
+  const data = [
+    {
+      label: '1.0',
+      value: '1',
+      image: require('../../assets/images/star.png'),
+    },
+    {label: '2.0', value: '2', image: require('../../assets/images/star.png')},
+    {label: '3.0', value: '3', image: require('../../assets/images/star.png')},
+    {label: '4.0', value: '4', image: require('../../assets/images/star.png')},
+    {label: '5.0', value: '5', image: require('../../assets/images/star.png')},
   ];
   const handleSelectIngredient = () => {
     navigation.navigate('IngredientCustomization');
@@ -98,9 +114,9 @@ const MenuDetail = () => {
               </View>
             ))}
           </Swiper>
-          <View style={styles.arContainer}>
+          {/* <View style={styles.arContainer}>
             <Ar width={30} height={30} />
-          </View>
+          </View> */}
         </View>
 
         <View style={styles.menuContainer}>
@@ -171,7 +187,9 @@ const MenuDetail = () => {
             onPress={() => handleSelectIngredient()}
           />
 
-          <BackgroundCard style={styles.backgroundBtnContainer}>
+          <BackgroundCard
+            style={styles.backgroundBtnContainer}
+            childrenStyle={{paddingVertical: 20}}>
             <Text style={styles.quantityTxt}>Customization</Text>
             {/* <RestaurantButton
               btnText={'Spicy Level'}
@@ -239,6 +257,7 @@ const MenuDetail = () => {
           <View style={styles.customBtns}>
             <ButtonsCommon
               btnText={'Quick Order'}
+              onPress={() => navigation.push('Cart')}
               containerStyle={{width: widthToDp(43), marginTop: 10}}
               btnStyle={{borderRadius: 20}}
               linearTextStyle={{borderRadius: 20}}
@@ -246,7 +265,7 @@ const MenuDetail = () => {
 
             <ButtonsCommonAlt
               btnText={'Add to Cart'}
-              onPress={() => navigation.navigate('Cart')}
+              onPress={() => Alert.alert('Item Added to Cart')}
               containerStyle={{width: widthToDp(43), marginTop: 10}}
               btnStyle={{borderRadius: 20}}
               linearTextStyle={{borderRadius: 20}}
@@ -258,6 +277,58 @@ const MenuDetail = () => {
             <Text style={styles.headingText}>Reviews</Text>
 
             <View>
+              <LinearGradient
+                colors={['#00000022', '#FFFFFFFF', '#FFFFFFFF']}
+                style={{borderRadius: 18, flexWrap: 'nowrap', margin: 1}}
+                start={{x: 0, y: 0.5}}
+                end={{x: 1, y: 0.5}}>
+                <Pressable
+                  style={styles.review_btn}
+                  onPress={() => {
+                    // setExpanded(!expanded);
+                  }}>
+                  <View style={{flexDirection: 'row', alignItems: 'center'}}>
+                    <Text style={styles.rating_type}>Excellent</Text>
+                    <View style={styles.review_tag}></View>
+                  </View>
+
+                  <SelectCountry
+                    style={styles.dropdown}
+                    placeholderStyle={styles.placeholderStyle}
+                    selectedTextStyle={styles.selectedTextStyle}
+                    activeColor="rgba(0,0,0,0.5)"
+                    itemContainerStyle={{backgroundColor: '#272730'}}
+                    imageStyle={styles.imageStyle}
+                    iconStyle={styles.iconStyle}
+                    data={data}
+                    maxHeight={300}
+                    labelField="label"
+                    valueField="value"
+                    placeholder=""
+                    value={value}
+                    onChange={item => {
+                      setValue(item.value);
+                    }}
+                  />
+                </Pressable>
+              </LinearGradient>
+              {expanded && (
+                <FlatList
+                  data={reviews}
+                  style={styles.reviewList}
+                  scrollEnabled={false}
+                  renderItem={({item}) => (
+                    <ReviewCard
+                      name={item.name}
+                      time={item.time}
+                      detail={item.detail}
+                    />
+                  )}
+                />
+              )}
+            </View>
+
+            {/* <View>
               <LinearGradient
                 colors={['#00000022', '#FFFFFFFF', '#FFFFFFFF']}
                 style={{borderRadius: 18, flexWrap: 'nowrap', margin: 1}}
@@ -296,7 +367,7 @@ const MenuDetail = () => {
                   )}
                 />
               )}
-            </View>
+            </View> */}
 
             <LinearGradient
               colors={['#00000022', '#FFFFFFFF', '#FFFFFFFF']}

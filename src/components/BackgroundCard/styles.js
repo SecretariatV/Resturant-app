@@ -1,5 +1,5 @@
 import {StyleSheet} from 'react-native';
-import {heightToDp, width} from '../../utils/Dimensions';
+import {width} from '../../utils/Dimensions';
 import {fonts} from '../../theme/FontFamily';
 
 const styles = StyleSheet.create({
@@ -17,10 +17,7 @@ const styles = StyleSheet.create({
   circleTwoGradient: {
     margin: 1,
     width: '100%',
-    // padding: 10,
-    // height: 60,
-    alignSelf: 'center',
-    // paddingVertical: 5,
+
     backgroundColor: '#FFFFFF22',
     borderColor: '#fff4',
     borderWidth: 1,
@@ -33,7 +30,6 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     flexWrap: 'nowrap',
     width: '100%',
-    // backgroundColor: '#000000',
   },
   linearMenu: {
     borderRadius: 20,

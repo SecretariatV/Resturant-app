@@ -1,6 +1,5 @@
-import {View, Text, TouchableOpacity, Image} from 'react-native';
+import {View} from 'react-native';
 import React from 'react';
-import LinearGradient from 'react-native-linear-gradient';
 import {styles} from './styles';
 
 const BackgroundCard = ({

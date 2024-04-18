@@ -2,8 +2,8 @@
 
 import {View, Text, Image, StyleSheet, TouchableOpacity} from 'react-native';
 import React, {useEffect, useRef, useState} from 'react';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
-// import {createStackNavigator} from '@react-navigation/stack';
+// import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import {createStackNavigator} from '@react-navigation/stack';
 import {
   getFocusedRouteNameFromRoute,
   NavigationContainer,
@@ -66,7 +66,7 @@ import TrackOrder from '../screens/TrackOrder';
 import {widthToDp} from '../utils/Dimensions';
 import {screenToTextSize} from '../utils/helper';
 // icons
-import MenuIcon from '../assets/images/tabbar-menu.svg';
+// import MenuIcon from '../assets/images/tabbar-menu.svg';
 import QrIcon from '../assets/images/tabbar-qr.svg';
 import {useDispatch, useSelector} from 'react-redux';
 import HomeIcon from '../assets/images/home.svg';
@@ -83,9 +83,9 @@ import {setRequestBtn} from '../redux/actions/auth.js';
 import AR from '../screens/AR/index.js';
 
 const Tab = createBottomTabNavigator();
-const Stack = createNativeStackNavigator();
-// const Stack = createStackNavigator();
-const SettingStacked = createNativeStackNavigator();
+// const Stack = createNativeStackNavigator();
+const Stack = createStackNavigator();
+const SettingStacked = createStackNavigator();
 const Drawer = createDrawerNavigator(); // Create a Drawer navigator
 
 const DrawerScreens = () => {
@@ -162,15 +162,14 @@ const HomeStack = ({activeRestaurant}) => {
 
       <Stack.Group screenOptions={{presentation: 'modal'}}>
         <Stack.Screen name="MenuDetail" component={MenuDetail} />
+      </Stack.Group>
+      <Stack.Group>
+        {/* <Stack.Screen name="MenuDetail" component={MenuDetail} /> */}
         <Stack.Screen
           name="IngredientCustomization"
           component={IngredientCustomization}
         />
         <Stack.Screen name="AR" component={AR} />
-      </Stack.Group>
-      <Stack.Group>
-        {/* <Stack.Screen name="MenuDetail" component={MenuDetail} /> */}
-
         <Stack.Screen name="HomeScreens" component={HomeScreens} />
         <Stack.Screen name="TabNavigator" component={TabNavigator} />
         <Stack.Screen name="Requests" component={Requests} />
@@ -285,9 +284,9 @@ const CustomTabBar = ({state, descriptors, navigation}) => (
             )}
             {label === 'RestaurantMenu' && (
               <View style={tabNavStyles.tabNavMenuBtn}>
-                <MenuIcon
-                  width={screenToTextSize(8)}
-                  style={{width: 12, height: 12}}
+                <Image
+                  style={{width: 30, height: 30}}
+                  source={require('../assets/images/menu.png')}
                 />
               </View>
             )}
@@ -419,18 +418,6 @@ const TabNavigator = () => {
         component={Requests}
         options={{
           headerShown: false,
-
-          // tabBarIcon: ({focused}) => {
-          //   return (
-          //     <View style={tabNavStyles.tabNavRequestBtn}>
-          //       <Image
-          //         style={{width: 24, height: 24}}
-          //         source={require('../assets/images/tabbar-request.png')}
-          //       />
-          //       <Text style={tabNavStyles.tabNavRequestBtnText}>Requests</Text>
-          //     </View>
-          //   );
-          // },
         }}
         listeners={() => ({
           tabPress: e => {

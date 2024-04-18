@@ -6,14 +6,12 @@ import {Colors} from '../../theme';
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    // paddingHorizontal: 15,
   },
   navbarPageTitle: {
     color: Colors.WHITE,
     fontFamily: fonts.URBANIST_EXTRABOLD,
     fontSize: 19,
     marginTop: 10,
-    // alignSelf: 'center',
   },
 
   quantityTitle: {
@@ -25,15 +23,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     textAlign: 'center',
     marginLeft: 10,
-    // width: 50,
-    // backgroundColor: 'green',
   },
   headerTitle: {
     color: Colors.WHITE,
     fontFamily: fonts.URBANIST_EXTRABOLD,
     fontSize: 20,
-    // marginTop: 10,
-    // alignSelf: 'center',
   },
   pricingTitle: {
     flexDirection: 'row',
@@ -47,7 +41,6 @@ const styles = StyleSheet.create({
     width: '100%',
     paddingHorizontal: 15,
     alignItems: 'center',
-    // backgroundColor: 'red',
   },
   priceStyle: {
     marginLeft: 10,
@@ -57,16 +50,12 @@ const styles = StyleSheet.create({
   },
 
   totalText: {
-    // marginLeft: 10,
-
     color: Colors.WHITE,
     fontFamily: fonts.URBANIST_EXTRABOLD,
     fontSize: 20,
   },
 
   totalPrice: {
-    // marginLeft: 10,
-
     color: Colors.GREEN,
     fontFamily: fonts.URBANIST_EXTRABOLD,
     fontSize: 20,

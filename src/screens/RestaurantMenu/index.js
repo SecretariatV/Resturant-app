@@ -34,7 +34,7 @@ import HeartIcon from '../../assets/images/fav.png';
 // import HeartIcon from '../../assets/images/heartIcon.svg';
 import Star from '../../assets/images/star.svg';
 //utils
-import {dressCode} from '../../utils/demodata';
+import {cartData, dressCode} from '../../utils/demodata';
 import {height, heightToDp, widthToDp} from '../../utils/Dimensions';
 import {fonts} from '../../theme/FontFamily';
 import {Colors} from '../../theme';
@@ -255,6 +255,7 @@ const RestaurantMenu = () => {
                 color: Colors.GREEN,
                 paddingVertical: 20,
                 marginTop: 30,
+                // marginBottom: 100,
               }}>
               Categories
             </Text>
@@ -264,7 +265,7 @@ const RestaurantMenu = () => {
             className="items-by-category"
             style={styles.categoryWiseContainer}>
             <FlatList
-              data={dressCode}
+              data={cartData}
               style={styles.horizontalListStyle}
               showsHorizontalScrollIndicator={false}
               scrollEnabled={false}
