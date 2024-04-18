@@ -22,58 +22,60 @@ const Login = () => {
   return (
     <View style={styles.container}>
       <BackgroundLayout />
-      <HeaderModed
-        headerStyle={{paddingHorizontal: 0}}
-        slotLeft={<BackButton onPress={() => navigation.goBack()} />}
-        slotCenter={
-          <Image
-            source={require('../../../assets/images/image-two.png')}
-            style={{
-              resizeMode: 'contain',
-              width: widthToDp(45),
-              height: widthToDp(100),
-            }}
-          />
-        }
-        slotRight={<></>}
-      />
-      <View
-        style={{
-          width: '100%',
-          alignItems: 'center',
-          justifyContent: 'center',
-          marginTop: widthToDp(2),
-        }}>
-        <View style={styles.outerBox}>
-          <View style={styles.innerBox}>
-            <Text style={styles.startedTxt}>
-              Let's Get Started with{' '}
-              <Text style={styles.startedTxtTwo}>Shareabill</Text>
-            </Text>
-            <Text style={styles.startedTxtThree}>
-              Already have an account? Log in to dive back into your dining
-              adventure.
-            </Text>
-            <Text style={styles.startedTxtThree}>
-              New to Shareabill? Sign up now and unlock a world of effortless
-              dining experiences.
-            </Text>
+      <View style={{paddingHorizontal: 15}}>
+        <HeaderModed
+          headerStyle={{paddingHorizontal: 0}}
+          slotLeft={<BackButton onPress={() => navigation.goBack()} />}
+          slotCenter={
+            <Image
+              source={require('../../../assets/images/image-two.png')}
+              style={{
+                resizeMode: 'contain',
+                width: widthToDp(45),
+                height: widthToDp(100),
+              }}
+            />
+          }
+          slotRight={<></>}
+        />
+        <View
+          style={{
+            width: '100%',
+            alignItems: 'center',
+            justifyContent: 'center',
+            marginTop: widthToDp(2),
+          }}>
+          <View style={styles.outerBox}>
+            <View style={styles.innerBox}>
+              <Text style={styles.startedTxt}>
+                Let's Get Started with{' '}
+                <Text style={styles.startedTxtTwo}>Shareabill</Text>
+              </Text>
+              <Text style={styles.startedTxtThree}>
+                Already have an account? Log in to dive back into your dining
+                adventure.
+              </Text>
+              <Text style={styles.startedTxtThree}>
+                New to Shareabill? Sign up now and unlock a world of effortless
+                dining experiences.
+              </Text>
+            </View>
           </View>
-        </View>
-        <View style={{marginTop: widthToDp(10)}}>
-          <ButtonsCommon
-            btnText={'Sign In'}
-            containerStyle={{width: widthToDp(90)}}
-            // navRoute="LoginTwo"
-            onPress={() => handleDynamicNavigation()}
-          />
-        </View>
+          <View style={{marginTop: widthToDp(10)}}>
+            <ButtonsCommon
+              btnText={'Sign In'}
+              containerStyle={{width: widthToDp(90)}}
+              // navRoute="LoginTwo"
+              onPress={() => handleDynamicNavigation()}
+            />
+          </View>
 
-        <View style={{marginTop: widthToDp(5)}}>
-          <ButtonsCommonAlt
-            btnText={'Sign Up'}
-            onPress={() => navigation.navigate('Signup')}
-          />
+          <View style={{marginTop: widthToDp(5)}}>
+            <ButtonsCommonAlt
+              btnText={'Sign Up'}
+              onPress={() => navigation.navigate('Signup')}
+            />
+          </View>
         </View>
       </View>
     </View>

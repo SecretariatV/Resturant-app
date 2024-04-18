@@ -3,17 +3,14 @@ import React, {useEffect, useRef, useState} from 'react';
 import BackgroundLayout from '../../components/BackgroundLayout';
 import {styles} from './styles';
 import {AnimatedCircularProgress} from 'react-native-circular-progress';
-import {Circle} from 'react-native-svg';
 import {Easing} from 'react-native-reanimated';
 import HeaderModed from '../../components/HeaderModed';
 import HamBurgerButton from '../../components/NavButtons/HamBurgerButton';
 import {Colors, commonStyles} from '../../theme';
 import {fonts} from '../../theme/FontFamily';
 import Loyal from '../../assets/images/loyal.svg';
-import BackgroundCard from '../../components/BackgroundCard';
 import GradientText from '../../components/GradientText';
 import {rewards} from '../../utils/demodata';
-import Footer from '../../components/Footer';
 const Reward = () => {
   const [points, setPoints] = useState(500);
   const circularProgressRef = useRef(null);

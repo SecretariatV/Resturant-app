@@ -6,7 +6,7 @@ import {Colors} from '../../theme';
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingHorizontal: 15,
+    // paddingHorizontal: 15,
   },
   navbarPageTitle: {
     color: Colors.WHITE,
@@ -89,8 +89,10 @@ const styles = StyleSheet.create({
     width: '100%',
     alignSelf: 'center',
     justifyContent: 'center',
-    position: 'absolute',
-    bottom: 30,
+    marginTop: 30,
+    // position: 'absolute',
+
+    // bottom: 30,
   },
 
   counterMain: {

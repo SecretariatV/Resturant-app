@@ -194,5 +194,38 @@ const styles = StyleSheet.create({
 
     alignSelf: 'flex-start',
   },
+
+  dropdown: {
+    // margin: 16,
+    width: 70,
+    height: 20,
+    // backgroundColor: '#000',
+  },
+  icon: {
+    marginRight: 5,
+  },
+  placeholderStyle: {
+    fontSize: 16,
+  },
+  selectedTextStyle: {
+    fontSize: 16,
+    color: '#fff',
+    // color: 'red',
+    // backgroundColor: 'grey',
+  },
+  iconStyle: {
+    width: 20,
+    height: 20,
+  },
+  inputSearchStyle: {
+    height: 40,
+    fontSize: 16,
+  },
+  imageStyle: {
+    width: 17,
+    height: 17,
+    // borderRadius: 12,
+    // backgroundColor: 'red',
+  },
 });
 export {styles};

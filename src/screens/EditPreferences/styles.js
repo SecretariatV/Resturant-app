@@ -6,7 +6,6 @@ import {Colors} from '../../theme';
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingHorizontal: 15,
   },
   select: {
     fontFamily: fonts.URBANIST_BOLD,

@@ -7,7 +7,7 @@ import {screenToTextSize} from '../../../utils/helper';
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingHorizontal: 15,
+    // paddingHorizontal: 15,
   },
   outerBox: {
     width: '100%',

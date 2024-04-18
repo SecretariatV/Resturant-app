@@ -8,7 +8,7 @@ const styles = StyleSheet.create({
     bottom:
       width > 375
         ? getPlatformSpecificValue(-15, -32)
-        : getPlatformSpecificValue(-15, -32),
+        : getPlatformSpecificValue(-20, -32),
     left: 0,
     right: 0,
     elevation: 1,

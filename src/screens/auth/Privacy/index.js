@@ -14,48 +14,52 @@ const Privacy = () => {
     <View style={styles.container}>
       <BackgroundLayout />
       <HeaderCommon showLogo={false} show={true} />
-      <Text style={styles.privacyHeading}>Privacy policy</Text>
-      <View style={{marginVertical: 30}}>
-        <BottomLine />
-      </View>
+      <View style={{paddingHorizontal: 15}}>
+        <Text style={styles.privacyHeading}>Privacy policy</Text>
+        <View style={{marginVertical: 30}}>
+          <BottomLine />
+        </View>
 
-      <Text style={styles.privacyDescription}>
-        Lorem Ipsum is simply dummy text of the printing and typesetting
-        industry. Lorem Ipsum has been the industry's standard dummy text ever
-        since the 1500s,
-      </Text>
+        <Text style={styles.privacyDescription}>
+          Lorem Ipsum is simply dummy text of the printing and typesetting
+          industry. Lorem Ipsum has been the industry's standard dummy text ever
+          since the 1500s,
+        </Text>
 
-      <Text style={styles.privacyDescription}>
-        Lorem Ipsum is simply dummy text of the printing and typesetting
-        industry. Lorem Ipsum has been the industry's standard dummy text ever
-        since the 1500s,
-      </Text>
+        <Text style={styles.privacyDescription}>
+          Lorem Ipsum is simply dummy text of the printing and typesetting
+          industry. Lorem Ipsum has been the industry's standard dummy text ever
+          since the 1500s,
+        </Text>
 
-      <Text style={styles.privacyDescription}>
-        Lorem Ipsum is simply dummy text of the printing and typesetting
-        industry. Lorem Ipsum has been the industry's standard dummy text ever
-        since the 1500s,
-      </Text>
+        <Text style={styles.privacyDescription}>
+          Lorem Ipsum is simply dummy text of the printing and typesetting
+          industry. Lorem Ipsum has been the industry's standard dummy text ever
+          since the 1500s,
+        </Text>
 
-      <Text style={styles.privacyDescription}>
-        Lorem Ipsum is simply dummy text of the printing and typesetting
-        industry. Lorem Ipsum has been the industry's standard dummy text ever
-        since the 1500s,
-      </Text>
-      <Text style={styles.privacyDescription}>
-        Lorem Ipsum is simply dummy text of the printing and typesetting
-        industry. Lorem Ipsum has been the industry's standard dummy text ever
-        since the 1500s,
-      </Text>
+        <Text style={styles.privacyDescription}>
+          Lorem Ipsum is simply dummy text of the printing and typesetting
+          industry. Lorem Ipsum has been the industry's standard dummy text ever
+          since the 1500s,
+        </Text>
+        <Text style={styles.privacyDescription}>
+          Lorem Ipsum is simply dummy text of the printing and typesetting
+          industry. Lorem Ipsum has been the industry's standard dummy text ever
+          since the 1500s,
+        </Text>
 
-      <View style={styles.buttonsContainer}>
-        <ButtonsCommonAlt
-          btnStyle={{width: widthToDp(42)}}
-          btnText={'Accept'}
-        />
-        <ButtonsCommon btnStyle={{width: widthToDp(42)}} btnText={'Decline'} />
-      </View>
-      {/* <LinearGradient
+        <View style={styles.buttonsContainer}>
+          <ButtonsCommonAlt
+            btnStyle={{width: widthToDp(42)}}
+            btnText={'Accept'}
+          />
+          <ButtonsCommon
+            btnStyle={{width: widthToDp(42)}}
+            btnText={'Decline'}
+          />
+        </View>
+        {/* <LinearGradient
         colors={[
           'rgba(200,200,200, 0)',
           'rgba(200,200,200, 0.30)',
@@ -79,6 +83,7 @@ const Privacy = () => {
           <View style={{flex: 1, height: 1}}></View>
         </View>
       </LinearGradient> */}
+      </View>
     </View>
   );
 };

@@ -1,6 +1,5 @@
 import {StyleSheet} from 'react-native';
 import {fonts} from '../../theme/FontFamily';
-// import {width, widthToDp} from '../../../utils/Dimensions';
 import {Colors} from '../../theme';
 import {heightToDp, widthToDp} from '../../utils/Dimensions';
 import {screenToTextSize} from '../../utils/helper';
@@ -8,7 +7,6 @@ import {screenToTextSize} from '../../utils/helper';
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    // paddingHorizontal: 15,
   },
   reviewTextSmall: {
     fontFamily: fonts.URBANIST_REGULAR,
@@ -33,12 +31,12 @@ const styles = StyleSheet.create({
     marginTop: 0,
     top: 16,
     left: 0,
-    zIndex: -1, 
+    zIndex: -1,
   },
   reviewRateContainer: {
     justifyContent: 'space-between',
     flexDirection: 'row',
-    marginTop: screenToTextSize(16)
+    marginTop: screenToTextSize(16),
   },
   reviewLabelContainer: {
     alignItems: 'center',
@@ -56,7 +54,7 @@ const styles = StyleSheet.create({
     textAlign: 'left',
     color: Colors.WHITE,
     flexWrap: 'wrap',
-    width: '90%'
+    width: '90%',
   },
   reviewSubmitButtonContainer: {
     flexDirection: 'row',

@@ -9,7 +9,7 @@ import {useNavigation} from '@react-navigation/native';
 const PreferencesSuccess = () => {
   const navigation = useNavigation();
   const handleDynamicNavigation = () => {
-    navigation.navigate('Preferences');
+    navigation.navigate('Login');
   };
   return (
     <View style={styles.container}>

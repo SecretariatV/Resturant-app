@@ -23,17 +23,18 @@ const ForgotPassword = () => {
   return (
     <View style={styles.container}>
       <BackgroundLayout />
-      <HeaderModed
-        headerStyle={{paddingHorizontal: 0}}
-        slotLeft={<BackButton onPress={() => navigation.goBack()} />}
-        slotCenter={<></>}
-        slotRight={<></>}
-      />
-      <ScrollView
-        style={styles.regFormScrollView}
-        showsVerticalScrollIndicator={false}>
-        <View className="join-screen-header-text">
-          {/* <View
+      <View style={{paddingHorizontal: 15}}>
+        <HeaderModed
+          headerStyle={{paddingHorizontal: 0}}
+          slotLeft={<BackButton onPress={() => navigation.goBack()} />}
+          slotCenter={<></>}
+          slotRight={<></>}
+        />
+        <ScrollView
+          style={styles.regFormScrollView}
+          showsVerticalScrollIndicator={false}>
+          <View className="join-screen-header-text">
+            {/* <View
             className="join-screen-intro-wrapper"
             style={styles.joinWrapper}>
             <Text style={styles.joinTxt}></Text>
@@ -45,29 +46,30 @@ const ForgotPassword = () => {
             />
             <Text style={styles.joinTxt}>for</Text>
           </View> */}
-          <Text style={styles.forgotTxt}>Forgot Password?</Text>
+            <Text style={styles.forgotTxt}>Forgot Password?</Text>
 
-          <View className="join-screen-under-intro-para">
-            <Text style={styles.underJoinTxt}>
-              Don't worry! It occurs. Please enter the email address linked with
-              your account.
-            </Text>
+            <View className="join-screen-under-intro-para">
+              <Text style={styles.underJoinTxt}>
+                Don't worry! It occurs. Please enter the email address linked
+                with your account.
+              </Text>
+            </View>
           </View>
-        </View>
-        <View className="join-screen-form" style={{marginTop: 10}}>
-          <FancyInput
-            iconImage={userIcon}
-            fieldLabel="Enter your Email"
-            fieldValue={inputName}
-            fieldPlaceHolder="Enter your First name"
-            fieldCallback={setInputName}
+          <View className="join-screen-form" style={{marginTop: 10}}>
+            <FancyInput
+              iconImage={userIcon}
+              fieldLabel="Enter your Email"
+              fieldValue={inputName}
+              fieldPlaceHolder="Enter your First name"
+              fieldCallback={setInputName}
+            />
+          </View>
+          <ButtonsCommon
+            btnText={'Send Code'}
+            onPress={() => navigation.navigate('Verification')}
           />
-        </View>
-        <ButtonsCommon
-          btnText={'Send Code'}
-          onPress={() => navigation.navigate('Verification')}
-        />
-      </ScrollView>
+        </ScrollView>
+      </View>
     </View>
   );
 };

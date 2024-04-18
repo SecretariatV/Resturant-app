@@ -127,7 +127,7 @@ const Welcome = props => {
             </View>
           </View>
 
-          <View style={{flexDirection: 'row'}}>
+          <View style={{flexDirection: 'row', marginHorizontal: 3}}>
             <Text style={styles.byeTxt}>
               "Say goodbye{' '}
               <Text style={styles.byeTxtTwo}>

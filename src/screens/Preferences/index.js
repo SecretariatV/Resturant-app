@@ -7,12 +7,13 @@ import MenuCustomization from '../../components/MenuCustomization';
 import ButtonsCommon from '../../components/Buttons/ButtonCommon.js';
 import {useNavigation} from '@react-navigation/native';
 import BackButton from '../../components/NavButtons/BackButton/index.js';
+import HeaderModed from '../../components/HeaderModed/index.js';
 
 const Preferences = () => {
   const navigation = useNavigation();
 
   const handleDynamicNavigation = () => {
-    navigation.navigate('Preferences');
+    navigation.navigate('PreferencesSuccess');
   };
   return (
     <View style={styles.container}>
@@ -27,10 +28,12 @@ const Preferences = () => {
         slotCenter={<Text style={styles.headerTitle}>Menu Customization</Text>}
         slotRight={<></>}
       />
-      <MenuCustomization label={'Diet'} show={false} />
+      <View style={{paddingHorizontal: 15}}>
+        <MenuCustomization label={'Diet'} show={false} />
 
-      <MenuCustomization label={'Diet'} />
-      <MenuCustomization label={'Diet'} />
+        <MenuCustomization label={'Allergies'} />
+        <MenuCustomization label={'Meat Types'} />
+      </View>
 
       <ButtonsCommon
         // btnStyle={styles.saveButton}

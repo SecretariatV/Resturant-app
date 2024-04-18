@@ -52,22 +52,6 @@ const MenuCustomization = ({label, show}) => {
           flexWrap: 'wrap',
           marginTop: widthToDp(3),
         }}>
-        {/* <LinearGradient
-          colors={['#02ABEE6E', '#02ABEE', '#00F594']}
-          useAngle={true}
-          angle={300}
-          style={{
-            borderRadius: 15,
-            flexWrap: 'nowrap',
-            //   width: widthToDp(30),
-            alignSelf: 'flex-start',
-          }}
-          start={{x: 0, y: 0.5}}
-          end={{x: 1, y: 0.5}}>
-          <View style={styles.circleGradient}>
-            <Text style={styles.shareABillTxt}>Vegan</Text>
-          </View>
-        </LinearGradient> */}
         {diet.map((item, index) => (
           <ToggleButton name={item.name} key={index} show={show} />
         ))}

@@ -9,19 +9,9 @@ const styles = StyleSheet.create({
     padding: 15,
     alignSelf: 'center',
     alignItems: 'center',
-    borderRadius: 20,
+    borderRadius: 22,
   },
-  input: {
-    borderBottomColor: 'transparent',
 
-    borderBottomWidth: 1,
-    width: '100%',
-    flexWrap: 'nowrap',
-    flexDirection: 'row',
-    alignItems: 'center',
-    height: 1,
-    flex: 1,
-  },
   btnText: {
     color: '#ffffff',
     fontFamily: fonts.URBANIST_EXTRABOLD,

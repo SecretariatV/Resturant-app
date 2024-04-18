@@ -1,7 +1,6 @@
 import {View, Text, TouchableOpacity, Image, FlatList} from 'react-native';
 import React from 'react';
 import BackgroundLayout from '../../components/BackgroundLayout';
-import Footer from '../../components/Footer';
 import HeaderModed from '../../components/HeaderModed';
 import HamBurgerButton from '../../components/NavButtons/HamBurgerButton';
 import {commonStyles} from '../../theme';
@@ -39,91 +38,100 @@ const Profile = () => {
           </>
         }
       />
-      <View
-        style={{
-          alignItems: 'center',
-          justifyContent: 'center',
-          width: widthToDp(70),
-          alignSelf: 'center',
-        }}>
-        <Image
-          source={require('../../assets/images/picavatar.png')}
+      <View style={{paddingHorizontal: 15}}>
+        <View
           style={{
-            width: 100,
-            height: 100,
-            resizeMode: 'cover',
-            marginBottom: 20,
-          }}
-        />
+            alignItems: 'center',
+            justifyContent: 'center',
+            width: widthToDp(70),
+            alignSelf: 'center',
+          }}>
+          <Image
+            source={require('../../assets/images/picavatar.png')}
+            style={{
+              width: 100,
+              height: 100,
+              resizeMode: 'cover',
+              marginBottom: 20,
+            }}
+          />
 
-        <Text style={styles.profileName} className="profile-name">
-          Mark Anderson
-        </Text>
+          <Text style={styles.profileName} className="profile-name">
+            Mark Anderson
+          </Text>
 
-        <GradientText style={styles.username} className="username">
-          @MarkAnderson680
-        </GradientText>
+          <GradientText style={styles.username} className="username">
+            @MarkAnderson680
+          </GradientText>
 
-        <View style={styles.levelContainer} className="level-container">
-          <Electric width={30} height={30} />
-          <View class="level-bar-color-bg" style={styles.levelBarColorBg}>
-            <View class="level-bar-bg-dark" style={styles.levelBarBgDark}>
-              <View class="active-order-bar-bg" style={styles.activeOrderBarbg}>
-                <LinearGradient
-                  class="intro-active-orders"
-                  colors={['#01322Bff', '#00F594ff', '#00F594ff', '#02ABEEff']}
-                  useAngle={true}
-                  angle={45}
-                  style={[styles.levelGradient, {width: '50%'}]}
-                  start={{x: 0, y: 0.5}}
-                  end={{x: 1, y: 0.5}}></LinearGradient>
+          <View style={styles.levelContainer} className="level-container">
+            <Electric width={30} height={30} />
+            <View class="level-bar-color-bg" style={styles.levelBarColorBg}>
+              <View class="level-bar-bg-dark" style={styles.levelBarBgDark}>
+                <View
+                  class="active-order-bar-bg"
+                  style={styles.activeOrderBarbg}>
+                  <LinearGradient
+                    class="intro-active-orders"
+                    colors={[
+                      '#01322Bff',
+                      '#00F594ff',
+                      '#00F594ff',
+                      '#02ABEEff',
+                    ]}
+                    useAngle={true}
+                    angle={45}
+                    style={[styles.levelGradient, {width: '50%'}]}
+                    start={{x: 0, y: 0.5}}
+                    end={{x: 1, y: 0.5}}></LinearGradient>
+                </View>
               </View>
             </View>
+            <GradientText style={{marginLeft: 10}}>Level</GradientText>
+            <LinearGradient
+              colors={['#00F69299', '#00A7F7FF']}
+              useAngle={true}
+              angle={820}
+              style={{borderRadius: 22, flexWrap: 'nowrap', marginLeft: 10}}
+              start={{x: 0, y: 0.5}}
+              end={{x: 1, y: 0.5}}>
+              <View style={styles.circleGradientTwo}>
+                <Text style={[styles.btnText]}>02</Text>
+              </View>
+            </LinearGradient>
           </View>
-          <GradientText style={{marginLeft: 10}}>Level</GradientText>
-          <LinearGradient
-            colors={['#00F69299', '#00A7F7FF']}
-            useAngle={true}
-            angle={820}
-            style={{borderRadius: 22, flexWrap: 'nowrap', marginLeft: 10}}
-            start={{x: 0, y: 0.5}}
-            end={{x: 1, y: 0.5}}>
-            <View style={styles.circleGradientTwo}>
-              <Text style={[styles.btnText]}>02</Text>
+          <Text style={styles.bio}>
+            Lorem Ipsum is simply dummy text of the printing and typesetting
+            industry.
+          </Text>
+          <View style={styles.socialContainer} className="social-container">
+            <View style={styles.social} className="social">
+              <Insta />
             </View>
-          </LinearGradient>
+            <View style={styles.social} className="social">
+              <Snap />
+            </View>
+            <View style={styles.social} className="social">
+              <Tiktok />
+            </View>
+          </View>
         </View>
-        <Text style={styles.bio}>
-          Lorem Ipsum is simply dummy text of the printing and typesetting
-          industry.
+
+        <Text className="ar-reel" style={styles.arText}>
+          Saved AR Reels
         </Text>
-        <View style={styles.socialContainer} className="social-container">
-          <View style={styles.social} className="social">
-            <Insta />
-          </View>
-          <View style={styles.social} className="social">
-            <Snap />
-          </View>
-          <View style={styles.social} className="social">
-            <Tiktok />
-          </View>
+
+        <View>
+          <FlatList
+            data={ArReels}
+            renderItem={renderItem}
+            keyExtractor={item => item.id}
+            numColumns={3}
+          />
         </View>
+
+        {/* <Footer /> */}
       </View>
-
-      <Text className="ar-reel" style={styles.arText}>
-        Saved AR Reels
-      </Text>
-
-      <View>
-        <FlatList
-          data={ArReels}
-          renderItem={renderItem}
-          keyExtractor={item => item.id}
-          numColumns={3}
-        />
-      </View>
-
-      {/* <Footer /> */}
     </View>
   );
 };

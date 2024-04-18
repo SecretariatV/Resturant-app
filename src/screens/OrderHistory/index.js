@@ -51,20 +51,24 @@ const OrderHistory = () => {
   return (
     <View style={styles.container}>
       <BackgroundLayout />
-      <HeaderModed
-        slotLeft={<HamBurgerButton />}
-        slotCenter={<Text style={commonStyles.headerText}>Order History</Text>}
-        slotRight={<></>}
-      />
-      <View style={styles.subContainer} className="sub-container">
-        <FlatList
-          showsVerticalScrollIndicator={false}
-          style={{marginTop: 10}}
-          data={rewards}
-          renderItem={renderItem}
+      <View style={{paddingHorizontal: 15}}>
+        <HeaderModed
+          slotLeft={<HamBurgerButton />}
+          slotCenter={
+            <Text style={commonStyles.headerText}>Order History</Text>
+          }
+          slotRight={<></>}
         />
+        <View style={styles.subContainer} className="sub-container">
+          <FlatList
+            showsVerticalScrollIndicator={false}
+            style={{marginTop: 10}}
+            data={rewards}
+            renderItem={renderItem}
+          />
+        </View>
+        {/* <Footer /> */}
       </View>
-      {/* <Footer /> */}
     </View>
   );
 };

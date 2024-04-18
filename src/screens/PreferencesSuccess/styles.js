@@ -6,7 +6,7 @@ import {Colors} from '../../theme';
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingHorizontal: 15,
+    // paddingHorizontal: 15,
     justifyContent: 'center',
     alignItems: 'center',
   },

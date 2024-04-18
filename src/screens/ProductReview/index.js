@@ -118,89 +118,91 @@ const ProductReview = () => {
         slotCenter={<></>}
         slotRight={<></>}
       />
-      <ScrollView showsVerticalScrollIndicator={false}>
-        <View
-          style={{
-            alignItems: 'center',
-            marginTop: 25,
-            marginBottom: 150, //margin bottom is applying kynke btns footer ke neeche aa rahe he
-            // backgroundColor: 'red',
-          }}>
-          <Text style={styles.improveText}>
-            Let us know how to improve our items
-          </Text>
+      <View style={{paddingHorizontal: 15}}>
+        <ScrollView showsVerticalScrollIndicator={false}>
+          <View
+            style={{
+              alignItems: 'center',
+              marginTop: 25,
+              marginBottom: 150, //margin bottom is applying kynke btns footer ke neeche aa rahe he
+              // backgroundColor: 'red',
+            }}>
+            <Text style={styles.improveText}>
+              Let us know how to improve our items
+            </Text>
 
-          {cartData.map((item, index) => (
-            <View>
-              <BackgroundCard
-                style={{marginTop: 10, marginHorizontal: 5}}
-                childrenStyle={{borderRadius: 26}}
-                linearBackStyle={{borderRadius: 26}}>
-                <View
-                  style={{
-                    marginHorizontal: 15,
-                  }}>
-                  <View style={styles.myOrderContainer}>
-                    <View style={styles.myOrderSubContainer}>
-                      <View style={styles.productContainer}>
-                        <Image
-                          source={require('../../assets/images/burger_one.png')}
-                          style={styles.productImg}
-                          resizeMode="contain"
-                        />
+            {cartData.map((item, index) => (
+              <View>
+                <BackgroundCard
+                  style={{marginTop: 10, marginHorizontal: 5}}
+                  childrenStyle={{borderRadius: 26}}
+                  linearBackStyle={{borderRadius: 26}}>
+                  <View
+                    style={{
+                      marginHorizontal: 15,
+                    }}>
+                    <View style={styles.myOrderContainer}>
+                      <View style={styles.myOrderSubContainer}>
+                        <View style={styles.productContainer}>
+                          <Image
+                            source={require('../../assets/images/burger_one.png')}
+                            style={styles.productImg}
+                            resizeMode="contain"
+                          />
+                        </View>
+                        <View style={{}}>
+                          <Text style={[styles.productName, {marginLeft: 10}]}>
+                            {item.productName}
+                          </Text>
+                        </View>
                       </View>
-                      <View style={{}}>
-                        <Text style={[styles.productName, {marginLeft: 10}]}>
-                          {item.productName}
-                        </Text>
-                      </View>
-                    </View>
-                    <View style={{alignItems: 'center'}}>
-                      <View style={styles.qtyContainer}>
-                        <Rating
-                          imageSize={20}
-                          ratingCount={5}
-                          tintColor="#1A2D30"
-                        />
+                      <View style={{alignItems: 'center'}}>
+                        <View style={styles.qtyContainer}>
+                          <Rating
+                            imageSize={20}
+                            ratingCount={5}
+                            tintColor="#1A2D30"
+                          />
+                        </View>
                       </View>
                     </View>
                   </View>
-                </View>
-              </BackgroundCard>
-              <TextInput
-                multiline
-                numberOfLines={4} // adjust as needed
-                onChangeText={setText}
-                value={text}
-                style={styles.input}
-                placeholder="type here"
-                placeholderTextColor={'#999AA0'}
+                </BackgroundCard>
+                <TextInput
+                  multiline
+                  numberOfLines={4} // adjust as needed
+                  onChangeText={setText}
+                  value={text}
+                  style={styles.input}
+                  placeholder="type here"
+                  placeholderTextColor={'#999AA0'}
+                />
+              </View>
+            ))}
+
+            <View
+              style={{
+                flexDirection: 'row',
+                justifyContent: 'space-between',
+                width: '100%',
+              }}>
+              <ButtonsCommonAlt
+                btnText={'Cancel'}
+                btnStyle={{width: widthToDp(40)}}
+                containerStyle={{marginLeft: 10}}
+                onPress={() => navigation.navigate('RestaurantReview')}
+              />
+              <ButtonsCommon
+                btnText={'Send'}
+                btnStyle={{width: widthToDp(40)}}
+                containerStyle={{marginRight: 10}}
+                onPress={() => setIsModalVisible(true)}
               />
             </View>
-          ))}
-
-          <View
-            style={{
-              flexDirection: 'row',
-              justifyContent: 'space-between',
-              width: '100%',
-            }}>
-            <ButtonsCommonAlt
-              btnText={'Cancel'}
-              btnStyle={{width: widthToDp(40)}}
-              containerStyle={{marginLeft: 10}}
-              onPress={() => navigation.navigate('RestaurantReview')}
-            />
-            <ButtonsCommon
-              btnText={'Send'}
-              btnStyle={{width: widthToDp(40)}}
-              containerStyle={{marginRight: 10}}
-              onPress={() => setIsModalVisible(true)}
-            />
           </View>
-        </View>
-      </ScrollView>
-      {/* <Footer /> */}
+        </ScrollView>
+        {/* <Footer /> */}
+      </View>
     </View>
   );
 };

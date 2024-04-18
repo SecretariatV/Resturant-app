@@ -6,6 +6,7 @@ import {
   ScrollView,
   TouchableOpacity,
   FlatList,
+  Pressable,
 } from 'react-native';
 import React, {useEffect, useState} from 'react';
 import {styles} from './styles';
@@ -15,7 +16,6 @@ import LinearGradient from 'react-native-linear-gradient';
 import BackgroundLayout from '../../components/BackgroundLayout';
 
 import HeaderModed from '../../components/HeaderModed';
-import MenuNavButton from '../../components/MenuNavButton';
 import Clock from '../../assets/images/clock.svg';
 import Dress from '../../assets/images/dress.svg';
 import Age from '../../assets/images/age.svg';
@@ -30,12 +30,25 @@ import {Colors} from '../../theme';
 import ReviewCard from '../../components/ReviewCard';
 import {reviews, ageGroup, cuisine, dressCode} from '../../utils/demodata';
 import HamBurgerButton from '../../components/NavButtons/HamBurgerButton';
+import {SelectCountry} from 'react-native-element-dropdown';
 
 const Restaurant = () => {
   const [expanded, setExpanded] = useState(true);
   const [activeTab, setActiveTab] = useState('about');
-  const [isToggled, setIsToggled] = useState(true);
+  const [value, setValue] = useState('1');
 
+  const [isToggled, setIsToggled] = useState(true);
+  const data = [
+    {
+      label: '1.0',
+      value: '1',
+      image: require('../../assets/images/star.png'),
+    },
+    {label: '2.0', value: '2', image: require('../../assets/images/star.png')},
+    {label: '3.0', value: '3', image: require('../../assets/images/star.png')},
+    {label: '4.0', value: '4', image: require('../../assets/images/star.png')},
+    {label: '5.0', value: '5', image: require('../../assets/images/star.png')},
+  ];
   useEffect(() => {
     console.log(activeTab, 'activeTab');
   }, [activeTab]);
@@ -159,23 +172,35 @@ const Restaurant = () => {
                 style={{borderRadius: 18, flexWrap: 'nowrap', margin: 1}}
                 start={{x: 0, y: 0.5}}
                 end={{x: 1, y: 0.5}}>
-                <TouchableOpacity
+                <Pressable
                   style={styles.review_btn}
                   onPress={() => {
-                    setExpanded(!expanded);
+                    // setExpanded(!expanded);
                   }}>
                   <View style={{flexDirection: 'row', alignItems: 'center'}}>
                     <Text style={styles.rating_type}>Excellent</Text>
                     <View style={styles.review_tag}></View>
                   </View>
-                  <View style={{flexDirection: 'row', alignItems: 'center'}}>
-                    <Image source={require('../../assets/images/Star_2.png')} />
-                    <Text style={styles.rating_no}>4.0</Text>
-                    <Image
-                      source={require('../../assets/images/chevron_down.png')}
-                    />
-                  </View>
-                </TouchableOpacity>
+
+                  <SelectCountry
+                    style={styles.dropdown}
+                    placeholderStyle={styles.placeholderStyle}
+                    selectedTextStyle={styles.selectedTextStyle}
+                    activeColor="rgba(0,0,0,0.5)"
+                    itemContainerStyle={{backgroundColor: '#272730'}}
+                    imageStyle={styles.imageStyle}
+                    iconStyle={styles.iconStyle}
+                    data={data}
+                    maxHeight={300}
+                    labelField="label"
+                    valueField="value"
+                    placeholder=""
+                    value={value}
+                    onChange={item => {
+                      setValue(item.value);
+                    }}
+                  />
+                </Pressable>
               </LinearGradient>
               {expanded && (
                 <FlatList

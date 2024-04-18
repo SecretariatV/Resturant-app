@@ -25,6 +25,7 @@ import ButtonsCommon from '../../../components/Buttons/ButtonCommon.js';
 import MenuNavButton from '../../../components/MenuNavButton/index.js';
 import back from '../../../assets/images/back-two.png';
 import BackButton from '../../../components/NavButtons/BackButton/index.js';
+import {widthToDp} from '../../../utils/Dimensions.js';
 
 const Signup = ({showMenu}) => {
   const navigation = useNavigation();
@@ -62,143 +63,143 @@ const Signup = ({showMenu}) => {
   // };
   const handleDynamicNavigation = () => {
     console.log('kmdsakas');
-    navigation.navigate('Login');
+    navigation.navigate('Preferences');
   };
   return (
     <View style={styles.container}>
       <BackgroundLayout />
-
-      {/* <HeaderCommon show={true} showMenu={false} /> */}
-      <HeaderModed
-        headerStyle={{paddingHorizontal: 0}}
-        slotLeft={<BackButton onPress={() => navigation.goBack()} />}
-      />
-      <ScrollView
-        style={styles.regFormScrollView}
-        showsVerticalScrollIndicator={false}>
-        <View className="join-screen-header-text">
-          <View
-            className="join-screen-intro-wrapper"
-            style={styles.joinWrapper}>
-            <Text style={styles.joinTxt}>Join</Text>
-            <FancyText
-              textSize={styles.joinTxt.fontSize}
-              textColor="#00FC92"
-              gradientColors={['#00F59433', '#00F59466', '#02ABEE66']}
-              fancyText="Shareabill"
-            />
-            <Text style={styles.joinTxt}>for</Text>
-          </View>
-          <View
-            className="join-screen-intro-wrapper"
-            style={styles.joinWrapper}>
-            <Text style={styles.joinTxt}>Seamless Dining</Text>
-          </View>
-          <View className="join-screen-under-intro-para">
-            <Text style={styles.underJoinTxt}>
-              Create your Shareabill account to embark on a journey of
-              personalized dining experiences.
-            </Text>
-          </View>
-        </View>
-        <View className="join-screen-form">
-          <View className="image-uploader" style={styles.imageUploader}>
-            <TouchableOpacity
-            // onPress={handleImagePicker}
-            >
-              <Image
-                source={require('../../../assets/images/picavatar.png')}
-                style={styles.picAvatar}
+      <View style={{paddingHorizontal: 15, paddingBottom: widthToDp(20)}}>
+        <HeaderModed
+          headerStyle={{paddingHorizontal: 0}}
+          slotLeft={<BackButton onPress={() => navigation.goBack()} />}
+        />
+        <ScrollView
+          style={styles.regFormScrollView}
+          showsVerticalScrollIndicator={false}>
+          <View className="join-screen-header-text">
+            <View
+              className="join-screen-intro-wrapper"
+              style={styles.joinWrapper}>
+              <Text style={styles.joinTxt}>Join</Text>
+              <FancyText
+                textSize={styles.joinTxt.fontSize}
+                textColor="#00FC92"
+                gradientColors={['#00F59433', '#00F59466', '#02ABEE66']}
+                fancyText="Shareabill"
               />
-              <View style={styles.imageUploaderPlus}>
-                <LinearGradient
-                  colors={['#02ABEE6E', '#02ABEE', '#00F594']}
-                  style={styles.imageUploaderGrad}
-                  start={{x: 0, y: 0.5}}
-                  end={{x: 1, y: 0.5}}>
-                  <View style={styles.imageUploaderPluscircleGradient}>
-                    <Text style={styles.imageUploaderPlusText}>+</Text>
-                  </View>
-                </LinearGradient>
-              </View>
+              <Text style={styles.joinTxt}>for</Text>
+            </View>
+            <View
+              className="join-screen-intro-wrapper"
+              style={styles.joinWrapper}>
+              <Text style={styles.joinTxt}>Seamless Dining</Text>
+            </View>
+            <View className="join-screen-under-intro-para">
+              <Text style={styles.underJoinTxt}>
+                Create your Shareabill account to embark on a journey of
+                personalized dining experiences.
+              </Text>
+            </View>
+          </View>
+          <View className="join-screen-form">
+            <View className="image-uploader" style={styles.imageUploader}>
+              <TouchableOpacity
+              // onPress={handleImagePicker}
+              >
+                <Image
+                  source={require('../../../assets/images/picavatar.png')}
+                  style={styles.picAvatar}
+                />
+                <View style={styles.imageUploaderPlus}>
+                  <LinearGradient
+                    colors={['#02ABEE6E', '#02ABEE', '#00F594']}
+                    style={styles.imageUploaderGrad}
+                    start={{x: 0, y: 0.5}}
+                    end={{x: 1, y: 0.5}}>
+                    <View style={styles.imageUploaderPluscircleGradient}>
+                      <Text style={styles.imageUploaderPlusText}>+</Text>
+                    </View>
+                  </LinearGradient>
+                </View>
+              </TouchableOpacity>
+            </View>
+            <FancyInput
+              iconImage={userIcon}
+              fieldLabel="First Name"
+              fieldValue={inputName}
+              fieldPlaceHolder="Enter your First name"
+              fieldCallback={setInputName}
+            />
+            <FancyInput
+              iconImage={userIcon}
+              fieldLabel="Last Name"
+              fieldValue={inputLname}
+              fieldPlaceHolder="Enter your Last name"
+              fieldCallback={setInputLname}
+            />
+            <FancyInput
+              iconImage={userIcon}
+              fieldLabel="User name"
+              fieldValue={inputUname}
+              fieldPlaceHolder="Enter your Username"
+              fieldCallback={setInputUname}
+            />
+            <FancyInput
+              iconImage={emailIcon}
+              fieldLabel="Email"
+              fieldValue={inputEmail}
+              fieldPlaceHolder="Enter your Email"
+              fieldCallback={setInputEmail}
+            />
+            <FancyInput
+              iconImage={phoneIcon}
+              fieldLabel="Phone Number"
+              fieldValue={inputPhone}
+              fieldPlaceHolder="Enter your Phone Number"
+              fieldCallback={setInputPhone}
+            />
+            <FancyInput
+              iconImage={passIcon}
+              fieldLabel="Password"
+              fieldValue={inputPass}
+              fieldPlaceHolder="Password Here"
+              fieldCallback={setInputPass}
+              fieldIsPassword={true}
+            />
+          </View>
+
+          <ButtonsCommon
+            btnText={'Sign Up'}
+            onPress={() => handleDynamicNavigation()}
+          />
+          <SeparatorText separatorText="or Sign Up with" />
+          <View
+            className="social-login-icons-container"
+            style={styles.socialLoginBtnContainer}>
+            <TouchableOpacity style={styles.socialLoginBtns}>
+              <Image source={fbLoginIcon} style={styles.socialLoginBtnIcons} />
+            </TouchableOpacity>
+
+            <TouchableOpacity style={styles.socialLoginBtns}>
+              <Image source={gLoginIcon} style={styles.socialLoginBtnIcons} />
+            </TouchableOpacity>
+
+            <TouchableOpacity style={styles.socialLoginBtns}>
+              <Image source={aLoginIcon} style={styles.socialLoginBtnIcons} />
             </TouchableOpacity>
           </View>
-          <FancyInput
-            iconImage={userIcon}
-            fieldLabel="First Name"
-            fieldValue={inputName}
-            fieldPlaceHolder="Enter your First name"
-            fieldCallback={setInputName}
-          />
-          <FancyInput
-            iconImage={userIcon}
-            fieldLabel="Last Name"
-            fieldValue={inputLname}
-            fieldPlaceHolder="Enter your Last name"
-            fieldCallback={setInputLname}
-          />
-          <FancyInput
-            iconImage={userIcon}
-            fieldLabel="User name"
-            fieldValue={inputUname}
-            fieldPlaceHolder="Enter your Username"
-            fieldCallback={setInputUname}
-          />
-          <FancyInput
-            iconImage={emailIcon}
-            fieldLabel="Email"
-            fieldValue={inputEmail}
-            fieldPlaceHolder="Enter your Email"
-            fieldCallback={setInputEmail}
-          />
-          <FancyInput
-            iconImage={phoneIcon}
-            fieldLabel="Phone Number"
-            fieldValue={inputPhone}
-            fieldPlaceHolder="Enter your Phone Number"
-            fieldCallback={setInputPhone}
-          />
-          <FancyInput
-            iconImage={passIcon}
-            fieldLabel="Password"
-            fieldValue={inputPass}
-            fieldPlaceHolder="Password Here"
-            fieldCallback={setInputPass}
-            fieldIsPassword={true}
-          />
-        </View>
+          <FadedSeparator />
+          <View class="already-account-text" style={styles.alreadyAccount}>
+            <Text style={styles.alreadyAccount.textContent}>
+              Already have an account?{' '}
+            </Text>
 
-        <ButtonsCommon
-          btnText={'Sign Up'}
-          onPress={() => handleDynamicNavigation()}
-        />
-        <SeparatorText separatorText="or Sign Up with" />
-        <View
-          className="social-login-icons-container"
-          style={styles.socialLoginBtnContainer}>
-          <TouchableOpacity style={styles.socialLoginBtns}>
-            <Image source={fbLoginIcon} style={styles.socialLoginBtnIcons} />
-          </TouchableOpacity>
-
-          <TouchableOpacity style={styles.socialLoginBtns}>
-            <Image source={gLoginIcon} style={styles.socialLoginBtnIcons} />
-          </TouchableOpacity>
-
-          <TouchableOpacity style={styles.socialLoginBtns}>
-            <Image source={aLoginIcon} style={styles.socialLoginBtnIcons} />
-          </TouchableOpacity>
-        </View>
-        <FadedSeparator />
-        <View class="already-account-text" style={styles.alreadyAccount}>
-          <Text style={styles.alreadyAccount.textContent}>
-            Already have an account?{' '}
-          </Text>
-
-          <TouchableOpacity onPress={() => navigation.navigate('Login')}>
-            <Text style={styles.underline}>Sign in.</Text>
-          </TouchableOpacity>
-        </View>
-      </ScrollView>
+            <TouchableOpacity onPress={() => navigation.navigate('Login')}>
+              <Text style={styles.underline}>Sign in.</Text>
+            </TouchableOpacity>
+          </View>
+        </ScrollView>
+      </View>
     </View>
   );
 };

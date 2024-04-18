@@ -21,43 +21,47 @@ const Setting = () => {
   return (
     <View style={styles.container}>
       <BackgroundLayout />
+
       <HeaderModed
         slotLeft={<HamBurgerButton />}
         slotCenter={<Text style={commonStyles.headerText}>Settings</Text>}
         slotRight={<></>}
       />
-      <View style={styles.subContainer}>
-        <TouchableOpacity
-          style={styles.sectionContainer}
-          onPress={() =>
-            navigation.navigate('SettingStack', {screen: 'Profile'})
-          }>
-          <User />
+      <View style={{paddingHorizontal: 15}}>
+        <View style={styles.subContainer}>
+          <TouchableOpacity
+            style={styles.sectionContainer}
+            onPress={() =>
+              navigation.navigate('SettingStack', {screen: 'Profile'})
+            }>
+            <User />
 
-          <View style={styles.sectionTxt}>
-            <Text style={styles.subTitle}>Profile settings</Text>
-          </View>
-        </TouchableOpacity>
-
-        <FadedSeparator containerStyle={styles.separator} />
-        <TouchableOpacity style={[styles.sectionTop, styles.sectionContainer]}>
-          <UserDetail />
-          <View style={styles.sectionTxt}>
-            <Text style={styles.subTitle}>Account details</Text>
-          </View>
-        </TouchableOpacity>
-        <FadedSeparator containerStyle={styles.separator} />
-        <TouchableOpacity style={[styles.sectionTop, styles.sectionContainer]}>
-          <MenuCustomize />
-          <View style={styles.sectionTxt}>
-            <View>
-              <Text style={styles.subTitle}>Menu Customization</Text>
+            <View style={styles.sectionTxt}>
+              <Text style={styles.subTitle}>Profile settings</Text>
             </View>
-          </View>
-        </TouchableOpacity>
-        <FadedSeparator containerStyle={styles.separator} />
+          </TouchableOpacity>
+
+          <FadedSeparator containerStyle={styles.separator} />
+          <TouchableOpacity
+            style={[styles.sectionTop, styles.sectionContainer]}>
+            <UserDetail />
+            <View style={styles.sectionTxt}>
+              <Text style={styles.subTitle}>Account details</Text>
+            </View>
+          </TouchableOpacity>
+          <FadedSeparator containerStyle={styles.separator} />
+          <TouchableOpacity
+            style={[styles.sectionTop, styles.sectionContainer]}>
+            <MenuCustomize />
+            <View style={styles.sectionTxt}>
+              <View>
+                <Text style={styles.subTitle}>Menu Customization</Text>
+              </View>
+            </View>
+          </TouchableOpacity>
+          <FadedSeparator containerStyle={styles.separator} />
+        </View>
       </View>
-      {/* <Footer /> */}
     </View>
   );
 };

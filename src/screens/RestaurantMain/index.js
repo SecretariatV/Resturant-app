@@ -144,7 +144,6 @@ const RestaurantMain = () => {
       </Modal>
       <BackgroundLayout />
       <HeaderModed
-        //headerStyle={{marginLeft: getPlatformSpecificValue(15, 0)}}
         slotLeft={<HamBurgerButton />}
         slotCenter={<></>}
         slotRight={<></>}
@@ -155,17 +154,8 @@ const RestaurantMain = () => {
             class="intro-user-name"
             style={styles.introHeader.userNameContainer}>
             <Text style={styles.introHeader.userName}>Hey</Text>
-            <LinearGradient
-              colors={['#01322B44', '#00F59444', '#00F59444', '#02ABEE44']}
-              useAngle={true}
-              angle={45}
-              style={{borderRadius: 10, flexWrap: 'nowrap'}}
-              start={{x: 0, y: 0.5}}
-              end={{x: 1, y: 0.5}}>
-              <View style={styles.gradientBoxContainer}>
-                <Text style={styles.gradientBoxText}>Mark Anderson</Text>
-              </View>
-            </LinearGradient>
+
+            <Text style={styles.gradientBoxText}>Mark Anderson</Text>
           </View>
 
           <LinearGradient
@@ -417,12 +407,10 @@ const RestaurantMain = () => {
       <FlatList
         showsVerticalScrollIndicator={false}
         style={styles.listStyle}
-        // contentContainerStyle={{paddingBottom: 0}}
         data={restaurants}
         renderItem={renderItem}
         keyExtractor={item => item.id} // Key extractor for each item
       />
-      {/* <Footer /> */}
     </View>
   );
 };

@@ -27,8 +27,7 @@ const ResturantCard = ({name, location, cuisine}) => {
       <ImageBackground
         source={bg}
         style={styles.image}
-        imageStyle={{borderRadius: 16}}>
-        {/* <Text style={styles.text}>Inside</Text> */}
+        imageStyle={{borderRadius: 16, opacity: 0.7}}>
         <Image source={logoImage} style={{margin: 5, resizeMode: 'contain'}} />
         <View style={{margin: 5}}>
           <View style={styles.cardContainer}>

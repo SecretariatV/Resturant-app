@@ -6,7 +6,6 @@ import {Colors} from '../../theme';
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    // paddingHorizontal: 15,
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: '#021A2E',

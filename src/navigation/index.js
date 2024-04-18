@@ -80,6 +80,7 @@ import MenuBg from '../assets/images/footer.svg';
 import Svg, {Path} from 'react-native-svg';
 import Footer from '../components/Footer/index.js';
 import {setRequestBtn} from '../redux/actions/auth.js';
+import AR from '../screens/AR/index.js';
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -165,6 +166,7 @@ const HomeStack = ({activeRestaurant}) => {
           name="IngredientCustomization"
           component={IngredientCustomization}
         />
+        <Stack.Screen name="AR" component={AR} />
       </Stack.Group>
       <Stack.Group>
         {/* <Stack.Screen name="MenuDetail" component={MenuDetail} /> */}
@@ -199,6 +201,7 @@ const HomeStack = ({activeRestaurant}) => {
         <Stack.Screen name="OrderHistory" component={OrderHistory} />
         <Stack.Screen name="Wallet" component={Wallet} />
         {/* <Stack.Screen name="Wallet" component={Wallet} /> */}
+        <Stack.Screen name="RestaurantReview" component={RestaurantReview} />
 
         <Stack.Screen name="SettingStack" component={SettingStack} />
         <Stack.Screen
@@ -581,7 +584,6 @@ const RootNavigator = () => {
   const req = useSelector(state => state.auth.request);
 
   useEffect(() => {
-    console.log(req, 'ruse effeeq');
     if (user) {
     }
   }, [user]);
@@ -591,7 +593,10 @@ const RootNavigator = () => {
       <NavigationContainer>
         {user ? <DrawerScreens /> : <AuthStack />}
         {req ? (
-          <BottomSheet modalProps={{}} isVisible={req}>
+          <BottomSheet
+            modalProps={{}}
+            isVisible={req}
+            backdropStyle={{backgroundColor: 'rgba(0,0,0,0.7)'}}>
             <View style={tabNavStyles.bottomSheetContainer}>
               <Image
                 style={tabNavStyles.bottomImg}

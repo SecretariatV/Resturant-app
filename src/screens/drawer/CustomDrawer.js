@@ -1,5 +1,5 @@
 import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
-import React, {useRef} from 'react';
+import React, {useRef, useState} from 'react';
 import {useDrawerProgress} from '@react-navigation/drawer';
 import Animated, {interpolate, useAnimatedStyle} from 'react-native-reanimated';
 import {colors, constant} from './constant';
@@ -24,8 +24,11 @@ import Logout from '../../assets/images/logout.svg';
 import {useNavigation} from '@react-navigation/native';
 import {useDispatch} from 'react-redux';
 import {setUser} from '../../redux/actions/auth';
+import {AnimatedCircularProgress} from 'react-native-circular-progress';
 
 const CustomDrawer1 = props => {
+  const [points, setPoints] = useState(100);
+  const circularProgressRef = useRef(null);
   const dispatch = useDispatch();
 
   const navigation = useNavigation();
@@ -77,15 +80,35 @@ const CustomDrawer1 = props => {
               viewStyles2('top'),
             ]}>
             <View style={styles.iconContainer}>
-              <Image
-                source={require('../../assets/images/profileImg.png')}
-                style={styles.menuProfile}
-              />
+              <AnimatedCircularProgress
+                ref={circularProgressRef}
+                size={64}
+                width={3}
+                fill={50}
+                rotation={10}
+                // style={{backgroundColor: '#fff'}}
+                childrenContainerStyle={{backgroundColor: '#fff'}}
+                // rotation={20}
+                // arcSweepAngle={280}
+                tintColor="#03E7AB"
+                onAnimationComplete={() => console.log('onAnimationComplete')}
+                backgroundColor="#3d5875">
+                {points => (
+                  <View
+                    style={{alignItems: 'center', justifyContent: 'center'}}>
+                    <Image
+                      source={require('../../assets/images/profileImg.png')}
+                      style={styles.menuProfile}
+                    />
+                  </View>
+                )}
+              </AnimatedCircularProgress>
             </View>
+
             <View style={{}}>
               <Text style={styles.headerTitle}>Mark Anderson</Text>
               <View style={styles.userMenu}>
-                <View class="level-bar-color-bg" style={styles.levelBarColorBg}>
+                {/* <View class="level-bar-color-bg" style={styles.levelBarColorBg}>
                   <View class="level-bar-bg-dark" style={styles.levelBarBgDark}>
                     <View
                       class="active-order-bar-bg"
@@ -105,8 +128,8 @@ const CustomDrawer1 = props => {
                         end={{x: 1, y: 0.5}}></LinearGradient>
                     </View>
                   </View>
-                </View>
-                <GradientText style={{marginLeft: 10}}>Level</GradientText>
+                </View> */}
+                <GradientText>Level</GradientText>
                 <LinearGradient
                   colors={['#00F69299', '#00A7F7FF']}
                   useAngle={true}
@@ -213,7 +236,6 @@ const CustomDrawer1 = props => {
             </TouchableOpacity>
 
             <TouchableOpacity
-              // onPress={onPress}
               accessibilityRole="button"
               style={[styles.drawerItem, styles.buttons]}>
               <View>
@@ -230,7 +252,6 @@ const CustomDrawer1 = props => {
             </TouchableOpacity>
 
             <TouchableOpacity
-              // onPress={onPress}
               accessibilityRole="button"
               style={[styles.drawerItem, styles.buttons]}>
               <View>
@@ -284,7 +305,7 @@ const CustomDrawer1 = props => {
 
             <TouchableOpacity
               onPress={() => {
-                console.log(' logout'), dispatch(setUser(false));
+                dispatch(setUser(false));
               }}
               accessibilityRole="button"
               style={[styles.drawerItem, styles.buttons]}>

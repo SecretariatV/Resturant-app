@@ -1,32 +1,15 @@
-import {
-  View,
-  Text,
-  Image,
-  ImageBackground,
-  ScrollView,
-  TouchableOpacity,
-  FlatList,
-} from 'react-native';
-import React, {useEffect, useState} from 'react';
+import {View, Text, ScrollView} from 'react-native';
+import React from 'react';
 import {styles} from './styles';
 import LinearGradient from 'react-native-linear-gradient';
 import {height, heightToDp, width, widthToDp} from '../../utils/Dimensions';
 
 import BackgroundLayout from '../../components/BackgroundLayout';
 import HeaderModed from '../../components/HeaderModed';
-import MenuNavButton from '../../components/MenuNavButton';
-import FadedSeparator from '../../components/FadedSeparator';
-import ReviewCard from '../../components/ReviewCard';
-import Footer from '../../components/Footer';
+
 import userIcon from '../../assets/images/userIcon.png';
 
-import Hamburger from '../../assets/images/hamburger.png';
-import Clock from '../../assets/images/clock.svg';
-import Dress from '../../assets/images/dress.svg';
-// import Confetti from '../../assets/images/confetti.svg';
-import resturant_cover from '../../assets/images/restaurant_cover.png';
 import {Colors} from '../../theme';
-import {reviews, ageGroup, cuisine, dressCode} from '../../utils/demodata';
 import GradientText from '../../components/GradientText';
 import {fonts} from '../../theme/FontFamily';
 import HamBurgerButton from '../../components/NavButtons/HamBurgerButton';
@@ -37,10 +20,6 @@ import {useNavigation} from '@react-navigation/native';
 
 const Thankyou = () => {
   const navigation = useNavigation();
-
-  // const gradientColors = isToggled
-  //   ? ['#02ABEE6E', '#02ABEE', '#00F594']
-  //   : ['rgba(255, 255, 255, 0.10)', 'rgba(255, 255, 255, 0.10)'];
 
   return (
     <View style={styles.container}>
@@ -126,7 +105,7 @@ const Thankyou = () => {
             fieldLabel="Receive Receipt"
             containerStyle={{marginLeft: 15}}
             // fieldValue={inputPass}
-            fieldPlaceHolder="Enter your Password"
+            fieldPlaceHolder="Enter your Email"
             // fieldCallback={setInputPass}
           />
         </View>

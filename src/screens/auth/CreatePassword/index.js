@@ -22,45 +22,46 @@ const CreatePassword = () => {
   return (
     <View style={styles.container}>
       <BackgroundLayout />
+      <View style={{paddingHorizontal: 15}}>
+        <HeaderModed
+          headerStyle={{paddingHorizontal: 0}}
+          slotLeft={<BackButton onPress={() => navigation.goBack()} />}
+          slotCenter={<></>}
+          slotRight={<></>}
+        />
+        <View className="join-screen-header-text">
+          <Text style={styles.forgotTxt}>Create New Password</Text>
 
-      <HeaderModed
-        headerStyle={{paddingHorizontal: 0}}
-        slotLeft={<BackButton onPress={() => navigation.goBack()} />}
-        slotCenter={<></>}
-        slotRight={<></>}
-      />
-      <View className="join-screen-header-text">
-        <Text style={styles.forgotTxt}>Create New Password</Text>
-
-        <View className="join-screen-under-intro-para">
-          <Text style={styles.underJoinTxt}>
-            Password to include one capital letter, one number and one symbol.
-          </Text>
+          <View className="join-screen-under-intro-para">
+            <Text style={styles.underJoinTxt}>
+              Password to include one capital letter, one number and one symbol.
+            </Text>
+          </View>
         </View>
-      </View>
-      <View className="join-screen-form" style={{marginTop: 10}}>
-        <FancyInput
-          iconImage={passIcon}
-          fieldLabel="Enter Password"
-          fieldValue={inputPass}
-          fieldPlaceHolder="Password here"
-          fieldCallback={setInputPass}
-          fieldIsPassword={true}
-        />
-        <FancyInput
-          iconImage={passIcon}
-          fieldLabel="Confirm Password"
-          fieldValue={inputPass}
-          fieldPlaceHolder="Password here"
-          fieldCallback={setInputPass}
-          fieldIsPassword={true}
-        />
-      </View>
-      <View style={{marginTop: 15}}>
-        <ButtonsCommon
-          btnText={'Change Password'}
-          onPress={() => navigation.navigate('LoginTwo')}
-        />
+        <View className="join-screen-form" style={{marginTop: 10}}>
+          <FancyInput
+            iconImage={passIcon}
+            fieldLabel="Enter Password"
+            fieldValue={inputPass}
+            fieldPlaceHolder="Password here"
+            fieldCallback={setInputPass}
+            fieldIsPassword={true}
+          />
+          <FancyInput
+            iconImage={passIcon}
+            fieldLabel="Confirm Password"
+            fieldValue={inputPass}
+            fieldPlaceHolder="Password here"
+            fieldCallback={setInputPass}
+            fieldIsPassword={true}
+          />
+        </View>
+        <View style={{marginTop: 15}}>
+          <ButtonsCommon
+            btnText={'Change Password'}
+            onPress={() => navigation.navigate('LoginTwo')}
+          />
+        </View>
       </View>
     </View>
   );

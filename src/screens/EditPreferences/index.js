@@ -9,6 +9,7 @@ import {widthToDp} from '../../utils/Dimensions';
 import ButtonsCommon from '../../components/Buttons/ButtonCommon.js';
 import {useNavigation} from '@react-navigation/native';
 import BackButton from '../../components/NavButtons/BackButton/index.js';
+import HeaderModed from '../../components/HeaderModed/index.js';
 
 const Preferences = () => {
   const navigation = useNavigation();
@@ -61,20 +62,23 @@ const Preferences = () => {
   return (
     <View style={styles.container}>
       <BackgroundLayout />
+
       <HeaderModed
         slotLeft={<BackButton />}
         slotCenter={<Text style={styles.headerTitle}>Edit Preferences</Text>}
       />
-      <Text style={styles.select}>Select Diet</Text>
-      <View
-        style={{
-          flexDirection: 'row',
-          flexWrap: 'wrap',
-          marginTop: widthToDp(3),
-        }}>
-        {diet.map((item, index) => (
-          <ToggleButton name={item.name} key={index} />
-        ))}
+      <View style={{paddingHorizontal: 15}}>
+        <Text style={styles.select}>Select Diet</Text>
+        <View
+          style={{
+            flexDirection: 'row',
+            flexWrap: 'wrap',
+            marginTop: widthToDp(3),
+          }}>
+          {diet.map((item, index) => (
+            <ToggleButton name={item.name} key={index} />
+          ))}
+        </View>
       </View>
 
       <ButtonsCommon
@@ -84,10 +88,6 @@ const Preferences = () => {
         onPress={() => handleDynamicNavigation()}
         // navRoute="Preferences"
       />
-
-      {/* <TouchableOpacity style={styles.saveButton}>
-        <Text style={styles.saveButtonText}>Save</Text>
-      </TouchableOpacity> */}
     </View>
   );
 };

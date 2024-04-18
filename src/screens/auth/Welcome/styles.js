@@ -8,7 +8,8 @@ import {Colors} from '../../../theme';
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingHorizontal: 15,
+    // marginHorizontal:15
+    // paddingHorizontal: 15,
   },
   welcomeTxt: {
     fontFamily: fonts.URBANIST_REGULAR,
@@ -22,6 +23,7 @@ const styles = StyleSheet.create({
     color: '#ffffff',
     fontSize: 24,
     paddingHorizontal: 5,
+    // paddingHorizontal: 15,
   },
   byeTxt: {
     color: '#01CA78',
@@ -29,6 +31,8 @@ const styles = StyleSheet.create({
     fontSize: screenToTextSize(5),
     marginTop: widthToDp(7),
     textAlign: 'center',
+    // marginHorizontal: 5
+    // paddingHorizontal: ,
   },
   byeTxtTwo: {
     color: '#ffffff',
@@ -126,10 +130,12 @@ const styles = StyleSheet.create({
 
   dropdown: {
     // margin: 6,
-    height: 44,
+    // marginLeft: 10,
+    height: 30,
     width: 80,
     backgroundColor: '#343852',
     borderRadius: 22,
+    // color: '#000',
     paddingHorizontal: 5,
   },
   imageStyle: {

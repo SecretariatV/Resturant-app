@@ -2,12 +2,11 @@ import {StyleSheet} from 'react-native';
 import {fonts} from '../../theme/FontFamily';
 import {heightToDp, width, widthToDp} from '../../utils/Dimensions';
 import {Colors} from '../../theme';
-import { getPlatformSpecificValue, screenToTextSize } from '../../utils/helper';
+import {getPlatformSpecificValue, screenToTextSize} from '../../utils/helper';
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    // paddingHorizontal: 15,
   },
   headerText: {
     color: Colors.WHITE,

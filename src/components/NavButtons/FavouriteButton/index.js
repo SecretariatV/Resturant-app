@@ -11,7 +11,7 @@ const FavouriteButton = ({onPress}) => {
   };
   return (
     <TouchableOpacity onPress={() => handleClick()}>
-      <Fav />
+      <Fav width={40} height={40} />
     </TouchableOpacity>
   );
 };

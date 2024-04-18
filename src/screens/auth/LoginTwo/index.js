@@ -41,92 +41,94 @@ const LoginTwo = ({route}) => {
   return (
     <View style={styles.container}>
       <BackgroundLayout />
-      <HeaderModed
-        headerStyle={{paddingHorizontal: 0}}
-        slotLeft={<BackButton onPress={() => navigation.goBack()} />}
-        slotCenter={<></>}
-        slotRight={<></>}
-      />
-      <ScrollView style={styles.regFormScrollView}>
-        <View className="join-screen-header-text">
-          <View
-            className="join-screen-intro-wrapper"
-            style={styles.joinWrapper}>
-            <Text style={styles.joinTxt}>Welcome Back to</Text>
+      <View style={{paddingHorizontal: 15}}>
+        <HeaderModed
+          headerStyle={{paddingHorizontal: 0}}
+          slotLeft={<BackButton onPress={() => navigation.goBack()} />}
+          slotCenter={<></>}
+          slotRight={<></>}
+        />
+        <ScrollView style={styles.regFormScrollView}>
+          <View className="join-screen-header-text">
+            <View
+              className="join-screen-intro-wrapper"
+              style={styles.joinWrapper}>
+              <Text style={styles.joinTxt}>Welcome Back to</Text>
+            </View>
+            <View
+              className="join-screen-intro-wrapper"
+              style={[styles.joinWrapper, {marginLeft: -5}]}>
+              <FancyText
+                textSize={styles.joinTxt.fontSize}
+                textColor="#00FC92"
+                gradientColors={['#00F59433', '#00F59466', '#02ABEE66']}
+                fancyText="Shareabill."
+              />
+            </View>
+            <View className="join-screen-under-intro-para">
+              <Text style={styles.underJoinTxt}>
+                Log in to your account and rediscover the joy of instant,
+                hassle-free dining. Your delightful experiences are just a login
+                away
+              </Text>
+            </View>
           </View>
-          <View
-            className="join-screen-intro-wrapper"
-            style={[styles.joinWrapper, {marginLeft: -5}]}>
-            <FancyText
-              textSize={styles.joinTxt.fontSize}
-              textColor="#00FC92"
-              gradientColors={['#00F59433', '#00F59466', '#02ABEE66']}
-              fancyText="Shareabill."
+          <View className="join-screen-form">
+            <FancyInput
+              iconImage={userIcon}
+              fieldLabel="Email"
+              fieldValue={inputEmail}
+              fieldPlaceHolder="Enter your Email"
+              fieldCallback={setInputEmail}
+            />
+            <FancyInput
+              iconImage={passIcon}
+              fieldLabel="Password"
+              fieldValue={inputPass}
+              fieldPlaceHolder="Password Here"
+              fieldCallback={setInputPass}
+              fieldIsPassword={true}
             />
           </View>
-          <View className="join-screen-under-intro-para">
-            <Text style={styles.underJoinTxt}>
-              Log in to your account and rediscover the joy of instant,
-              hassle-free dining. Your delightful experiences are just a login
-              away
-            </Text>
+          <View style={{width: '100%', alignItems: 'flex-end'}}>
+            <TouchableOpacity
+              onPress={() => navigation.navigate('ForgotPassword')}>
+              <Text style={styles.underline}>Forgot Password</Text>
+            </TouchableOpacity>
           </View>
-        </View>
-        <View className="join-screen-form">
-          <FancyInput
-            iconImage={userIcon}
-            fieldLabel="Email"
-            fieldValue={inputEmail}
-            fieldPlaceHolder="Enter your Email"
-            fieldCallback={setInputEmail}
+
+          <ButtonsCommon
+            btnText={'Sign In'}
+            // navRoute="Menu"
+            onPress={() => storeData()}
           />
-          <FancyInput
-            iconImage={passIcon}
-            fieldLabel="Password"
-            fieldValue={inputPass}
-            fieldPlaceHolder="Password Here"
-            fieldCallback={setInputPass}
-            fieldIsPassword={true}
-          />
-        </View>
-        <View style={{width: '100%', alignItems: 'flex-end'}}>
-          <TouchableOpacity
-            onPress={() => navigation.navigate('ForgotPassword')}>
-            <Text style={styles.underline}>Forgot Password</Text>
-          </TouchableOpacity>
-        </View>
 
-        <ButtonsCommon
-          btnText={'Sign In'}
-          // navRoute="Menu"
-          onPress={() => storeData()}
-        />
+          <SeparatorText separatorText="or Sign In with" />
+          <View
+            className="social-login-icons-container"
+            style={styles.socialLoginBtnContainer}>
+            <TouchableOpacity style={styles.socialLoginBtns}>
+              <Image source={fbLoginIcon} style={styles.socialLoginBtnIcons} />
+            </TouchableOpacity>
 
-        <SeparatorText separatorText="or Sign In with" />
-        <View
-          className="social-login-icons-container"
-          style={styles.socialLoginBtnContainer}>
-          <TouchableOpacity style={styles.socialLoginBtns}>
-            <Image source={fbLoginIcon} style={styles.socialLoginBtnIcons} />
-          </TouchableOpacity>
+            <TouchableOpacity style={styles.socialLoginBtns}>
+              <Image source={gLoginIcon} style={styles.socialLoginBtnIcons} />
+            </TouchableOpacity>
 
-          <TouchableOpacity style={styles.socialLoginBtns}>
-            <Image source={gLoginIcon} style={styles.socialLoginBtnIcons} />
-          </TouchableOpacity>
-
-          <TouchableOpacity style={styles.socialLoginBtns}>
-            <Image source={aLoginIcon} style={styles.socialLoginBtnIcons} />
-          </TouchableOpacity>
-        </View>
-        <View class="already-account-text" style={styles.alreadyAccount}>
-          <Text style={styles.alreadyAccount.textContent}>
-            You don't have an account?{' '}
-          </Text>
-          <TouchableOpacity onPress={() => navigation.navigate('Signup')}>
-            <Text style={styles.underline}>Sign Up.</Text>
-          </TouchableOpacity>
-        </View>
-      </ScrollView>
+            <TouchableOpacity style={styles.socialLoginBtns}>
+              <Image source={aLoginIcon} style={styles.socialLoginBtnIcons} />
+            </TouchableOpacity>
+          </View>
+          <View class="already-account-text" style={styles.alreadyAccount}>
+            <Text style={styles.alreadyAccount.textContent}>
+              You don't have an account?{' '}
+            </Text>
+            <TouchableOpacity onPress={() => navigation.navigate('Signup')}>
+              <Text style={styles.underline}>Sign Up.</Text>
+            </TouchableOpacity>
+          </View>
+        </ScrollView>
+      </View>
     </View>
   );
 };

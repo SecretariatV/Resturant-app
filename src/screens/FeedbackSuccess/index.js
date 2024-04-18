@@ -13,7 +13,7 @@ import {widthToDp} from '../../utils/Dimensions.js';
 
 const FeedbackSuccess = () => {
   return (
-    <View style={{flex: 1, alignItems: 'center', paddingHorizontal: 15}}>
+    <View style={{flex: 1, alignItems: 'center'}}>
       {/* <H */}
       <BackgroundLayout />
       <HeaderModed slotLeft={<HamBurgerButton />} />

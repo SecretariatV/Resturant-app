@@ -75,7 +75,14 @@ const MenuDetail = () => {
         <HeaderModed
           //headerStyle={{marginLeft: getPlatformSpecificValue(15, 0)}}
           slotLeft={<BackButton onPress={() => navigation.goBack()} />}
-          slotCenter={<></>}
+          slotCenter={
+            <TouchableOpacity onPress={() => navigation.navigate('AR')}>
+              <Image
+                source={require('../../assets/images/AR.png')}
+                style={{width: 40, height: 40}}
+              />
+            </TouchableOpacity>
+          }
           slotRight={<FavouriteButton />}
         />
         <View
