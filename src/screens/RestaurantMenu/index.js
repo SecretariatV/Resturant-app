@@ -44,6 +44,8 @@ import {Allergies} from '../../utils/demodata';
 import FavouriteButton from '../../components/NavButtons/FavouriteButton';
 import {useDispatch, useSelector} from 'react-redux';
 import {setQrCode} from '../../redux/actions/auth';
+import FilterButton from '../../components/NavButtons/FilterButton';
+import SearchButton from '../../components/NavButtons/SearchButton';
 
 const RestaurantMenu = () => {
   const dispatch = useDispatch();
@@ -106,7 +108,12 @@ const RestaurantMenu = () => {
           <HeaderModed
             slotLeft={<HamBurgerButton />}
             slotCenter={<Text style={styles.navbarPageTitle}>Menu</Text>}
-            slotRight={<FavouriteButton />}
+            slotRight={
+              <View style={{flexDirection: 'row', alignItems: 'center'}}>
+                <SearchButton />
+                <FilterButton />
+              </View>
+            }
           />
           <View className="user-wise-menu" style={styles.userWiseContainer}>
             <View className="category-container" style={styles.verticalTabs}>
@@ -356,6 +363,7 @@ const RestaurantMenu = () => {
                       style={{alignItems: 'center', justifyContent: 'center'}}>
                       <Counter
                         vertical
+                        counterTextStyle={{width: widthToDp(25), margin: 10}}
                         minusContainerStyle={{
                           height: heightToDp(7),
                           width: widthToDp(7),
@@ -367,7 +375,7 @@ const RestaurantMenu = () => {
                           borderRadius: 8,
                           backgroundColor: Colors.GREEN,
                         }}
-                        counterTextStyle={{margin: 15}}
+                        // counterTextStyle={{margin: 15}}
                         minusStyle={{width: 10, height: 2}}
                         plusStyle={{width: 10, height: 10}}
                       />

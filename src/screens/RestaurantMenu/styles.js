@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
     borderTopLeftRadius: 25,
     borderTopRightRadius: 25,
   },
- 
+
   saveButton: {
     position: 'absolute',
     bottom: 30,
@@ -142,7 +142,7 @@ const styles = StyleSheet.create({
       fontSize: screenToTextSize(4),
       fontFamily: fonts.URBANIST_BOLD,
     },
-  },  
+  },
   categoryWiseTabItem: {
     textAlign: 'center',
     width: '100%',
@@ -155,7 +155,7 @@ const styles = StyleSheet.create({
     width: '100%',
     fontSize: screenToTextSize(3),
     paddingVertical: heightToDp(1),
-  }, 
+  },
   filterHeading: {
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -172,7 +172,7 @@ const styles = StyleSheet.create({
     bottom: 30,
     left: 20,
     right: 20,
-  }, 
+  },
   restaurantFilterContainer: {
     borderRadius: 25,
     marginTop: 20,
@@ -205,7 +205,7 @@ const styles = StyleSheet.create({
   priceRangeLabelBottom: {
     marginBottom: 20,
   },
-   
+
   price: {
     color: Colors.GREEN,
     fontSize: 22,
@@ -214,8 +214,7 @@ const styles = StyleSheet.create({
   horizontalListStyle: {
     marginTop: 10,
   },
- 
- 
+
   verticalPrdListItem: {
     marginHorizontal: 5,
     width: widthToDp(95),
@@ -292,11 +291,12 @@ const styles = StyleSheet.create({
     imgCont: {
       backgroundColor: '#88888855',
       borderRadius: 20,
+      // marginRight: 10,
       padding: 5,
       justifyContent: 'center',
       alignItems: 'center',
       resizeMode: 'cover',
-      paddingHorizontaal: screenToTextSize(10),
+      // paddingHorizontal: screenToTextSize(10),
     },
     image: {
       width: screenToTextSize(25),

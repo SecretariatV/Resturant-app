@@ -152,7 +152,6 @@ const Cart = () => {
                   <View
                     style={{
                       flexDirection: 'row',
-                      // backgroundColor: 'red',
                       alignItems: 'center',
                       marginLeft: 10,
 
@@ -163,6 +162,7 @@ const Cart = () => {
                         height: heightToDp(7),
                         width: widthToDp(7),
                         borderRadius: 8,
+                        // backgroundColor: 'green',
                       }}
                       plusContainerStyle={{
                         height: heightToDp(7),
@@ -170,7 +170,12 @@ const Cart = () => {
                         borderRadius: 8,
                         backgroundColor: Colors.GREEN,
                       }}
-                      counterTextStyle={{margin: 15}}
+                      counterTextStyle={{
+                        // margin: 25,
+                        margin: 1,
+                        // backgroundColor: 'red',
+                        width: widthToDp(15),
+                      }}
                       minusStyle={{width: 10, height: 2}}
                       plusStyle={{width: 10, height: 10}}
                     />

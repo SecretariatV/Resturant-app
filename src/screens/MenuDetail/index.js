@@ -7,6 +7,7 @@ import {
   FlatList,
   Alert,
   Pressable,
+  Linking,
 } from 'react-native';
 import React, {useState} from 'react';
 import {styles} from './styles';
@@ -37,9 +38,12 @@ import FavouriteButton from '../../components/NavButtons/FavouriteButton/index.j
 import {getPlatformSpecificValue} from '../../utils/helper.js';
 import BackButton from '../../components/NavButtons/BackButton/index.js';
 import {SelectCountry} from 'react-native-element-dropdown';
+import BottomSheet, {BottomSheetView} from '@gorhom/bottom-sheet';
 
 const MenuDetail = () => {
   const navigation = useNavigation();
+
+  const [selectedIndex, setSelectedIndex] = useState(0);
 
   const [expanded, setExpanded] = useState(true);
   const [value, setValue] = useState('1');
@@ -92,7 +96,12 @@ const MenuDetail = () => {
           //headerStyle={{marginLeft: getPlatformSpecificValue(15, 0)}}
           slotLeft={<BackButton onPress={() => navigation.goBack()} />}
           slotCenter={
-            <TouchableOpacity onPress={() => navigation.navigate('AR')}>
+            <TouchableOpacity
+              onPress={() =>
+                Linking.openURL(
+                  'https://sketchfab.com/models/c87f3caa5c76470094aa187edc9dcd57/embed-ar',
+                )
+              }>
               <Image
                 source={require('../../assets/images/AR.png')}
                 style={{width: 40, height: 40}}
@@ -191,6 +200,7 @@ const MenuDetail = () => {
             style={styles.backgroundBtnContainer}
             childrenStyle={{paddingVertical: 20}}>
             <Text style={styles.quantityTxt}>Customization</Text>
+
             {/* <RestaurantButton
               btnText={'Spicy Level'}
               btnTextStyle={{fontFamily: fonts.URBANIST_SEMIBOLD}}
@@ -279,9 +289,9 @@ const MenuDetail = () => {
             <View>
               <LinearGradient
                 colors={['#00000022', '#FFFFFFFF', '#FFFFFFFF']}
-                style={{borderRadius: 18, flexWrap: 'nowrap', margin: 1}}
-                start={{x: 0, y: 0.5}}
-                end={{x: 1, y: 0.5}}>
+                style={{borderRadius: 18, margin: 1}}
+                start={{x: 0, y: 4}}
+                end={{x: 1, y: 0}}>
                 <Pressable
                   style={styles.review_btn}
                   onPress={() => {

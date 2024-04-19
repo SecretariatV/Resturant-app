@@ -17,11 +17,12 @@ import BackgroundLayout from '../../components/BackgroundLayout';
 
 import HeaderModed from '../../components/HeaderModed';
 import Clock from '../../assets/images/clock.svg';
+import Star from '../../assets/images/starV2.svg';
+
 import Dress from '../../assets/images/dress.svg';
 import Age from '../../assets/images/age.svg';
 
 import CusineSvg from '../../assets/images/cuisineServe.svg';
-// import CusineImg from '../../assets/images/cuisineServeImg';
 import Location from '../../assets/images/locWithBack.svg';
 
 import resturant_cover from '../../assets/images/restaurant_cover.png';
@@ -169,9 +170,9 @@ const Restaurant = () => {
             <View>
               <LinearGradient
                 colors={['#00000022', '#FFFFFFFF', '#FFFFFFFF']}
-                style={{borderRadius: 18, flexWrap: 'nowrap', margin: 1}}
-                start={{x: 0, y: 0.5}}
-                end={{x: 1, y: 0.5}}>
+                style={{borderRadius: 18, margin: 1}}
+                start={{x: 0, y: 4}}
+                end={{x: 1, y: 0}}>
                 <Pressable
                   style={styles.review_btn}
                   onPress={() => {
@@ -259,6 +260,11 @@ const Restaurant = () => {
         <View
           class="restaurant-content-container"
           style={styles.restaurantContentContainer}>
+          {/* <View style={{position: 'absolute', backgroundColor: 'red'}}>
+            <Text>4.3</Text>
+            <Star />
+          </View> */}
+
           <View
             class="restaurant-header-container"
             style={styles.resturantHeaderContainer}>

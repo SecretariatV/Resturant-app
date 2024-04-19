@@ -84,12 +84,12 @@ const tabNavStyles = StyleSheet.create({
     borderTopRightRadius: 25,
   },
   bottomImg: {
-    height: heightToDp(100),
+    height: '100%',
     width: widthToDp(100),
     position: 'absolute',
     bottom: 0,
-    borderTopLeftRadius: 25,
-    borderTopRightRadius: 25,
+    borderTopLeftRadius: 15,
+    borderTopRightRadius: 15,
   },
   bottomView: {
     marginHorizontal: 15,
@@ -148,6 +148,10 @@ const tabNavStyles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  contentContainer: {
+    flex: 1,
+    // alignItems: 'center',
   },
 });
 export {tabNavStyles};

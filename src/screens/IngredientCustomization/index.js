@@ -15,7 +15,6 @@ import ButtonsCommon from '../../components/Buttons/ButtonCommon.js';
 import ButtonsCommonAlt from '../../components/Buttons/ButtonCommonAlt';
 import {useNavigation} from '@react-navigation/native';
 import BackButton from '../../components/NavButtons/BackButton/index.js';
-import Footer from '../../components/Footer/index.js';
 
 const IngredientCustomization = () => {
   const navigation = useNavigation();
@@ -56,7 +55,7 @@ const IngredientCustomization = () => {
                         <Counter
                           minusContainerStyle={styles.minus}
                           plusContainerStyle={styles.plus}
-                          counterTextStyle={{margin: 15}}
+                          counterTextStyle={{margin: 5, width: widthToDp(10)}}
                           minusStyle={{width: 10, height: 2}}
                           plusStyle={{width: 10, height: 10}}
                         />
@@ -82,6 +81,7 @@ const IngredientCustomization = () => {
               <Text style={styles.navbarPageTitle}>Qty</Text>
               <Text style={styles.navbarPageTitle}>Price</Text>
             </View>
+
             {productQuantities.map((item, index) => (
               <View style={styles.pricingContainer}>
                 <Text style={[styles.quantityTitle, {textAlign: 'left'}]}>
