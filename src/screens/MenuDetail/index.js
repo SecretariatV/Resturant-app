@@ -14,6 +14,7 @@ import BackgroundLayout from '../../components/BackgroundLayout';
 import HeaderModed from '../../components/HeaderModed';
 import MenuNavButton from '../../components/MenuNavButton';
 import Hamburger from '../../assets/images/hamburger.png';
+import HorizontalPicker from '@vseslav/react-native-horizontal-picker';
 
 import {heightToDp, widthToDp} from '../../utils/Dimensions';
 import Swiper from 'react-native-swiper';
@@ -81,8 +82,54 @@ const MenuDetail = () => {
     {label: '4.0', value: '4', image: require('../../assets/images/star.png')},
     {label: '5.0', value: '5', image: require('../../assets/images/star.png')},
   ];
+
+  const spiceLevel = ['Low', 'Medium', 'High', 'Very Spicy'];
+  const [selsPice, setSelSpice] = useState(1);
+
+   const portionSize = ['Small', 'Medium', 'Large', 'Extra Large', 'Jumbo'];
+   const [selPortion, setSelPortion] = useState(1);
+
   const handleSelectIngredient = () => {
     navigation.navigate('IngredientCustomization');
+  };
+
+  const renderSpiceLevel = (item, index) => (
+    <TouchableOpacity
+      style={{
+        width: widthToDp(26),
+        alignItems: 'center',
+      }}>
+      <Text
+        style={[
+          styles.levelTxt,
+          {color: selsPice === index ? Colors.GREEN : Colors.WHITE},
+        ]}>
+        {item}
+      </Text>
+    </TouchableOpacity>
+  );
+  const renderPortion = (item, index) => (
+    <TouchableOpacity
+      style={{
+        width: widthToDp(26),
+        alignItems: 'center',
+      }}>
+      <Text
+        style={[
+          styles.levelTxt,
+          {color: selPortion === index ? Colors.GREEN : Colors.WHITE},
+        ]}>
+        {item}
+      </Text>
+    </TouchableOpacity>
+  );
+
+  const handleSetSpiceLevel = ev => {
+    setSelSpice(ev);
+    console.log('swipe cb: ' + ev);
+  };
+  const handleSetPortion = ev => {
+    setSelPortion(ev);
   };
   return (
     <View style={styles.container}>
@@ -213,7 +260,7 @@ const MenuDetail = () => {
                 <Text style={[styles.btnText]}>Spicy Level</Text>
               </View>
             </LinearGradient>
-            <View style={styles.levelContainer}>
+            {/* <View style={styles.levelContainer}>
               <TouchableOpacity>
                 <Text style={styles.levelTxt}>Low</Text>
               </TouchableOpacity>
@@ -223,6 +270,16 @@ const MenuDetail = () => {
               <TouchableOpacity>
                 <Text style={styles.levelTxt}>High</Text>
               </TouchableOpacity>
+            </View> */}
+            <View style={styles.levelContainer}>
+              <HorizontalPicker
+                defaultIndex={selsPice}
+                data={spiceLevel}
+                snapTimeout={250}
+                renderItem={renderSpiceLevel}
+                itemWidth={100}
+                onChange={handleSetSpiceLevel}
+              />
             </View>
 
             <LinearGradient
@@ -242,15 +299,14 @@ const MenuDetail = () => {
               </View>
             </LinearGradient>
             <View style={styles.levelContainer}>
-              <TouchableOpacity>
-                <Text style={styles.levelTxt}>Low</Text>
-              </TouchableOpacity>
-              <TouchableOpacity>
-                <Text style={styles.levelTxt}>Medium</Text>
-              </TouchableOpacity>
-              <TouchableOpacity>
-                <Text style={styles.levelTxt}>High</Text>
-              </TouchableOpacity>
+              <HorizontalPicker
+                defaultIndex={selPortion}
+                data={portionSize}
+                snapTimeout={250}
+                renderItem={renderPortion}
+                itemWidth={100}
+                onChange={handleSetPortion}
+              />
             </View>
           </BackgroundCard>
 
