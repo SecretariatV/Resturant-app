@@ -167,13 +167,14 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    width: '70%',
+    width: '100%',
+    paddingHorizontal: 20,
     marginVertical: 15,
   },
   levelTxt: {
     marginRight: 10,
     marginTop: 10,
-    color: '#828282',
+    color: Colors.WHITE,
   },
   customBtns: {
     flexDirection: 'row',

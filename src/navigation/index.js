@@ -464,7 +464,7 @@ const TabNavigator = () => {
         }}
       /> */}
 
-      {qr ? (
+      {!qr ? (
         <Tab.Screen
           name={'RestaurantMenu'}
           component={RestaurantMenu}
