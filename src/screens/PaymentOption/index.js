@@ -58,6 +58,7 @@ const ShareEqually = () => (
       style={{
         color: Colors.WHITE,
         marginTop: 10,
+        fontSize: 20,
       }}>
       Each Guest Will Pay
     </Text>
@@ -65,7 +66,7 @@ const ShareEqually = () => (
     <GradientText
       style={{
         marginTop: 10,
-        fontSize: 35,
+        fontSize: 50,
         fontFamily: fonts.URBANIST_EXTRABOLD,
       }}>
       $50
@@ -431,7 +432,7 @@ const SecondRoute = () => {
           <Text
             style={{
               color: focused ? Colors.BLACK : Colors.WHITE,
-              fontFamily: fonts.URBANIST_SEMIBOLD,
+              fontFamily: fonts.URBANIST_MEDIUM,
               fontSize: screenToTextSize(4),
             }}>
             {route.title}
@@ -508,7 +509,7 @@ const renderTabBar = props => (
         <Text
           style={{
             color: focused ? Colors.BLACK : Colors.WHITE,
-            fontFamily: fonts.URBANIST_SEMIBOLD,
+            fontFamily: fonts.URBANIST_MEDIUM,
             fontSize: 16,
           }}>
           {route.title}

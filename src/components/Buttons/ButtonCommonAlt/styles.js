@@ -15,7 +15,7 @@ const styles = StyleSheet.create({
   btnText: {
     color: '#ffffff',
     fontFamily: fonts.URBANIST_EXTRABOLD,
-    fontSize: 16,
+    fontSize: 18,
   },
 });
 export {styles};

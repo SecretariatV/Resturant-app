@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
     marginTop: 10,
     marginBottom: 15,
     lineHeight: 18,
-    fontFamily: fonts.URBANIST_MEDIUM,
+    fontFamily: fonts.URBANIST_REGULAR,
     // fontWeight: 400,
   },
   underline: {

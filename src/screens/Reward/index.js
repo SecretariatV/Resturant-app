@@ -60,7 +60,7 @@ const Reward = () => {
               <Loyal />
               <Text
                 style={{
-                  fontFamily: fonts.URBANIST_SEMIBOLD,
+                  fontFamily: fonts.URBANIST_MEDIUM,
                   color: Colors.WHITE,
                   fontSize: 32,
                 }}>
@@ -68,7 +68,7 @@ const Reward = () => {
               </Text>
               <Text
                 style={{
-                  fontFamily: fonts.URBANIST_SEMIBOLD,
+                  fontFamily: fonts.URBANIST_MEDIUM,
                   color: Colors.WHITE,
                   fontSize: 15,
                 }}>

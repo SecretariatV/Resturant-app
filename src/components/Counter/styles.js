@@ -19,9 +19,12 @@ const styles = StyleSheet.create({
   },
 
   counterTxt: {
+    // backgroundColor: 'green',
+    textAlign: 'center',
+
     margin: 30,
     color: Colors.WHITE,
-    fontFamily: fonts.URBANIST_SEMIBOLD,
+    fontFamily: fonts.URBANIST_MEDIUM,
     fontSize: 18,
   },
 });

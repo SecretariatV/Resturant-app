@@ -109,7 +109,7 @@ const styles = StyleSheet.create({
   rating_type: {
     color: Colors.WHITE,
     fontSize: 14,
-    fontFamily: fonts.URBANIST_SEMIBOLD,
+    fontFamily: fonts.URBANIST_MEDIUM,
   },
   resturantDesc: {
     color: Colors.WHITE,
@@ -146,10 +146,10 @@ const styles = StyleSheet.create({
     fontFamily: fonts.URBANIST_EXTRABOLD,
     color: Colors.WHITE,
     alignSelf: 'center',
-    marginTop: 10,
+    marginVertical: 10,
   },
   readyTxt: {
-    fontSize: 18,
+    fontSize: 14,
     fontFamily: fonts.URBANIST_REGULAR,
     color: Colors.WHITE,
     // marginTop: 10,
@@ -175,6 +175,7 @@ const styles = StyleSheet.create({
     marginRight: 10,
     marginTop: 10,
     color: Colors.WHITE,
+    fontFamily: fonts.URBANIST_REGULAR,
   },
   customBtns: {
     flexDirection: 'row',
@@ -188,7 +189,7 @@ const styles = StyleSheet.create({
   },
   headingText: {
     color: Colors.WHITE,
-    fontFamily: fonts.URBANIST_SEMIBOLD,
+    fontFamily: fonts.URBANIST_MEDIUM,
     fontSize: 20,
     marginLeft: 5,
     marginBottom: 10,
@@ -203,7 +204,7 @@ const styles = StyleSheet.create({
   },
   btnText: {
     color: Colors.BLACK,
-    fontFamily: fonts.URBANIST_SEMIBOLD,
+    fontFamily: fonts.URBANIST_MEDIUM,
     fontSize: 16,
   },
 
@@ -220,8 +221,9 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
   selectedTextStyle: {
-    fontSize: 16,
+    fontSize: 20,
     color: '#fff',
+    fontFamily: fonts.URBANIST_BOLD,
     // color: 'red',
     // backgroundColor: 'grey',
   },

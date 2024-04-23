@@ -89,10 +89,10 @@ const styles = StyleSheet.create({
     width: '100%',
     alignSelf: 'center',
     justifyContent: 'center',
-    marginTop: 30,
-    // position: 'absolute',
+    // marginTop: 30,
+    position: 'absolute',
 
-    // bottom: 30,
+    bottom: 30,
   },
 
   counterMain: {

@@ -140,7 +140,7 @@ const MyOrder = () => {
             <Text
               style={{
                 color: Colors.WHITE,
-                fontFamily: fonts.URBANIST_SEMIBOLD,
+                fontFamily: fonts.URBANIST_MEDIUM,
               }}>
               Add new card
             </Text>

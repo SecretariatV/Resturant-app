@@ -10,7 +10,7 @@ const styles = StyleSheet.create({
   forgotTxt: {
     color: Colors.WHITE,
     fontSize: 30,
-    fontFamily: fonts.URBANIST_SEMIBOLD,
+    fontFamily: fonts.URBANIST_MEDIUM,
     marginTop: 10,
   },
   joinWrapper: {

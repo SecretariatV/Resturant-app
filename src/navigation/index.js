@@ -1,12 +1,20 @@
 //packages
 
-import {View, Text, Image, StyleSheet, TouchableOpacity} from 'react-native';
-import React, {useEffect, useRef, useState} from 'react';
+import {
+  View,
+  Text,
+  Image,
+  StyleSheet,
+  TouchableOpacity,
+  SafeAreaView,
+} from 'react-native';
+import React, {useCallback, useEffect, useRef, useState} from 'react';
 // import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {createStackNavigator} from '@react-navigation/stack';
 import {
   getFocusedRouteNameFromRoute,
   NavigationContainer,
+  useNavigation,
 } from '@react-navigation/native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {GestureHandlerRootView} from 'react-native-gesture-handler';
@@ -15,7 +23,7 @@ import {
   DrawerContentScrollView,
   DrawerItemList,
 } from '@react-navigation/drawer';
-import {BottomSheet} from '@rneui/themed';
+// import {BottomSheet} from '@rneui/themed';
 
 // styles
 import {tabNavStyles} from './tabNavigatorStyles';
@@ -81,6 +89,8 @@ import Svg, {Path} from 'react-native-svg';
 import Footer from '../components/Footer/index.js';
 import {setRequestBtn} from '../redux/actions/auth.js';
 import AR from '../screens/AR/index.js';
+import BottomSheet, {BottomSheetView} from '@gorhom/bottom-sheet';
+import {fonts} from '../theme/FontFamily.js';
 
 const Tab = createBottomTabNavigator();
 // const Stack = createNativeStackNavigator();
@@ -229,8 +239,10 @@ const CustomTabBar = ({state, descriptors, navigation}) => (
             ? options.title
             : route.name;
 
-        const isFocused = state.index === index;
+        // const isFocused = state.index === index;
+        const isFocused = state.routes[state.index].key === route.key;
 
+        console.log(isFocused, 'isFocused');
         const onPress = () => {
           const event = navigation.emit({
             type: 'tabPress',
@@ -268,7 +280,12 @@ const CustomTabBar = ({state, descriptors, navigation}) => (
                   source={require('../assets/images/home.png')}
                 />
                 {/* <HomeIcon width={25} height={25} style={{ opacity: 0.5, marginBottom: -5}}/> */}
-                <Text style={{color: '#fff', fontSize: screenToTextSize(3)}}>
+                <Text
+                  style={{
+                    color: '#fff',
+                    fontSize: screenToTextSize(3.2),
+                    fontFamily: fonts.URBANIST_MEDIUM,
+                  }}>
                   Home
                 </Text>
               </View>
@@ -284,8 +301,10 @@ const CustomTabBar = ({state, descriptors, navigation}) => (
             )}
             {label === 'RestaurantMenu' && (
               <View style={tabNavStyles.tabNavMenuBtn}>
+                <Image source={require('../assets/images/menu-tab-back.png')} />
+
                 <Image
-                  style={{width: 30, height: 30}}
+                  style={{width: 30, height: 30, position: 'absolute'}}
                   source={require('../assets/images/menu.png')}
                 />
               </View>
@@ -293,10 +312,13 @@ const CustomTabBar = ({state, descriptors, navigation}) => (
 
             {label === 'QrCode' && (
               <View style={tabNavStyles.tabNavQrCodeScannerBtn}>
+                {/* <> */}
+                <Image source={require('../assets/images/menu-tab-back.png')} />
                 <QrIcon
                   width={screenToTextSize(8)}
-                  style={{width: 24, height: 24}}
+                  style={{width: 24, height: 24, position: 'absolute'}}
                 />
+                {/* </> */}
               </View>
             )}
 
@@ -315,7 +337,12 @@ const CustomTabBar = ({state, descriptors, navigation}) => (
                   style={{width: 30, height: 30}}
                   source={require('../assets/images/cart.png')}
                 />
-                <Text style={{color: '#fff', fontSize: screenToTextSize(3)}}>
+                <Text
+                  style={{
+                    color: '#fff',
+                    fontSize: screenToTextSize(3.2),
+                    fontFamily: fonts.URBANIST_MEDIUM,
+                  }}>
                   Cart
                 </Text>
               </View>
@@ -336,11 +363,18 @@ const CustomTabBar = ({state, descriptors, navigation}) => (
                   style={{resizeMode: 'contain', width: 30, height: 30}}
                   source={require('../assets/images/tabbar-pay.png')}
                 />
-                <Text style={{color: '#fff', fontSize: screenToTextSize(3)}}>
+                <Text
+                  style={{
+                    color: '#fff',
+                    fontSize: screenToTextSize(3.2),
+                    fontFamily: fonts.URBANIST_MEDIUM,
+                  }}>
                   Pay
                 </Text>
               </View>
             )}
+
+            {isFocused && <View style={tabNavStyles.tabIndicator} />}
           </TouchableOpacity>
         );
       })}
@@ -383,9 +417,9 @@ const TabNavigator = () => {
           let iconName;
           console.log(route.name, 'route.name');
 
-          if (route.name === 'RestaurantMain') {
-            iconName = focused ? 'home' : 'home-outline';
-          }
+          // if (route.name === 'RestaurantMain') {
+          //   iconName = focused ? 'home' : 'home-outline';
+          // }
 
           // else if (route.name === "Settings") {
           //   iconName = focused ? "settings" : "ios-settings-sharp";
@@ -457,7 +491,7 @@ const TabNavigator = () => {
         }}
       /> */}
 
-      {!qr ? (
+      {qr ? (
         <Tab.Screen
           name={'RestaurantMenu'}
           component={RestaurantMenu}
@@ -467,12 +501,14 @@ const TabNavigator = () => {
             tabBarLabel: 'RestaurantMenu',
             tabBarIcon: () => {
               return (
-                <View style={tabNavStyles.tabNavMenuBtn}>
-                  <MenuIcon
-                    width={screenToTextSize(8)}
-                    style={{width: 12, height: 12}}
-                  />
-                </View>
+                // <View style={tabNavStyles.tabNavMenuBtn}>
+                //   <MenuIcon
+                //     width={screenToTextSize(8)}
+                //     style={{width: 12, height: 12}}
+                //   />
+                // </View>
+                <View></View>
+                // <Image source={require('../assets/images/menu-tab-back.png')} />
               );
             },
           }}
@@ -489,12 +525,13 @@ const TabNavigator = () => {
             tabBarLabel: 'QrCode',
             tabBarIcon: () => {
               return (
-                <View style={tabNavStyles.tabNavQrCodeScannerBtn}>
-                  <QrIcon
-                    width={screenToTextSize(8)}
-                    style={{width: 24, height: 24}}
-                  />
-                </View>
+                <View></View>
+                // <View style={tabNavStyles.tabNavQrCodeScannerBtn}>
+                // <QrIcon
+                //   width={screenToTextSize(8)}
+                //   style={{width: 24, height: 24}}
+                // />
+                // </View>
               );
             },
           })}
@@ -565,6 +602,13 @@ const TabNavigator = () => {
 };
 
 const RootNavigator = () => {
+  const bottomSheetRef = useRef(null);
+  // const navigation = useNavigation();
+
+  // callbacks
+  const handleSheetChanges = useCallback(index => {
+    console.log('handleSheetChanges', index);
+  }, []);
   const dispatch = useDispatch();
 
   const user = useSelector(state => state.auth.user);
@@ -580,58 +624,132 @@ const RootNavigator = () => {
       <NavigationContainer>
         {user ? <DrawerScreens /> : <AuthStack />}
         {req ? (
-          <BottomSheet
-            modalProps={{}}
-            isVisible={req}
-            backdropStyle={{backgroundColor: 'rgba(0,0,0,0.7)'}}>
-            <View style={tabNavStyles.bottomSheetContainer}>
-              <Image
-                style={tabNavStyles.bottomImg}
-                source={require('../assets/images/bottom_bg.png')}
-              />
-              <View style={tabNavStyles.bottomView}>
-                <View style={tabNavStyles.bottomSubView}>
-                  <Text style={tabNavStyles.requestText}>Request</Text>
-                  <TouchableOpacity
-                    onPress={() => {
-                      dispatch(setRequestBtn(false));
-                      // navigation.goBack();
-                    }}>
-                    <CloseFilterBtn width={30} height={30} />
-                  </TouchableOpacity>
-                </View>
-                <View>
-                  <ButtonsCommon
-                    btnText={'Call waiter'}
-                    containerStyle={{marginTop: 10}}
-                    btnTextStyle={{marginLeft: 10}}
-                    img
-                    imageSource={require('../assets/images/waiter.png')}
-                    btnStyle={tabNavStyles.btnStyle}
-                    imgStyle={{width: 30, height: 30}}
-                  />
-                  <ButtonsCommon
-                    btnText={'Coal change'}
-                    containerStyle={{marginTop: 10}}
-                    btnTextStyle={{marginLeft: 10}}
-                    img
-                    imageSource={require('../assets/images/coal.png')}
-                    btnStyle={tabNavStyles.btnStyle}
-                    imgStyle={{width: 30, height: 30}}
-                  />
+          // <BottomSheet
+          //   modalProps={{}}
+          //   isVisible={req}
+          //   // containerStyle={{backgroundColor: 'rgba(0, 0, 0, 0.5)'}} // Adjust the backdrop color if needed
+          //   // backdropOpacity={0}
+          //   backdropComponent={() => null} // Set backdropComponent to null to remove the backdrop
+          //   // backdropStyle={{backgroundColor: 'transparent'}}
+          // >
+          //   <View style={tabNavStyles.bottomSheetContainer}>
+          //     <Image
+          //       style={tabNavStyles.bottomImg}
+          //       source={require('../assets/images/bottom_bg.png')}
+          //     />
+          //     <View style={tabNavStyles.bottomView}>
+          //       <View style={tabNavStyles.bottomSubView}>
+          //         <Text style={tabNavStyles.requestText}>Request</Text>
+          //         <TouchableOpacity
+          //           onPress={() => {
+          //             dispatch(setRequestBtn(false));
+          //             // navigation.goBack();
+          //           }}>
+          //           <CloseFilterBtn width={30} height={30} />
+          //         </TouchableOpacity>
+          //       </View>
+          //       <View>
+          //         <ButtonsCommon
+          //           btnText={'Call waiter'}
+          //           containerStyle={{marginTop: 10}}
+          //           btnTextStyle={{marginLeft: 10}}
+          //           img
+          //           imageSource={require('../assets/images/waiter.png')}
+          //           btnStyle={tabNavStyles.btnStyle}
+          //           imgStyle={{width: 30, height: 30}}
+          //         />
+          //         <ButtonsCommon
+          //           btnText={'Coal change'}
+          //           containerStyle={{marginTop: 10}}
+          //           btnTextStyle={{marginLeft: 10}}
+          //           img
+          //           imageSource={require('../assets/images/coal.png')}
+          //           btnStyle={tabNavStyles.btnStyle}
+          //           imgStyle={{width: 30, height: 30}}
+          //         />
 
-                  <ButtonsCommon
-                    btnText={'Ashtray'}
-                    containerStyle={{marginTop: 10}}
-                    btnTextStyle={{marginLeft: 20}}
-                    img
-                    imageSource={require('../assets/images/ashtray.png')}
-                    btnStyle={tabNavStyles.btnStyle}
-                    imgStyle={{width: 30, height: 30}}
-                  />
+          //         <ButtonsCommon
+          //           btnText={'Ashtray'}
+          //           containerStyle={{marginTop: 10}}
+          //           btnTextStyle={{marginLeft: 20}}
+          //           img
+          //           imageSource={require('../assets/images/ashtray.png')}
+          //           btnStyle={tabNavStyles.btnStyle}
+          //           imgStyle={{width: 30, height: 30}}
+          //         />
+          //       </View>
+          //     </View>
+          //   </View>
+          // </BottomSheet>
+          <BottomSheet
+            // handleIndicatorStyle={{height: 0}}
+            // backdropComponent={() => null}
+
+            handleComponent={null}
+            // handleIndicatorStyle={{display: 'none'}}
+            enableDynamicSizing={false}
+            snapPoints={[400, '40%']}
+            ref={bottomSheetRef}
+            onChange={handleSheetChanges}
+            // renderBackground={() => (
+            //   // <FastImage
+            //   //   style={tabNavStyles.bottomImg}
+            //   //   source={require('../assets/images/bottom_bg.png')}
+            //   //   // source={{ uri: 'path_to_your_image' }} // or require('path_to_your_image')
+            //   //   // style={{ flex: 1, resizeMode: 'cover' }}
+            //   // />
+            // )}
+          >
+            <BottomSheetView style={tabNavStyles.contentContainer}>
+              <View style={tabNavStyles.bottomSheetContainer}>
+                <Image
+                  style={tabNavStyles.bottomImg}
+                  source={require('../assets/images/bottom_bg.png')}
+                />
+                <View style={tabNavStyles.bottomView}>
+                  <View style={tabNavStyles.bottomSubView}>
+                    <Text style={tabNavStyles.requestText}>Request</Text>
+                    <TouchableOpacity
+                      onPress={() => {
+                        dispatch(setRequestBtn(false));
+                        // navigation.goBack();
+                      }}>
+                      <CloseFilterBtn width={30} height={30} />
+                    </TouchableOpacity>
+                  </View>
+                  <View>
+                    <ButtonsCommon
+                      btnText={'Call waiter'}
+                      containerStyle={{marginTop: 10}}
+                      btnTextStyle={{marginLeft: 10}}
+                      img
+                      imageSource={require('../assets/images/waiter.png')}
+                      btnStyle={tabNavStyles.btnStyle}
+                      imgStyle={{width: 30, height: 30}}
+                    />
+                    <ButtonsCommon
+                      btnText={'Coal change'}
+                      containerStyle={{marginTop: 10}}
+                      btnTextStyle={{marginLeft: 10}}
+                      img
+                      imageSource={require('../assets/images/coal.png')}
+                      btnStyle={tabNavStyles.btnStyle}
+                      imgStyle={{width: 30, height: 30}}
+                    />
+
+                    <ButtonsCommon
+                      btnText={'Ashtray'}
+                      containerStyle={{marginTop: 10}}
+                      btnTextStyle={{marginLeft: 20}}
+                      img
+                      imageSource={require('../assets/images/ashtray.png')}
+                      btnStyle={tabNavStyles.btnStyle}
+                      imgStyle={{width: 30, height: 30}}
+                    />
+                  </View>
                 </View>
               </View>
-            </View>
+            </BottomSheetView>
           </BottomSheet>
         ) : (
           <></>

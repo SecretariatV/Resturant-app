@@ -3,6 +3,7 @@ import React, {useState} from 'react';
 import {styles} from './styles';
 import {Image} from 'react-native';
 import {Colors} from '../../theme';
+import {widthToDp} from '../../utils/Dimensions';
 
 const Counter = ({
   minusContainerStyle,
@@ -46,9 +47,16 @@ const Counter = ({
           </TouchableOpacity>
         </View>
       ) : (
-        <View style={{alignItems: 'center'}}>
+        <View
+          style={{
+            alignItems: 'center',
+            // backgroundColor: 'red',
+            justifyContent: 'center',
+            width: widthToDp(15),
+          }}>
           <TouchableOpacity
-            style={[styles.minusContainer, minusContainerStyle]}>
+            style={[styles.minusContainer, minusContainerStyle]}
+            onPress={() => handleDecrement()}>
             <Image
               source={require('../../assets/images/minus.png')}
               style={[{width: 26, height: 3}, minusStyle]}
@@ -59,7 +67,7 @@ const Counter = ({
 
           <TouchableOpacity
             style={[styles.minusContainer, plusContainerStyle]}
-            onPress={() => value + 1}>
+            onPress={() => handleIncrement()}>
             <Image
               source={require('../../assets/images/plus.png')}
               style={[{width: 20, height: 20}, plusStyle]}

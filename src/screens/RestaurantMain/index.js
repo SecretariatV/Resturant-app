@@ -40,7 +40,7 @@ import CloseFilterBtn from '../../assets/images/closeBtnFilter.svg';
 import {widthToDp} from '../../utils/Dimensions';
 import {getPlatformSpecificValue} from '../../utils/helper';
 import {setQrCode} from '../../redux/actions/auth';
-import { fonts } from '../../theme/FontFamily';
+import {fonts} from '../../theme/FontFamily';
 const RestaurantMain = () => {
   const navigation = useNavigation();
   const dispatch = useDispatch();
@@ -94,16 +94,11 @@ const RestaurantMain = () => {
     dispatch(setQrCode(false));
   }, []);
 
-
   const handleAboutToggle = () => {
     return false;
   };
 
-  const restaurantCategories = [
-    'Nearby',
-    'All',
-    'Trending',
-  ];
+  const restaurantCategories = ['Nearby', 'All', 'Trending'];
 
   const renderItem = ({item}) => (
     <ResturantCard
@@ -132,7 +127,6 @@ const RestaurantMain = () => {
     }, {}),
   );
 
-
   const layout = useWindowDimensions();
 
   const [index, setIndex] = useState(0);
@@ -155,7 +149,7 @@ const RestaurantMain = () => {
           angle={820}
           start={{x: 0, y: 0.5}}
           end={{x: 1, y: 0.5}}
-          style={{ borderRadius: 24}}>
+          style={{borderRadius: 24}}>
           <Text
             style={{
               color: focused ? Colors.BLACK : Colors.WHITE,
@@ -202,6 +196,7 @@ const RestaurantMain = () => {
                 marginTop: widthToDp(5),
                 width: '70%',
                 textAlign: 'center',
+                fontFamily: fonts.URBANIST_MEDIUM,
               }}>
               Scan the shareabill QR code on the table to start ordering.
             </Text>
@@ -224,7 +219,9 @@ const RestaurantMain = () => {
             style={styles.introHeader.userNameContainer}>
             <Text style={styles.introHeader.userName}>Hey</Text>
 
-            <Text style={styles.gradientBoxText}>Mark Anderson</Text>
+            <GradientText style={styles.gradientBoxText}>
+              Mark Anderson
+            </GradientText>
           </View>
 
           <LinearGradient

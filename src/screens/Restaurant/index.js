@@ -17,13 +17,14 @@ import BackgroundLayout from '../../components/BackgroundLayout';
 
 import HeaderModed from '../../components/HeaderModed';
 import Clock from '../../assets/images/clock.svg';
+import Star from '../../assets/images/starV2.svg';
+
 import Dress from '../../assets/images/dress.svg';
 import Age from '../../assets/images/age.svg';
 import Star from '../../assets/images/ratingStar.svg';
 import StarRating from '../../components/StarRating';
 
 import CusineSvg from '../../assets/images/cuisineServe.svg';
-// import CusineImg from '../../assets/images/cuisineServeImg';
 import Location from '../../assets/images/locWithBack.svg';
 
 import resturant_cover from '../../assets/images/restaurant_cover.png';
@@ -33,6 +34,7 @@ import ReviewCard from '../../components/ReviewCard';
 import {reviews, ageGroup, cuisine, dressCode} from '../../utils/demodata';
 import HamBurgerButton from '../../components/NavButtons/HamBurgerButton';
 import {SelectCountry} from 'react-native-element-dropdown';
+import {fonts} from '../../theme/FontFamily';
 
 const Restaurant = () => {
   const [expanded, setExpanded] = useState(true);
@@ -94,7 +96,13 @@ const Restaurant = () => {
                 }}>
                 <Clock width={32} height={32} style={{marginRight: 5}} />
 
-                <Text style={{color: Colors.WHITE}}>{item.codeType}</Text>
+                <Text
+                  style={{
+                    color: Colors.WHITE,
+                    fontFamily: fonts.URBANIST_MEDIUM,
+                  }}>
+                  {item.codeType}
+                </Text>
               </View>
             ))}
           </View>
@@ -117,6 +125,7 @@ const Restaurant = () => {
                     color: Colors.WHITE,
                     marginRight: 10,
                     marginTop: 10,
+                    fontFamily: fonts.URBANIST_MEDIUM,
                   }}>
                   {item.type}
                 </Text>
@@ -140,6 +149,8 @@ const Restaurant = () => {
                   style={{
                     color: Colors.WHITE,
                     marginRight: 10,
+                    fontFamily: fonts.URBANIST_MEDIUM,
+
                     marginTop: 10,
                   }}>
                   {item.age}
@@ -171,9 +182,9 @@ const Restaurant = () => {
             <View>
               <LinearGradient
                 colors={['#00000022', '#FFFFFFFF', '#FFFFFFFF']}
-                style={{borderRadius: 18, flexWrap: 'nowrap', margin: 1}}
-                start={{x: 0, y: 0.5}}
-                end={{x: 1, y: 0.5}}>
+                style={{borderRadius: 18, margin: 1}}
+                start={{x: 0, y: 4}}
+                end={{x: 1, y: 0}}>
                 <Pressable
                   style={styles.review_btn}
                   onPress={() => {
@@ -257,6 +268,11 @@ const Restaurant = () => {
         <View
           class="restaurant-content-container"
           style={styles.restaurantContentContainer}>
+          {/* <View style={{position: 'absolute', backgroundColor: 'red'}}>
+            <Text>4.3</Text>
+            <Star />
+          </View> */}
+
           <View
             class="restaurant-rating-container"
             style={styles.resturantRatingContainer}>

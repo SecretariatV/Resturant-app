@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     width: widthToDp(80),
     fontSize: screenToTextSize(5),
-    marginVertical: 10,
+    marginVertical: 5,
   },
   gradientTextColored: {
     color: '#00FC92',
@@ -113,7 +113,7 @@ const styles = StyleSheet.create({
 
   headingText: {
     color: Colors.WHITE,
-    fontFamily: fonts.URBANIST_SEMIBOLD,
+    fontFamily: fonts.URBANIST_MEDIUM,
     fontSize: 20,
     marginLeft: 5,
   },
@@ -144,7 +144,7 @@ const styles = StyleSheet.create({
   rating_type: {
     color: Colors.WHITE,
     fontSize: 14,
-    fontFamily: fonts.URBANIST_SEMIBOLD,
+    fontFamily: fonts.URBANIST_MEDIUM,
   },
 
   tabContainer: {
@@ -239,7 +239,7 @@ const styles = StyleSheet.create({
     fontFamily: fonts.URBANIST_EXTRABOLD,
   },
   reciept: {
-    fontFamily: fonts.URBANIST_SEMIBOLD,
+    fontFamily: fonts.URBANIST_MEDIUM,
     fontSize: 20,
     color: Colors.WHITE,
     alignSelf: 'flex-start',

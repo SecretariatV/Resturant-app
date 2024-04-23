@@ -1,6 +1,6 @@
 import React from 'react';
 import {styles} from './styles';
-import MenuBg from '../../assets/images/footerTwo.svg';
+import MenuBg from '../../assets/images/new_tab.svg';
 import {width, widthToDp} from '../../utils/Dimensions.js';
 
 const Footer = () => {

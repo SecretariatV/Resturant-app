@@ -94,7 +94,7 @@ const styles = StyleSheet.create({
 
   headingText: {
     color: Colors.WHITE,
-    fontFamily: fonts.URBANIST_SEMIBOLD,
+    fontFamily: fonts.URBANIST_MEDIUM,
     fontSize: 20,
     marginLeft: 5,
   },
@@ -125,7 +125,7 @@ const styles = StyleSheet.create({
   rating_type: {
     color: Colors.WHITE,
     fontSize: 14,
-    fontFamily: fonts.URBANIST_SEMIBOLD,
+    fontFamily: fonts.URBANIST_MEDIUM,
   },
 
   tabContainer: {
@@ -176,14 +176,14 @@ const styles = StyleSheet.create({
     borderRadius: 15,
   },
   menuTxt: {
-    fontSize: 14,
+    fontSize: 16,
     color: Colors.WHITE,
-    fontFamily: fonts.URBANIST_REGULAR,
+    fontFamily: fonts.URBANIST_MEDIUM,
   },
   menuActiveTxt: {
-    fontSize: 14,
+    fontSize: 16,
     color: Colors.ACTIVE_COLOR,
-    fontFamily: fonts.URBANIST_REGULAR,
+    fontFamily: fonts.URBANIST_MEDIUM,
   },
   reviewList: {
     marginTop: 10,

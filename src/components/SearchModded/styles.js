@@ -35,6 +35,8 @@ const styles = StyleSheet.create({
     paddingLeft: 10,
     marginHorizontal: 5,
     height: heightToDp(10),
+    fontFamily: fonts.URBANIST_REGULAR,
+    fontSize: 17,
   },
   btnText: {
     color: '#ffffff',

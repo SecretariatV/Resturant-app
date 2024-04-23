@@ -2,6 +2,26 @@
   "migIndex": 1,
   "data": [
     {
+      "path": "src/assets/fonts/DINNextLTArabic-Bold.ttf",
+      "sha1": "547cacd42999b0a1c81afee7764a709fb8cba35e"
+    },
+    {
+      "path": "src/assets/fonts/DINNextLTArabic-Heavy.ttf",
+      "sha1": "df523e061b227a30ee6b2bf901f4ea690bb913ad"
+    },
+    {
+      "path": "src/assets/fonts/DINNextLTArabic-Medium.ttf",
+      "sha1": "b4c5167411013bd90279a8565ac24bd3da268c52"
+    },
+    {
+      "path": "src/assets/fonts/DINNextLTArabic-Regular.ttf",
+      "sha1": "60daf7b1561ff332842c3fbec60ac1c35d442a0f"
+    },
+    {
+      "path": "src/assets/fonts/DINNextLTArabic-UltraLight.ttf",
+      "sha1": "207234887d0608617bdd992c9234e9a1ab3859de"
+    },
+    {
       "path": "src/assets/fonts/Urbanist-Black.ttf",
       "sha1": "516d2b16481f274b7b5d4a61eb317e6e77892671"
     },

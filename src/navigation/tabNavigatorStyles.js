@@ -18,6 +18,11 @@ const tabNavStyles = StyleSheet.create({
     paddingVertical: 10,
     height: heightToDp(20),
   },
+  tabIndicator: {
+    color: 'green',
+    backgroundColor: 'red',
+    // width: 30,
+  },
   tabNavRequestBtn: {
     justifyContent: 'center',
     alignItems: 'center',
@@ -29,7 +34,8 @@ const tabNavStyles = StyleSheet.create({
   },
   tabNavRequestBtnText: {
     color: '#fff',
-    fontSize: screenToTextSize(3),
+    fontSize: screenToTextSize(3.2),
+    fontFamily: fonts.URBANIST_MEDIUM,
   },
   tabNavMenuBtn: {
     justifyContent: 'center',
@@ -84,12 +90,12 @@ const tabNavStyles = StyleSheet.create({
     borderTopRightRadius: 25,
   },
   bottomImg: {
-    height: heightToDp(100),
+    height: '100%',
     width: widthToDp(100),
     position: 'absolute',
     bottom: 0,
-    borderTopLeftRadius: 25,
-    borderTopRightRadius: 25,
+    borderTopLeftRadius: 15,
+    borderTopRightRadius: 15,
   },
   bottomView: {
     marginHorizontal: 15,
@@ -148,6 +154,10 @@ const tabNavStyles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  contentContainer: {
+    flex: 1,
+    // alignItems: 'center',
   },
 });
 export {tabNavStyles};
