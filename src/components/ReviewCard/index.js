@@ -4,8 +4,9 @@ import {styles} from './styles';
 import {Rating} from 'react-native-ratings';
 import FadedSeparator from '../FadedSeparator';
 import {widthToDp} from '../../utils/Dimensions';
+import StarRating from '../StarRating';
 
-const ReviewCard = ({name, time, detail, img}) => {
+const ReviewCard = ({name, time, detail, rating}) => {
   return (
     <View style={{}}>
       <View style={styles.review_container}>
@@ -19,18 +20,13 @@ const ReviewCard = ({name, time, detail, img}) => {
               width: widthToDp(80),
             }}>
             <Text style={styles.name}>{name}</Text>
-            {/* <Image
-              source={require('../../assets/images/three_dots.png')}
-              style={{width: 12, height: 12, marginTop: 5}}
-              resizeMode="contain"
-            /> */}
           </View>
           <View
             style={{
               flexDirection: 'row',
               alignItems: 'center',
             }}>
-            <Rating imageSize={20} ratingCount={5} tintColor="#03020C" />
+            <StarRating rating={rating}  />
             <Text style={styles.time}>{time}</Text>
           </View>
         </View>

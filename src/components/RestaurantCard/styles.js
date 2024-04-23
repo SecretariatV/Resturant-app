@@ -45,9 +45,20 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
   },
+  restaurantDetails: {
+    flexDirection: 'column',
+    width: widthToDp(50),
+    justifyContent: 'space-between',
+    alignItems: 'start',
+  },
+  restaurantRating: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    // width: widthToDp(50),
+  },
   name: {
     color: Colors.WHITE,
-    fontSize: 18,
+    fontSize: 16,
     fontFamily: fonts.URBANIST_BOLD,
   },
 
@@ -57,14 +68,30 @@ const styles = StyleSheet.create({
   },
 
   rating: {
-    color: Colors.WHITE,
+    color: Colors.BLACK,
     fontSize: 14,
     fontFamily: fonts.URBANIST_BOLD,
     paddingRight: 5,
+    position: 'absolute',
+    left: 13,
+    top: 15,
+    width: 26,
+    textAlign: 'center',
+    alignItems: 'center',
+    // backgroundColor: '#f0f3'
+  },
+  restaurantRatingStar: {
+    width: 45,
+    height: 45,
+    position: 'relative',
+    flexDirection: 'column',
   },
   starImg: {
-    width: 15,
-    height: 15,
+    width: 45,
+    height: 45,
+    position: 'absolute',
+    left: 0,
+    top: 0,
   },
 
   location: {

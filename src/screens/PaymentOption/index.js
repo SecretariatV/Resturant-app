@@ -38,6 +38,7 @@ import {
   getPlatformSpecificValue,
   screenToTextSize,
 } from '../../utils/helper.js';
+import StepSlider from '../../components/StepSlider/index.js';
 
 const ShareEqually = () => (
   <View style={{flex: 1, alignItems: 'center'}}>
@@ -259,6 +260,22 @@ const ShareByPercent = () => {
             }}></View>
         </View>
       </View>
+      {/* <View style={styles.paymentUserBox} class="payment-user-box">
+        <View
+          class="payment-user-box-name-n-price-container"
+          style={styles.paymentUserBoxNamenPriceContainer}>
+          <View
+            class="payment-user-box-username"
+            style={styles.paymentUserBoxUserName}>
+            <Image source={require('../../assets/images/profileImg.png')} />
+            <Text style={styles.userName}>Hasan</Text>
+          </View>
+          <View style={{alignItems: 'center'}}>
+            <Text style={styles.percentItemPrice}>${progress}</Text>
+          </View>
+        </View>
+        <StepSlider min={0} max={100} initVal={0} />
+      </View> */}
     </ScrollView>
   );
 };
