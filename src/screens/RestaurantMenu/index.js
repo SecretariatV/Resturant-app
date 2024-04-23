@@ -6,6 +6,7 @@ import {
   FlatList,
   Alert,
   ImageBackground,
+  useWindowDimensions,
 } from 'react-native';
 import React, {useState, useEffect} from 'react';
 import {BottomSheet} from '@rneui/themed';
@@ -32,9 +33,9 @@ import ToggleButton from '../../components/ToggleButton';
 import CloseFilterBtn from '../../assets/images/closeBtnFilter.svg';
 import HeartIcon from '../../assets/images/fav.png';
 // import HeartIcon from '../../assets/images/heartIcon.svg';
-import Star from '../../assets/images/star.svg';
+import Star from '../../assets/images/ratingStar.svg';
 //utils
-import {cartData, dressCode} from '../../utils/demodata';
+import {dressCode} from '../../utils/demodata';
 import {height, heightToDp, widthToDp} from '../../utils/Dimensions';
 import {fonts} from '../../theme/FontFamily';
 import {Colors} from '../../theme';
@@ -44,6 +45,7 @@ import {Allergies} from '../../utils/demodata';
 import FavouriteButton from '../../components/NavButtons/FavouriteButton';
 import {useDispatch, useSelector} from 'react-redux';
 import {setQrCode} from '../../redux/actions/auth';
+import {SceneMap, TabBar, TabView} from 'react-native-tab-view';
 
 const RestaurantMenu = () => {
   const dispatch = useDispatch();
@@ -65,7 +67,36 @@ const RestaurantMenu = () => {
     //   dispatch(setQrCode(false));
     // };
   }, []);
-
+  const cartData = [
+    {
+      productName: 'Burger',
+      price: '50',
+    },
+    {
+      productName: 'Shawarma',
+      price: '50',
+    },
+    {
+      productName: 'Onion',
+      price: '50',
+    },
+    {
+      productName: 'Shawarma',
+      price: '50',
+    },
+    {
+      productName: 'Onion',
+      price: '50',
+    },
+    {
+      productName: 'Shawarma',
+      price: '50',
+    },
+    {
+      productName: 'Onion',
+      price: '50',
+    },
+  ];
   const categories = [
     {
       name: 'Breakfast',
@@ -98,6 +129,145 @@ const RestaurantMenu = () => {
   const navMenu = () => {
     navigation.navigate('HomeScreens');
   };
+
+  const routes = categories.map((category, idx) => ({
+    key: `tab${idx}`,
+    title: category.slug,
+  }));
+
+  console.log('dfdf', cartData);
+  const renderScene = SceneMap(
+    routes.reduce((scenes, route) => {
+      console.log(scenes, route);
+      scenes[route.key] = () => (
+        <FlatList
+          style={styles.categoryListStyle}
+          showsHorizontalScrollIndicator={false}
+          scrollEnabled={false}
+          data={cartData}
+          keyExtractor={(item, index) => item.slug + index.toString()}
+          renderItem={({itemRen, index}) => (
+            <View
+              key={index}
+              className="vertical-product-list-item"
+              style={styles.verticalPrdListItem}>
+              <View
+                className="vertical-product-list-left-cont"
+                style={styles.verticalPrdListItem.leftCont}>
+                <View
+                  className="product-name-cont"
+                  style={styles.verticalPrdListItem.prdNameCont}>
+                  <Text
+                    className="product-name"
+                    style={styles.verticalPrdListItem.prdName}>
+                    Burger
+                  </Text>
+                  <View
+                    className="product-rating-cont"
+                    style={styles.verticalPrdListItem.prdRatingCont}>
+                    <Text
+                      className="product-rating"
+                      style={styles.verticalPrdListItem.prdRating}>
+                      4.5
+                    </Text>
+                    <Star
+                      width={20}
+                      style={styles.verticalPrdListItem.prdRatingStar}
+                    />
+                  </View>
+                </View>
+                <View
+                  className="product-allergies-cont"
+                  style={styles.verticalPrdListItem.prdAllergiesCont}>
+                  {Allergies.map((itemAl, index) => (
+                    <>
+                      <View
+                        key={index}
+                        className="allergies-bg"
+                        style={styles.verticalPrdListItem.prdAllergiesBg}>
+                        {itemAl.imgUrl}
+                      </View>
+                    </>
+                  ))}
+                </View>
+                <View
+                  className="product-pricing-cont"
+                  style={styles.verticalPrdListItem.prdPricingCont}>
+                  <Text
+                    style={[
+                      styles.price,
+                      {
+                        textDecorationLine: 'line-through',
+                        textDecorationStyle: 'solid',
+                        marginRight: 10,
+                        color: '#F7F7F899',
+                      },
+                    ]}>
+                    $100
+                  </Text>
+
+                  <Text style={styles.price}>$100</Text>
+                </View>
+              </View>
+              <View
+                className="vertical-product-list-right-cont"
+                style={styles.verticalPrdListItem.rightCont}>
+                <View
+                  className="menu-item-large-imgCont"
+                  style={styles.verticalPrdListItem.imgCont}>
+                  <Image
+                    style={styles.verticalPrdListItem.image}
+                    source={require('../../assets/images/burger_one.png')}
+                  />
+                </View>
+              </View>
+            </View>
+          )}
+        />
+      );
+      return scenes;
+    }, {}),
+  );
+
+  const layout = useWindowDimensions();
+
+  const [index, setIndex] = useState(0);
+
+  const renderTabBar = props => (
+    <TabBar
+      {...props}
+      scrollEnabled={true}
+      tabStyle={{width: 'auto'}}
+      indicatorStyle={{backgroundColor: 'transparent'}}
+      style={{backgroundColor: 'transparent'}}
+      renderLabel={({route, focused, index}) => (
+        
+        <LinearGradient
+          key={index}
+          colors={
+            focused
+              ? ['#00F69299', '#00A7F7FF']
+              : ['transparent', 'transparent']
+          }
+          useAngle={true}
+          angle={820}
+          start={{x: 0, y: 0.5}}
+          end={{x: 1, y: 0.5}}
+          style={{borderRadius: 24}}>
+          <Text
+            style={{
+              color: focused ? Colors.BLACK : Colors.WHITE,
+              fontFamily: fonts.URBANIST_SEMIBOLD,
+              fontSize: 16,
+              paddingVertical: 2,
+              paddingHorizontal: 10,
+            }}>
+            {route.title}
+          </Text>
+        </LinearGradient>
+      )}
+    />
+  );
   return (
     <SafeAreaProvider>
       <View style={styles.container}>
@@ -178,21 +348,31 @@ const RestaurantMenu = () => {
                           source={require('../../assets/images/burger_one.png')}
                         />
                       </View>
-                      <View
-                        className="menu-item-smallbox-nameCont"
-                        style={styles.menuItemSmallbox.nameCont}>
+                      <View style={styles.menuItemSmallbox.nameCont}>
                         <Text
                           className="menu-item-smallbox-name"
                           style={styles.menuItemSmallbox.itemName}>
                           Burger 1
                         </Text>
                         <View
-                          className="menu-item-smallbox-ratingCont"
-                          style={styles.menuItemSmallbox.ratingCont}>
-                          <Text style={styles.menuItemSmallbox.rating}>
-                            4.5
+                          className="menu-item-smallbox-nameCont"
+                          style={styles.menuItemSmallbox.nameContChild}>
+                          <Text
+                            className="menu-item-smallbox-name"
+                            style={styles.menuItemSmallbox.itemPrice}>
+                            100$
                           </Text>
-                          <Star width={20} />
+                          <View
+                            className="menu-item-smallbox-ratingCont"
+                            style={styles.menuItemSmallbox.ratingCont}>
+                            <Star
+                              style={styles.menuItemSmallbox.ratingIcon}
+                              width={30}
+                            />
+                            <Text style={styles.menuItemSmallbox.rating}>
+                              4.5
+                            </Text>
+                          </View>
                         </View>
                       </View>
                     </TouchableOpacity>
@@ -206,8 +386,9 @@ const RestaurantMenu = () => {
                   keyExtractor={(item, index) => item.id + index.toString()}
                   horizontal
                   renderItem={({item, index}) => (
-                    <View
+                    <TouchableOpacity
                       key={index}
+                      onPress={handlePress}
                       className="menu-item-smallbox"
                       style={styles.menuItemSmallbox}>
                       <View
@@ -218,52 +399,66 @@ const RestaurantMenu = () => {
                           source={require('../../assets/images/burger_one.png')}
                         />
                       </View>
-                      <View
-                        className="menu-item-smallbox-nameCont"
-                        style={styles.menuItemSmallbox.nameCont}>
+                      <View style={styles.menuItemSmallbox.nameCont}>
                         <Text
                           className="menu-item-smallbox-name"
                           style={styles.menuItemSmallbox.itemName}>
                           Burger 2
                         </Text>
                         <View
-                          className="menu-item-smallbox-ratingCont"
-                          style={styles.menuItemSmallbox.ratingCont}>
-                          <Text style={styles.menuItemSmallbox.rating}>
-                            2.5
+                          className="menu-item-smallbox-nameCont"
+                          style={styles.menuItemSmallbox.nameContChild}>
+                          <Text
+                            className="menu-item-smallbox-name"
+                            style={styles.menuItemSmallbox.itemPrice}>
+                            100$
                           </Text>
-                          <Star width={20} />
+                          <View
+                            className="menu-item-smallbox-ratingCont"
+                            style={styles.menuItemSmallbox.ratingCont}>
+                            <Star
+                              style={styles.menuItemSmallbox.ratingIcon}
+                              width={30}
+                            />
+                            <Text style={styles.menuItemSmallbox.rating}>
+                              4.5
+                            </Text>
+                          </View>
                         </View>
                       </View>
-                    </View>
+                    </TouchableOpacity>
                   )}
                 />
               )}
             </View>
           </View>
-          <BlurView
+          {/* <BlurView
             blurType="ultraThinMaterialDark"
             overlayColor="#ffffff00"
             reducedTransparencyFallbackColor="#f00"
             downsampleFactor={25}>
-            <Text
-              style={{
-                paddingLeft: screenToTextSize(5),
-                fontSize: fonts.URBANIST_BOLD,
-                fontSize: screenToTextSize(6),
-                fontWeight: 'bold',
-                color: Colors.GREEN,
-                paddingVertical: 20,
-                marginTop: 30,
-                // marginBottom: 100,
-              }}>
-              Categories
-            </Text>
-          </BlurView>
+           
+          </BlurView> */}
+          <LinearGradient
+            colors={activeColors}
+            useAngle
+            angle={300}
+            style={{width: widthToDp(100)}}
+            start={{x: 1, y: 0.5}}
+            end={{x: 1, y: 0.5}}>
+            <Text style={styles.categoryTitle}>Categories</Text>
+          </LinearGradient>
 
           <View
             className="items-by-category"
             style={styles.categoryWiseContainer}>
+            {/* <TabView
+              navigationState={{index, routes}}
+              renderTabBar={renderTabBar}
+              renderScene={renderScene}
+              onIndexChange={setIndex}
+              initialLayout={{width: layout.width}}
+            /> */}
             <FlatList
               data={cartData}
               style={styles.horizontalListStyle}
@@ -309,14 +504,6 @@ const RestaurantMenu = () => {
                             key={index}
                             className="allergies-bg"
                             style={styles.verticalPrdListItem.prdAllergiesBg}>
-                            {/* <Text
-                              style={{
-                                color: '#000',
-                                backgroundColor: '#fff',
-                                width: 16,
-                              }}>
-                              {item.name}
-                            </Text> */}
                             {item.imgUrl}
                           </View>
                         </>
@@ -350,26 +537,6 @@ const RestaurantMenu = () => {
                       <Image
                         style={styles.verticalPrdListItem.image}
                         source={require('../../assets/images/burger_one.png')}
-                      />
-                    </View>
-                    <View
-                      style={{alignItems: 'center', justifyContent: 'center'}}>
-                      <Counter
-                        vertical
-                        minusContainerStyle={{
-                          height: heightToDp(7),
-                          width: widthToDp(7),
-                          borderRadius: 8,
-                        }}
-                        plusContainerStyle={{
-                          height: heightToDp(6),
-                          width: widthToDp(6),
-                          borderRadius: 8,
-                          backgroundColor: Colors.GREEN,
-                        }}
-                        counterTextStyle={{margin: 15}}
-                        minusStyle={{width: 10, height: 2}}
-                        plusStyle={{width: 10, height: 10}}
                       />
                     </View>
                   </View>

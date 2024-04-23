@@ -8,6 +8,7 @@ import {
   Modal,
   TouchableHighlight,
   SafeAreaView,
+  useWindowDimensions,
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import {BottomSheet} from '@rneui/themed';
@@ -16,6 +17,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import {Colors} from '../../theme';
 import {styles} from './styles';
 import {useNavigation} from '@react-navigation/native';
+import {TabView, SceneMap, TabBar} from 'react-native-tab-view';
 
 import SkipButton from '../../components/Buttons/SkipButton';
 import HeaderModed from '../../components/HeaderModed';
@@ -38,6 +40,7 @@ import CloseFilterBtn from '../../assets/images/closeBtnFilter.svg';
 import {widthToDp} from '../../utils/Dimensions';
 import {getPlatformSpecificValue} from '../../utils/helper';
 import {setQrCode} from '../../redux/actions/auth';
+import { fonts } from '../../theme/FontFamily';
 const RestaurantMain = () => {
   const navigation = useNavigation();
   const dispatch = useDispatch();
@@ -91,6 +94,17 @@ const RestaurantMain = () => {
     dispatch(setQrCode(false));
   }, []);
 
+
+  const handleAboutToggle = () => {
+    return false;
+  };
+
+  const restaurantCategories = [
+    'Nearby',
+    'All',
+    'Trending',
+  ];
+
   const renderItem = ({item}) => (
     <ResturantCard
       name={item.name}
@@ -99,9 +113,64 @@ const RestaurantMain = () => {
     />
   );
 
-  const handleAboutToggle = () => {
-    return false;
-  };
+  const routes = restaurantCategories.map((category, idx) => ({
+    key: `tab${idx}`,
+    title: category,
+  }));
+  const renderScene = SceneMap(
+    routes.reduce((scenes, route) => {
+      scenes[route.key] = () => (
+        <FlatList
+          showsVerticalScrollIndicator={false}
+          style={styles.listStyle}
+          data={restaurants}
+          renderItem={renderItem}
+          keyExtractor={item => item.id} // Key extractor for each item
+        />
+      );
+      return scenes;
+    }, {}),
+  );
+
+
+  const layout = useWindowDimensions();
+
+  const [index, setIndex] = useState(0);
+
+  const renderTabBar = props => (
+    <TabBar
+      {...props}
+      scrollEnabled={true}
+      tabStyle={{width: 'auto'}}
+      indicatorStyle={{backgroundColor: 'transparent'}}
+      style={{backgroundColor: 'transparent'}}
+      renderLabel={({route, focused}) => (
+        <LinearGradient
+          colors={
+            focused
+              ? ['#00F69299', '#00A7F7FF']
+              : ['transparent', 'transparent']
+          }
+          useAngle={true}
+          angle={820}
+          start={{x: 0, y: 0.5}}
+          end={{x: 1, y: 0.5}}
+          style={{ borderRadius: 24}}>
+          <Text
+            style={{
+              color: focused ? Colors.BLACK : Colors.WHITE,
+              fontFamily: fonts.URBANIST_SEMIBOLD,
+              fontSize: 16,
+              paddingVertical: 2,
+              paddingHorizontal: 10,
+            }}>
+            {route.title}
+          </Text>
+        </LinearGradient>
+      )}
+    />
+  );
+
   return (
     <View style={styles.container}>
       <Modal
@@ -404,13 +473,22 @@ const RestaurantMain = () => {
         </ScrollView>
       </BottomSheet>
       <SearchModded isVisible={isVisible} setIsVisible={setIsVisible} />
-      <FlatList
+
+      <TabView
+        navigationState={{index, routes}}
+        renderTabBar={renderTabBar}
+        renderScene={renderScene}
+        onIndexChange={setIndex}
+        initialLayout={{width: layout.width}}
+      />
+
+      {/* <FlatList
         showsVerticalScrollIndicator={false}
         style={styles.listStyle}
         data={restaurants}
         renderItem={renderItem}
         keyExtractor={item => item.id} // Key extractor for each item
-      />
+      /> */}
     </View>
   );
 };

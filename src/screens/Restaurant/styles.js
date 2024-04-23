@@ -3,6 +3,7 @@ import {fonts} from '../../theme/FontFamily';
 // eslint-disable-next-line no-unused-vars
 import {heightToDp, width, widthToDp} from '../../utils/Dimensions';
 import {Colors} from '../../theme';
+import { getPlatformSpecificValue } from '../../utils/helper';
 
 const styles = StyleSheet.create({
   container: {
@@ -10,7 +11,7 @@ const styles = StyleSheet.create({
     // paddingHorizontal: 15,
   },
   bannerImage: {
-    top: -20,
+    // top: -20,
     width: widthToDp(100),
     height: heightToDp(100),
   },
@@ -20,6 +21,8 @@ const styles = StyleSheet.create({
   restaurantContentContainer: {
     justifyContent: 'flex-end',
     height: heightToDp(70),
+    position: 'relative',
+    marginTop: getPlatformSpecificValue(-200, -200)
   },
   resturantContainer: {
     justifyContent: 'flex-end',
@@ -34,6 +37,7 @@ const styles = StyleSheet.create({
   resturantRatingContainer: {
     flexDirection: 'row',
     marginRight: 15,
+    position: 'relative',
   },
   resturantSubContainer: {
     flexDirection: 'row',
@@ -55,11 +59,17 @@ const styles = StyleSheet.create({
     marginHorizontal: 15,
   },
   rating: {
-    color: Colors.WHITE,
+    color: Colors.BLACK,
     fontFamily: fonts.URBANIST_BOLD,
-    fontSize: 18,
+    fontSize: 14,
     marginBottom: 10,
     marginRight: 5,
+    position: 'absolute',
+    left: 26,
+    top: 14,
+    width: 26,
+    textAlign: 'center',
+    alignItems: 'center',
   },
   metaDetails: {
     marginTop: 100,

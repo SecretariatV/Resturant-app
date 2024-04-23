@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
     borderTopLeftRadius: 25,
     borderTopRightRadius: 25,
   },
- 
+
   saveButton: {
     position: 'absolute',
     bottom: 30,
@@ -112,37 +112,61 @@ const styles = StyleSheet.create({
       objectFit: 'contain',
       backgroundColor: '#88888855',
       borderRadius: 15,
+      borderColor: Colors.GREEN,
+      borderWidth: 2,
     },
     nameCont: {
       // flex: 1,
       justifyContent: 'space-between',
       width: '100%',
       height: screenToTextSize(12),
-      alignItems: 'center',
-      flexDirection: 'row',
+      alignItems: 'start',
+      justifyContent: 'end',
+      flexDirection: 'column',
       paddingHorizontal: screenToTextSize(2),
-      // backgroundColor: 'red',
+      position: 'relative',
+      top: -10,
+    },
+    nameContChild: {
+      flexDirection: 'row',
+      justifyContent: 'space-between',
     },
     itemName: {
       color: '#fff',
-      fontSize: screenToTextSize(4),
+      fontSize: screenToTextSize(3.5),
       fontFamily: fonts.URBANIST_BOLD,
+      marginBottom: 5,
     },
     ratingCont: {
       // flex:1,
       flexDirection: 'row',
       justifyContent: 'center',
       alignItems: 'center',
+      position: 'relative',
       // width: '100%',
       // height: screenToTextSize(12),
       // paddingHorizontal: screenToTextSize(2),
+      // backgroundColor: 'red',
     },
     rating: {
-      color: '#fff',
-      fontSize: screenToTextSize(4),
+      color: Colors.BLACK,
+      fontSize: screenToTextSize(2),
       fontFamily: fonts.URBANIST_BOLD,
+      width: 25,
+      textAlign: 'center',
+      alignItems: 'center',
+      // backgroundColor: '#f00',
     },
-  },  
+    itemPrice: {
+      color: Colors.GREEN,
+      fontFamily: fonts.URBANIST_EXTRABOLD,
+      fontSize: screenToTextSize(5),
+    },
+    ratingIcon: {
+      position: 'absolute',
+      top: -12,
+    },
+  },
   categoryWiseTabItem: {
     textAlign: 'center',
     width: '100%',
@@ -155,7 +179,7 @@ const styles = StyleSheet.create({
     width: '100%',
     fontSize: screenToTextSize(3),
     paddingVertical: heightToDp(1),
-  }, 
+  },
   filterHeading: {
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -167,12 +191,6 @@ const styles = StyleSheet.create({
     fontSize: 22,
     paddingHorizontaal: 5,
   },
-  saveButton: {
-    position: 'absolute',
-    bottom: 30,
-    left: 20,
-    right: 20,
-  }, 
   restaurantFilterContainer: {
     borderRadius: 25,
     marginTop: 20,
@@ -205,7 +223,7 @@ const styles = StyleSheet.create({
   priceRangeLabelBottom: {
     marginBottom: 20,
   },
-   
+
   price: {
     color: Colors.GREEN,
     fontSize: 22,
@@ -214,8 +232,16 @@ const styles = StyleSheet.create({
   horizontalListStyle: {
     marginTop: 10,
   },
- 
- 
+  categoryListStyle: {
+    backgroundColor: 'red',
+  },
+  categoryTitle: {
+    paddingLeft: screenToTextSize(5),
+    fontSize: screenToTextSize(6),
+    fontWeight: 'bold',
+    color: Colors.BLACK,
+    paddingVertical: 5,
+  },
   verticalPrdListItem: {
     marginHorizontal: 5,
     width: widthToDp(95),
@@ -297,6 +323,8 @@ const styles = StyleSheet.create({
       alignItems: 'center',
       resizeMode: 'cover',
       paddingHorizontaal: screenToTextSize(10),
+      borderColor: Colors.GREEN,
+      borderWidth: 2,
     },
     image: {
       width: screenToTextSize(25),

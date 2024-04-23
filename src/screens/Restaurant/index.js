@@ -19,6 +19,8 @@ import HeaderModed from '../../components/HeaderModed';
 import Clock from '../../assets/images/clock.svg';
 import Dress from '../../assets/images/dress.svg';
 import Age from '../../assets/images/age.svg';
+import Star from '../../assets/images/ratingStar.svg';
+import StarRating from '../../components/StarRating';
 
 import CusineSvg from '../../assets/images/cuisineServe.svg';
 // import CusineImg from '../../assets/images/cuisineServeImg';
@@ -212,6 +214,7 @@ const Restaurant = () => {
                       name={item.name}
                       time={item.time}
                       detail={item.detail}
+                      rating={Math.floor(Math.random() * (5 - 1 + 1)) + 1}
                     />
                   )}
                 />
@@ -247,31 +250,23 @@ const Restaurant = () => {
         slotLeft={<HamBurgerButton />}
         slotCenter={<></>}
         slotRight={<></>}
-        bannerImage={
-          <ImageBackground
-            source={resturant_cover}
-            style={styles.bannerImage}
-          />
-        }
       />
 
       <ScrollView style={styles.restaurantScrollView}>
+        <Image source={resturant_cover} style={styles.bannerImage} />
         <View
           class="restaurant-content-container"
           style={styles.restaurantContentContainer}>
           <View
+            class="restaurant-rating-container"
+            style={styles.resturantRatingContainer}>
+            <Star width={50} style={{marginLeft: 15}} />
+            <Text style={styles.rating}>4.5</Text>
+          </View>
+          <View
             class="restaurant-header-container"
             style={styles.resturantHeaderContainer}>
             <Text style={styles.resturantName}>Restaurant Name</Text>
-            <View
-              class="restaurant-rating-container"
-              style={styles.resturantRatingContainer}>
-              <Text style={styles.rating}>4.5</Text>
-              <Image
-                source={require('../../assets/images/star.png')}
-                style={{width: 20, height: 20}}
-              />
-            </View>
           </View>
           <Text style={styles.resturantDesc}>
             Lorem Ipsum is simply dummy text of the printing and typesetting
