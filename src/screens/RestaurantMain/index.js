@@ -8,6 +8,7 @@ import {
   Modal,
   TouchableHighlight,
   SafeAreaView,
+  Pressable,
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import {BottomSheet} from '@rneui/themed';
@@ -107,12 +108,16 @@ const RestaurantMain = () => {
     <View style={styles.container}>
       <Modal
         animationType="slide"
+        onBackdropPress={!modalVisible}
         transparent={true}
         visible={modalVisible}
         onRequestClose={() => {
-          Alert.alert('Modal has been closed.');
+          setModalVisible(false);
+          // Alert.alert('Modal has been closed.');
         }}>
-        <View style={{backgroundColor: 'rgba(0, 0, 0, 0.8)', flex: 1}}>
+        <Pressable
+          style={{backgroundColor: 'rgba(0, 0, 0, 0.8)', flex: 1}}
+          onPress={() => setModalVisible(false)}>
           <TouchableHighlight
             style={{alignItems: 'flex-end', paddingTop: widthToDp(15)}}
             onPress={() => {
@@ -142,7 +147,7 @@ const RestaurantMain = () => {
             <Image source={scan_arrow} style={{width: 200, height: 200}} />
             {/* </View> */}
           </View>
-        </View>
+        </Pressable>
       </Modal>
       <BackgroundLayout />
       <HeaderModed

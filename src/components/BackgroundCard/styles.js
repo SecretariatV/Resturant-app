@@ -17,10 +17,11 @@ const styles = StyleSheet.create({
   circleTwoGradient: {
     margin: 1,
     width: '100%',
-
+    // opacity: 0.8,
+    // backgroundColor:'#7074C422',
     backgroundColor: '#FFFFFF22',
     borderColor: '#fff4',
-    borderWidth: 1,
+    // borderWidth: 1,
     borderRadius: 20,
     alignItems: 'center',
     justifyContent: 'center',

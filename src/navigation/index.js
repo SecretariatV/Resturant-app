@@ -624,82 +624,13 @@ const RootNavigator = () => {
       <NavigationContainer>
         {user ? <DrawerScreens /> : <AuthStack />}
         {req ? (
-          // <BottomSheet
-          //   modalProps={{}}
-          //   isVisible={req}
-          //   // containerStyle={{backgroundColor: 'rgba(0, 0, 0, 0.5)'}} // Adjust the backdrop color if needed
-          //   // backdropOpacity={0}
-          //   backdropComponent={() => null} // Set backdropComponent to null to remove the backdrop
-          //   // backdropStyle={{backgroundColor: 'transparent'}}
-          // >
-          //   <View style={tabNavStyles.bottomSheetContainer}>
-          //     <Image
-          //       style={tabNavStyles.bottomImg}
-          //       source={require('../assets/images/bottom_bg.png')}
-          //     />
-          //     <View style={tabNavStyles.bottomView}>
-          //       <View style={tabNavStyles.bottomSubView}>
-          //         <Text style={tabNavStyles.requestText}>Request</Text>
-          //         <TouchableOpacity
-          //           onPress={() => {
-          //             dispatch(setRequestBtn(false));
-          //             // navigation.goBack();
-          //           }}>
-          //           <CloseFilterBtn width={30} height={30} />
-          //         </TouchableOpacity>
-          //       </View>
-          //       <View>
-          //         <ButtonsCommon
-          //           btnText={'Call waiter'}
-          //           containerStyle={{marginTop: 10}}
-          //           btnTextStyle={{marginLeft: 10}}
-          //           img
-          //           imageSource={require('../assets/images/waiter.png')}
-          //           btnStyle={tabNavStyles.btnStyle}
-          //           imgStyle={{width: 30, height: 30}}
-          //         />
-          //         <ButtonsCommon
-          //           btnText={'Coal change'}
-          //           containerStyle={{marginTop: 10}}
-          //           btnTextStyle={{marginLeft: 10}}
-          //           img
-          //           imageSource={require('../assets/images/coal.png')}
-          //           btnStyle={tabNavStyles.btnStyle}
-          //           imgStyle={{width: 30, height: 30}}
-          //         />
-
-          //         <ButtonsCommon
-          //           btnText={'Ashtray'}
-          //           containerStyle={{marginTop: 10}}
-          //           btnTextStyle={{marginLeft: 20}}
-          //           img
-          //           imageSource={require('../assets/images/ashtray.png')}
-          //           btnStyle={tabNavStyles.btnStyle}
-          //           imgStyle={{width: 30, height: 30}}
-          //         />
-          //       </View>
-          //     </View>
-          //   </View>
-          // </BottomSheet>
           <BottomSheet
-            // handleIndicatorStyle={{height: 0}}
-            // backdropComponent={() => null}
-
             handleComponent={null}
             // handleIndicatorStyle={{display: 'none'}}
             enableDynamicSizing={false}
             snapPoints={[400, '40%']}
             ref={bottomSheetRef}
-            onChange={handleSheetChanges}
-            // renderBackground={() => (
-            //   // <FastImage
-            //   //   style={tabNavStyles.bottomImg}
-            //   //   source={require('../assets/images/bottom_bg.png')}
-            //   //   // source={{ uri: 'path_to_your_image' }} // or require('path_to_your_image')
-            //   //   // style={{ flex: 1, resizeMode: 'cover' }}
-            //   // />
-            // )}
-          >
+            onChange={handleSheetChanges}>
             <BottomSheetView style={tabNavStyles.contentContainer}>
               <View style={tabNavStyles.bottomSheetContainer}>
                 <Image

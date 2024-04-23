@@ -28,13 +28,13 @@ const styles = StyleSheet.create({
     width: '100%',
     // marginTop: 15,
     marginVertical: 10,
-    alignItems: 'center',
+    // alignItems: 'center',
     // justifyContent: 'center',
   },
 
   myOrderSubContainer: {
     flexDirection: 'row',
-
+    width: '50%',
     alignItems: 'center',
   },
   productContainer: {
@@ -50,18 +50,24 @@ const styles = StyleSheet.create({
     color: Colors.WHITE,
     fontFamily: fonts.URBANIST_EXTRABOLD,
     fontSize: 22,
-    marginTop: 10,
+    // marginTop: 10,
   },
   productPrice: {
-    fontFamily: fonts.URBANIST_EXTRABOLD,
-    fontSize: 22,
+    fontFamily: fonts.URBANIST_MEDIUM,
+    fontSize: 16,
+    color: Colors.GREEN,
+  },
+  timePrice: {
+    fontFamily: fonts.URBANIST_REGULAR,
+    fontSize: 14,
     color: Colors.GREEN,
   },
   qtyContainer: {
-    flexDirection: 'row',
+    // flexDirection: 'row',
     // backgroundColor: 'red',
     alignItems: 'center',
-    marginLeft: 10,
+    marginTop: widthToDp(2),
+    // marginLeft: 10,
   },
 
   qty: {
@@ -77,7 +83,7 @@ const styles = StyleSheet.create({
   },
   quantityTitle: {
     color: Colors.WHITE,
-    fontFamily: fonts.URBANIST_REGULAR,
+    fontFamily: fonts.URBANIST_MEDIUM,
     fontSize: 16,
     marginTop: 10,
     alignSelf: 'center',
@@ -113,9 +119,8 @@ const styles = StyleSheet.create({
 
   grandTotalContainer: {
     flexDirection: 'row',
-    width: '100%',
+    width: '90%',
     justifyContent: 'space-between',
-    paddingHorizontal: 15,
     marginBottom: 10,
   },
   totalText: {
@@ -124,6 +129,7 @@ const styles = StyleSheet.create({
     color: Colors.WHITE,
     fontFamily: fonts.URBANIST_EXTRABOLD,
     fontSize: 20,
+    paddingHorizontal: 15,
   },
 
   totalPrice: {
@@ -136,6 +142,7 @@ const styles = StyleSheet.create({
   customizeTxt: {
     fontFamily: fonts.URBANIST_EXTRABOLD,
     fontSize: 22,
+    color: Colors.WHITE,
   },
 });
 export {styles};
