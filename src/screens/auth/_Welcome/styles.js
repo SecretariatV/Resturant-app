@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
   },
   byeTxt: {
     color: '#01CA78',
-    fontFamily: fonts.URBANIST_SEMIBOLD,
+    fontFamily: fonts.URBANIST_MEDIUM,
     fontSize: 18,
     marginTop: widthToDp(7),
     textAlign: 'center',

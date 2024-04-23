@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
   lightText: {
     color: Colors.WHITE,
     fontSize: 16,
-    fontFamily: fonts.URBANIST_THIN,
+    fontFamily: fonts.URBANIST_REGULAR,
   },
   cardContainer: {
     flexDirection: 'row',
@@ -69,19 +69,20 @@ const styles = StyleSheet.create({
 
   location: {
     color: '#CBCBCA',
-    marginVertical: 5,
+    // marginVertical: 5,
     marginLeft: 10,
   },
 
   cuisineContainer: {
     flexDirection: 'row',
-    alignItems: 'center',
+    // alignItems: 'center',
     justifyContent: 'space-between',
   },
 
   cuisine: {
     color: Colors.WHITE,
     marginVertical: 5,
+    fontFamily: fonts.URBANIST_MEDIUM,
   },
 
   arrowContainer: {

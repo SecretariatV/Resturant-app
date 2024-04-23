@@ -23,13 +23,14 @@ const styles = StyleSheet.create({
     color: '#ffffff',
     fontSize: 24,
     paddingHorizontal: 5,
+    // fontWeight: '900',
     // paddingHorizontal: 15,
   },
   byeTxt: {
     color: '#01CA78',
-    fontFamily: fonts.URBANIST_SEMIBOLD,
+    fontFamily: fonts.URBANIST_MEDIUM,
     fontSize: screenToTextSize(5),
-    marginTop: widthToDp(7),
+    marginTop: widthToDp(4),
     textAlign: 'center',
     // marginHorizontal: 5
     // paddingHorizontal: ,
@@ -91,7 +92,7 @@ const styles = StyleSheet.create({
   },
   dotContainer: {
     alignItems: 'center',
-    marginTop: widthToDp(10),
+    marginTop: widthToDp(8),
     flexDirection: 'row',
     alignSelf: 'center',
   },

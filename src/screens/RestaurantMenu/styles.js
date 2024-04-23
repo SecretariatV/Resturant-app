@@ -148,6 +148,7 @@ const styles = StyleSheet.create({
     width: '100%',
     fontSize: screenToTextSize(3),
     color: '#fff7',
+    fontFamily: fonts.URBANIST_MEDIUM,
   },
   categoryWiseTabItemActive: {
     color: '#000',
@@ -155,6 +156,7 @@ const styles = StyleSheet.create({
     width: '100%',
     fontSize: screenToTextSize(3),
     paddingVertical: heightToDp(1),
+    fontFamily: fonts.URBANIST_MEDIUM,
   },
   filterHeading: {
     flexDirection: 'row',

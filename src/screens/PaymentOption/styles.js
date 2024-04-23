@@ -2,7 +2,7 @@ import {StyleSheet} from 'react-native';
 import {fonts} from '../../theme/FontFamily';
 import {heightToDp, width, widthToDp} from '../../utils/Dimensions';
 import {Colors} from '../../theme';
-import { getPlatformSpecificValue, screenToTextSize } from '../../utils/helper';
+import {getPlatformSpecificValue, screenToTextSize} from '../../utils/helper';
 
 const styles = StyleSheet.create({
   container: {
@@ -133,7 +133,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 16,
     paddingHorizontal: 8,
     paddingTop: 8,
-    marginBottom: 20
+    marginBottom: 20,
   },
   paymentUserBoxNamenPriceContainer: {
     flexDirection: 'row',
@@ -161,7 +161,7 @@ const styles = StyleSheet.create({
   percentItemPrice: {
     color: Colors.GREEN,
     fontWeight: 'bold',
-    fontSize: screenToTextSize(5)
+    fontSize: screenToTextSize(5),
   },
   totalPrice: {
     // marginLeft: 10,
@@ -223,7 +223,7 @@ const styles = StyleSheet.create({
   amountTxt: {
     fontFamily: fonts.URBANIST_BOLD,
     fontSize: screenToTextSize(8),
-    marginTop: getPlatformSpecificValue(10,-5),
+    marginTop: getPlatformSpecificValue(3, -5),
   },
   shareABill: {
     fontSize: screenToTextSize(6),

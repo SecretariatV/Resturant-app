@@ -44,7 +44,7 @@ const styles = StyleSheet.create({
   },
   productName: {
     color: Colors.WHITE,
-    fontFamily: fonts.URBANIST_SEMIBOLD,
+    fontFamily: fonts.URBANIST_MEDIUM,
     fontSize: screenToTextSize(4),
     marginTop: 10,
   },

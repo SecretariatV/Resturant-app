@@ -81,7 +81,6 @@ const Thankyou = () => {
                 borderRadius: heightToDp(9),
                 flexWrap: 'nowrap',
                 width: '90%',
-                height: heightToDp(20),
               }}
               start={{x: 0, y: 0.5}}
               end={{x: 1, y: 0.5}}>

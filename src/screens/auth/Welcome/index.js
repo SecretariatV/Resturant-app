@@ -23,27 +23,6 @@ const local_data = [
   //     uri: 'https://www.vigcenter.com/public/all/images/default-image.jpg',
   //   },
   // },
-  // {
-  //   value: '3',
-  //   lable: 'Country 3',
-  //   image: {
-  //     uri: 'https://www.vigcenter.com/public/all/images/default-image.jpg',
-  //   },
-  // },
-  // {
-  //   value: '4',
-  //   lable: 'Country 4',
-  //   image: {
-  //     uri: 'https://www.vigcenter.com/public/all/images/default-image.jpg',
-  //   },
-  // },
-  // {
-  //   value: '5',
-  //   lable: 'Country 5',
-  //   image: {
-  //     uri: 'https://www.vigcenter.com/public/all/images/default-image.jpg',
-  //   },
-  // },
 ];
 const Welcome = props => {
   const [country, setCountry] = useState('1');
@@ -95,7 +74,6 @@ const Welcome = props => {
           </>
         }
       />
-      {/* <HeaderCommon show={false} /> */}
 
       <Swiper
         style={styles.wrapper}
@@ -138,13 +116,7 @@ const Welcome = props => {
             </Text>
           </View>
           <View style={styles.dotContainer}>
-            {/* <LinearGradient
-              colors={['#28A79B', '#02ABEE']}
-              style={styles.greenDot}
-              start={{x: 0, y: 0.5}}
-              end={{x: 1, y: 0.5}}> */}
             <View style={styles.sliderDot}></View>
-            {/* </LinearGradient> */}
 
             <View style={styles.sliderDotTwo}></View>
           </View>

@@ -32,6 +32,7 @@ import ReviewCard from '../../components/ReviewCard';
 import {reviews, ageGroup, cuisine, dressCode} from '../../utils/demodata';
 import HamBurgerButton from '../../components/NavButtons/HamBurgerButton';
 import {SelectCountry} from 'react-native-element-dropdown';
+import {fonts} from '../../theme/FontFamily';
 
 const Restaurant = () => {
   const [expanded, setExpanded] = useState(true);
@@ -93,7 +94,13 @@ const Restaurant = () => {
                 }}>
                 <Clock width={32} height={32} style={{marginRight: 5}} />
 
-                <Text style={{color: Colors.WHITE}}>{item.codeType}</Text>
+                <Text
+                  style={{
+                    color: Colors.WHITE,
+                    fontFamily: fonts.URBANIST_MEDIUM,
+                  }}>
+                  {item.codeType}
+                </Text>
               </View>
             ))}
           </View>
@@ -116,6 +123,7 @@ const Restaurant = () => {
                     color: Colors.WHITE,
                     marginRight: 10,
                     marginTop: 10,
+                    fontFamily: fonts.URBANIST_MEDIUM,
                   }}>
                   {item.type}
                 </Text>
@@ -139,6 +147,8 @@ const Restaurant = () => {
                   style={{
                     color: Colors.WHITE,
                     marginRight: 10,
+                    fontFamily: fonts.URBANIST_MEDIUM,
+
                     marginTop: 10,
                   }}>
                   {item.age}

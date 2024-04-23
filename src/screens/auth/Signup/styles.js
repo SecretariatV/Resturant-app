@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
     color: '#fff',
     marginTop: 5,
     marginBottom: 15,
-    width: '90%',
+    // width: '90%',
     // lineHeight: 18,
   },
   circleGradient: {

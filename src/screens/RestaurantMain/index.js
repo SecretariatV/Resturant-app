@@ -38,6 +38,7 @@ import CloseFilterBtn from '../../assets/images/closeBtnFilter.svg';
 import {widthToDp} from '../../utils/Dimensions';
 import {getPlatformSpecificValue} from '../../utils/helper';
 import {setQrCode} from '../../redux/actions/auth';
+import {fonts} from '../../theme/FontFamily';
 const RestaurantMain = () => {
   const navigation = useNavigation();
   const dispatch = useDispatch();
@@ -133,6 +134,7 @@ const RestaurantMain = () => {
                 marginTop: widthToDp(5),
                 width: '70%',
                 textAlign: 'center',
+                fontFamily: fonts.URBANIST_MEDIUM,
               }}>
               Scan the shareabill QR code on the table to start ordering.
             </Text>
@@ -155,7 +157,9 @@ const RestaurantMain = () => {
             style={styles.introHeader.userNameContainer}>
             <Text style={styles.introHeader.userName}>Hey</Text>
 
-            <Text style={styles.gradientBoxText}>Mark Anderson</Text>
+            <GradientText style={styles.gradientBoxText}>
+              Mark Anderson
+            </GradientText>
           </View>
 
           <LinearGradient

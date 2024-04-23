@@ -18,6 +18,11 @@ const tabNavStyles = StyleSheet.create({
     paddingVertical: 10,
     height: heightToDp(20),
   },
+  tabIndicator: {
+    color: 'green',
+    backgroundColor: 'red',
+    // width: 30,
+  },
   tabNavRequestBtn: {
     justifyContent: 'center',
     alignItems: 'center',
@@ -29,7 +34,8 @@ const tabNavStyles = StyleSheet.create({
   },
   tabNavRequestBtnText: {
     color: '#fff',
-    fontSize: screenToTextSize(3),
+    fontSize: screenToTextSize(3.2),
+    fontFamily: fonts.URBANIST_MEDIUM,
   },
   tabNavMenuBtn: {
     justifyContent: 'center',

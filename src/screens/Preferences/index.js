@@ -18,11 +18,7 @@ const Preferences = () => {
   return (
     <View style={styles.container}>
       <BackgroundLayout />
-      {/* <HeaderCommon
-        showSkipBtn={false}
-        title={'Menu Customization'}
-        showValet={false}
-      /> */}
+
       <HeaderModed
         slotLeft={<></>}
         slotCenter={<Text style={styles.headerTitle}>Menu Customization</Text>}
@@ -36,10 +32,8 @@ const Preferences = () => {
       </View>
 
       <ButtonsCommon
-        // btnStyle={styles.saveButton}
         containerStyle={styles.saveButton}
         btnText={'Next'}
-        // navRoute="PreferencesSuccess"
         onPress={() => handleDynamicNavigation()}
       />
     </View>

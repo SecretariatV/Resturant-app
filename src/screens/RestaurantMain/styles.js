@@ -17,6 +17,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     marginHorizontal: 15,
+    // fontSize: 22,
     wrapper: {
       width: widthToDp(90),
       flexDirection: 'row',
@@ -52,8 +53,11 @@ const styles = StyleSheet.create({
     alignItems: 'start',
   },
   activeOrderText: {
-    fontSize: screenToTextSize(3),
+    fontSize: 12,
+    fontFamily: fonts.URBANIST_MEDIUM,
+    // fontSize
     color: Colors.GREEN,
+    marginBottom: 5,
     height: 15,
   },
   activeOrderBar: {

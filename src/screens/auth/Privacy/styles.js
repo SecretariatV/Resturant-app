@@ -9,7 +9,7 @@ const styles = StyleSheet.create({
   },
   privacyHeading: {
     marginTop: 10,
-    fontFamily: fonts.URBANIST_SEMIBOLD,
+    fontFamily: fonts.URBANIST_MEDIUM,
     fontSize: 32,
     color: Colors.WHITE,
   },

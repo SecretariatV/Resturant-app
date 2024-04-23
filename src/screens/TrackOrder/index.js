@@ -15,13 +15,9 @@ import {useNavigation} from '@react-navigation/native';
 import HeaderModed from '../../components/HeaderModed';
 import BackgroundLayout from '../../components/BackgroundLayout';
 
-import Footer from '../../components/Footer/index.js';
-
 import BackgroundCard from '../../components/BackgroundCard/index.js';
 
 import {width, widthToDp} from '../../utils/Dimensions.js';
-
-import {useSharedValue, withDecay} from 'react-native-reanimated';
 
 import FadedSeparator from '../../components/FadedSeparator/index.js';
 

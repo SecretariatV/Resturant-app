@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
   },
   closeButton: {
     fontSize: 16,
-    fontFamily: fonts.URBANIST_SEMIBOLD,
+    fontFamily: fonts.URBANIST_MEDIUM,
   },
 });
 export {styles};

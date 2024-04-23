@@ -8,13 +8,14 @@ import BackgroundCard from '../../components/BackgroundCard';
 import FadedSeparator from '../../components/FadedSeparator';
 import {Image} from 'react-native';
 import Counter from '../../components/Counter';
-import {widthToDp} from '../../utils/Dimensions';
+import {width, widthToDp} from '../../utils/Dimensions';
 import {Ingredients, productQuantities} from '../../utils/demodata';
 import SizeButton from '../../components/SizeButton';
 import ButtonsCommon from '../../components/Buttons/ButtonCommon.js';
 import ButtonsCommonAlt from '../../components/Buttons/ButtonCommonAlt';
 import {useNavigation} from '@react-navigation/native';
 import BackButton from '../../components/NavButtons/BackButton/index.js';
+import GradientText from '../../components/GradientText/index.js';
 
 const IngredientCustomization = () => {
   const navigation = useNavigation();
@@ -25,17 +26,26 @@ const IngredientCustomization = () => {
   return (
     <View style={styles.container}>
       <BackgroundLayout />
-      <View style={{paddingHorizontal: 15}}>
+      <View
+        style={{
+          paddingHorizontal: 15,
+          alignItems: 'center',
+        }}>
         <ScrollView>
           <HeaderModed
             slotLeft={<BackButton onPress={() => navigation.goBack()} />}
             slotCenter={<Text style={styles.headerTitle}>Customization</Text>}
           />
-          <BackgroundCard childrenStyle={{alignItems: 'flex-start'}}>
+          <BackgroundCard
+            childrenStyle={{
+              alignItems: 'flex-start',
+              width: widthToDp(90),
+              alignSelf: 'center',
+            }}>
             <Text style={styles.navbarPageTitle}>Customize Ingredients</Text>
 
             <FadedSeparator />
-            <View style={{marginHorizontal: 5}}>
+            <View style={{marginHorizontal: 5, marginVertical: 10}}>
               {Ingredients.map((item, index) => (
                 <View style={styles.ingredientContainer}>
                   <View style={styles.ingredientSubContainer}>
@@ -75,7 +85,9 @@ const IngredientCustomization = () => {
             </View>
           </BackgroundCard>
 
-          <BackgroundCard childrenStyle={{}} style={{marginTop: 10}}>
+          <BackgroundCard
+            childrenStyle={{width: widthToDp(90)}}
+            style={{marginTop: 10, alignSelf: 'center'}}>
             <View style={styles.pricingTitle}>
               <Text style={styles.navbarPageTitle}>Description</Text>
               <Text style={styles.navbarPageTitle}>Qty</Text>
@@ -107,24 +119,25 @@ const IngredientCustomization = () => {
             <View style={styles.totalContainer}>
               <Text style={styles.totalText}>Total</Text>
 
-              <Text style={styles.totalPrice}>$150</Text>
+              <GradientText style={styles.totalPrice}>$150</GradientText>
             </View>
           </BackgroundCard>
         </ScrollView>
-        <View style={styles.buttonContainer}>
-          <ButtonsCommon
-            btnText={'Done'}
-            btnStyle={{width: widthToDp(40)}}
-            containerStyle={{marginRight: 10}}
-            onPress={() => handleClose()}
-          />
-          <ButtonsCommonAlt
-            btnText={'Cancel'}
-            btnStyle={{width: widthToDp(40)}}
-            containerStyle={{marginLeft: 10}}
-            onPress={() => handleClose()}
-          />
-        </View>
+      </View>
+
+      <View style={styles.buttonContainer}>
+        <ButtonsCommon
+          btnText={'Done'}
+          btnStyle={{width: widthToDp(40)}}
+          containerStyle={{marginRight: 10}}
+          onPress={() => handleClose()}
+        />
+        <ButtonsCommonAlt
+          btnText={'Cancel'}
+          btnStyle={{width: widthToDp(40)}}
+          containerStyle={{marginLeft: 10}}
+          onPress={() => handleClose()}
+        />
       </View>
     </View>
   );

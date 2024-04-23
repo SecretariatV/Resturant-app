@@ -12,7 +12,7 @@ const styles = StyleSheet.create({
     color: Colors.WHITE,
     marginBottom: 5,
     fontSize: 16,
-    fontFamily: fonts.URBANIST_SEMIBOLD,
+    fontFamily: fonts.URBANIST_MEDIUM,
   },
   review_detail: {
     color: Colors.WHITE,

@@ -12,7 +12,7 @@ const styles = StyleSheet.create({
   fieldLabel: {
     fontSize: 20,
     color: '#fff',
-    fontFamily: fonts.URBANIST_SEMIBOLD,
+    fontFamily: fonts.URBANIST_MEDIUM,
   },
   inputWrapper: {
     flexDirection: 'row',
@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
   },
   fieldInput: {
     color: '#fff',
-    fontFamily: fonts.URBANIST_SEMIBOLD,
+    fontFamily: fonts.URBANIST_MEDIUM,
     fontSize: 16,
     // backgroundColor: 'red',
     width: '100%',

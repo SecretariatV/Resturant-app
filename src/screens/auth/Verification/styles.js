@@ -10,7 +10,7 @@ const styles = StyleSheet.create({
   forgotTxt: {
     color: Colors.WHITE,
     fontSize: 30,
-    fontFamily: fonts.URBANIST_SEMIBOLD,
+    fontFamily: fonts.URBANIST_MEDIUM,
     marginTop: 10,
   },
   underJoinTxt: {
@@ -19,6 +19,7 @@ const styles = StyleSheet.create({
     marginTop: 5,
     marginBottom: 5,
     lineHeight: 18,
+    fontFamily: fonts.URBANIST_MEDIUM,
   },
   underline: {
     textDecorationLine: 'underline',
@@ -39,7 +40,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     marginVertical: 25,
     color: Colors.WHITE,
-    fontFamily: fonts.URBANIST_SEMIBOLD,
+    fontFamily: fonts.URBANIST_MEDIUM,
   },
   codeFieldRoot: {
     marginTop: 20,
@@ -69,6 +70,8 @@ const styles = StyleSheet.create({
     color: '#fff',
     fontSize: 36,
     textAlign: 'center',
+    fontFamily: fonts.URBANIST_MEDIUM,
+
     // marginLeft: 30,
     // paddingLeft: 30,
   },

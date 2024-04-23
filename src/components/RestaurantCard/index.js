@@ -43,7 +43,12 @@ const ResturantCard = ({name, location, cuisine}) => {
             <Text style={[styles.lightText, styles.location]}>{location}</Text>
           </View>
           <View style={styles.cuisineContainer}>
-            <View style={{flexDirection: 'row', alignItems: 'center'}}>
+            <View
+              style={{
+                flexDirection: 'row',
+                alignItems: 'center',
+                // backgroundColor: 'red',
+              }}>
               <Text style={styles.cuisine}>Cuisine Type: </Text>
               <Text style={styles.lightText}>{cuisine}</Text>
             </View>

@@ -7,7 +7,7 @@ const FavouriteButton = ({onPress}) => {
   const navigation = useNavigation();
 
   const handleClick = () => {
-    navigation.navigate('HomeScreens');
+    // navigation.navigate('HomeScreens');
   };
   return (
     <TouchableOpacity onPress={() => handleClick()}>

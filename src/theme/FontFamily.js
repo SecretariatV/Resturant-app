@@ -1,10 +1,11 @@
 export const fonts = {
-  URBANIST_REGULAR: 'Urbanist-Regular',
-  URBANIST_EXTRABOLD: 'Urbanist-ExtraBold',
-  URBANIST_SEMIBOLD: 'Urbanist-SemiBold',
-  URBANIST_BOLD: 'Urbanist-Bold',
+  URBANIST_REGULAR: 'DINNextLTArabic-Regular',
+  URBANIST_EXTRABOLD: 'DINNextLTArabic-Heavy',
 
-  URBANIST_MEDIUM: 'Urbanist-Medium',
-  URBANIST_LIGHT: 'Urbanist-Light',
-  URBANIST_THIN: 'Urbanist-Thin',
+  URBANIST_SEMIBOLD: 'Urbanist-SemiBold',
+  URBANIST_BOLD: 'DINNextLTArabic-Bold',
+
+  URBANIST_MEDIUM: 'DINNextLTArabic-Medium',
+  URBANIST_LIGHT: 'DINNextLTArabic-Regular',
+  URBANIST_THIN: 'DINNextLTArabic-Regular',
 };

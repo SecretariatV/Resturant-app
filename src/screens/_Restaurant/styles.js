@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
 
   headingText: {
     color: Colors.WHITE,
-    fontFamily: fonts.URBANIST_SEMIBOLD,
+    fontFamily: fonts.URBANIST_MEDIUM,
     fontSize: 20,
     marginLeft: 5,
   },
@@ -88,7 +88,7 @@ const styles = StyleSheet.create({
   rating_type: {
     color: Colors.WHITE,
     fontSize: 14,
-    fontFamily: fonts.URBANIST_SEMIBOLD,
+    fontFamily: fonts.URBANIST_MEDIUM,
   },
 
   bannerImage: {

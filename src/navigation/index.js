@@ -1,6 +1,13 @@
 //packages
 
-import {View, Text, Image, StyleSheet, TouchableOpacity} from 'react-native';
+import {
+  View,
+  Text,
+  Image,
+  StyleSheet,
+  TouchableOpacity,
+  SafeAreaView,
+} from 'react-native';
 import React, {useCallback, useEffect, useRef, useState} from 'react';
 // import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {createStackNavigator} from '@react-navigation/stack';
@@ -83,6 +90,7 @@ import Footer from '../components/Footer/index.js';
 import {setRequestBtn} from '../redux/actions/auth.js';
 import AR from '../screens/AR/index.js';
 import BottomSheet, {BottomSheetView} from '@gorhom/bottom-sheet';
+import {fonts} from '../theme/FontFamily.js';
 
 const Tab = createBottomTabNavigator();
 // const Stack = createNativeStackNavigator();
@@ -231,8 +239,10 @@ const CustomTabBar = ({state, descriptors, navigation}) => (
             ? options.title
             : route.name;
 
-        const isFocused = state.index === index;
+        // const isFocused = state.index === index;
+        const isFocused = state.routes[state.index].key === route.key;
 
+        console.log(isFocused, 'isFocused');
         const onPress = () => {
           const event = navigation.emit({
             type: 'tabPress',
@@ -270,7 +280,12 @@ const CustomTabBar = ({state, descriptors, navigation}) => (
                   source={require('../assets/images/home.png')}
                 />
                 {/* <HomeIcon width={25} height={25} style={{ opacity: 0.5, marginBottom: -5}}/> */}
-                <Text style={{color: '#fff', fontSize: screenToTextSize(3)}}>
+                <Text
+                  style={{
+                    color: '#fff',
+                    fontSize: screenToTextSize(3.2),
+                    fontFamily: fonts.URBANIST_MEDIUM,
+                  }}>
                   Home
                 </Text>
               </View>
@@ -322,7 +337,12 @@ const CustomTabBar = ({state, descriptors, navigation}) => (
                   style={{width: 30, height: 30}}
                   source={require('../assets/images/cart.png')}
                 />
-                <Text style={{color: '#fff', fontSize: screenToTextSize(3)}}>
+                <Text
+                  style={{
+                    color: '#fff',
+                    fontSize: screenToTextSize(3.2),
+                    fontFamily: fonts.URBANIST_MEDIUM,
+                  }}>
                   Cart
                 </Text>
               </View>
@@ -343,11 +363,18 @@ const CustomTabBar = ({state, descriptors, navigation}) => (
                   style={{resizeMode: 'contain', width: 30, height: 30}}
                   source={require('../assets/images/tabbar-pay.png')}
                 />
-                <Text style={{color: '#fff', fontSize: screenToTextSize(3)}}>
+                <Text
+                  style={{
+                    color: '#fff',
+                    fontSize: screenToTextSize(3.2),
+                    fontFamily: fonts.URBANIST_MEDIUM,
+                  }}>
                   Pay
                 </Text>
               </View>
             )}
+
+            {isFocused && <View style={tabNavStyles.tabIndicator} />}
           </TouchableOpacity>
         );
       })}
@@ -464,7 +491,7 @@ const TabNavigator = () => {
         }}
       /> */}
 
-      {!qr ? (
+      {qr ? (
         <Tab.Screen
           name={'RestaurantMenu'}
           component={RestaurantMenu}

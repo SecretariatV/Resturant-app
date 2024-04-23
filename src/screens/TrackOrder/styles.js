@@ -281,7 +281,7 @@ const styles = StyleSheet.create({
     marginLeft: 5,
     fontSize: screenToTextSize(4),
     fontWeight: '100',
-    fontFamily: fonts.URBANIST_THIN,
+    fontFamily: fonts.URBANIST_REGULAR,
   },
   starterItemsListContainer: {},
   starterItemsListItem: {
@@ -293,6 +293,7 @@ const styles = StyleSheet.create({
   starterItemsListItemText: {
     color: '#fff',
     fontSize: screenToTextSize(4),
+    fontFamily: fonts.URBANIST_REGULAR,
   },
   scroll: {
     alignItems: 'center',
