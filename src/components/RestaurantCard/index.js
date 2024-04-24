@@ -29,7 +29,7 @@ const ResturantCard = ({name, location, cuisine}) => {
       <ImageBackground
         source={bg}
         style={styles.image}
-        imageStyle={{borderRadius: 16, opacity: 0.7}}>
+        imageStyle={{borderRadius: 16, opacity: 0.6}}>
         <Image
           source={logoImage}
           style={{
@@ -79,7 +79,13 @@ const ResturantCard = ({name, location, cuisine}) => {
             className="restaurant-details"
             style={[styles.restaurantDetails]}>
             <Text style={styles.name}>{name}</Text>
-            <Text style={[styles.lightText, styles.location]}>{location}</Text>
+
+            {/* <Text style={[styles.lightText, styles.location]}>{location}</Text> */}
+            <View style={{flexDirection: 'row', alignItems: 'center'}}>
+              <Location />
+
+              <Text style={[styles.locText, styles.location]}>{location}</Text>
+            </View>
             <View style={{flexDirection: 'row', alignItems: 'center'}}>
               <Text style={styles.cuisine}>Cuisine Type: </Text>
               <Text style={styles.lightText}>{cuisine}</Text>

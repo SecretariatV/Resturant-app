@@ -270,7 +270,8 @@ const styles = StyleSheet.create({
 
   itemContainer: {
     flexDirection: 'row',
-    margin: 15,
+    marginBottom: 15,
+    marginHorizontal: 15,
     alignItems: 'center',
     justifyContent: 'space-between',
     width: '90%',
@@ -298,33 +299,66 @@ const styles = StyleSheet.create({
   },
 
   sharedItemContainer: {
-    backgroundColor: '#113752',
-    width: widthToDp(90),
+    // backgroundColor: '#113752',
+    width: widthToDp(95),
+    // paddingHorizontal: 45,
 
-    borderWidth: 1,
-    borderColor: 'grey',
-    alignItems: 'center',
-    justifyContent: 'space-between',
     flexDirection: 'row',
-    paddingVertical: 10,
-    borderRadius: 18,
+    // paddingVertical: 10,
+
     marginTop: 10,
   },
   sharedItemContainerTwo: {
+    padding: 5,
+
     flexDirection: 'row',
     alignItems: 'center',
+    width: widthToDp(95),
+    justifyContent: 'space-between',
+  },
+
+  mainHeadings: {
+    fontFamily: fonts.URBANIST_EXTRABOLD,
+    color: Colors.WHITE,
+    fontSize: 14,
+  },
+  quantity: {
+    fontFamily: fonts.URBANIST_BOLD,
+    color: Colors.WHITE,
+    fontSize: 14,
+  },
+  firstPrice: {
+    fontFamily: fonts.URBANIST_BOLD,
+    color: Colors.WHITE,
+    fontSize: 16,
+  },
+  price: {
+    fontFamily: fonts.URBANIST_BOLD,
+    color: Colors.WHITE,
+    fontSize: 14,
+  },
+  itemProduct: {
+    fontFamily: fonts.URBANIST_BOLD,
+    color: Colors.WHITE,
+    fontSize: 16,
+  },
+  totalPrice: {
+    fontFamily: fonts.URBANIST_MEDIUM,
+    color: Colors.GREEN,
+    fontSize: 16,
   },
   productImgContainer: {
     backgroundColor: '#3F3F54',
-    padding: 10,
+    // padding: 10,
     width: widthToDp(13),
     alignItems: 'center',
     borderRadius: 16,
-    marginLeft: 10,
+    // marginLeft: 10,
   },
   pricing: {
     flexDirection: 'row',
     alignItems: 'center',
+    width: widthToDp(15),
   },
   selectAll: {
     width: '100%',

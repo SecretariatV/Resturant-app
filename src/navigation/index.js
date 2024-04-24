@@ -91,6 +91,9 @@ import {setRequestBtn} from '../redux/actions/auth.js';
 import AR from '../screens/AR/index.js';
 import BottomSheet, {BottomSheetView} from '@gorhom/bottom-sheet';
 import {fonts} from '../theme/FontFamily.js';
+import CartSection from '../components/CartSection/index.js';
+import {setCartBtn} from '../redux/actions/cart.js';
+import EditProfile from '../screens/EditProfile/index.js';
 
 const Tab = createBottomTabNavigator();
 // const Stack = createNativeStackNavigator();
@@ -164,7 +167,7 @@ const HomeStack = ({activeRestaurant}) => {
   return (
     <Stack.Navigator
       // initialRouteName="TabNavigator"
-      // initialRouteName="RestaurantMain"
+      // initialRouteName="EditProfile"
       screenOptions={{
         headerShown: false,
       }}>
@@ -217,6 +220,7 @@ const HomeStack = ({activeRestaurant}) => {
           name="OrderHistoryDetail"
           component={OrderHistoryDetail}
         />
+        <Stack.Screen name="EditProfile" component={EditProfile} />
       </Stack.Group>
     </Stack.Navigator>
   );
@@ -401,14 +405,6 @@ const TabNavigator = () => {
       screenListeners={({navigation, route}) => ({
         tabPress: e => {},
       })}
-      // screenOptions={({route}) => ({
-      //   headerShown: false,
-      //   // tabBarHideOnKeyboard: true,
-      //   tabBarPosition: 'bottom',
-      //   tabBarShowLabel: false,
-      //   tabBarStyle: tabNavStyles.tabNavigatorBarStyle,
-      // })}
-
       screenOptions={({route}) => ({
         // headerTitleAlign: "center",
         tabBarVisible: route.params && route.params.tabBarVisible !== false,
@@ -416,18 +412,6 @@ const TabNavigator = () => {
         tabBarIcon: ({focused, color, size}) => {
           let iconName;
           console.log(route.name, 'route.name');
-
-          // if (route.name === 'RestaurantMain') {
-          //   iconName = focused ? 'home' : 'home-outline';
-          // }
-
-          // else if (route.name === "Settings") {
-          //   iconName = focused ? "settings" : "ios-settings-sharp";
-          // } else if (route.name === "Notifications") {
-          //   iconName = focused ? "ios-notifications" : "notifications-outline";
-          // }
-          // You can return any component that you like here!
-          // return <Ionicons name={iconName} size={size} color={color} />;
 
           return (
             <Image
@@ -464,33 +448,6 @@ const TabNavigator = () => {
         })}
       />
 
-      {/* <Tab.Screen
-        name={qr ? 'RestaurantMenu' : 'QrCode'}
-        component={qr ? RestaurantMenu : QrCode}
-        options={{
-          tabBarLabel: qr ? 'RestaurantMenu' : 'QrCode',
-          // tabBarStyle: {display: qr ? null : null},
-
-          tabBarIcon: () => {
-            return (
-              <View style={tabNavStyles.tabNavMenuBtn}>
-                {qr ? (
-                  <MenuIcon
-                    width={screenToTextSize(8)}
-                    style={{width: 12, height: 12}}
-                  />
-                ) : (
-                  <QrIcon
-                    width={screenToTextSize(8)}
-                    style={{width: 24, height: 24}}
-                  />
-                )}
-              </View>
-            );
-          },
-        }}
-      /> */}
-
       {qr ? (
         <Tab.Screen
           name={'RestaurantMenu'}
@@ -524,15 +481,7 @@ const TabNavigator = () => {
             // tabBarStyle: {display: 'none'},
             tabBarLabel: 'QrCode',
             tabBarIcon: () => {
-              return (
-                <View></View>
-                // <View style={tabNavStyles.tabNavQrCodeScannerBtn}>
-                // <QrIcon
-                //   width={screenToTextSize(8)}
-                //   style={{width: 24, height: 24}}
-                // />
-                // </View>
-              );
+              return <View></View>;
             },
           })}
         />
@@ -541,6 +490,15 @@ const TabNavigator = () => {
       <Tab.Screen
         name="Cart"
         component={Cart}
+        listeners={() => ({
+          tabPress: e => {
+            console.log('cart listern is working');
+
+            e.preventDefault();
+            dispatch(setCartBtn(true));
+            // setShowFilter(true);
+          },
+        })}
         options={{
           headerShown: false,
 
@@ -604,102 +562,43 @@ const TabNavigator = () => {
 const RootNavigator = () => {
   const bottomSheetRef = useRef(null);
   // const navigation = useNavigation();
-
-  // callbacks
-  const handleSheetChanges = useCallback(index => {
-    console.log('handleSheetChanges', index);
-  }, []);
   const dispatch = useDispatch();
-
   const user = useSelector(state => state.auth.user);
   const req = useSelector(state => state.auth.request);
+  const cartBtn = useSelector(state => state.cart.cartBtnStatus);
 
   useEffect(() => {
     if (user) {
     }
   }, [user]);
+  // callbacks
+  const handleSheetChanges = useCallback(index => {
+    console.log('handleSheetChanges>>>>>>>>', index);
+    if (index == -1) {
+      dispatch(setRequestBtn(false));
+    }
+  }, []);
+  const handleCartSheetChanges = useCallback(index => {
+    console.log('handleSheetChanges>>>>>>>>', index);
+    if (index == -1) {
+      dispatch(setCartBtn(false));
+    }
+  }, []);
 
   return (
     <GestureHandlerRootView style={{flex: 1}}>
       <NavigationContainer>
         {user ? <DrawerScreens /> : <AuthStack />}
         {req ? (
-          // <BottomSheet
-          //   modalProps={{}}
-          //   isVisible={req}
-          //   // containerStyle={{backgroundColor: 'rgba(0, 0, 0, 0.5)'}} // Adjust the backdrop color if needed
-          //   // backdropOpacity={0}
-          //   backdropComponent={() => null} // Set backdropComponent to null to remove the backdrop
-          //   // backdropStyle={{backgroundColor: 'transparent'}}
-          // >
-          //   <View style={tabNavStyles.bottomSheetContainer}>
-          //     <Image
-          //       style={tabNavStyles.bottomImg}
-          //       source={require('../assets/images/bottom_bg.png')}
-          //     />
-          //     <View style={tabNavStyles.bottomView}>
-          //       <View style={tabNavStyles.bottomSubView}>
-          //         <Text style={tabNavStyles.requestText}>Request</Text>
-          //         <TouchableOpacity
-          //           onPress={() => {
-          //             dispatch(setRequestBtn(false));
-          //             // navigation.goBack();
-          //           }}>
-          //           <CloseFilterBtn width={30} height={30} />
-          //         </TouchableOpacity>
-          //       </View>
-          //       <View>
-          //         <ButtonsCommon
-          //           btnText={'Call waiter'}
-          //           containerStyle={{marginTop: 10}}
-          //           btnTextStyle={{marginLeft: 10}}
-          //           img
-          //           imageSource={require('../assets/images/waiter.png')}
-          //           btnStyle={tabNavStyles.btnStyle}
-          //           imgStyle={{width: 30, height: 30}}
-          //         />
-          //         <ButtonsCommon
-          //           btnText={'Coal change'}
-          //           containerStyle={{marginTop: 10}}
-          //           btnTextStyle={{marginLeft: 10}}
-          //           img
-          //           imageSource={require('../assets/images/coal.png')}
-          //           btnStyle={tabNavStyles.btnStyle}
-          //           imgStyle={{width: 30, height: 30}}
-          //         />
-
-          //         <ButtonsCommon
-          //           btnText={'Ashtray'}
-          //           containerStyle={{marginTop: 10}}
-          //           btnTextStyle={{marginLeft: 20}}
-          //           img
-          //           imageSource={require('../assets/images/ashtray.png')}
-          //           btnStyle={tabNavStyles.btnStyle}
-          //           imgStyle={{width: 30, height: 30}}
-          //         />
-          //       </View>
-          //     </View>
-          //   </View>
-          // </BottomSheet>
           <BottomSheet
-            // handleIndicatorStyle={{height: 0}}
-            // backdropComponent={() => null}
-
             handleComponent={null}
+            enablePanDownToClose={true}
+            // onChange={()=>console.log('I a')}
             // handleIndicatorStyle={{display: 'none'}}
             enableDynamicSizing={false}
-            snapPoints={[400, '40%']}
+            snapPoints={[350, '40%']}
             ref={bottomSheetRef}
-            onChange={handleSheetChanges}
-            // renderBackground={() => (
-            //   // <FastImage
-            //   //   style={tabNavStyles.bottomImg}
-            //   //   source={require('../assets/images/bottom_bg.png')}
-            //   //   // source={{ uri: 'path_to_your_image' }} // or require('path_to_your_image')
-            //   //   // style={{ flex: 1, resizeMode: 'cover' }}
-            //   // />
-            // )}
-          >
+            onChange={handleSheetChanges}>
             <BottomSheetView style={tabNavStyles.contentContainer}>
               <View style={tabNavStyles.bottomSheetContainer}>
                 <Image
@@ -750,6 +649,20 @@ const RootNavigator = () => {
                 </View>
               </View>
             </BottomSheetView>
+          </BottomSheet>
+        ) : (
+          <></>
+        )}
+
+        {cartBtn ? (
+          <BottomSheet
+            handleComponent={null}
+            onChange={handleCartSheetChanges}
+            enablePanDownToClose={true}
+            enableDynamicSizing={false}
+            ref={bottomSheetRef}
+            snapPoints={['90%', '90%']}>
+            <Cart />
           </BottomSheet>
         ) : (
           <></>

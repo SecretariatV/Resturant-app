@@ -2,7 +2,7 @@ import React from 'react';
 import {StyleSheet, Dimensions, StatusBar} from 'react-native';
 import FastImage from 'react-native-fast-image';
 
-const BackgroundLayout = ({withImages}) => {
+const BackgroundLayout = ({withImages, imgStyle}) => {
   return (
     <FastImage
       source={
@@ -10,7 +10,7 @@ const BackgroundLayout = ({withImages}) => {
           ? require('../assets/images/Splash.png')
           : require('../assets/images/Bg.png')
       }
-      style={styles.background_image}
+      style={[styles.background_image, imgStyle]}
       resizeMode={FastImage.resizeMode.cover}
       priority={FastImage.priority.high} // or 'high' depending on your import
     />

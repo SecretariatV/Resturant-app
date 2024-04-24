@@ -20,7 +20,6 @@ import ReviewCard from '../../components/ReviewCard';
 import HamBurgerButton from '../../components/NavButtons/HamBurgerButton';
 //assets
 import Clock from '../../assets/images/clock.svg';
-import Star from '../../assets/images/starV2.svg'; 
 import Age from '../../assets/images/age.svg';
 import CusineSvg from '../../assets/images/cuisineServe.svg';
 import Location from '../../assets/images/locWithBack.svg';

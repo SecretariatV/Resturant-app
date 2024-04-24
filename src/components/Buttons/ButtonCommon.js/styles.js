@@ -16,7 +16,7 @@ const styles = StyleSheet.create({
     color: '#ffffff',
     fontFamily: fonts.URBANIST_MEDIUM,
     // fontWeight: '750',
-    fontSize: 16,
+    fontSize: 18,
   },
 });
 export {styles};

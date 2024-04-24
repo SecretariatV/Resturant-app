@@ -182,30 +182,27 @@ export const cartData = [
   {
     productName: 'Burger',
     price: '50',
+    time: '16:30',
   },
   {
-    productName: 'Shawarma',
+    productName: 'Burger',
     price: '50',
-  },
-  {
-    productName: 'Onion',
-    price: '50',
-  },
-  {
-    productName: 'Shawarma',
-    price: '50',
+    time: '16:30',
   },
   {
     productName: 'Onion',
     price: '50',
+    time: '16:30',
   },
   {
-    productName: 'Shawarma',
+    productName: 'Burger',
     price: '50',
+    time: '16:30',
   },
   {
     productName: 'Onion',
     price: '50',
+    time: '16:30',
   },
 ];
 

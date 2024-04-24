@@ -41,6 +41,7 @@ import BackButton from '../../components/NavButtons/BackButton/index.js';
 import {SelectCountry} from 'react-native-element-dropdown';
 import BottomSheet, {BottomSheetView} from '@gorhom/bottom-sheet';
 import GradientText from '../../components/GradientText/index.js';
+import Star from '../../assets/images/ratingStar.svg';
 
 const MenuDetail = () => {
   const navigation = useNavigation();
@@ -177,15 +178,13 @@ const MenuDetail = () => {
         </View>
 
         <View style={styles.menuContainer}>
-          <View style={styles.menuSubContainer}>
-            <Text style={styles.resturantName}>Burger</Text>
+          <View>
+            <Star width={50} style={{marginLeft: 15}} />
 
-            <Text style={styles.rating}>4.5</Text>
-            <Image
-              source={require('../../assets/images/star.png')}
-              style={{width: 20, height: 20}}
-            />
+            <Text style={styles.resturantName}>Burger</Text>
+            <Text style={styles.up_rating}>4.5</Text>
           </View>
+          {/* <Text style={styles.rating}>4.5</Text> */}
           <GradientText style={styles.price}>$50</GradientText>
         </View>
         <Text style={styles.resturantDesc}>
@@ -243,10 +242,19 @@ const MenuDetail = () => {
             btnText={'Select Ingredients'}
             onPress={() => handleSelectIngredient()}
           />
-
-          <BackgroundCard
-            style={styles.backgroundBtnContainer}
-            childrenStyle={{paddingVertical: 10}}>
+          <View
+            style={{
+              marginVertical: 10,
+              alignItems: 'center',
+              backgroundColor: '#7074C422',
+              // marginHorizontal: 5,
+              borderColor: '#fff4',
+              borderRadius: 36,
+              borderWidth: 1,
+            }}>
+            {/* <BackgroundCard
+              style={styles.backgroundBtnContainer}
+              childrenStyle={{paddingVertical: 10}}> */}
             <Text style={styles.quantityTxt}>Customization</Text>
 
             {/* <RestaurantButton
@@ -260,8 +268,7 @@ const MenuDetail = () => {
               useAngle={true}
               angle={820}
               style={{
-                borderRadius: 12,
-                flexWrap: 'nowrap',
+                borderRadius: 16,
                 marginTop: 10,
                 width: '90%',
               }}
@@ -271,6 +278,7 @@ const MenuDetail = () => {
                 <Text style={[styles.btnText]}>Spicy Level</Text>
               </View>
             </LinearGradient>
+
             {/* <View style={styles.levelContainer}>
               <TouchableOpacity>
                 <Text style={styles.levelTxt}>Low</Text>
@@ -298,8 +306,8 @@ const MenuDetail = () => {
               useAngle={true}
               angle={820}
               style={{
-                borderRadius: 12,
-                flexWrap: 'nowrap',
+                borderRadius: 16,
+
                 marginTop: 10,
                 width: '90%',
               }}
@@ -319,22 +327,22 @@ const MenuDetail = () => {
                 onChange={handleSetPortion}
               />
             </View>
-          </BackgroundCard>
-
+            {/* </BackgroundCard> */}
+          </View>
           <View style={styles.customBtns}>
-            <ButtonsCommon
+            <ButtonsCommonAlt
               btnText={'Quick Order'}
               onPress={() => navigation.push('Cart')}
-              btnTextStyle={{fontSize: 16, FontFamily: fonts.URBANIST_MEDIUM}}
-              containerStyle={{width: widthToDp(43), marginTop: 10}}
+              btnTextStyle={{}}
+              containerStyle={{width: widthToDp(45), marginTop: 10}}
               btnStyle={{borderRadius: 20}}
               linearTextStyle={{borderRadius: 20}}
             />
 
-            <ButtonsCommonAlt
+            <ButtonsCommon
               btnText={'Add to Cart'}
               onPress={() => Alert.alert('Item Added to Cart')}
-              containerStyle={{width: widthToDp(43), marginTop: 10}}
+              containerStyle={{width: widthToDp(45), marginTop: 10}}
               btnStyle={{borderRadius: 20}}
               linearTextStyle={{borderRadius: 20}}
             />

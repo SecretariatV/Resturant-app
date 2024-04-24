@@ -41,11 +41,6 @@ import {
 } from '../../utils/helper.js';
 import StepSlider from '../../components/StepSlider/index.js';
 
-
-
-
-
-
 const ShareEqually = () => (
   <View style={{flex: 1, alignItems: 'center'}}>
     <Text
@@ -87,7 +82,6 @@ const ShareByPercent = () => {
 
   useEffect(() => {}, [progress]);
 
-  
   const userAvatar = require('../../assets/images/profileImg.png');
   const [dummyData, setDummyData] = useState({
     totalBill: 250.68,
@@ -118,7 +112,6 @@ const ShareByPercent = () => {
       },
     ],
   });
-
 
   const updateGuestPercentage = (index, percent, amount) => {
     setDummyData(prevData => {
@@ -185,9 +178,12 @@ const ShareByItems = () => {
     <View style={{flex: 1, alignItems: 'center'}}>
       <ScrollView contentContainerStyle={styles.scroll}>
         <BackgroundCard
-          style={{width: '95%'}}
+          style={{width: widthToDp(95)}}
           linearBackStyle={{borderRadius: 24}}
-          childrenStyle={{borderRadius: 24}}>
+          childrenStyle={{
+            borderRadius: 24,
+            paddingTop: 10,
+          }}>
           <View style={styles.itemContainer}>
             <View style={{flexDirection: 'row', alignItems: 'center'}}>
               <Image source={require('../../assets/images/profileImg.png')} />
@@ -201,7 +197,7 @@ const ShareByItems = () => {
                 onPress={() => {
                   setExpanded(!expanded);
                 }}>
-                <Text style={styles.price}>$25.19</Text>
+                <Text style={styles.firstPrice}>$25.19</Text>
                 <Image
                   source={require('../../assets/images/chevron_down.png')}
                   style={{marginLeft: 10}}
@@ -212,43 +208,77 @@ const ShareByItems = () => {
           <View>
             {expanded && (
               <View style={{width: '100%'}}>
-                {SharedItems.map((item, index) => (
-                  <View key={index}>
-                    <View style={styles.sharedItemContainer}>
-                      <View style={styles.sharedItemContainerTwo}>
-                        <View style={styles.productImgContainer}>
-                          <Image
-                            source={require('../../assets/images/burger_one.png')}
-                            style={{width: 30, height: 30}}
-                          />
-                        </View>
-                        <View>
-                          <Text style={styles.userName}>Burger</Text>
-                        </View>
-                      </View>
+                <View
+                  style={{
+                    flexDirection: 'row',
+                    justifyContent: 'space-between',
+                    marginHorizontal: 15,
+                  }}>
+                  <View style={{width: widthToDp(12)}}>
+                    <Text style={styles.mainHeadings}>Item</Text>
+                  </View>
+                  <Text style={styles.mainHeadings}>Quantity</Text>
 
-                      <View style={styles.pricing}>
-                        <Text style={styles.price}>$12.17</Text>
-                        <CheckBox
-                          checked={checked}
-                          onPress={toggleCheckbox}
-                          iconType="material-community"
-                          checkedIcon="checkbox-outline"
-                          uncheckedIcon={'checkbox-blank-outline'}
-                          // style={{borderColor: 'green'}}
-                          containerStyle={{
-                            backgroundColor: 'transparent',
-                          }}
-                          checkedColor={Colors.GREEN}
-                          uncheckedColor={Colors.GREEN}
-                          // wrapperStyle={{backgroundColor: 'red'}}
-                          // style
-                        />
+                  <Text style={styles.mainHeadings}>Price</Text>
+                  <Text style={styles.mainHeadings}>Total</Text>
+                </View>
+                <View style={{marginBottom: 10}}>
+                  {SharedItems.map((item, index) => (
+                    <View>
+                      <View style={styles.sharedItemContainer}>
+                        <View style={styles.sharedItemContainerTwo}>
+                          <View style={styles.pricing}>
+                            <CheckBox
+                              checked={checked}
+                              onPress={toggleCheckbox}
+                              iconType="material-community"
+                              checkedIcon="checkbox-outline"
+                              uncheckedIcon={'checkbox-blank-outline'}
+                              // style={{borderColor: 'green'}}
+                              containerStyle={{
+                                padding: 0,
+                                margin: 0,
+                                backgroundColor: 'transparent',
+                                // margin: 0,
+                              }}
+                              // style={{width: 20, height: 20}}
+                              checkedColor={Colors.GREEN}
+                              uncheckedColor={Colors.GREEN}
+                              // wrapperStyle={{backgroundColor: 'red'}}
+                              // style
+                            />
+                            <Text style={styles.itemProduct}>Burger</Text>
+                          </View>
+                          <View
+                            style={{
+                              width: 70,
+
+                              alignItems: 'center',
+                            }}>
+                            <Text style={styles.quantity}>10</Text>
+                          </View>
+
+                          <View
+                            style={{
+                              width: 40,
+                              alignItems: 'center',
+                            }}>
+                            <Text style={styles.price}>$300</Text>
+                          </View>
+
+                          <View
+                            style={{
+                              width: 60,
+                              alignItems: 'center',
+                            }}>
+                            <Text style={styles.totalPrice}>$3000</Text>
+                          </View>
+                        </View>
                       </View>
                     </View>
-                  </View>
-                ))}
-                <View style={styles.selectAll}>
+                  ))}
+                </View>
+                {/* <View style={styles.selectAll}>
                   <Text style={styles.selectAllTxt}>Select All</Text>
                   <CheckBox
                     checked={checked}
@@ -262,7 +292,7 @@ const ShareByItems = () => {
                     checkedColor={Colors.GREEN}
                     uncheckedColor={Colors.GREEN}
                   />
-                </View>
+                </View> */}
               </View>
             )}
           </View>
