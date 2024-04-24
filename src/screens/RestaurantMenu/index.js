@@ -9,30 +9,20 @@ import {
   useWindowDimensions,
 } from 'react-native';
 import React, {useState, useEffect} from 'react';
-import {BottomSheet} from '@rneui/themed';
 import {Image} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
-import LottieView from 'lottie-react-native';
 import {styles} from './styles';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 import {useNavigation} from '@react-navigation/native';
 import {BlurView} from '@react-native-community/blur';
 // components
 import BackgroundLayout from '../../components/BackgroundLayout';
-import BackgroundCard from '../../components/BackgroundCard';
-import CircleBackground from '../../components/CircleBackground';
+
 import Counter from '../../components/Counter';
-import FadedSeparator from '../../components/FadedSeparator';
-import Footer from '../../components/Footer';
+
 import HamBurgerButton from '../../components/NavButtons/HamBurgerButton';
 import HeaderModed from '../../components/HeaderModed';
-import MenuNavButton from '../../components/MenuNavButton';
-import SearchModded from '../../components/SearchModded';
-import ToggleButton from '../../components/ToggleButton';
-//images
-import CloseFilterBtn from '../../assets/images/closeBtnFilter.svg';
-import HeartIcon from '../../assets/images/fav.png';
-// import HeartIcon from '../../assets/images/heartIcon.svg';
+
 import Star from '../../assets/images/ratingStar.svg';
 //utils
 import {dressCode} from '../../utils/demodata';
@@ -42,9 +32,7 @@ import {Colors} from '../../theme';
 import {getPlatformSpecificValue, screenToTextSize} from '../../utils/helper';
 // import {View} from '@candlefinance/blur-view';
 import {Allergies} from '../../utils/demodata';
-import FavouriteButton from '../../components/NavButtons/FavouriteButton';
 import {useDispatch, useSelector} from 'react-redux';
-import {setQrCode} from '../../redux/actions/auth';
 import {SceneMap, TabBar, TabView} from 'react-native-tab-view';
 import FilterButton from '../../components/NavButtons/FilterButton';
 import SearchButton from '../../components/NavButtons/SearchButton';
@@ -243,7 +231,6 @@ const RestaurantMenu = () => {
       indicatorStyle={{backgroundColor: 'transparent'}}
       style={{backgroundColor: 'transparent'}}
       renderLabel={({route, focused, index}) => (
-        
         <LinearGradient
           key={index}
           colors={

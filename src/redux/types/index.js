@@ -4,4 +4,5 @@ export default types = {
   USER_DATA: 'USER_DATA',
   QR_CODE: 'QR_CODE',
   REQUEST: 'REQUEST',
+  CART_BTN: 'CART_BTN',
 };

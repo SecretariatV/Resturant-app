@@ -7,7 +7,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     bottom:
       width > 375
-        ? getPlatformSpecificValue(-15, -32)
+        ? getPlatformSpecificValue(-10, -32)
         : getPlatformSpecificValue(-20, -32),
     left: 0,
     right: 0,

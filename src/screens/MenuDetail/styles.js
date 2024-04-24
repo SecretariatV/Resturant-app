@@ -73,8 +73,21 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     marginHorizontal: 15,
   },
+  up_rating: {
+    color: Colors.BLACK,
+    fontSize: 14,
+    fontFamily: fonts.URBANIST_BOLD,
+    paddingRight: 5,
+    position: 'absolute',
+    left: 29,
+    top: 15,
+    width: 26,
+    textAlign: 'center',
+    alignItems: 'center',
+    // backgroundColor: '#f0f3'
+  },
   menuSubContainer: {
-    flexDirection: 'row',
+    // flexDirection: 'row',
 
     alignItems: 'center',
   },
@@ -124,6 +137,7 @@ const styles = StyleSheet.create({
     // marginBottom: 10,
     marginRight: 5,
     marginLeft: 15,
+    backgroundColor: 'red',
   },
   readyContainer: {
     flexDirection: 'row',
@@ -175,7 +189,7 @@ const styles = StyleSheet.create({
     marginRight: 10,
     marginTop: 10,
     color: Colors.WHITE,
-    fontFamily: fonts.URBANIST_REGULAR,
+    fontFamily: fonts.URBANIST_MEDIUM,
   },
   customBtns: {
     flexDirection: 'row',
@@ -195,16 +209,17 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   circleGradient: {
-    margin: 2,
+    margin: 1,
 
-    padding: 10,
+    backgroundColor: '#1B3345',
+    paddingVertical: 10,
     alignItems: 'center',
 
-    borderRadius: 22,
+    borderRadius: 16,
   },
   btnText: {
-    color: Colors.BLACK,
-    fontFamily: fonts.URBANIST_MEDIUM,
+    color: Colors.GREEN,
+    fontFamily: fonts.URBANIST_EXTRABOLD,
     fontSize: 16,
   },
 
@@ -224,8 +239,6 @@ const styles = StyleSheet.create({
     fontSize: 20,
     color: '#fff',
     fontFamily: fonts.URBANIST_BOLD,
-    // color: 'red',
-    // backgroundColor: 'grey',
   },
   iconStyle: {
     width: 20,

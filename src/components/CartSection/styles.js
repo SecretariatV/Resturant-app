@@ -6,7 +6,6 @@ import {Colors} from '../../theme';
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    // borderRadius: 30,
   },
   navbarPageTitle: {
     color: Colors.WHITE,

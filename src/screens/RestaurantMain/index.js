@@ -31,10 +31,7 @@ import ToggleButton from '../../components/ToggleButton';
 import FadedSeparator from '../../components/FadedSeparator';
 import GradientText from '../../components/GradientText';
 import BackgroundLayout from '../../components/BackgroundLayout';
-import Footer from '../../components/Footer';
 
-// import ActiveOrders from '../../assets/images/activeOrders.svg';
-import scan_here from '../../assets/images/scan_here.png';
 import scan_arrow from '../../assets/images/scan_arrow.png';
 import CloseFilterBtn from '../../assets/images/closeBtnFilter.svg';
 

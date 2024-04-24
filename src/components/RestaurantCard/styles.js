@@ -36,7 +36,11 @@ const styles = StyleSheet.create({
   },
   lightText: {
     color: Colors.WHITE,
-    fontSize: 16,
+    fontSize: 12,
+    fontFamily: fonts.URBANIST_REGULAR,
+  },
+  locText: {
+    fontSize: 13,
     fontFamily: fonts.URBANIST_REGULAR,
   },
   cardContainer: {
@@ -58,8 +62,8 @@ const styles = StyleSheet.create({
   },
   name: {
     color: Colors.WHITE,
-    fontSize: 16,
-    fontFamily: fonts.URBANIST_BOLD,
+    fontSize: 18,
+    fontFamily: fonts.URBANIST_EXTRABOLD,
   },
 
   ratingContainer: {
@@ -110,6 +114,7 @@ const styles = StyleSheet.create({
     color: Colors.WHITE,
     marginVertical: 5,
     fontFamily: fonts.URBANIST_MEDIUM,
+    fontSize: 12,
   },
 
   arrowContainer: {

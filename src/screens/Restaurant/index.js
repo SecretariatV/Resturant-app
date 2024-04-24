@@ -17,7 +17,7 @@ import BackgroundLayout from '../../components/BackgroundLayout';
 
 import HeaderModed from '../../components/HeaderModed';
 import Clock from '../../assets/images/clock.svg';
-import Star from '../../assets/images/starV2.svg';
+// import Star from '../../assets/images/starV2.svg';
 
 import Dress from '../../assets/images/dress.svg';
 import Age from '../../assets/images/age.svg';

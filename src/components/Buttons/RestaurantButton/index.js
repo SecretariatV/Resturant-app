@@ -10,7 +10,7 @@ const RestaurantButton = ({btnText, style, onPress, btnTextStyle}) => {
         colors={['#00F69299', '#00A7F7FF']}
         useAngle={true}
         angle={820}
-        style={{borderRadius: 12, flexWrap: 'nowrap', margin: 2}}
+        style={{borderRadius: 22, flexWrap: 'nowrap', margin: 2}}
         start={{x: 0, y: 0.5}}
         end={{x: 1, y: 0.5}}>
         <TouchableOpacity style={styles.circleGradient} onPress={onPress}>

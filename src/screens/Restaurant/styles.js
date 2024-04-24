@@ -3,7 +3,7 @@ import {fonts} from '../../theme/FontFamily';
 // eslint-disable-next-line no-unused-vars
 import {heightToDp, width, widthToDp} from '../../utils/Dimensions';
 import {Colors} from '../../theme';
-import { getPlatformSpecificValue } from '../../utils/helper';
+import {getPlatformSpecificValue} from '../../utils/helper';
 
 const styles = StyleSheet.create({
   container: {
@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-end',
     height: heightToDp(70),
     position: 'relative',
-    marginTop: getPlatformSpecificValue(-200, -200)
+    marginTop: getPlatformSpecificValue(-200, -200),
   },
   resturantContainer: {
     justifyContent: 'flex-end',
@@ -220,8 +220,7 @@ const styles = StyleSheet.create({
   selectedTextStyle: {
     fontSize: 16,
     color: '#fff',
-    // color: 'red',
-    // backgroundColor: 'grey',
+    fontFamily: fonts.URBANIST_BOLD,
   },
   iconStyle: {
     width: 20,

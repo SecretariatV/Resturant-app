@@ -91,6 +91,9 @@ import {setRequestBtn} from '../redux/actions/auth.js';
 import AR from '../screens/AR/index.js';
 import BottomSheet, {BottomSheetView} from '@gorhom/bottom-sheet';
 import {fonts} from '../theme/FontFamily.js';
+import CartSection from '../components/CartSection/index.js';
+import {setCartBtn} from '../redux/actions/cart.js';
+import EditProfile from '../screens/EditProfile/index.js';
 
 const Tab = createBottomTabNavigator();
 // const Stack = createNativeStackNavigator();
@@ -164,7 +167,7 @@ const HomeStack = ({activeRestaurant}) => {
   return (
     <Stack.Navigator
       // initialRouteName="TabNavigator"
-      // initialRouteName="RestaurantMain"
+      // initialRouteName="EditProfile"
       screenOptions={{
         headerShown: false,
       }}>
@@ -217,6 +220,7 @@ const HomeStack = ({activeRestaurant}) => {
           name="OrderHistoryDetail"
           component={OrderHistoryDetail}
         />
+        <Stack.Screen name="EditProfile" component={EditProfile} />
       </Stack.Group>
     </Stack.Navigator>
   );
@@ -401,14 +405,6 @@ const TabNavigator = () => {
       screenListeners={({navigation, route}) => ({
         tabPress: e => {},
       })}
-      // screenOptions={({route}) => ({
-      //   headerShown: false,
-      //   // tabBarHideOnKeyboard: true,
-      //   tabBarPosition: 'bottom',
-      //   tabBarShowLabel: false,
-      //   tabBarStyle: tabNavStyles.tabNavigatorBarStyle,
-      // })}
-
       screenOptions={({route}) => ({
         // headerTitleAlign: "center",
         tabBarVisible: route.params && route.params.tabBarVisible !== false,
@@ -416,18 +412,6 @@ const TabNavigator = () => {
         tabBarIcon: ({focused, color, size}) => {
           let iconName;
           console.log(route.name, 'route.name');
-
-          // if (route.name === 'RestaurantMain') {
-          //   iconName = focused ? 'home' : 'home-outline';
-          // }
-
-          // else if (route.name === "Settings") {
-          //   iconName = focused ? "settings" : "ios-settings-sharp";
-          // } else if (route.name === "Notifications") {
-          //   iconName = focused ? "ios-notifications" : "notifications-outline";
-          // }
-          // You can return any component that you like here!
-          // return <Ionicons name={iconName} size={size} color={color} />;
 
           return (
             <Image
@@ -464,33 +448,6 @@ const TabNavigator = () => {
         })}
       />
 
-      {/* <Tab.Screen
-        name={qr ? 'RestaurantMenu' : 'QrCode'}
-        component={qr ? RestaurantMenu : QrCode}
-        options={{
-          tabBarLabel: qr ? 'RestaurantMenu' : 'QrCode',
-          // tabBarStyle: {display: qr ? null : null},
-
-          tabBarIcon: () => {
-            return (
-              <View style={tabNavStyles.tabNavMenuBtn}>
-                {qr ? (
-                  <MenuIcon
-                    width={screenToTextSize(8)}
-                    style={{width: 12, height: 12}}
-                  />
-                ) : (
-                  <QrIcon
-                    width={screenToTextSize(8)}
-                    style={{width: 24, height: 24}}
-                  />
-                )}
-              </View>
-            );
-          },
-        }}
-      /> */}
-
       {qr ? (
         <Tab.Screen
           name={'RestaurantMenu'}
@@ -524,15 +481,7 @@ const TabNavigator = () => {
             // tabBarStyle: {display: 'none'},
             tabBarLabel: 'QrCode',
             tabBarIcon: () => {
-              return (
-                <View></View>
-                // <View style={tabNavStyles.tabNavQrCodeScannerBtn}>
-                // <QrIcon
-                //   width={screenToTextSize(8)}
-                //   style={{width: 24, height: 24}}
-                // />
-                // </View>
-              );
+              return <View></View>;
             },
           })}
         />
@@ -541,6 +490,15 @@ const TabNavigator = () => {
       <Tab.Screen
         name="Cart"
         component={Cart}
+        listeners={() => ({
+          tabPress: e => {
+            console.log('cart listern is working');
+
+            e.preventDefault();
+            dispatch(setCartBtn(true));
+            // setShowFilter(true);
+          },
+        })}
         options={{
           headerShown: false,
 
@@ -604,20 +562,28 @@ const TabNavigator = () => {
 const RootNavigator = () => {
   const bottomSheetRef = useRef(null);
   // const navigation = useNavigation();
-
-  // callbacks
-  const handleSheetChanges = useCallback(index => {
-    console.log('handleSheetChanges', index);
-  }, []);
   const dispatch = useDispatch();
-
   const user = useSelector(state => state.auth.user);
   const req = useSelector(state => state.auth.request);
+  const cartBtn = useSelector(state => state.cart.cartBtnStatus);
 
   useEffect(() => {
     if (user) {
     }
   }, [user]);
+  // callbacks
+  const handleSheetChanges = useCallback(index => {
+    console.log('handleSheetChanges>>>>>>>>', index);
+    if (index == -1) {
+      dispatch(setRequestBtn(false));
+    }
+  }, []);
+  const handleCartSheetChanges = useCallback(index => {
+    console.log('handleSheetChanges>>>>>>>>', index);
+    if (index == -1) {
+      dispatch(setCartBtn(false));
+    }
+  }, []);
 
   return (
     <GestureHandlerRootView style={{flex: 1}}>
@@ -626,9 +592,11 @@ const RootNavigator = () => {
         {req ? (
           <BottomSheet
             handleComponent={null}
+            enablePanDownToClose={true}
+            // onChange={()=>console.log('I a')}
             // handleIndicatorStyle={{display: 'none'}}
             enableDynamicSizing={false}
-            snapPoints={[400, '40%']}
+            snapPoints={[350, '40%']}
             ref={bottomSheetRef}
             onChange={handleSheetChanges}>
             <BottomSheetView style={tabNavStyles.contentContainer}>
@@ -681,6 +649,20 @@ const RootNavigator = () => {
                 </View>
               </View>
             </BottomSheetView>
+          </BottomSheet>
+        ) : (
+          <></>
+        )}
+
+        {cartBtn ? (
+          <BottomSheet
+            handleComponent={null}
+            onChange={handleCartSheetChanges}
+            enablePanDownToClose={true}
+            enableDynamicSizing={false}
+            ref={bottomSheetRef}
+            snapPoints={['90%', '90%']}>
+            <Cart />
           </BottomSheet>
         ) : (
           <></>

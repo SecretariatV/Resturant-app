@@ -1,12 +1,4 @@
-import {
-  View,
-  Text,
-  Image,
-  TextInput,
-  FlatList,
-  ScrollView,
-  TouchableOpacity,
-} from 'react-native';
+import {View, Text, Image, TextInput, FlatList, ScrollView} from 'react-native';
 import React, {useState} from 'react';
 import {styles} from './styles';
 import BackgroundLayout from '../../components/BackgroundLayout';
@@ -27,100 +19,11 @@ import {useNavigation} from '@react-navigation/native';
 import {Modal} from 'react-native';
 import GradientText from '../../components/GradientText/index.js';
 import HamBurgerButton from '../../components/NavButtons/HamBurgerButton/index.js';
-import {useDispatch} from 'react-redux';
-import {setCartBtn} from '../../redux/actions/cart.js';
-import CloseFilterBtn from '../../assets/images/closeBtnFilter.svg';
 
-const Cart = () => {
-  const navigation = useNavigation();
-  const dispatch = useDispatch();
-
-  const [isModalVisible, setIsModalVisible] = useState(false);
-
-  const toggleModal = () => {
-    setIsModalVisible(!isModalVisible);
-  };
-
-  const handlePress = () => {
-    navigation.navigate('MenuDetail');
-  };
-  const [data, setData] = useState([
-    {key: 'item1'},
-    {key: 'item2'},
-    {key: 'item3'},
-    // Add more items as needed
-  ]);
-  const keyExtractor = (item, index) => index.toString();
-
-  const FullScreenModal = () => {
-    return (
-      <Modal
-        animationType="slide"
-        transparent={true}
-        visible={true}
-        // onRequestClose={onClose}
-      >
-        <View style={styles.modalContainer}>
-          <Image source={require('../../assets/images/spoon.png')} />
-
-          <GradientText style={styles.customizeTxt}>
-            This item has been customized, Are you sure you want to delete it?
-          </GradientText>
-
-          <View
-            style={{
-              flexDirection: 'row',
-              width: '100%',
-              alignItems: 'center',
-              justifyContent: 'center',
-              marginTop: 10,
-            }}>
-            <ButtonsCommon
-              btnText={'Cancel'}
-              containerStyle={{width: '40%', marginRight: 15}}
-              onPress={() => setIsModalVisible(false)}
-            />
-            <ButtonsCommon
-              btnText={'OK'}
-              containerStyle={{width: '40%', marginLeft: 15}}
-              onPress={() => setIsModalVisible(false)}
-            />
-          </View>
-        </View>
-      </Modal>
-    );
-  };
-
+const CartSection = () => {
   return (
-    <View style={styles.container}>
-      <BackgroundLayout imgStyle={{borderRadius: 15}} />
-
-      {isModalVisible ? FullScreenModal() : <></>}
-      <HeaderModed
-        headerStyle={{marginTop: 0}}
-        slotLeft={
-          <Text
-            style={{
-              fontFamily: fonts.URBANIST_BOLD,
-              fontSize: 22,
-              color: Colors.WHITE,
-            }}>
-            Cart
-          </Text>
-        }
-        slotCenter={<></>}
-        slotRight={
-          <>
-            <TouchableOpacity
-              onPress={() => {
-                dispatch(setCartBtn(false));
-                // navigation.goBack();
-              }}>
-              <CloseFilterBtn width={30} height={30} />
-            </TouchableOpacity>
-          </>
-        }
-      />
+    <View>
+      <BackgroundLayout />
       <ScrollView>
         {cartData.map((item, index) => (
           <BackgroundCard
@@ -217,10 +120,7 @@ const Cart = () => {
           }}>
           <ButtonsCommon
             btnText={'Add more items'}
-            onPress={() => {
-              dispatch(setCartBtn(false));
-              navigation.navigate('RestaurantMenu');
-            }}
+            onPress={() => navigation.navigate('RestaurantMenu')}
           />
         </View>
 
@@ -261,16 +161,13 @@ const Cart = () => {
           <RestaurantButton
             btnText={'Order now'}
             style={{width: '95%'}}
-            onPress={() => {
-              dispatch(setCartBtn(false));
-
-              navigation.navigate('PaymentOption');
-            }}
+            onPress={() => navigation.navigate('PaymentOption')}
           />
         </View>
 
-        {/* <GradientText style={styles.triedTxt}>People Also Tried</GradientText>
+        <GradientText style={styles.triedTxt}>People Also Tried</GradientText>
 
+        {/* {itemListType === 'top' && ( */}
         <FlatList
           data={dressCode}
           style={styles.horizontalListStyle}
@@ -312,7 +209,7 @@ const Cart = () => {
               </View>
             </BackgroundCard>
           )}
-        /> */}
+        />
         {/* )} */}
         {/* <SwipeableList
         data={cartData}
@@ -419,9 +316,8 @@ const Cart = () => {
         backgroundColor={'transparent'}
       /> */}
       </ScrollView>
-      {/* <Footer /> */}
     </View>
   );
 };
 
-export default Cart;
+export default CartSection;
