@@ -2,7 +2,6 @@ import {
   View,
   Text,
   Image,
-  ImageBackground,
   ScrollView,
   TouchableOpacity,
   FlatList,
@@ -10,30 +9,27 @@ import {
 } from 'react-native';
 import React, {useEffect, useState} from 'react';
 import {styles} from './styles';
-import {height, heightToDp, widthToDp} from '../../utils/Dimensions';
 import LinearGradient from 'react-native-linear-gradient';
+import {SelectCountry} from 'react-native-element-dropdown';
 
+//components
 import BackgroundLayout from '../../components/BackgroundLayout';
-
-import HeaderModed from '../../components/HeaderModed';
+import HeaderModed from '../../components/HeaderModed'; 
+import FadedSeparator from '../../components/FadedSeparator';
+import ReviewCard from '../../components/ReviewCard';
+import HamBurgerButton from '../../components/NavButtons/HamBurgerButton';
+//assets
 import Clock from '../../assets/images/clock.svg';
-import Star from '../../assets/images/starV2.svg';
-
-import Dress from '../../assets/images/dress.svg';
+import Star from '../../assets/images/starV2.svg'; 
 import Age from '../../assets/images/age.svg';
-import Star from '../../assets/images/ratingStar.svg';
-import StarRating from '../../components/StarRating';
-
 import CusineSvg from '../../assets/images/cuisineServe.svg';
 import Location from '../../assets/images/locWithBack.svg';
-
 import resturant_cover from '../../assets/images/restaurant_cover.png';
-import FadedSeparator from '../../components/FadedSeparator';
-import {Colors} from '../../theme';
-import ReviewCard from '../../components/ReviewCard';
+
+//utils
+import {heightToDp, widthToDp} from '../../utils/Dimensions';
 import {reviews, ageGroup, cuisine, dressCode} from '../../utils/demodata';
-import HamBurgerButton from '../../components/NavButtons/HamBurgerButton';
-import {SelectCountry} from 'react-native-element-dropdown';
+import {Colors} from '../../theme';
 import {fonts} from '../../theme/FontFamily';
 
 const Restaurant = () => {

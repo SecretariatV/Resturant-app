@@ -40,6 +40,7 @@ const MyOrder = () => {
         <Text style={styles.orderTitle}>Orders by Mark Anderson</Text>
         {cartData.map((item, index) => (
           <BackgroundCard
+            key={index}
             style={{marginTop: 10, marginHorizontal: 10}}
             childrenStyle={{borderRadius: 26}}
             linearBackStyle={{borderRadius: 26}}>
@@ -121,7 +122,7 @@ const MyOrder = () => {
           <View
             style={{marginVertical: 15, paddingHorizontal: 10, width: '100%'}}>
             {cardData.map((item, index) => (
-              <View style={{width: '100%'}}>
+              <View style={{width: '100%'}} key={index}>
                 <RadioButtonCard cardName={item.cardName} />
 
                 <FadedSeparator />
@@ -150,7 +151,7 @@ const MyOrder = () => {
           <View
             style={{marginVertical: 15, paddingHorizontal: 10, width: '100%'}}>
             {paymentMode.map((item, index) => (
-              <View style={{width: '100%'}}>
+              <View style={{width: '100%'}} key={index}>
                 <RadioButtonCard cardName={item.cardName} />
 
                 {/* <FadedSeparator /> */}
