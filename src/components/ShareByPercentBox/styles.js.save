@@ -1,0 +1,52 @@
+OOimport {StyleSheet} from 'react-native';
+imOOport {fonts} from '../../../theme/FontFamily';
+import {width, widthToDp} from '../../../utils/Dimensions';
+import {Colors} from '../../../theme';
+import {screenToTextSize} from '../../utils/helper';
+
+const styles = StyleSheet.create({
+  paymentUserBox: {
+    backgroundColor: '#272630',
+    width: widthToDp(90),
+    borderRadius: 8,
+    marginHorizontal: 16,
+    paddingHorizontal: 8,
+    paddingTop: 8,
+    marginBottom: 20,
+  },
+  paymentUserBoxNamenPriceContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    width: widthToDp(85),
+  },
+  paymentUserBoxUserName: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  userName: {
+    marginLeft: 15,
+    fontFamily: fonts.URBANIST_BOLD,
+    color: Colors.WHITE,
+    fontSize: 16,
+  },
+  percentItemPrice: {
+    color: Colors.GREEN,
+    fontWeight: 'bold',
+    fontSize: screenToTextSize(5),
+  },
+  sliderGradBar: {
+    backgroundColor: 'transparent',
+    // borderRadius: 15,
+    width: widthToDp(60),
+    position: 'absolute',
+    height: 8,
+    marginTop: 0,
+    top: 16,
+    left: 15,
+    zIndex: -1,
+    // justifyContent: 'center',
+    // alignItems: 'center',
+  },
+});
+export {styles};

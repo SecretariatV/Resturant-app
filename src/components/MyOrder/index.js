@@ -65,6 +65,7 @@ const MyOrder = () => {
             console.log(truncatedText, 'truncatedText');
             return (
               <BackgroundCard
+                key={index}
                 style={{marginTop: 10, marginHorizontal: 20}}
                 childrenStyle={{borderRadius: 26}}
                 linearBackStyle={{borderRadius: 26}}>

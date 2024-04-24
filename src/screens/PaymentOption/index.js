@@ -32,6 +32,7 @@ import {reviews} from '../../utils/demodata.js';
 import {width, widthToDp} from '../../utils/Dimensions.js';
 import HamBurgerButton from '../../components/NavButtons/HamBurgerButton/index.js';
 
+import ShareByPercentBox from '../../components/ShareByPercentBox/index.js';
 import {useSharedValue, withDecay} from 'react-native-reanimated';
 import Slider from '@react-native-community/slider';
 import {
@@ -81,6 +82,52 @@ const ShareByPercent = () => {
 
   useEffect(() => {}, [progress]);
 
+  const userAvatar = require('../../assets/images/profileImg.png');
+  const [dummyData, setDummyData] = useState({
+    totalBill: 250.68,
+    guests: [
+      {
+        name: 'Hasan',
+        image: userAvatar,
+        amount: 0,
+        percent: 0,
+      },
+      {
+        name: 'Guest 1',
+        image: userAvatar,
+        amount: 0,
+        percent: 0,
+      },
+      {
+        name: 'Guest 2',
+        image: userAvatar,
+        amount: 0,
+        percent: 0,
+      },
+      {
+        name: 'Guest 3',
+        image: userAvatar,
+        amount: 0,
+        percent: 0,
+      },
+    ],
+  });
+
+  const updateGuestPercentage = (index, percent, amount) => {
+    setDummyData(prevData => {
+      const newGuests = [...prevData.guests];
+      newGuests[index] = {
+        ...newGuests[index],
+        percent,
+        amount,
+      };
+      const updatedData = {
+        ...prevData,
+        guests: newGuests,
+      };
+      return updatedData;
+    });
+  };
   // const progress = useSharedValue(30);
   // const min = useSharedValue(0);
   // const max = useSharedValue(100);
@@ -88,194 +135,18 @@ const ShareByPercent = () => {
     <ScrollView
       style={{flex: 1, marginBottom: 70}}
       contentContainerStyle={{justifyContent: 'start'}}>
-      <View style={styles.paymentUserBox} class="payment-user-box">
-        <View
-          class="payment-user-box-name-n-price-container"
-          style={styles.paymentUserBoxNamenPriceContainer}>
-          <View
-            class="payment-user-box-username"
-            style={styles.paymentUserBoxUserName}>
-            <Image source={require('../../assets/images/profileImg.png')} />
-            <Text style={styles.userName}>Hasan</Text>
-          </View>
-          <View style={{alignItems: 'center'}}>
-            <Text style={styles.percentItemPrice}>${progress}</Text>
-          </View>
-        </View>
-        <View class="slider-container">
-          <View
-            class="slider-bar-container"
-            style={{position: 'relative', marginBottom: 30}}>
-            <Slider
-              style={{
-                width: widthToDp(90),
-                height: 40,
-                position: 'relative',
-                left: -10,
-              }}
-              minimumValue={min}
-              maximumValue={max}
-              // value={progress}
-              step={25}
-              stepLabel={[
-                0,
-                '0%',
-                25,
-                '25%',
-                50,
-                '50%',
-                75,
-                '75%',
-                100,
-                '100%',
-              ]}
-              minimumTrackTintColor="transparent"
-              maximumTrackTintColor="transparent"
-              thumbTintColor="#fff"
-              onValueChange={val => {
-                console.log(val, progress);
-                setprogress(val);
-                return true;
-              }}
-            />
-            <View class="active-order-bar-bg" style={styles.sliderGradBar}>
-              <LinearGradient
-                class="intro-active-orders"
-                colors={[
-                  '#00F594ff',
-                  '#00F594ff',
-                  '#00F594ff',
-                  '#02ABEEff',
-                  '#00F594ff',
-                ]}
-                useAngle={true}
-                angle={45}
-                style={{
-                  borderRadius: 10,
-                  flexWrap: 'nowrap',
-                  height: 8,
-                  width: progress + 1 + '%',
-                  // maxWidth: widthToDp(75),
-                }}
-                start={{x: 0, y: 0.5}}
-                end={{x: 1, y: 0.5}}></LinearGradient>
-            </View>
-            <HundredPercentBar
-              width={widthToDp(85)}
-              style={{position: 'absolute', left: 0, top: 35}}
-            />
-          </View>
-          {/* <Image source={require('../../assets/images/hundredPercentBar.svg')}/> */}
-          <View
-            style={{
-              width: widthToDp(85),
-              justifyContent: 'start',
-              alignContent: 'center',
-            }}></View>
-        </View>
-      </View>
-      <View style={styles.paymentUserBox} class="payment-user-box">
-        <View
-          class="payment-user-box-name-n-price-container"
-          style={styles.paymentUserBoxNamenPriceContainer}>
-          <View
-            class="payment-user-box-username"
-            style={styles.paymentUserBoxUserName}>
-            <Image source={require('../../assets/images/profileImg.png')} />
-            <Text style={styles.userName}>Hasan</Text>
-          </View>
-          <View style={{alignItems: 'center'}}>
-            <Text style={styles.percentItemPrice}>${progress}</Text>
-          </View>
-        </View>
-        <View class="slider-container">
-          <View
-            class="slider-bar-container"
-            style={{position: 'relative', marginBottom: 30}}>
-            <Slider
-              style={{
-                width: widthToDp(90),
-                height: 40,
-                position: 'relative',
-                left: -10,
-              }}
-              minimumValue={min}
-              maximumValue={max}
-              // value={progress}
-              step={25}
-              stepLabel={[
-                0,
-                '0%',
-                25,
-                '25%',
-                50,
-                '50%',
-                75,
-                '75%',
-                100,
-                '100%',
-              ]}
-              minimumTrackTintColor="transparent"
-              maximumTrackTintColor="transparent"
-              thumbTintColor="#fff"
-              onValueChange={val => {
-                console.log(val, progress);
-                setprogress(val);
-                return true;
-              }}
-            />
-            <View class="active-order-bar-bg" style={styles.sliderGradBar}>
-              <LinearGradient
-                class="intro-active-orders"
-                colors={[
-                  '#00F594ff',
-                  '#00F594ff',
-                  '#00F594ff',
-                  '#02ABEEff',
-                  '#00F594ff',
-                ]}
-                useAngle={true}
-                angle={45}
-                style={{
-                  borderRadius: 10,
-                  flexWrap: 'nowrap',
-                  height: 8,
-                  width: progress + 1 + '%',
-                  // maxWidth: widthToDp(75),
-                }}
-                start={{x: 0, y: 0.5}}
-                end={{x: 1, y: 0.5}}></LinearGradient>
-            </View>
-            <HundredPercentBar
-              width={widthToDp(85)}
-              style={{position: 'absolute', left: 0, top: 35}}
-            />
-          </View>
-          {/* <Image source={require('../../assets/images/hundredPercentBar.svg')}/> */}
-          <View
-            style={{
-              width: widthToDp(85),
-              justifyContent: 'start',
-              alignContent: 'center',
-            }}></View>
-        </View>
-      </View>
-      {/* <View style={styles.paymentUserBox} class="payment-user-box">
-        <View
-          class="payment-user-box-name-n-price-container"
-          style={styles.paymentUserBoxNamenPriceContainer}>
-          <View
-            class="payment-user-box-username"
-            style={styles.paymentUserBoxUserName}>
-            <Image source={require('../../assets/images/profileImg.png')} />
-            <Text style={styles.userName}>Hasan</Text>
-          </View>
-          <View style={{alignItems: 'center'}}>
-            <Text style={styles.percentItemPrice}>${progress}</Text>
-          </View>
-        </View>
-        <StepSlider min={0} max={100} initVal={0} />
-      </View> */}
+      {dummyData.guests.map((guest, index) => (
+        <ShareByPercentBox
+          key={index}
+          userobj={guest}
+          amount={guest.amount}
+          percent={guest.percent}
+          totalBill={dummyData.totalBill}
+          onUpdate={(percent, amount) =>
+            updateGuestPercentage(index, percent, amount)
+          }
+        />
+      ))}
     </ScrollView>
   );
 };
