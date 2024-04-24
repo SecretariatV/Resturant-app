@@ -472,22 +472,22 @@ const RestaurantMain = () => {
         </ScrollView>
       </BottomSheet>
       <SearchModded isVisible={isVisible} setIsVisible={setIsVisible} />
-
+      {/* 
       <TabView
         navigationState={{index, routes}}
         renderTabBar={renderTabBar}
         renderScene={renderScene}
         onIndexChange={setIndex}
         initialLayout={{width: layout.width}}
-      />
+      /> */}
 
-      {/* <FlatList
+      <FlatList
         showsVerticalScrollIndicator={false}
         style={styles.listStyle}
         data={restaurants}
         renderItem={renderItem}
         keyExtractor={item => item.id} // Key extractor for each item
-      /> */}
+      />
     </View>
   );
 };

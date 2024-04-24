@@ -48,6 +48,7 @@ const styles = StyleSheet.create({
     color: '#00FC92',
     fontSize: screenToTextSize(5),
     paddingHorizontal: 5,
+    marginBottom: 5,
   },
   activeOrderBarContainer: {
     alignItems: 'start',

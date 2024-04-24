@@ -15,6 +15,7 @@ const FancyInput = ({
   fieldInputStyle,
   containerStyle,
   iconShow = true,
+  multiline,
 }) => {
   const eyeOn = require('../../assets/images/eye-on.png');
   const eyeOff = require('../../assets/images/eye-off.png');
@@ -75,6 +76,7 @@ const FancyInput = ({
             value={fieldValue}
             secureTextEntry={isSecureTextEntry}
             placeholder={fieldPlaceHolder}
+            multiline={multiline}
             // placeholderStyle={{fontFamily: fonts.URBANIST_THIN}}
             placeholderTextColor="#ffffffaa"
             onChangeText={fieldCallback}

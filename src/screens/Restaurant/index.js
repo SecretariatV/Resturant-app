@@ -257,14 +257,20 @@ const Restaurant = () => {
   return (
     <View style={styles.container}>
       <BackgroundLayout />
-      <HeaderModed
+      {/* <HeaderModed
         slotLeft={<HamBurgerButton />}
         slotCenter={<></>}
         slotRight={<></>}
+      /> */}
+      <HamBurgerButton
+        style={{position: 'absolute', top: 40, left: 20, zIndex: 999}}
       />
 
       <ScrollView style={styles.restaurantScrollView}>
+        {/* <View style={{position: 'absolute'}}> */}
+
         <Image source={resturant_cover} style={styles.bannerImage} />
+        {/* </View> */}
         <View
           class="restaurant-content-container"
           style={styles.restaurantContentContainer}>

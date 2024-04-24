@@ -13,9 +13,9 @@ import FadedSeparator from '../../components/FadedSeparator';
 
 // icons
 import userIcon from '../../assets/images/userIcon.png';
-import emailIcon from '../../assets/images/emailIcon.png';
-import phoneIcon from '../../assets/images/phoneIcon.png';
-import passIcon from '../../assets/images/passIcon.png';
+import tiktokIcon from '../../assets/images/tiktok.png';
+import instagramIcon from '../../assets/images/instagram.png';
+import snapchatIcon from '../../assets/images/snapchat.png';
 import fbLoginIcon from '../../assets/images/fbLoginIcon.png';
 import gLoginIcon from '../../assets/images/gLoginIcon.png';
 import aLoginIcon from '../../assets/images/aLoginIcon.png';
@@ -23,16 +23,22 @@ import {useNavigation} from '@react-navigation/native';
 import ButtonsCommon from '../../components/Buttons/ButtonCommon.js';
 import BackButton from '../../components/NavButtons/BackButton/index.js';
 import {widthToDp} from '../../utils/Dimensions.js';
+import {fonts} from '../../theme/FontFamily.js';
+import Colors from '../../theme/Colors.js';
 
 const EditProfile = ({showMenu}) => {
   const navigation = useNavigation();
 
-  const [inputName, setInputName] = useState('');
-  const [inputLname, setInputLname] = useState('');
-  const [inputUname, setInputUname] = useState('');
-  const [inputEmail, setInputEmail] = useState('');
-  const [inputPhone, setInputPhone] = useState('');
-  const [inputPass, setInputPass] = useState('');
+  const [inputName, setInputName] = useState('Mark');
+  const [inputLname, setInputLname] = useState('Anderson');
+  const [inputUname, setInputUname] = useState('mkAnderson');
+
+  const [about, setAbout] = useState(
+    'Lorem Ipsum is simply dummy text of the printing and typesetting industry. ',
+  );
+  const [instagram, setInstagram] = useState('www.instagram.com/username');
+  const [snapchat, setSnapchat] = useState('www.snapchat.com/username');
+  const [tiktok, setTiktok] = useState('www.tiktok.com/username');
 
   // const handleImagePicker = () => {
   //   console.log('image clicked');
@@ -69,7 +75,16 @@ const EditProfile = ({showMenu}) => {
         <HeaderModed
           headerStyle={{paddingHorizontal: 0}}
           slotLeft={<BackButton onPress={() => navigation.goBack()} />}
-          slotCenter={<Text>Edit Profile</Text>}
+          slotCenter={
+            <Text
+              style={{
+                fontFamily: fonts.URBANIST_BOLD,
+                fontSize: 22,
+                color: Colors.WHITE,
+              }}>
+              Edit Profile
+            </Text>
+          }
           slotRight={<></>}
         />
         <ScrollView
@@ -97,20 +112,7 @@ const EditProfile = ({showMenu}) => {
                 </View>
               </TouchableOpacity>
             </View>
-            <FancyInput
-              iconImage={userIcon}
-              fieldLabel="First Name"
-              fieldValue={inputName}
-              fieldPlaceHolder="Enter your First name"
-              fieldCallback={setInputName}
-            />
-            <FancyInput
-              iconImage={userIcon}
-              fieldLabel="Last Name"
-              fieldValue={inputLname}
-              fieldPlaceHolder="Enter your Last name"
-              fieldCallback={setInputLname}
-            />
+
             <FancyInput
               iconImage={userIcon}
               fieldLabel="User name"
@@ -119,26 +121,58 @@ const EditProfile = ({showMenu}) => {
               fieldCallback={setInputUname}
             />
             <FancyInput
-              iconImage={emailIcon}
-              fieldLabel="Email"
-              fieldValue={inputEmail}
-              fieldPlaceHolder="Enter your Email"
-              fieldCallback={setInputEmail}
+              iconImage={userIcon}
+              fieldLabel="First name"
+              fieldValue={inputName}
+              fieldPlaceHolder="Enter your First name"
+              fieldCallback={setInputName}
             />
             <FancyInput
-              iconImage={phoneIcon}
-              fieldLabel="Phone Number"
-              fieldValue={inputPhone}
-              fieldPlaceHolder="Enter your Phone Number"
-              fieldCallback={setInputPhone}
+              iconImage={userIcon}
+              fieldLabel="Last name"
+              fieldValue={inputLname}
+              fieldPlaceHolder="Enter your Last name"
+              fieldCallback={setInputLname}
+            />
+
+            <FancyInput
+              iconImage={userIcon}
+              fieldLabel="About Me"
+              fieldValue={about}
+              fieldPlaceHolder="About"
+              fieldCallback={setAbout}
+              multiline={true}
+            />
+
+            <Text
+              style={{
+                fontFamily: fonts.URBANIST_MEDIUM,
+                color: Colors.WHITE,
+                fontSize: 20,
+              }}>
+              Link Social Media Accounts
+            </Text>
+
+            <FancyInput
+              iconImage={instagramIcon}
+              fieldLabel="Instagram"
+              fieldValue={instagram}
+              fieldPlaceHolder="Instagram"
+              fieldCallback={setInstagram}
             />
             <FancyInput
-              iconImage={passIcon}
-              fieldLabel="Password"
-              fieldValue={inputPass}
-              fieldPlaceHolder="Password Here"
-              fieldCallback={setInputPass}
-              fieldIsPassword={true}
+              iconImage={snapchatIcon}
+              fieldLabel="Snapchat"
+              fieldValue={snapchat}
+              fieldPlaceHolder="Snapchat"
+              fieldCallback={setSnapchat}
+            />
+            <FancyInput
+              iconImage={tiktokIcon}
+              fieldLabel="Tiktok"
+              fieldValue={tiktok}
+              fieldPlaceHolder="Tiktok"
+              fieldCallback={setTiktok}
             />
           </View>
           <ButtonsCommon

@@ -187,16 +187,7 @@ const HomeStack = ({activeRestaurant}) => {
         <Stack.Screen name="TabNavigator" component={TabNavigator} />
         <Stack.Screen name="Requests" component={Requests} />
         <Stack.Screen name="RestaurantMenu" component={RestaurantMenu} />
-        <Stack.Screen
-          name="QrCode"
-          component={QrCode}
-          // options={() => ({
-          //   tabBarStyle: {
-          //     display: 'none',
-          //   },
-          //   tabBarButton: () => null,
-          // })}
-        />
+        <Stack.Screen name="QrCode" component={QrCode} />
         <Stack.Screen name="Restaurant" component={Restaurant} />
         <Stack.Screen name="PaymentOption" component={PaymentOption} />
         <Stack.Screen name="AmountPaid" component={AmountPaid} />

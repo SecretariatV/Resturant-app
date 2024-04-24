@@ -8,6 +8,7 @@ import {getPlatformSpecificValue} from '../../utils/helper';
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    position: 'relative',
     // paddingHorizontal: 15,
   },
   bannerImage: {
