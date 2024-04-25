@@ -14,17 +14,19 @@ import {SelectCountry} from 'react-native-element-dropdown';
 
 //components
 import BackgroundLayout from '../../components/BackgroundLayout';
-import HeaderModed from '../../components/HeaderModed'; 
+import HeaderModed from '../../components/HeaderModed';
 import FadedSeparator from '../../components/FadedSeparator';
 import ReviewCard from '../../components/ReviewCard';
 import HamBurgerButton from '../../components/NavButtons/HamBurgerButton';
 //assets
 import Clock from '../../assets/images/clock.svg';
 import Age from '../../assets/images/age.svg';
+import Dress from '../../assets/images/dress.svg';
+
 import CusineSvg from '../../assets/images/cuisineServe.svg';
 import Location from '../../assets/images/locWithBack.svg';
 import resturant_cover from '../../assets/images/restaurant_cover.png';
-
+import Star from '../../assets/images/ratingStar.svg';
 //utils
 import {heightToDp, widthToDp} from '../../utils/Dimensions';
 import {reviews, ageGroup, cuisine, dressCode} from '../../utils/demodata';
@@ -68,9 +70,14 @@ const Restaurant = () => {
     if (activeTab === 'about') {
       return (
         <>
-          <Text style={styles.headingText}>Opening Hours</Text>
+          <View
+            style={{flexDirection: 'row', alignItems: 'center', marginTop: 10}}>
+            <Clock />
+
+            <Text style={styles.headingText}>Opening Hours</Text>
+          </View>
           <View style={styles.timeContainer}>
-            <Clock width={32} height={32} style={{marginRight: 10}} />
+            {/* <Clock width={32} height={32} style={{marginRight: 10}} /> */}
             <Text style={styles.to}>6:00 PM</Text>
 
             <Text style={styles.to}>To</Text>
@@ -79,7 +86,10 @@ const Restaurant = () => {
           </View>
 
           <FadedSeparator />
-          <Text style={styles.headingText}>Dress Code</Text>
+          <View style={{flexDirection: 'row', alignItems: 'center'}}>
+            <Dress />
+            <Text style={styles.headingText}>Dress Code</Text>
+          </View>
           <View style={{flexDirection: 'row', flexWrap: 'wrap', marginTop: 5}}>
             {dressCode.map(item => (
               <View
@@ -89,8 +99,6 @@ const Restaurant = () => {
                   marginTop: 5,
                   marginRight: 15,
                 }}>
-                <Clock width={32} height={32} style={{marginRight: 5}} />
-
                 <Text
                   style={{
                     color: Colors.WHITE,
@@ -258,7 +266,7 @@ const Restaurant = () => {
         slotRight={<></>}
       /> */}
       <HamBurgerButton
-        style={{position: 'absolute', top: 40, left: 20, zIndex: 999}}
+        style={{position: 'absolute', top: 50, left: 20, zIndex: 999}}
       />
 
       <ScrollView style={styles.restaurantScrollView}>

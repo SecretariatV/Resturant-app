@@ -203,6 +203,7 @@ const CustomDrawer1 = props => {
 
             <TouchableOpacity
               // onPress={onPress}
+              onPress={() => navigation.navigate('Wallet')}
               accessibilityRole="button"
               style={[styles.drawerItem, styles.buttons]}>
               <View>
@@ -236,6 +237,7 @@ const CustomDrawer1 = props => {
             </TouchableOpacity>
 
             <TouchableOpacity
+              onPress={() => navigation.navigate('Notification')}
               accessibilityRole="button"
               style={[styles.drawerItem, styles.buttons]}>
               <View>
@@ -289,7 +291,8 @@ const CustomDrawer1 = props => {
             <TouchableOpacity
               // onPress={onPress}
               accessibilityRole="button"
-              style={[styles.drawerItem, styles.buttons]}>
+              style={[styles.drawerItem, styles.buttons]}
+              onPress={() => navigation.navigate('Terms')}>
               <View>
                 <View style={styles.buttonView}>
                   <Term width={28} height={28} />
@@ -486,27 +489,27 @@ const styles = StyleSheet.create({
     borderRadius: constant.borderRadius,
     margin: constant.SPACING / 2,
   },
-  separator: {
-    width: '100%',
-    height: 1,
-    backgroundColor: colors.darkGray,
-    marginVertical: constant.SPACING / 2,
-  },
+  // separator: {
+  //   width: '100%',
+  //   height: 1,
+  //   backgroundColor: colors.darkGray,
+  //   marginVertical: constant.SPACING / 2,
+  // },
   headerTitle: {
     fontSize: 22,
     color: Colors.GREEN,
     fontFamily: fonts.URBANIST_BOLD,
   },
-  profile: {
-    marginVertical: constant.SPACING / 2,
-    marginRight: constant.SPACING,
-    marginLeft: constant.SPACING / 2,
-    width: 50,
-    height: 50,
-    borderRadius: 25,
-    backgroundColor: colors.light,
-  },
-  text: {
-    color: colors.white,
-  },
+  // profile: {
+  //   marginVertical: constant.SPACING / 2,
+  //   marginRight: constant.SPACING,
+  //   marginLeft: constant.SPACING / 2,
+  //   width: 50,
+  //   height: 50,
+  //   borderRadius: 25,
+  //   backgroundColor: colors.light,
+  // },
+  // text: {
+  //   color: colors.white,
+  // },
 });

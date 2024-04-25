@@ -12,6 +12,7 @@ const styles = StyleSheet.create({
     left: 0,
     right: 0,
     elevation: 1,
+    // resizeMode: 'cover',
   },
 });
 export {styles};

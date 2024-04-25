@@ -15,6 +15,7 @@ const FancyInput = ({
   fieldInputStyle,
   containerStyle,
   iconShow = true,
+  editable,
   multiline,
 }) => {
   const eyeOn = require('../../assets/images/eye-on.png');
@@ -66,13 +67,16 @@ const FancyInput = ({
       className="fancy-input-container"
       style={[styles.container, containerStyle]}>
       <View className="fancy-text-wrapper" style={[styles.wrapper]}>
-        <View className="fancy-text-label">
-          <Text style={styles.fieldLabel}>{fieldLabel}</Text>
-        </View>
+        {fieldLabel && (
+          <View className="fancy-text-label">
+            <Text style={styles.fieldLabel}>{fieldLabel}</Text>
+          </View>
+        )}
         <View style={styles.inputWrapper}>
           {iconShow && <Image source={iconImage} style={styles.fieldImage} />}
           <TextInput
             style={[styles.fieldInput, fieldInputStyle]}
+            editable={editable}
             value={fieldValue}
             secureTextEntry={isSecureTextEntry}
             placeholder={fieldPlaceHolder}

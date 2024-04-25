@@ -27,6 +27,7 @@ const styles = StyleSheet.create({
     userNameContainer: {
       flexDirection: 'row',
       alignItems: 'center',
+      justifyContent: 'center',
     },
     userName: {
       fontSize: screenToTextSize(5),
@@ -48,7 +49,7 @@ const styles = StyleSheet.create({
     color: '#00FC92',
     fontSize: screenToTextSize(5),
     paddingHorizontal: 5,
-    marginBottom: 5,
+    marginBottom: 4,
   },
   activeOrderBarContainer: {
     alignItems: 'start',

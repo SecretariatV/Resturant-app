@@ -22,23 +22,24 @@ const Login = () => {
   return (
     <View style={styles.container}>
       <BackgroundLayout />
-      <View style={{paddingHorizontal: 15}}>
-        <HeaderModed
-          headerStyle={{paddingHorizontal: 0}}
-          slotLeft={<BackButton onPress={() => navigation.goBack()} />}
-          slotCenter={
-            <Image
-              source={require('../../../assets/images/image-two.png')}
-              style={{
-                resizeMode: 'contain',
-                width: widthToDp(45),
-                height: widthToDp(100),
-              }}
-            />
-          }
-          slotRight={<></>}
-        />
-        <ScrollView>
+      <ScrollView>
+        <View style={{paddingHorizontal: 15, paddingBottom: 10}}>
+          <HeaderModed
+            headerStyle={{paddingHorizontal: 0}}
+            slotLeft={<BackButton onPress={() => navigation.goBack()} />}
+            slotCenter={
+              <Image
+                source={require('../../../assets/images/image-two.png')}
+                style={{
+                  resizeMode: 'contain',
+                  width: widthToDp(45),
+                  height: widthToDp(100),
+                }}
+              />
+            }
+            slotRight={<></>}
+          />
+
           <View
             style={{
               width: '100%',
@@ -78,8 +79,8 @@ const Login = () => {
               />
             </View>
           </View>
-        </ScrollView>
-      </View>
+        </View>
+      </ScrollView>
     </View>
   );
 };
