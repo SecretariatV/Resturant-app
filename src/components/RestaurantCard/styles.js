@@ -96,6 +96,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     left: 0,
     top: 0,
+    marginTop: 4
   },
 
   location: {
