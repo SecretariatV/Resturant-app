@@ -39,6 +39,9 @@ import {widthToDp} from '../../utils/Dimensions';
 import {getPlatformSpecificValue} from '../../utils/helper';
 import {setQrCode} from '../../redux/actions/auth';
 import {fonts} from '../../theme/FontFamily';
+import HorizontalPicker from '@vseslav/react-native-horizontal-picker';
+import Skeleton from 'react-native-reanimated-skeleton';
+
 const RestaurantMain = () => {
   const navigation = useNavigation();
   const dispatch = useDispatch();
@@ -46,122 +49,347 @@ const RestaurantMain = () => {
   const [modalVisible, setModalVisible] = useState(true);
   const [isVisible, setIsVisible] = useState(false);
   const [sliderValue, setSliderValue] = useState(0);
-  const restaurants = [
+
+  const [selRest, setSelRest] = useState(0);
+  const [restObj, setRestObj] = useState({});
+  const [loadingRest, setLoadingRest] = useState(true);
+  const restaurantCategories = ['Nearby', 'All', 'Trending'];
+
+  const renderRestCats = ({item, index}) => (
+    <TouchableOpacity
+      style={{
+        width: widthToDp(85)/3,
+        alignItems: 'center', 
+        marginHorizontal: 4
+      }}
+      onPress={() => {
+        console.log('tab change');
+        // if (selRest !== index) {
+          setLoadingRest(true);
+          setRestObj(restOjb[index]);
+          setSelRest(index);
+        // }
+      }}>
+      <LinearGradient
+        colors={
+          index === selRest
+            ? ['#00F69299', '#00A7F7FF']
+            : ['transparent', 'transparent']
+        }
+        useAngle={true}
+        angle={820}
+        start={{x: 0, y: 0.5}}
+        end={{x: 1, y: 0.5}}
+        style={{borderRadius: 24}}>
+        <Text
+          style={{
+            color: index === selRest ? Colors.BLACK : Colors.WHITE,
+            fontFamily: fonts.URBANIST_SEMIBOLD,
+            fontSize: 16,
+            paddingVertical: 2,
+            paddingHorizontal: 10,
+          }}>
+          {item}
+        </Text>
+      </LinearGradient>
+    </TouchableOpacity>
+  );
+
+  const restaurants2 = [
     {
-      id: '1',
-      name: 'Resturant Name',
-      location: 'Location Here',
-      cuisine: 'French',
+      id: '7',
+      name: 'Second Restaurant',
+      location: 'Location 2',
+      cuisine: 'Mexican',
     },
     {
-      id: '2',
-      name: 'Resturant Name',
-      location: 'Location Here',
+      id: '8',
+      name: 'Another Restaurant',
+      location: 'Location 3',
       cuisine: 'Italian',
     },
     {
-      id: '3',
-      name: 'Resturant Name',
-      location: 'Location Here',
-      cuisine: 'Turkish',
+      id: '9',
+      name: 'New Restaurant',
+      location: 'Location 4',
+      cuisine: 'Chinese',
     },
     {
-      id: '4',
-      name: 'Resturant Name',
-      location: 'Location Here',
-      cuisine: 'American',
+      id: '10',
+      name: 'Best Tacos',
+      location: 'Location 5',
+      cuisine: 'Mexican',
     },
-
     {
-      id: '5',
-      name: 'Resturant Name',
-      location: 'Location Here',
-      cuisine: 'French',
+      id: '11',
+      name: 'Pasta Palace',
+      location: 'Location 6',
+      cuisine: 'Italian',
     },
-
     {
-      id: '6',
-      name: 'Resturant Name',
-      location: 'Location Here',
-      cuisine: 'French',
+      id: '12',
+      name: 'Dragon Delight',
+      location: 'Location 7',
+      cuisine: 'Chinese',
     },
-
-    // Add more items as needed
+    {
+      id: '13',
+      name: 'Tasty Tacos',
+      location: 'Location 8',
+      cuisine: 'Mexican',
+    },
+    {
+      id: '14',
+      name: 'Pizza Paradise',
+      location: 'Location 9',
+      cuisine: 'Italian',
+    },
   ];
+
+  const restaurants3 = [
+    {
+      id: '15',
+      name: 'Spice City',
+      location: 'Location 10',
+      cuisine: 'Indian',
+    },
+    {
+      id: '16',
+      name: 'Sushi Spot',
+      location: 'Location 11',
+      cuisine: 'Japanese',
+    },
+    {
+      id: '17',
+      name: 'Greek Grill',
+      location: 'Location 12',
+      cuisine: 'Greek',
+    },
+    {
+      id: '18',
+      name: 'Curry Corner',
+      location: 'Location 13',
+      cuisine: 'Indian',
+    },
+    {
+      id: '19',
+      name: 'Ramen House',
+      location: 'Location 14',
+      cuisine: 'Japanese',
+    },
+    {
+      id: '20',
+      name: 'Mediterranean Medley',
+      location: 'Location 15',
+      cuisine: 'Greek',
+    },
+    {
+      id: '21',
+      name: 'Tandoori Time',
+      location: 'Location 16',
+      cuisine: 'Indian',
+    },
+    {
+      id: '22',
+      name: 'Tempura Heaven',
+      location: 'Location 17',
+      cuisine: 'Japanese',
+    },
+  ];
+
+  const restaurants4 = [
+    {
+      id: '23',
+      name: 'Thai Temptation',
+      location: 'Location 18',
+      cuisine: 'Thai',
+    },
+    {
+      id: '24',
+      name: 'French Feast',
+      location: 'Location 19',
+      cuisine: 'French',
+    },
+    {
+      id: '25',
+      name: 'Spanish Sensation',
+      location: 'Location 20',
+      cuisine: 'Spanish',
+    },
+    {
+      id: '26',
+      name: 'Taco Time',
+      location: 'Location 21',
+      cuisine: 'Mexican',
+    },
+    {
+      id: '27',
+      name: 'Pasta Palace',
+      location: 'Location 22',
+      cuisine: 'Italian',
+    },
+    {
+      id: '28',
+      name: 'Chinese Charm',
+      location: 'Location 23',
+      cuisine: 'Chinese',
+    },
+    {
+      id: '29',
+      name: 'Indian Indulgence',
+      location: 'Location 24',
+      cuisine: 'Indian',
+    },
+    {
+      id: '30',
+      name: 'Japanese Journey',
+      location: 'Location 25',
+      cuisine: 'Japanese',
+    },
+  ];
+
+  const restOjb = [restaurants2, restaurants3, restaurants4];
+
   useEffect(() => {
     dispatch(setQrCode(false));
+    setRestObj(restOjb[0]);
   }, []);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setLoadingRest(false);
+      
+    }, 1000);
+  }, [loadingRest]);
+
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     setLoadingRest(false);
+  //   }, 1000);
+  // }, []);
 
   const handleAboutToggle = () => {
     return false;
   };
 
-  const restaurantCategories = ['Nearby', 'All', 'Trending'];
-
-  const renderItem = ({item}) => (
-    <ResturantCard
-      name={item.name}
-      location={item.location}
-      cuisine={item.cuisine}
-    />
+  const renderItemSk = ({item}) => (
+    <Skeleton
+      isLoading={loadingRest}
+      containerStyle={{flex: 1, flexDirection: 'row'}}
+      boneColor="#ccc4"
+      animationType="pulse"
+      highlightColor="#ccc2"
+      layout={[
+        {
+          borderRadius: 12,
+          height: 80,
+          marginBottom: 16,
+          width: 80,
+          marginLeft: 10,
+          marginTop: 15,
+        },
+        {
+          alignItems: 'flex-start',
+          flexDirection: 'column',
+          justifyContent: 'center',
+          width: widthToDp(70),
+          children: [
+            {
+              flexDirection: 'column',
+              justifyContent: 'flex-start',
+              height: '100%',
+              width: '100%',
+              children: [
+                {
+                  borderRadius: 16,
+                  height: 15,
+                  width: widthToDp(60),
+                  marginBottom: 10,
+                  marginLeft: 5,
+                  marginTop: 20,
+                },
+                {
+                  borderRadius: 16,
+                  height: 15,
+                  marginLeft: 6,
+                  marginBottom: 10,
+                  width: widthToDp(35),
+                },
+                {
+                  borderRadius: 16,
+                  height: 15,
+                  marginLeft: 6,
+                  width: widthToDp(46),
+                },
+              ],
+            },
+          ],
+        },
+      ]}>
+      <ResturantCard
+        name={item.name}
+        location={item.location}
+        cuisine={item.cuisine}
+      />
+    </Skeleton>
   );
 
-  const routes = restaurantCategories.map((category, idx) => ({
-    key: `tab${idx}`,
-    title: category,
-  }));
-  const renderScene = SceneMap(
-    routes.reduce((scenes, route) => {
-      scenes[route.key] = () => (
-        <FlatList
-          showsVerticalScrollIndicator={false}
-          style={styles.listStyle}
-          data={restaurants}
-          renderItem={renderItem}
-          keyExtractor={item => item.id} // Key extractor for each item
-        />
-      );
-      return scenes;
-    }, {}),
-  );
+  // const routes = restaurantCategories.map((category, idx) => ({
+  //   key: `tab${idx}`,
+  //   title: category,
+  // }));
+  // const renderScene = SceneMap(
+  //   routes.reduce((scenes, route) => {
+  //     scenes[route.key] = () => (
+  //       <FlatList
+  //         showsVerticalScrollIndicator={false}
+  //         style={styles.listStyle}
+  //         data={restaurants}
+  //         renderItem={renderItem}
+  //         keyExtractor={item => item.id} // Key extractor for each item
+  //       />
+  //     );
+  //     return scenes;
+  //   }, {}),
+  // );
 
-  const layout = useWindowDimensions();
+  // const layout = useWindowDimensions();
 
-  const [index, setIndex] = useState(0);
+  // const [index, setIndex] = useState(0);
 
-  const renderTabBar = props => (
-    <TabBar
-      {...props}
-      scrollEnabled={true}
-      tabStyle={{width: 'auto'}}
-      indicatorStyle={{backgroundColor: 'transparent'}}
-      style={{backgroundColor: 'transparent'}}
-      renderLabel={({route, focused}) => (
-        <LinearGradient
-          colors={
-            focused
-              ? ['#00F69299', '#00A7F7FF']
-              : ['transparent', 'transparent']
-          }
-          useAngle={true}
-          angle={820}
-          start={{x: 0, y: 0.5}}
-          end={{x: 1, y: 0.5}}
-          style={{borderRadius: 24}}>
-          <Text
-            style={{
-              color: focused ? Colors.BLACK : Colors.WHITE,
-              fontFamily: fonts.URBANIST_SEMIBOLD,
-              fontSize: 16,
-              paddingVertical: 2,
-              paddingHorizontal: 10,
-            }}>
-            {route.title}
-          </Text>
-        </LinearGradient>
-      )}
-    />
-  );
+  // const renderTabBar = props => (
+  //   <TabBar
+  //     {...props}
+  //     scrollEnabled={true}
+  //     tabStyle={{width: 'auto'}}
+  //     indicatorStyle={{backgroundColor: 'transparent'}}
+  //     style={{backgroundColor: 'transparent'}}
+  //     renderLabel={({route, focused}) => (
+  //       <LinearGradient
+  //         colors={
+  //           focused
+  //             ? ['#00F69299', '#00A7F7FF']
+  //             : ['transparent', 'transparent']
+  //         }
+  //         useAngle={true}
+  //         angle={820}
+  //         start={{x: 0, y: 0.5}}
+  //         end={{x: 1, y: 0.5}}
+  //         style={{borderRadius: 24}}>
+  //         <Text
+  //           style={{
+  //             color: focused ? Colors.BLACK : Colors.WHITE,
+  //             fontFamily: fonts.URBANIST_SEMIBOLD,
+  //             fontSize: 16,
+  //             paddingVertical: 2,
+  //             paddingHorizontal: 10,
+  //           }}>
+  //           {route.title}
+  //         </Text>
+  //       </LinearGradient>
+  //     )}
+  //   />
+  // );
 
   return (
     <View style={styles.container}>
@@ -473,14 +701,33 @@ const RestaurantMain = () => {
       </BottomSheet>
       <SearchModded isVisible={isVisible} setIsVisible={setIsVisible} />
 
-      <TabView
+      {/* <TabView
         navigationState={{index, routes}}
         renderTabBar={renderTabBar}
         renderScene={renderScene}
         onIndexChange={setIndex}
         initialLayout={{width: layout.width}}
-      />
+      /> */}
+      <View class="restuarant-list">
+        <FlatList
+          horizontal={true}
+          showsVerticalScrollIndicator={false}
+          style={styles.listStyle}
+          data={restaurantCategories}
+          renderItem={renderRestCats}
+          keyExtractor={item => item.id} // Key extractor for each item
+        />
+      </View>
 
+      <View class="restaurant-list-item" style={{}}>
+        <FlatList
+          showsVerticalScrollIndicator={false}
+          style={styles.listStyle}
+          data={restObj}
+          renderItem={renderItemSk}
+          keyExtractor={item => item.id} // Key extractor for each item
+        />
+      </View>
       {/* <FlatList
         showsVerticalScrollIndicator={false}
         style={styles.listStyle}

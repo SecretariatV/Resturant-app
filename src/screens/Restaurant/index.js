@@ -24,6 +24,7 @@ import Age from '../../assets/images/age.svg';
 import CusineSvg from '../../assets/images/cuisineServe.svg';
 import Location from '../../assets/images/locWithBack.svg';
 import resturant_cover from '../../assets/images/restaurant_cover.png';
+import Star from '../../assets/images/ratingStar.svg';
 
 //utils
 import {heightToDp, widthToDp} from '../../utils/Dimensions';
@@ -263,15 +264,10 @@ const Restaurant = () => {
         <View
           class="restaurant-content-container"
           style={styles.restaurantContentContainer}>
-          {/* <View style={{position: 'absolute', backgroundColor: 'red'}}>
-            <Text>4.3</Text>
-            <Star />
-          </View> */}
-
           <View
             class="restaurant-rating-container"
             style={styles.resturantRatingContainer}>
-            <Star width={50} style={{marginLeft: 15}} />
+            <Star width={50} style={{marginLeft: 15, marginTop: 4}} />
             <Text style={styles.rating}>4.5</Text>
           </View>
           <View
