@@ -53,21 +53,21 @@ const RestaurantMain = () => {
   const [selRest, setSelRest] = useState(0);
   const [restObj, setRestObj] = useState({});
   const [loadingRest, setLoadingRest] = useState(true);
-  const restaurantCategories = ['Nearby', 'All', 'Trending'];
+  const restaurantCategories = ['All', 'Nearby', 'Trending'];
 
   const renderRestCats = ({item, index}) => (
     <TouchableOpacity
       style={{
-        width: widthToDp(85)/3,
-        alignItems: 'center', 
-        marginHorizontal: 4
+        width: widthToDp(85) / 3,
+        alignItems: 'center',
+        marginHorizontal: 4,
       }}
       onPress={() => {
         console.log('tab change');
         // if (selRest !== index) {
-          setLoadingRest(true);
-          setRestObj(restOjb[index]);
-          setSelRest(index);
+        setLoadingRest(true);
+        setRestObj(restOjb[index]);
+        setSelRest(index);
         // }
       }}>
       <LinearGradient
@@ -85,6 +85,9 @@ const RestaurantMain = () => {
           style={{
             color: index === selRest ? Colors.BLACK : Colors.WHITE,
             fontFamily: fonts.URBANIST_SEMIBOLD,
+            borderWidth: index === selRest ? 1 : 1,
+            borderColor: index === selRest ? Colors.BLACK : Colors.WHITE,
+            borderRadius: index === selRest ? 24 : 24,
             fontSize: 16,
             paddingVertical: 2,
             paddingHorizontal: 10,
@@ -258,7 +261,6 @@ const RestaurantMain = () => {
   useEffect(() => {
     setTimeout(() => {
       setLoadingRest(false);
-      
     }, 1000);
   }, [loadingRest]);
 
