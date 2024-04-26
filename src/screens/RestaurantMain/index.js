@@ -61,6 +61,7 @@ const RestaurantMain = () => {
         width: widthToDp(85) / 3,
         alignItems: 'center',
         marginHorizontal: 4,
+        // backgroundColor: 'red',
       }}
       onPress={() => {
         console.log('tab change');
@@ -80,14 +81,14 @@ const RestaurantMain = () => {
         angle={820}
         start={{x: 0, y: 0.5}}
         end={{x: 1, y: 0.5}}
-        style={{borderRadius: 24}}>
+        style={{borderRadius: 14}}>
         <Text
           style={{
             color: index === selRest ? Colors.BLACK : Colors.WHITE,
             fontFamily: fonts.URBANIST_SEMIBOLD,
             borderWidth: index === selRest ? 1 : 1,
             borderColor: index === selRest ? Colors.BLACK : Colors.WHITE,
-            borderRadius: index === selRest ? 24 : 24,
+            borderRadius: index === selRest ? 14 : 14,
             fontSize: 16,
             paddingVertical: 2,
             paddingHorizontal: 10,
@@ -721,7 +722,7 @@ const RestaurantMain = () => {
         />
       </View>
 
-      <View class="restaurant-list-item" style={{}}>
+      <View class="restaurant-list-item" style={{marginBottom: 230}}>
         <FlatList
           showsVerticalScrollIndicator={false}
           style={styles.listStyle}

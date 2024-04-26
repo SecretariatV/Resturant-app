@@ -313,7 +313,7 @@ const SecondRoute = () => {
 
   return (
     <View style={{flex: 1, backgroundColor: 'transparent'}}>
-      <Text>All Favourites</Text>
+      {/* <Text>All Favourites</Text> */}
     </View>
   );
 };

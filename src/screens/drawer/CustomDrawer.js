@@ -152,6 +152,7 @@ const CustomDrawer1 = props => {
             style={[viewStyles]}>
             <TouchableOpacity
               // onPress={onPress}
+              onPress={() => navigation.navigate('Favorites')}
               accessibilityRole="button"
               style={[styles.drawerItem, styles.buttons]}>
               <View>
@@ -272,6 +273,7 @@ const CustomDrawer1 = props => {
           <Animated.View
             style={[styles.view, styles.marginBottom, viewStyles2('bottom')]}>
             <TouchableOpacity
+              onPress={() => navigation.navigate('Contact')}
               // onPress={onPress}
               accessibilityRole="button"
               style={[styles.drawerItem, styles.buttons]}>

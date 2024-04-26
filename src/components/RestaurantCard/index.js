@@ -86,7 +86,7 @@ const ResturantCard = ({name, location, cuisine, fav = false}) => {
 
               <Text style={[styles.locText, styles.location]}>{location}</Text>
             </View>
-            {fav ? (
+            {!fav ? (
               <View style={{flexDirection: 'row', alignItems: 'center'}}>
                 <Text style={styles.cuisine}>Cuisine Type: </Text>
                 <Text style={styles.lightText}>{cuisine}</Text>

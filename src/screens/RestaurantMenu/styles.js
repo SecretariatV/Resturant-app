@@ -121,7 +121,7 @@ const styles = StyleSheet.create({
       justifyContent: 'space-between',
       width: '100%',
       height: screenToTextSize(10),
-      alignItems: 'start', 
+      alignItems: 'start',
       flexDirection: 'column',
       paddingHorizontal: screenToTextSize(2),
       position: 'relative',
@@ -132,6 +132,7 @@ const styles = StyleSheet.create({
       flexDirection: 'row',
       justifyContent: 'space-between',
       position: 'relative',
+      width: '100%',
       top: -10,
       // backgroundColor: '#ff0',
     },
@@ -257,7 +258,7 @@ const styles = StyleSheet.create({
   verticalPrdListItem: {
     marginHorizontal: 10,
     width: widthToDp(95),
-    height: heightToDp(32),
+    height: heightToDp(35),
     marginBottom: 15,
     alignSelf: 'center',
     backgroundColor: '#7074C422',
@@ -277,24 +278,28 @@ const styles = StyleSheet.create({
     prdNameCont: {
       // backgroundColor: 'red',
       flexDirection: 'column',
+      // width:
       // alignItems: 'center',
-      height: 40,
+      // height: 40,
+      marginBottom: 10,
       marginBottom: 5,
     },
     prdName: {
       color: 'white',
       fontSize: screenToTextSize(5.2),
       fontFamily: fonts.URBANIST_BOLD,
+
       // height: screenToTextSize(4),
       // flex: 1,
       justifyContent: 'center',
       position: 'relative',
-      top: -10,
+      top: -5,
+      // marginTop: 10,
       // backgroundColor: '#f0f4',
     },
     prdDesc: {
       color: 'white',
-      fontSize: screenToTextSize(2.5),
+      fontSize: screenToTextSize(2.8),
       fontFamily: fonts.URBANIST_MEDIUM,
       lineHeight: 12,
       // height: screenToTextSize(4),
@@ -302,7 +307,7 @@ const styles = StyleSheet.create({
       width: widthToDp(50),
       justifyContent: 'center',
       position: 'relative',
-      top: -15,
+      top: -5,
       // backgroundColor: '#f0f4',
     },
     prdRatingCont: {
@@ -339,6 +344,8 @@ const styles = StyleSheet.create({
     },
     prdPricingCont: {
       flexDirection: 'row',
+      bottom: 5,
+      // marginBottom: 3,
     },
     rightCont: {
       width: '50%',
