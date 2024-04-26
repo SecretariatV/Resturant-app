@@ -43,6 +43,7 @@ const Setting = () => {
 
           <FadedSeparator containerStyle={styles.separator} />
           <TouchableOpacity
+            onPress={() => navigation.navigate('AccountDetail')}
             style={[styles.sectionTop, styles.sectionContainer]}>
             <UserDetail />
             <View style={styles.sectionTxt}>

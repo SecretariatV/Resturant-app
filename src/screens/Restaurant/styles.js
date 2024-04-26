@@ -8,6 +8,7 @@ import {getPlatformSpecificValue} from '../../utils/helper';
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    position: 'relative',
     // paddingHorizontal: 15,
   },
   bannerImage: {
@@ -158,7 +159,7 @@ const styles = StyleSheet.create({
   circleGradient: {
     // margin: 1,
     // width: widthToDp(20),
-    paddingVertical: 10,
+    paddingVertical: 8,
     paddingHorizontal: widthToDp(4),
     // alignSelf: 'center',
     alignItems: 'center',
@@ -168,7 +169,7 @@ const styles = StyleSheet.create({
   active: {
     // margin: 1,
     // width: widthToDp(20),
-    paddingVertical: 10,
+    paddingVertical: 8,
     paddingHorizontal: widthToDp(4),
     // alignSelf: 'center',
     alignItems: 'center',

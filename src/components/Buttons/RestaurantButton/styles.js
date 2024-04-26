@@ -26,8 +26,8 @@ const styles = StyleSheet.create({
   },
   btnText: {
     color: Colors.BLACK,
-    fontFamily: fonts.URBANIST_BOLD,
-    fontSize: 20,
+    fontFamily: fonts.URBANIST_MEDIUM,
+    fontSize: 16,
   },
 });
 export {styles};

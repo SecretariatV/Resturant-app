@@ -93,7 +93,9 @@ const Cart = () => {
 
   return (
     <View style={styles.container}>
-      <BackgroundLayout imgStyle={{borderRadius: 15}} />
+      <BackgroundLayout
+        imgStyle={{borderTopLeftRadius: 35, borderTopRightRadius: 35}}
+      />
 
       {isModalVisible ? FullScreenModal() : <></>}
       <HeaderModed
@@ -260,7 +262,7 @@ const Cart = () => {
 
           <RestaurantButton
             btnText={'Order now'}
-            style={{width: '95%'}}
+            style={{width: '95%', marginBottom: 20}}
             onPress={() => {
               dispatch(setCartBtn(false));
 

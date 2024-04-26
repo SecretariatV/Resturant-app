@@ -1,7 +1,7 @@
 import {Text, View, Image} from 'react-native';
 import React, {useEffect, useState} from 'react';
 import {styles} from './styles';
-import LinearGradient from 'react-native-linear-gradient'; 
+import LinearGradient from 'react-native-linear-gradient';
 import {Slider} from '@rneui/themed';
 import {widthToDp} from '../../utils/Dimensions';
 import {roundToTwoDecimalPlaces} from '../../utils/helper';
@@ -38,7 +38,7 @@ const ShareByPercentBox = ({userobj, totalBill, percent, onUpdate}) => {
       <View class="slider-container">
         <View
           class="slider-bar-container"
-          style={{position: 'relative', marginBottom: 30}}>
+          style={{position: 'relative', marginBottom: 10}}>
           <View
             class="slider-container-with-labels"
             style={{

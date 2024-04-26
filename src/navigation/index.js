@@ -7,6 +7,7 @@ import {
   StyleSheet,
   TouchableOpacity,
   SafeAreaView,
+  ScrollView,
 } from 'react-native';
 import React, {useCallback, useEffect, useRef, useState} from 'react';
 // import {createNativeStackNavigator} from '@react-navigation/native-stack';
@@ -94,6 +95,9 @@ import {fonts} from '../theme/FontFamily.js';
 import CartSection from '../components/CartSection/index.js';
 import {setCartBtn} from '../redux/actions/cart.js';
 import EditProfile from '../screens/EditProfile/index.js';
+import {BlurView} from '@react-native-community/blur';
+import Notification from '../screens/Notification/index.js';
+import Terms from '../screens/Terms/index.js';
 
 const Tab = createBottomTabNavigator();
 // const Stack = createNativeStackNavigator();
@@ -167,7 +171,7 @@ const HomeStack = ({activeRestaurant}) => {
   return (
     <Stack.Navigator
       // initialRouteName="TabNavigator"
-      // initialRouteName="EditProfile"
+      // initialRouteName="Terms"
       screenOptions={{
         headerShown: false,
       }}>
@@ -187,16 +191,7 @@ const HomeStack = ({activeRestaurant}) => {
         <Stack.Screen name="TabNavigator" component={TabNavigator} />
         <Stack.Screen name="Requests" component={Requests} />
         <Stack.Screen name="RestaurantMenu" component={RestaurantMenu} />
-        <Stack.Screen
-          name="QrCode"
-          component={QrCode}
-          // options={() => ({
-          //   tabBarStyle: {
-          //     display: 'none',
-          //   },
-          //   tabBarButton: () => null,
-          // })}
-        />
+        <Stack.Screen name="QrCode" component={QrCode} />
         <Stack.Screen name="Restaurant" component={Restaurant} />
         <Stack.Screen name="PaymentOption" component={PaymentOption} />
         <Stack.Screen name="AmountPaid" component={AmountPaid} />
@@ -221,6 +216,8 @@ const HomeStack = ({activeRestaurant}) => {
           component={OrderHistoryDetail}
         />
         <Stack.Screen name="EditProfile" component={EditProfile} />
+        <Stack.Screen name="Notification" component={Notification} />
+        <Stack.Screen name="Terms" component={Terms} />
       </Stack.Group>
     </Stack.Navigator>
   );
@@ -243,8 +240,8 @@ const CustomTabBar = ({state, descriptors, navigation}) => (
             ? options.title
             : route.name;
 
-        // const isFocused = state.index === index;
-        const isFocused = state.routes[state.index].key === route.key;
+        const isFocused = state.index === index;
+        // const isFocused = state.routes[state.index].key === route.key;
 
         console.log(isFocused, 'isFocused');
         const onPress = () => {
@@ -283,7 +280,6 @@ const CustomTabBar = ({state, descriptors, navigation}) => (
                   style={{width: 30, height: 30, opacity: 0.6}}
                   source={require('../assets/images/home.png')}
                 />
-                {/* <HomeIcon width={25} height={25} style={{ opacity: 0.5, marginBottom: -5}}/> */}
                 <Text
                   style={{
                     color: '#fff',
@@ -326,7 +322,7 @@ const CustomTabBar = ({state, descriptors, navigation}) => (
               </View>
             )}
 
-            {label === 'Cart' && (
+            {label === 'Order' && (
               <View
                 style={{
                   justifyContent: 'center',
@@ -347,7 +343,7 @@ const CustomTabBar = ({state, descriptors, navigation}) => (
                     fontSize: screenToTextSize(3.2),
                     fontFamily: fonts.URBANIST_MEDIUM,
                   }}>
-                  Cart
+                  Order
                 </Text>
               </View>
             )}
@@ -443,7 +439,6 @@ const TabNavigator = () => {
 
             e.preventDefault();
             dispatch(setRequestBtn(true));
-            // setShowFilter(true);
           },
         })}
       />
@@ -456,18 +451,6 @@ const TabNavigator = () => {
             headerShown: false,
 
             tabBarLabel: 'RestaurantMenu',
-            tabBarIcon: () => {
-              return (
-                // <View style={tabNavStyles.tabNavMenuBtn}>
-                //   <MenuIcon
-                //     width={screenToTextSize(8)}
-                //     style={{width: 12, height: 12}}
-                //   />
-                // </View>
-                <View></View>
-                // <Image source={require('../assets/images/menu-tab-back.png')} />
-              );
-            },
           }}
         />
       ) : (
@@ -477,8 +460,6 @@ const TabNavigator = () => {
           options={({route}) => ({
             headerShown: false,
 
-            // tabBarVisible: getTabBarVisibility('QrCode'),
-            // tabBarStyle: {display: 'none'},
             tabBarLabel: 'QrCode',
             tabBarIcon: () => {
               return <View></View>;
@@ -496,10 +477,10 @@ const TabNavigator = () => {
 
             e.preventDefault();
             dispatch(setCartBtn(true));
-            // setShowFilter(true);
           },
         })}
         options={{
+          tabBarLabel: 'Order',
           headerShown: false,
 
           tabBarIcon: ({focused}) => {
@@ -518,7 +499,7 @@ const TabNavigator = () => {
                   source={require('../assets/images/cart.png')}
                 />
                 <Text style={{color: '#fff', fontSize: screenToTextSize(3)}}>
-                  Cart
+                  Order
                 </Text>
               </View>
             );
@@ -593,8 +574,30 @@ const RootNavigator = () => {
           <BottomSheet
             handleComponent={null}
             enablePanDownToClose={true}
-            // onChange={()=>console.log('I a')}
-            // handleIndicatorStyle={{display: 'none'}}
+            backdropComponent={({style, backgroundStyle}) => (
+              <BlurView
+                style={[style, {overflow: 'hidden'}]}
+                blurType="dark"
+                blurAmount={10}
+                reducedTransparencyFallbackColor="white"
+                backgroundStyle={[
+                  backgroundStyle,
+                  {flex: 1, overflow: 'hidden'},
+                ]}
+              />
+            )}
+            backgroundComponent={({style, backgroundStyle}) => (
+              <BlurView
+                style={[style, {flex: 1, overflow: 'hidden', height: 500}]}
+                blurType="light"
+                blurAmount={10}
+                reducedTransparencyFallbackColor="white"
+                backgroundStyle={[
+                  backgroundStyle,
+                  {flex: 1, overflow: 'hidden'},
+                ]}
+              />
+            )}
             enableDynamicSizing={false}
             snapPoints={[350, '40%']}
             ref={bottomSheetRef}
@@ -657,12 +660,18 @@ const RootNavigator = () => {
         {cartBtn ? (
           <BottomSheet
             handleComponent={null}
+            enableContentPanningGesture={false}
             onChange={handleCartSheetChanges}
             enablePanDownToClose={true}
             enableDynamicSizing={false}
+            backgroundStyle={{
+              backgroundColor: 'transparent',
+            }}
             ref={bottomSheetRef}
             snapPoints={['90%', '90%']}>
-            <Cart />
+            <ScrollView>
+              <Cart />
+            </ScrollView>
           </BottomSheet>
         ) : (
           <></>
