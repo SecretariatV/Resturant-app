@@ -41,7 +41,7 @@ const Splash = () => {
         style={[
           {
             resizeMode: 'contain',
-            width: widthToDp(45),
+            width: widthToDp(50),
             transform: [{scale: imscale}],
           },
         ]}

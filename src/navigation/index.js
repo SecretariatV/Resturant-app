@@ -98,6 +98,9 @@ import EditProfile from '../screens/EditProfile/index.js';
 import {BlurView} from '@react-native-community/blur';
 import Notification from '../screens/Notification/index.js';
 import Terms from '../screens/Terms/index.js';
+import FAQ from '../screens/FAQ/index.js';
+import Contact from '../screens/Contact/index.js';
+import Favorites from '../screens/Favorites/index.js';
 
 const Tab = createBottomTabNavigator();
 // const Stack = createNativeStackNavigator();
@@ -171,7 +174,7 @@ const HomeStack = ({activeRestaurant}) => {
   return (
     <Stack.Navigator
       // initialRouteName="TabNavigator"
-      // initialRouteName="Terms"
+      // initialRouteName="Favorites"
       screenOptions={{
         headerShown: false,
       }}>
@@ -218,6 +221,9 @@ const HomeStack = ({activeRestaurant}) => {
         <Stack.Screen name="EditProfile" component={EditProfile} />
         <Stack.Screen name="Notification" component={Notification} />
         <Stack.Screen name="Terms" component={Terms} />
+        <Stack.Screen name="FAQ" component={FAQ} />
+        <Stack.Screen name="Contact" component={Contact} />
+        <Stack.Screen name="Favorites" component={Favorites} />
       </Stack.Group>
     </Stack.Navigator>
   );
@@ -443,7 +449,7 @@ const TabNavigator = () => {
         })}
       />
 
-      {!qr ? (
+      {qr ? (
         <Tab.Screen
           name={'RestaurantMenu'}
           component={RestaurantMenu}

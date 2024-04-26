@@ -8,7 +8,7 @@ const BackgroundLayout = ({withImages, imgStyle}) => {
       source={
         withImages
           ? require('../assets/images/Splash.png')
-          : require('../assets/images/Bg.png')
+          : require('../assets/images/bgV2.png')
       }
       style={[styles.background_image, imgStyle]}
       resizeMode={FastImage.resizeMode.cover}

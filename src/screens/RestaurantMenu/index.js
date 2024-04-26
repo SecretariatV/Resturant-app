@@ -14,7 +14,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import {styles} from './styles';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 import {useNavigation} from '@react-navigation/native';
-import {BlurView} from '@react-native-community/blur';
+import {BlurView, VibrancyView} from '@react-native-community/blur';
 // components
 import BackgroundLayout from '../../components/BackgroundLayout';
 
@@ -261,6 +261,19 @@ const RestaurantMenu = () => {
     <SafeAreaProvider>
       <View style={styles.container}>
         <BackgroundLayout />
+        <VibrancyView
+          blurType="extraDark"
+          // blurType="dark"
+          blurAmount={100}
+          // overlayColor="#000"
+          // reducedTransparencyFallbackColor="#000000"
+          // downsampleFactor={25}
+          style={{
+            height: 40,
+            // position: 'absolute',
+            // marginBottom: -40,
+            top: 0,
+          }}></VibrancyView>
         <ScrollView stickyHeaderIndices={[2]} style={{paddingBottom: 20}}>
           <HeaderModed
             slotLeft={<HamBurgerButton />}
@@ -426,13 +439,7 @@ const RestaurantMenu = () => {
               )}
             </View>
           </View>
-          {/* <BlurView
-            blurType="ultraThinMaterialDark"
-            overlayColor="#ffffff00"
-            reducedTransparencyFallbackColor="#f00"
-            downsampleFactor={25}>
-           
-          </BlurView> */}
+
           <LinearGradient
             colors={activeColors}
             useAngle

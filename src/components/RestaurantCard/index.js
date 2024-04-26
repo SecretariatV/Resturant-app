@@ -19,7 +19,7 @@ import {useNavigation} from '@react-navigation/native';
 import Location from '../../assets/images/location.svg';
 import Colors from '../../constants/Colors';
 
-const ResturantCard = ({name, location, cuisine}) => {
+const ResturantCard = ({name, location, cuisine, fav = false}) => {
   const navigation = useNavigation();
 
   return (
@@ -86,11 +86,42 @@ const ResturantCard = ({name, location, cuisine}) => {
 
               <Text style={[styles.locText, styles.location]}>{location}</Text>
             </View>
-            <View style={{flexDirection: 'row', alignItems: 'center'}}>
-              <Text style={styles.cuisine}>Cuisine Type: </Text>
-              <Text style={styles.lightText}>{cuisine}</Text>
-            </View>
+            {fav ? (
+              <View style={{flexDirection: 'row', alignItems: 'center'}}>
+                <Text style={styles.cuisine}>Cuisine Type: </Text>
+                <Text style={styles.lightText}>{cuisine}</Text>
+              </View>
+            ) : (
+              <>
+                <View style={{flexDirection: 'row', alignItems: 'center'}}>
+                  <Text style={styles.cuisine}>Last visited May 29, 2024 </Text>
+                  {/* <Text style={styles.lightText}>{cuisine}</Text> */}
+                </View>
+              </>
+            )}
           </View>
+          {fav ? (
+            <View
+              style={{
+                // backgroundColor: 'red',
+                position: 'absolute',
+                right: 10,
+                // top: 10,
+                // bottom: 10,
+                // width: '2',
+                // width: '120%',
+                // justifyContent: 'flex-end',
+                // alignItems: 'flex-end',
+                // backgroundColor: 'white',
+              }}>
+              <View style={{alignItems: 'flex-end'}}>
+                <Image source={require('../../assets/images/heartBg.png')} />
+                {/* <Text>dsaads</Text> */}
+              </View>
+            </View>
+          ) : (
+            <></>
+          )}
           <View className="restaurant-rating" style={styles.restaurantRating}>
             <View style={styles.restaurantRatingStar}>
               <Star style={styles.starImg} />

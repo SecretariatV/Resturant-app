@@ -8,7 +8,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import {Image} from 'react-native';
 import {heightToDp, widthToDp} from '../../utils/Dimensions';
 
-const SearchModded = ({isVisible, setIsVisible}) => {
+const SearchModded = ({isVisible, setIsVisible, filter = true}) => {
   return (
     <View
       class="searchbar-outer-border-wrapper"
@@ -26,13 +26,17 @@ const SearchModded = ({isVisible, setIsVisible}) => {
             placeholder="Search"
             placeholderTextColor={'#A3AFAF'}
           />
-          <TouchableOpacity onPress={() => setIsVisible(!isVisible)}>
-            <Image
-              source={FilterIcon}
-              // resizeMode="cover"
-              style={{width: widthToDp(8), height: heightToDp(8)}}
-            />
-          </TouchableOpacity>
+          {filter ? (
+            <TouchableOpacity onPress={() => setIsVisible(!isVisible)}>
+              <Image
+                source={FilterIcon}
+                // resizeMode="cover"
+                style={{width: widthToDp(8), height: heightToDp(8)}}
+              />
+            </TouchableOpacity>
+          ) : (
+            <></>
+          )}
           {/* <TouchableOpacity onPress={() => setIsVisible(!isVisible)}>
             <FilterIcon width={30} height={30} style={{opacity: 2}} />
           </TouchableOpacity> */}
