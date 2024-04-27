@@ -36,7 +36,8 @@ const styles = StyleSheet.create({
   reviewRateContainer: {
     justifyContent: 'space-between',
     flexDirection: 'row',
-    marginTop: screenToTextSize(16),
+    marginTop: screenToTextSize(10),
+    marginBottom: screenToTextSize(10),
   },
   reviewLabelContainer: {
     alignItems: 'center',
