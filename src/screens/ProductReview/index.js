@@ -27,6 +27,7 @@ import FancyInput from '../../components/FancyInput';
 import userIcon from '../../assets/images/userIcon.png';
 import HamBurgerButton from '../../components/NavButtons/HamBurgerButton/index.js';
 import {useNavigation} from '@react-navigation/native';
+import StarRating from '../../components/StarRating/index.js';
 
 const ProductReview = () => {
   const navigation = useNavigation();
@@ -158,10 +159,15 @@ const ProductReview = () => {
                       </View>
                       <View style={{alignItems: 'center'}}>
                         <View style={styles.qtyContainer}>
-                          <Rating
+                          {/* <Rating
                             imageSize={20}
                             ratingCount={5}
                             tintColor="#1A2D30"
+                          /> */}
+                          <StarRating
+                            rating={4}
+                            isEditable={true}
+                            starSize={50}
                           />
                         </View>
                       </View>

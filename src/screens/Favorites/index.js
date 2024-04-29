@@ -16,7 +16,8 @@ import LinearGradient from 'react-native-linear-gradient';
 import {useNavigation} from '@react-navigation/native';
 import {Colors} from '../../theme';
 import {fonts} from '../../theme/FontFamily.js';
-
+import Star from '../../assets/images/ratingStar.svg';
+import Heart from '../../assets/images/heart.svg';
 import HeaderModed from '../../components/HeaderModed';
 import BackgroundLayout from '../../components/BackgroundLayout';
 import GradientText from '../../components/GradientText/index.js';
@@ -41,283 +42,268 @@ import {
 } from '../../utils/helper.js';
 import StepSlider from '../../components/StepSlider/index.js';
 import ResturantCard from '../../components/RestaurantCard';
+import Skeleton from 'react-native-reanimated-skeleton';
 
-const ShareEqually = () => (
-  <View style={{flex: 1, alignItems: 'center'}}>
-    <Text
-      style={{
-        color: Colors.WHITE,
-        fontSize: 26,
-        fontFamily: fonts.URBANIST_BOLD,
-        marginTop: 10,
-      }}>
-      Number of Guests
-    </Text>
+let breakfastPrd = [
+  {
+    name: 'Egg McMuffin',
+    regPrice: 80,
+    salePrice: null,
+    onSale: false,
+    saleType: null,
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ultrices nibh vel dui cursus',
+    allergies: ['eggs', 'dairy'],
+    rating: 4.3,
+  },
+  {
+    name: 'Pancakes',
+    regPrice: 70,
+    salePrice: 60,
+    onSale: true,
+    saleType: 'discount',
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ultrices nibh vel dui cursus',
+    allergies: ['gluten', 'dairy'],
+    rating: 4.5,
+  },
+  {
+    name: 'French Toast',
+    regPrice: 75,
+    salePrice: null,
+    onSale: false,
+    saleType: null,
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ultrices nibh vel dui cursus',
+    allergies: ['gluten', 'dairy'],
+    rating: 4.2,
+  },
+  {
+    name: 'Breakfast Burrito',
+    regPrice: 90,
+    salePrice: null,
+    onSale: false,
+    saleType: null,
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ultrices nibh vel dui cursus',
+    allergies: ['eggs', 'dairy'],
+    rating: 4.4,
+  },
+  {
+    name: 'Omelette',
+    regPrice: 85,
+    salePrice: null,
+    onSale: false,
+    saleType: null,
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ultrices nibh vel dui cursus',
+    allergies: ['eggs'],
+    rating: 4.6,
+  },
+  {
+    name: 'Bagel with Cream ',
+    regPrice: 60,
+    salePrice: null,
+    onSale: false,
+    saleType: null,
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ultrices nibh vel dui cursus',
+    allergies: ['gluten', 'dairy'],
+    rating: 4.1,
+  },
+  {
+    name: 'Fruit Bowl',
+    regPrice: 50,
+    salePrice: null,
+    onSale: false,
+    saleType: null,
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ultrices nibh vel dui cursus',
+    allergies: ['none'],
+    rating: 4.7,
+  },
+  {
+    name: 'Granola Parfait',
+    regPrice: 65,
+    salePrice: null,
+    onSale: false,
+    saleType: null,
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ultrices nibh vel dui cursus',
+    allergies: ['nuts', 'dairy'],
+    rating: 4.2,
+  },
+  {
+    name: 'Smoothie',
+    regPrice: 70,
+    salePrice: null,
+    onSale: false,
+    saleType: null,
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ultrices nibh vel dui cursus',
+    allergies: ['none'],
+    rating: 4.3,
+  },
+  {
+    name: 'Bacon and Eggs',
+    regPrice: 95,
+    salePrice: null,
+    onSale: false,
+    saleType: null,
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ultrices nibh vel dui cursus',
+    allergies: ['eggs'],
+    rating: 4.4,
+  },
+];
 
-    <Counter plusContainerStyle={{backgroundColor: Colors.GREEN}} />
-
-    <Text
-      style={{
-        color: Colors.WHITE,
-        marginTop: 10,
-        fontSize: 20,
-      }}>
-      Each Guest Will Pay
-    </Text>
-
-    <GradientText
-      style={{
-        marginTop: 10,
-        fontSize: 50,
-        fontFamily: fonts.URBANIST_EXTRABOLD,
-      }}>
-      $50
-    </GradientText>
-  </View>
-);
-
-const ShareByPercent = () => {
-  const [progress, setprogress] = useState('30');
-  const [min, setmin] = useState(0);
-  const [max, setmax] = useState(100);
-
-  useEffect(() => {}, [progress]);
-
-  const userAvatar = require('../../assets/images/profileImg.png');
-  const [dummyData, setDummyData] = useState({
-    totalBill: 250.68,
-    guests: [
-      {
-        name: 'Hasan',
-        image: userAvatar,
-        amount: 0,
-        percent: 0,
-      },
-      {
-        name: 'Guest 1',
-        image: userAvatar,
-        amount: 0,
-        percent: 0,
-      },
-      {
-        name: 'Guest 2',
-        image: userAvatar,
-        amount: 0,
-        percent: 0,
-      },
-      {
-        name: 'Guest 3',
-        image: userAvatar,
-        amount: 0,
-        percent: 0,
-      },
-    ],
-  });
-
-  const updateGuestPercentage = (index, percent, amount) => {
-    setDummyData(prevData => {
-      const newGuests = [...prevData.guests];
-      newGuests[index] = {
-        ...newGuests[index],
-        percent,
-        amount,
-      };
-      const updatedData = {
-        ...prevData,
-        guests: newGuests,
-      };
-      return updatedData;
-    });
-  };
-  // const progress = useSharedValue(30);
-  // const min = useSharedValue(0);
-  // const max = useSharedValue(100);
-  return (
-    <ScrollView
-      style={{flex: 1, marginBottom: 70}}
-      contentContainerStyle={{justifyContent: 'start'}}>
-      {dummyData.guests.map((guest, index) => (
-        <ShareByPercentBox
-          key={index}
-          userobj={guest}
-          amount={guest.amount}
-          percent={guest.percent}
-          totalBill={dummyData.totalBill}
-          onUpdate={(percent, amount) =>
-            updateGuestPercentage(index, percent, amount)
-          }
-        />
-      ))}
-    </ScrollView>
-  );
-};
-
-const ShareByItems = () => {
-  const [expanded, setExpanded] = useState(true);
-  const [checked, setChecked] = React.useState(true);
-
-  const SharedItems = [
-    {
-      name: 'Burger',
-      price: '20',
-    },
-    {
-      name: 'Burger',
-      price: '20',
-    },
-    {
-      name: 'Burger',
-      price: '20',
-    },
-    {
-      name: 'Burger',
-      price: '20',
-    },
-  ];
-  const toggleCheckbox = () => setChecked(!checked);
-  return (
-    <View style={{flex: 1, alignItems: 'center'}}>
-      <ScrollView contentContainerStyle={styles.scroll}>
-        <BackgroundCard
-          style={{width: widthToDp(95)}}
-          linearBackStyle={{borderRadius: 24}}
-          childrenStyle={{
-            borderRadius: 24,
-            paddingTop: 10,
-          }}>
-          <View style={styles.itemContainer}>
-            <View style={{flexDirection: 'row', alignItems: 'center'}}>
-              <Image source={require('../../assets/images/profileImg.png')} />
-              <Text style={styles.userName}>Hasan</Text>
-            </View>
-
-            <View style={{flexDirection: 'row'}}>
-              <TouchableOpacity
-                // style={styles.review_btn}
-                style={styles.itemDetail}
-                onPress={() => {
-                  setExpanded(!expanded);
-                }}>
-                <Text style={styles.firstPrice}>$25.19</Text>
-                <Image
-                  source={require('../../assets/images/chevron_down.png')}
-                  style={{marginLeft: 10}}
-                />
-              </TouchableOpacity>
-            </View>
-          </View>
-          <View>
-            {expanded && (
-              <View style={{width: '100%'}}>
-                <View
-                  style={{
-                    flexDirection: 'row',
-                    justifyContent: 'space-between',
-                    marginHorizontal: 15,
-                  }}>
-                  <View style={{width: widthToDp(12)}}>
-                    <Text style={styles.mainHeadings}>Item</Text>
-                  </View>
-                  <Text style={styles.mainHeadings}>Quantity</Text>
-
-                  <Text style={styles.mainHeadings}>Price</Text>
-                  <Text style={styles.mainHeadings}>Total</Text>
-                </View>
-                <View style={{marginBottom: 10}}>
-                  {SharedItems.map((item, index) => (
-                    <View>
-                      <View style={styles.sharedItemContainer}>
-                        <View style={styles.sharedItemContainerTwo}>
-                          <View style={styles.pricing}>
-                            <CheckBox
-                              checked={checked}
-                              onPress={toggleCheckbox}
-                              iconType="material-community"
-                              checkedIcon="checkbox-outline"
-                              uncheckedIcon={'checkbox-blank-outline'}
-                              // style={{borderColor: 'green'}}
-                              containerStyle={{
-                                padding: 0,
-                                margin: 0,
-                                backgroundColor: 'transparent',
-                                // margin: 0,
-                              }}
-                              // style={{width: 20, height: 20}}
-                              checkedColor={Colors.GREEN}
-                              uncheckedColor={Colors.GREEN}
-                              // wrapperStyle={{backgroundColor: 'red'}}
-                              // style
-                            />
-                            <Text style={styles.itemProduct}>Burger</Text>
-                          </View>
-                          <View
-                            style={{
-                              width: 70,
-
-                              alignItems: 'center',
-                            }}>
-                            <Text style={styles.quantity}>10</Text>
-                          </View>
-
-                          <View
-                            style={{
-                              width: 40,
-                              alignItems: 'center',
-                            }}>
-                            <Text style={styles.price}>$300</Text>
-                          </View>
-
-                          <View
-                            style={{
-                              width: 60,
-                              alignItems: 'center',
-                            }}>
-                            <Text style={styles.totalPrice}>$3000</Text>
-                          </View>
-                        </View>
-                      </View>
-                    </View>
-                  ))}
-                </View>
-                {/* <View style={styles.selectAll}>
-                    <Text style={styles.selectAllTxt}>Select All</Text>
-                    <CheckBox
-                      checked={checked}
-                      onPress={toggleCheckbox}
-                      iconType="material-community"
-                      checkedIcon="checkbox-outline"
-                      uncheckedIcon={'checkbox-blank-outline'}
-                      containerStyle={{
-                        backgroundColor: 'transparent',
-                      }}
-                      checkedColor={Colors.GREEN}
-                      uncheckedColor={Colors.GREEN}
-                    />
-                  </View> */}
-              </View>
-            )}
-          </View>
-        </BackgroundCard>
-      </ScrollView>
-    </View>
-  );
-};
-const initialLayout = {width: Dimensions.get('window').width};
-
-const SecondRoute = () => {
+const FavoritesTabView = () => {
   const [nestedIndex, setNestedIndex] = useState(0);
+  const [loadingItems, setLoadingItems] = useState(true);
 
+  useEffect(() => {
+    setTimeout(() => {
+      setLoadingItems(false);
+    }, 3000);
+  }, [loadingItems]);
   // Define the scenes for the nested tab view
-
+  const renderItemSk = ({item, index}) => (
+    <Skeleton
+      isLoading={loadingItems}
+      containerStyle={{flex: 1, flexDirection: 'row'}}
+      boneColor="#ccc4"
+      animationType="pulse"
+      highlightColor="#ccc2"
+      layout={[
+        {
+          borderRadius: 12,
+          height: 80,
+          marginBottom: 16,
+          width: 80,
+          marginLeft: 10,
+          marginTop: 15,
+        },
+        {
+          alignItems: 'flex-start',
+          flexDirection: 'column',
+          justifyContent: 'center',
+          width: widthToDp(70),
+          children: [
+            {
+              flexDirection: 'column',
+              justifyContent: 'flex-start',
+              height: '100%',
+              width: '100%',
+              children: [
+                {
+                  borderRadius: 16,
+                  height: 15,
+                  width: widthToDp(60),
+                  marginBottom: 10,
+                  marginLeft: 5,
+                  marginTop: 20,
+                },
+                {
+                  borderRadius: 16,
+                  height: 15,
+                  marginLeft: 6,
+                  marginBottom: 10,
+                  width: widthToDp(35),
+                },
+                {
+                  borderRadius: 16,
+                  height: 15,
+                  marginLeft: 6,
+                  width: widthToDp(46),
+                },
+              ],
+            },
+          ],
+        },
+      ]}>
+      <View
+        key={index}
+        className="vertical-product-list-item"
+        style={styles.verticalPrdListItem}>
+        <View
+          className="vertical-product-list-left-cont"
+          style={styles.verticalPrdListItem.leftCont}>
+          <View
+            style={{
+              width: widthToDp(100),
+              flexDirection: 'row',
+              // backgroundColor: '#f0fc',
+              alignItems: 'center',
+            }}>
+            <Text
+              className="product-name"
+              style={styles.verticalPrdListItem.prdName}>
+              {item.name}
+            </Text>
+            <View class="rating-with-allergies">
+              <View
+                className="menu-item-smallbox-ratingCont"
+                style={[styles.menuItemSmallbox.ratingCont, {marginLeft: 5}]}>
+                <Text style={styles.menuItemSmallbox.rating}>
+                  {item.rating}
+                </Text>
+                <Star style={styles.menuItemSmallbox.ratingIcon} width={20} />
+              </View>
+            </View>
+          </View>
+          <Text
+            className="product-restaruant-name"
+            style={styles.verticalPrdListItem.prdRestName}>
+            Served by: (Restaurant Name)
+          </Text>
+          <View
+            className="product-pricing-cont"
+            style={styles.verticalPrdListItem.prdPricingCont}>
+            <Text style={styles.price}>${item.regPrice}</Text>
+          </View>
+          <Text
+            className="product-restaruant-visit"
+            style={styles.verticalPrdListItem.prdVisit}>
+            Last visited May 29, 2024
+          </Text>
+        </View>
+        <View
+          className="vertical-product-list-right-cont"
+          style={styles.verticalPrdListItem.rightCont}>
+          <View
+            className="menu-item-large-imgCont"
+            style={styles.verticalPrdListItem.imgCont}>
+            <Image
+              style={styles.verticalPrdListItem.image}
+              source={require('../../assets/images/burger_one.png')}
+            />
+          </View>
+          <View
+            className="menu-item-heart"
+            style={styles.verticalPrdListItem.itemHeart}>
+            <Heart style={styles.verticalPrdListItem.image} />
+          </View>
+        </View>
+      </View>
+    </Skeleton>
+  );
   // Define the tabBar for the nested tab view
 
   return (
-    <View style={{flex: 1, backgroundColor: 'transparent'}}>
-      {/* <Text>All Favourites</Text> */}
+    <View style={{backgroundColor: 'transparent'}}>
+      <FlatList
+        data={breakfastPrd}
+        // style={styles.horizontalListStyle}
+        showsHorizontalScrollIndicator={false}
+        // scrollEnabled={false}
+        keyExtractor={(item, index) => item.id + index.toString()}
+        renderItem={renderItemSk}
+      />
     </View>
   );
 };
-const Locations = () => {
+
+const LocationsTabView = () => {
   const [expanded, setExpanded] = useState(true);
   const [checked, setChecked] = React.useState(true);
 
@@ -395,8 +381,8 @@ const Locations = () => {
   );
 };
 const renderScene = SceneMap({
-  first: Locations,
-  second: SecondRoute,
+  first: LocationsTabView,
+  second: FavoritesTabView,
 });
 
 console.log(renderScene);
@@ -439,11 +425,9 @@ const Favorites = () => {
   return (
     <View style={styles.container}>
       <BackgroundLayout />
-
       <HeaderModed
-        //headerStyle={{marginLeft: getPlatformSpecificValue(15, 0)}}
         slotLeft={<HamBurgerButton />}
-        slotCenter={<Text style={styles.headerText}>Payment Option</Text>}
+        slotCenter={<Text style={styles.headerText}>Favorites</Text>}
         slotRight={<></>}
       />
       <TabView

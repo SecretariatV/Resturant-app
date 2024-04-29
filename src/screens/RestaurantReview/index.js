@@ -31,7 +31,8 @@ import GradientText from '../../components/GradientText/index.js';
 import {Slider} from '@rneui/themed';
 import LinearGradient from 'react-native-linear-gradient';
 import ReviewIcon from '../../assets/images/reviewIcon.svg';
-import ReviewStar from '../../assets/images/reviewStar.svg';
+import ReviewStarUnfilled from '../../assets/images/reviewStar.svg';
+import ReviewStarFilled from '../../assets/images/reviewStarFilled.svg';
 import {screenToTextSize} from '../../utils/helper.js';
 import {useNavigation} from '@react-navigation/native';
 const RestaurantReview = () => {
@@ -39,8 +40,15 @@ const RestaurantReview = () => {
 
   const [reviewComment, setReviewComment] = useState('');
   const [reviewRating, setReviewRating] = useState(0);
-  const [min, setmin] = useState(0);
-  const [max, setmax] = useState(100);
+  // const [min, setmin] = useState(0);
+  // const [max, setmax] = useState(100);
+  const SetRatingStar = (target, valuematch) => {
+    if (target >= valuematch) {
+      return <ReviewStarFilled   width={35} style={{}}/>;
+    } else {
+      return <ReviewStarUnfilled width={35} height={39} style={{position: 'relative', top: 1}} />;
+    }
+  };
 
   return (
     <View style={styles.container}>
@@ -71,42 +79,42 @@ const RestaurantReview = () => {
               style={styles.reviewRateContainer}
               class="review-rate-container">
               <TouchableOpacity
-                onPress={() => setReviewRating(0)}
+                onPress={() => setReviewRating(1)}
                 class="review-labe"
                 style={styles.reviewLabelContainer}>
-                <ReviewStar />
+                {SetRatingStar( reviewRating, 1)}
                 <Text style={styles.reviewTextLabel}>Bad</Text>
               </TouchableOpacity>
               <TouchableOpacity
-                onPress={() => setReviewRating(25)}
+                onPress={() => setReviewRating(2)}
                 class="review-labe"
                 style={styles.reviewLabelContainer}>
-                <ReviewStar />
+                {SetRatingStar( reviewRating, 2)}
                 <Text style={styles.reviewTextLabel}>Not Bad</Text>
               </TouchableOpacity>
               <TouchableOpacity
-                onPress={() => setReviewRating(50)}
+                onPress={() => setReviewRating(3)}
                 class="review-labe"
                 style={styles.reviewLabelContainer}>
-                <ReviewStar />
+                {SetRatingStar( reviewRating, 3)}
                 <Text style={styles.reviewTextLabel}>Okay</Text>
               </TouchableOpacity>
               <TouchableOpacity
-                onPress={() => setReviewRating(75)}
+                onPress={() => setReviewRating(4)}
                 class="review-labe"
                 style={styles.reviewLabelContainer}>
-                <ReviewStar />
+                {SetRatingStar( reviewRating, 4)}
                 <Text style={styles.reviewTextLabel}>Good</Text>
               </TouchableOpacity>
               <TouchableOpacity
-                onPress={() => setReviewRating(100)}
+                onPress={() => setReviewRating(5)}
                 class="review-labe"
                 style={styles.reviewLabelContainer}>
-                <ReviewStar />
+                {SetRatingStar( reviewRating, 5)}
                 <Text style={styles.reviewTextLabel}>Happy</Text>
               </TouchableOpacity>
             </View>
-            <View class="slider-container">
+            {/* <View class="slider-container">
               <View
                 class="slider-bar-container"
                 style={{position: 'relative', marginBottom: 30}}>
@@ -168,14 +176,14 @@ const RestaurantReview = () => {
                     end={{x: 1, y: 0.5}}></LinearGradient>
                 </View>
               </View>
-              {/* <Image source={require('../../assets/images/hundredPercentBar.svg')}/> */}
+              
               <View
                 style={{
                   width: widthToDp(85),
                   justifyContent: 'start',
                   alignContent: 'center',
                 }}></View>
-            </View>
+            </View> */}
             <View class="review-commentbox-contaier">
               <GradientText style={styles.reviewTextCommentLabel}>
                 Let Us Know How We Can Serve You Better

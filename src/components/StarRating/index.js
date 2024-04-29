@@ -3,7 +3,7 @@ import React, {useState} from 'react';
 import {styles} from './styles';
 import YellowStar from '../../assets/images/ratingstarYellow.svg';
 import WhiteStar from '../../assets/images/ratingstarWhite.svg';
-const StarRating = ({rating, isEditable = false}) => {
+const StarRating = ({rating, isEditable = false, starSize = 15}) => {
   const [fillto, setFillTo] = useState(rating);
 
   const handleRatingChange = newRating => {
@@ -16,12 +16,12 @@ const StarRating = ({rating, isEditable = false}) => {
         fillto >= index + 1 ? (
           <Pressable
             onPress={isEditable ? () => handleRatingChange(index + 1) : null}>
-            <YellowStar key={index} />
+            <YellowStar key={index} width={starSize} />
           </Pressable>
         ) : (
           <Pressable
             onPress={isEditable ? () => handleRatingChange(index + 1) : null}>
-            <WhiteStar key={index} />
+            <WhiteStar key={index} width={starSize} />
           </Pressable>
         ),
       )}
