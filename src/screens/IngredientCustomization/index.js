@@ -1,4 +1,4 @@
-import {View, Text, ScrollView} from 'react-native';
+import {View, Text, ScrollView, TouchableOpacity} from 'react-native';
 import React from 'react';
 import {styles} from './styles';
 import BackgroundLayout from '../../components/BackgroundLayout';
@@ -8,14 +8,14 @@ import BackgroundCard from '../../components/BackgroundCard';
 import FadedSeparator from '../../components/FadedSeparator';
 import {Image} from 'react-native';
 import Counter from '../../components/Counter';
-import {width, widthToDp} from '../../utils/Dimensions';
+import {widthToDp} from '../../utils/Dimensions';
 import {Ingredients, productQuantities} from '../../utils/demodata';
 import SizeButton from '../../components/SizeButton';
 import ButtonsCommon from '../../components/Buttons/ButtonCommon.js';
 import ButtonsCommonAlt from '../../components/Buttons/ButtonCommonAlt';
 import {useNavigation} from '@react-navigation/native';
-import BackButton from '../../components/NavButtons/BackButton/index.js';
 import GradientText from '../../components/GradientText/index.js';
+import CloseFilterBtn from '../../assets/images/closeBtnFilter.svg';
 
 const IngredientCustomization = () => {
   const navigation = useNavigation();
@@ -33,7 +33,16 @@ const IngredientCustomization = () => {
         }}>
         <ScrollView>
           <HeaderModed
-            slotLeft={<BackButton onPress={() => navigation.goBack()} />}
+            slotLeft={
+              <>
+                <TouchableOpacity
+                  onPress={() => {
+                    navigation.goBack();
+                  }}>
+                  <CloseFilterBtn width={20} height={20} />
+                </TouchableOpacity>
+              </>
+            }
             slotCenter={<Text style={styles.headerTitle}>Customization</Text>}
           />
           <BackgroundCard

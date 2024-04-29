@@ -98,40 +98,41 @@ const Cart = () => {
       />
 
       {isModalVisible ? FullScreenModal() : <></>}
-      <View
-        style={{
-          borderWidth: 2,
-          borderColor: Colors.GREEN,
-          borderTopLeftRadius: 35,
-          borderTopRightRadius: 35,
-          // backgroundColor: 'red',
-        }}>
-        <HeaderModed
-          headerStyle={{marginTop: 0}}
-          slotLeft={
-            <Text
-              style={{
-                fontFamily: fonts.URBANIST_BOLD,
-                fontSize: 22,
-                color: Colors.WHITE,
-              }}>
-              Cart
-            </Text>
-          }
-          slotCenter={<></>}
-          slotRight={
-            <>
-              <TouchableOpacity
-                onPress={() => {
-                  dispatch(setCartBtn(false));
-                }}
-                style={{padding: 10}}>
-                <CloseFilterBtn width={20} height={20} />
-              </TouchableOpacity>
-            </>
-          }
-        />
-        <ScrollView>
+
+      <HeaderModed
+        headerStyle={{}}
+        slotLeft={
+          <Text
+            style={{
+              fontFamily: fonts.URBANIST_BOLD,
+              fontSize: 22,
+              color: Colors.WHITE,
+            }}>
+            Cart
+          </Text>
+        }
+        slotCenter={<></>}
+        slotRight={
+          <>
+            <TouchableOpacity
+              onPress={() => {
+                dispatch(setCartBtn(false));
+              }}
+              style={{padding: 10}}>
+              <CloseFilterBtn width={20} height={20} />
+            </TouchableOpacity>
+          </>
+        }
+      />
+      <ScrollView>
+        <View
+          style={{
+            borderWidth: 2,
+            borderColor: Colors.GREEN,
+            borderTopLeftRadius: 35,
+            borderTopRightRadius: 35,
+            // backgroundColor: 'red',
+          }}>
           {cartData.map((item, index) => (
             <BackgroundCard
               style={{marginTop: 10, marginHorizontal: 10}}
@@ -223,7 +224,6 @@ const Cart = () => {
               width: '95%',
               alignItems: 'flex-end',
               marginTop: 15,
-              // m,
             }}>
             <ButtonsCommon
               btnText={'Add more items'}
@@ -428,8 +428,8 @@ const Cart = () => {
         )}
         backgroundColor={'transparent'}
       /> */}
-        </ScrollView>
-      </View>
+        </View>
+      </ScrollView>
 
       {/* <Footer /> */}
     </View>

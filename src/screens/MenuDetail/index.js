@@ -13,16 +13,12 @@ import React, {useState} from 'react';
 import {styles} from './styles';
 import BackgroundLayout from '../../components/BackgroundLayout';
 import HeaderModed from '../../components/HeaderModed';
-import MenuNavButton from '../../components/MenuNavButton';
-import Hamburger from '../../assets/images/hamburger.png';
 import HorizontalPicker from '@vseslav/react-native-horizontal-picker';
 
-import {heightToDp, widthToDp} from '../../utils/Dimensions';
+import {heightToDp, width, widthToDp} from '../../utils/Dimensions';
 import Swiper from 'react-native-swiper';
 import LinearGradient from 'react-native-linear-gradient';
 import Counter from '../../components/Counter';
-import Ar from '../../assets/images/ar.svg';
-import BackgroundCard from '../../components/BackgroundCard';
 import RestaurantButton from '../../components/Buttons/RestaurantButton';
 import ButtonsCommon from '../../components/Buttons/ButtonCommon.js';
 import ButtonsCommonAlt from '../../components/Buttons/ButtonCommonAlt';
@@ -32,20 +28,15 @@ import {useNavigation} from '@react-navigation/native';
 import CircleBackground from '../../components/CircleBackground/index.js';
 import LottieView from 'lottie-react-native';
 import Colors from '../../theme/Colors.js';
-import Footer from '../../components/Footer/index.js';
-import {fonts} from '../../theme/FontFamily.js';
-import HamBurgerButton from '../../components/NavButtons/HamBurgerButton/index.js';
 import FavouriteButton from '../../components/NavButtons/FavouriteButton/index.js';
-import {getPlatformSpecificValue} from '../../utils/helper.js';
 import BackButton from '../../components/NavButtons/BackButton/index.js';
 import {SelectCountry} from 'react-native-element-dropdown';
-import BottomSheet, {BottomSheetView} from '@gorhom/bottom-sheet';
 import GradientText from '../../components/GradientText/index.js';
 import Star from '../../assets/images/ratingStar.svg';
 import CloseFilterBtn from '../../assets/images/closeBtnFilter.svg';
-import {PanGestureHandler, State} from 'react-native-gesture-handler';
 
 const MenuDetail = () => {
+  console.log(width, 'my width');
   const navigation = useNavigation();
 
   const [selectedIndex, setSelectedIndex] = useState(0);
@@ -104,8 +95,12 @@ const MenuDetail = () => {
   const renderSpiceLevel = (item, index) => (
     <TouchableOpacity
       style={{
-        width: widthToDp(26),
+        width: width > 390 ? width * 0.21 : width * 0.23,
+
+        // width: widthToDp(36),
         alignItems: 'center',
+        // backgroundColor: 'red',
+        marginHorizontal: 5,
       }}>
       <Text
         style={[
@@ -140,11 +135,6 @@ const MenuDetail = () => {
     setSelPortion(ev);
   };
 
-  const handleGestureEvent = event => {
-    if (event.nativeEvent.translationY > 100) {
-      navigation.goBack();
-    }
-  };
   return (
     <View style={styles.container}>
       <BackgroundLayout />
@@ -157,7 +147,7 @@ const MenuDetail = () => {
             borderRadius: 15,
           }}>
           <HeaderModed
-            headerStyle={{marginTop: 0}}
+            headerStyle={{}}
             slotLeft={
               <>
                 <TouchableOpacity
@@ -306,17 +296,6 @@ const MenuDetail = () => {
                 </View>
               </LinearGradient>
 
-              {/* <View style={styles.levelContainer}>
-              <TouchableOpacity>
-                <Text style={styles.levelTxt}>Low</Text>
-              </TouchableOpacity>
-              <TouchableOpacity>
-                <Text style={styles.levelTxt}>Medium</Text>
-              </TouchableOpacity>
-              <TouchableOpacity>
-                <Text style={styles.levelTxt}>High</Text>
-              </TouchableOpacity>
-            </View> */}
               <View style={styles.levelContainer}>
                 <HorizontalPicker
                   defaultIndex={selsPice}
@@ -359,7 +338,7 @@ const MenuDetail = () => {
             <View style={styles.customBtns}>
               <ButtonsCommonAlt
                 btnText={'Quick Order'}
-                onPress={() => navigation.push('Cart')}
+                onPress={() => navigation.navigate('PaymentOption')}
                 btnTextStyle={{}}
                 containerStyle={{width: widthToDp(45), marginTop: 10}}
                 btnStyle={{borderRadius: 20}}

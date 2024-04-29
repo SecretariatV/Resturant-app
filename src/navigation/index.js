@@ -188,15 +188,8 @@ const HomeStack = ({activeRestaurant}) => {
           presentation: 'modal',
           // Enable vertical swipe down
         }}>
-        <Stack.Screen
-          name="MenuDetail"
-          component={MenuDetail}
-          options={{
-            presentation: 'modal',
-            gestureEnabled: true,
-            gestureDirection: 'vertical',
-          }}
-        />
+        <Stack.Screen name="MenuDetail" component={MenuDetail} />
+
         <Stack.Screen
           name="IngredientCustomization"
           component={IngredientCustomization}
@@ -702,9 +695,9 @@ const RootNavigator = () => {
             }}
             ref={cartbottomSheetRef}
             snapPoints={['90%', '90%']}>
-            <ScrollView>
-              <Cart />
-            </ScrollView>
+            {/* <ScrollView> */}
+            <Cart />
+            {/* </ScrollView> */}
           </BottomSheet>
         ) : (
           <></>
