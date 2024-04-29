@@ -169,6 +169,7 @@ const styles = StyleSheet.create({
       color: Colors.GREEN,
       fontFamily: fonts.URBANIST_EXTRABOLD,
       fontSize: screenToTextSize(5),
+      marginTop: 10,
     },
   },
   categoryWiseTabItem: {
@@ -244,6 +245,7 @@ const styles = StyleSheet.create({
   horizontalListStyle: {
     marginTop: 10,
   },
+
   categoryListStyle: {
     backgroundColor: 'red',
   },
@@ -258,7 +260,8 @@ const styles = StyleSheet.create({
   verticalPrdListItem: {
     marginHorizontal: 10,
     width: widthToDp(95),
-    height: heightToDp(35),
+    height: heightToDp(36),
+    // padding: 10,
     marginBottom: 15,
     alignSelf: 'center',
     backgroundColor: '#7074C422',

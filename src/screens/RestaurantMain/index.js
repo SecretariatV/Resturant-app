@@ -13,7 +13,7 @@ import {
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import {BottomSheet} from '@rneui/themed';
-import {useEffect, useState} from 'react';
+import {useEffect, useRef, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {Colors} from '../../theme';
 import {styles} from './styles';
@@ -45,6 +45,7 @@ import Skeleton from 'react-native-reanimated-skeleton';
 const RestaurantMain = () => {
   const navigation = useNavigation();
   const dispatch = useDispatch();
+  const flatListRef = useRef(null);
 
   const [modalVisible, setModalVisible] = useState(true);
   const [isVisible, setIsVisible] = useState(false);
@@ -53,8 +54,17 @@ const RestaurantMain = () => {
   const [selRest, setSelRest] = useState(0);
   const [restObj, setRestObj] = useState({});
   const [loadingRest, setLoadingRest] = useState(true);
-  const restaurantCategories = ['All', 'Nearby', 'Trending'];
-
+  const restaurantCategories = [
+    'All',
+    'Nearby',
+    'Trending',
+    'Trending',
+    'Trending',
+    'Trending',
+  ];
+  const scrollToIndex = index => {
+    flatListRef.current.scrollToIndex({animated: true, index});
+  };
   const renderRestCats = ({item, index}) => (
     <TouchableOpacity
       style={{
@@ -66,6 +76,8 @@ const RestaurantMain = () => {
       onPress={() => {
         console.log('tab change');
         // if (selRest !== index) {
+        scrollToIndex(index);
+
         setLoadingRest(true);
         setRestObj(restOjb[index]);
         setSelRest(index);
@@ -81,17 +93,22 @@ const RestaurantMain = () => {
         angle={820}
         start={{x: 0, y: 0.5}}
         end={{x: 1, y: 0.5}}
-        style={{borderRadius: 14}}>
+        style={{
+          borderRadius: 14,
+          width: '100%',
+          alignItems: 'center',
+          borderWidth: index === selRest ? 1 : 1,
+          borderColor: index === selRest ? Colors.BLACK : Colors.WHITE,
+        }}>
         <Text
           style={{
             color: index === selRest ? Colors.BLACK : Colors.WHITE,
-            fontFamily: fonts.URBANIST_SEMIBOLD,
-            borderWidth: index === selRest ? 1 : 1,
-            borderColor: index === selRest ? Colors.BLACK : Colors.WHITE,
-            borderRadius: index === selRest ? 14 : 14,
+            fontFamily: fonts.URBANIST_MEDIUM,
+
             fontSize: 16,
             paddingVertical: 2,
             paddingHorizontal: 10,
+            marginBottom: 5,
           }}>
           {item}
         </Text>
@@ -714,6 +731,7 @@ const RestaurantMain = () => {
       <View class="restuarant-list">
         <FlatList
           horizontal={true}
+          ref={flatListRef}
           showsVerticalScrollIndicator={false}
           style={styles.listStyle}
           data={restaurantCategories}

@@ -63,7 +63,7 @@ const ProductReview = () => {
             <TouchableOpacity
               onPress={() => setIsModalVisible(false)}
               style={{alignSelf: 'flex-end', margin: 10}}>
-              <CloseFilterBtn width={27} height={27} />
+              <CloseFilterBtn width={20} height={20} />
             </TouchableOpacity>
             <Text style={styles.improveText}>
               Please enter your name for feedback submission{' '}

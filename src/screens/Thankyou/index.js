@@ -57,7 +57,7 @@ const Thankyou = () => {
               have been claimed with this payment, download the app to collect
               Shareabill Rewards.
             </Text>
-            <Text style={[{marginTop: 15}, styles.underConfettiPara1]}>
+            <Text style={[{marginTop: 10}, styles.underConfettiPara1]}>
               You Paid
             </Text>
             <GradientText style={[styles.gradientText]}>$100.00 </GradientText>
@@ -66,8 +66,8 @@ const Thankyou = () => {
               style={{
                 fontSize: 14,
                 color: Colors.WHITE,
-                marginTop: 10,
-                marginBottom: 20,
+                // marginTop: 10,
+                marginBottom: 10,
                 fontFamily: fonts.URBANIST_REGULAR,
               }}>
               December 2nd, 2023
@@ -93,7 +93,7 @@ const Thankyou = () => {
             <ButtonsCommon
               onPress={() => navigation.navigate('RestaurantReview')}
               btnText={'Leave a Feedback!'}
-              containerStyle={{marginVertical: 15, width: widthToDp(90)}}
+              containerStyle={{marginVertical: 10, width: widthToDp(90)}}
             />
 
             {/* <Text style={styles.reciept}>Receive Receipt</Text> */}

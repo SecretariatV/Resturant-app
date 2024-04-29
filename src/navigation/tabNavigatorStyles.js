@@ -99,12 +99,13 @@ const tabNavStyles = StyleSheet.create({
   },
   bottomView: {
     marginHorizontal: 15,
-    marginTop: 20,
+    marginVertical: 15,
   },
 
   bottomSubView: {
     justifyContent: 'space-between',
     flexDirection: 'row',
+    alignItems: 'center',
   },
 
   requestText: {
@@ -157,6 +158,7 @@ const tabNavStyles = StyleSheet.create({
   },
   contentContainer: {
     flex: 1,
+
     // alignItems: 'center',
   },
 });

@@ -42,6 +42,8 @@ import {SelectCountry} from 'react-native-element-dropdown';
 import BottomSheet, {BottomSheetView} from '@gorhom/bottom-sheet';
 import GradientText from '../../components/GradientText/index.js';
 import Star from '../../assets/images/ratingStar.svg';
+import CloseFilterBtn from '../../assets/images/closeBtnFilter.svg';
+import {PanGestureHandler, State} from 'react-native-gesture-handler';
 
 const MenuDetail = () => {
   const navigation = useNavigation();
@@ -137,149 +139,184 @@ const MenuDetail = () => {
   const handleSetPortion = ev => {
     setSelPortion(ev);
   };
+
+  const handleGestureEvent = event => {
+    if (event.nativeEvent.translationY > 100) {
+      navigation.goBack();
+    }
+  };
   return (
     <View style={styles.container}>
       <BackgroundLayout />
-      <ScrollView>
-        <HeaderModed
-          //headerStyle={{marginLeft: getPlatformSpecificValue(15, 0)}}
-          slotLeft={<BackButton onPress={() => navigation.goBack()} />}
-          slotCenter={
-            <TouchableOpacity
-              onPress={() =>
-                Linking.openURL(
-                  'https://sketchfab.com/models/c87f3caa5c76470094aa187edc9dcd57/embed-ar',
-                )
-              }>
-              <Image
-                source={require('../../assets/images/AR.png')}
-                style={{width: 40, height: 40}}
-              />
-            </TouchableOpacity>
+      <PanGestureHandler
+        onGestureEvent={handleGestureEvent}
+        onHandlerStateChange={({nativeEvent}) => {
+          console.log(nativeEvent, 'nativeEvent');
+          console.log(State, 'my state');
+          if (nativeEvent.state === State.END) {
+            if (nativeEvent.translationY > 100) {
+              navigation.goBack();
+            }
           }
-          slotRight={<FavouriteButton />}
-        />
-        <View
-          style={{
-            height: heightToDp(60),
-            width: widthToDp(100),
-            marginTop: 15,
-          }}>
-          <Swiper style={{}} loop={false} showsPagination={true}>
-            {menuSwipe.map((item, index) => (
-              <View style={styles.slide1} key={index}>
-                <Image source={item.imgUrl} resizeMode="cover" style={{}} />
-              </View>
-            ))}
-          </Swiper>
-          {/* <View style={styles.arContainer}>
-            <Ar width={30} height={30} />
-          </View> */}
-        </View>
-
-        <View style={styles.menuContainer}>
-          <View>
-            <Star width={50} style={{marginLeft: 15}} />
-
-            <Text style={styles.resturantName}>Burger</Text>
-            <Text style={styles.up_rating}>4.5</Text>
-          </View>
-          {/* <Text style={styles.rating}>4.5</Text> */}
-          <GradientText style={styles.price}>$50</GradientText>
-        </View>
-        <Text style={styles.resturantDesc}>
-          Lorem Ipsum is simply dummy text of the printing and typesetting
-          industry. Lorem Ipsum has been the..
-        </Text>
-        <View style={{flexDirection: 'row', marginLeft: 15, marginTop: 10}}>
-          {dishType.map((item, index) => (
-            <CircleBackground
-              style={index === 0 ? {marginLeft: 0} : {marginLeft: 5}}
-              key={index}>
-              <LottieView
-                source={item.imgUrl}
-                autoPlay
-                // loop
-                // Additional props for customization
-                loop={false}
-                speed={1.5}
-                resizeMode="contain"
-                style={{
-                  width: 20,
-                  height: 20,
-                  margin: 5,
-                  padding: 10,
-                }}
-              />
-            </CircleBackground>
-          ))}
-        </View>
-
-        <View style={styles.readyContainer}>
-          <CircleBackground
-            style={{alignItems: 'center', justifyContent: 'center'}}>
-            <LottieView
-              source={require('../../assets/images/food_plate.json')}
-              autoPlay
-              // loop
-              // Additional props for customization
-              loop={false}
-              speed={1.5}
-              resizeMode="contain"
-              style={styles.lottieStyle}
-            />
-          </CircleBackground>
-          <Text style={styles.readyTxt}>Ready in 15 Min</Text>
-        </View>
-        <Text style={styles.quantityTxt}>Select Quantity</Text>
-        <Counter
-          plusContainerStyle={{
-            backgroundColor: Colors.GREEN,
-          }}
-        />
-        <View style={{marginHorizontal: 15, marginBottom: 10}}>
-          <RestaurantButton
-            btnText={'Select Ingredients'}
-            onPress={() => handleSelectIngredient()}
-          />
+        }}>
+        <ScrollView showsVerticalScrollIndicator={false}>
           <View
             style={{
-              marginVertical: 10,
-              alignItems: 'center',
-              backgroundColor: '#7074C422',
-              // marginHorizontal: 5,
-              borderColor: '#fff4',
-              borderRadius: 36,
-              borderWidth: 1,
+              borderWidth: 2,
+              borderColor: Colors.GREEN,
+              borderRadius: 15,
             }}>
-            {/* <BackgroundCard
+            <HeaderModed
+              headerStyle={{marginTop: 0}}
+              slotLeft={
+                <>
+                  <TouchableOpacity
+                    onPress={() => {
+                      navigation.goBack();
+                    }}
+                    // style={{padding: 10}}
+                  >
+                    <CloseFilterBtn width={20} height={20} />
+                  </TouchableOpacity>
+                </>
+              }
+              // slotLeft={<BackButton onPress={() => navigation.goBack()} />}
+              slotCenter={
+                <TouchableOpacity
+                  onPress={() =>
+                    Linking.openURL(
+                      'https://sketchfab.com/models/c87f3caa5c76470094aa187edc9dcd57/embed-ar',
+                    )
+                  }>
+                  <Image
+                    source={require('../../assets/images/AR.png')}
+                    style={{width: 40, height: 40}}
+                  />
+                </TouchableOpacity>
+              }
+              slotRight={<FavouriteButton />}
+            />
+            <View
+              style={{
+                height: heightToDp(60),
+                width: widthToDp(100),
+                marginTop: 15,
+              }}>
+              <Swiper style={{}} loop={false} showsPagination={true}>
+                {menuSwipe.map((item, index) => (
+                  <View style={styles.slide1} key={index}>
+                    <Image source={item.imgUrl} resizeMode="cover" style={{}} />
+                  </View>
+                ))}
+              </Swiper>
+              {/* <View style={styles.arContainer}>
+            <Ar width={30} height={30} />
+          </View> */}
+            </View>
+
+            <View style={styles.menuContainer}>
+              <View>
+                <Star width={50} style={{marginLeft: 15}} />
+
+                <Text style={styles.resturantName}>Burger</Text>
+                <Text style={styles.up_rating}>4.5</Text>
+              </View>
+              {/* <Text style={styles.rating}>4.5</Text> */}
+              <GradientText style={styles.price}>$50</GradientText>
+            </View>
+            <Text style={styles.resturantDesc}>
+              Lorem Ipsum is simply dummy text of the printing and typesetting
+              industry. Lorem Ipsum has been the..
+            </Text>
+            <View style={{flexDirection: 'row', marginLeft: 15, marginTop: 10}}>
+              {dishType.map((item, index) => (
+                <CircleBackground
+                  style={index === 0 ? {marginLeft: 0} : {marginLeft: 5}}
+                  key={index}>
+                  <LottieView
+                    source={item.imgUrl}
+                    autoPlay
+                    // loop
+                    // Additional props for customization
+                    loop={false}
+                    speed={1.5}
+                    resizeMode="contain"
+                    style={{
+                      width: 20,
+                      height: 20,
+                      margin: 5,
+                      padding: 10,
+                    }}
+                  />
+                </CircleBackground>
+              ))}
+            </View>
+
+            <View style={styles.readyContainer}>
+              <CircleBackground
+                style={{alignItems: 'center', justifyContent: 'center'}}>
+                <LottieView
+                  source={require('../../assets/images/food_plate.json')}
+                  autoPlay
+                  // loop
+                  // Additional props for customization
+                  loop={false}
+                  speed={1.5}
+                  resizeMode="contain"
+                  style={styles.lottieStyle}
+                />
+              </CircleBackground>
+              <Text style={styles.readyTxt}>Ready in 15 Min</Text>
+            </View>
+            <Text style={styles.quantityTxt}>Select Quantity</Text>
+            <Counter
+              plusContainerStyle={{
+                backgroundColor: Colors.GREEN,
+              }}
+            />
+            <View style={{marginHorizontal: 15, marginBottom: 10}}>
+              <RestaurantButton
+                btnText={'Select Ingredients'}
+                onPress={() => handleSelectIngredient()}
+              />
+              <View
+                style={{
+                  marginVertical: 10,
+                  alignItems: 'center',
+                  backgroundColor: '#7074C422',
+                  // marginHorizontal: 5,
+                  borderColor: '#fff4',
+                  borderRadius: 36,
+                  borderWidth: 1,
+                }}>
+                {/* <BackgroundCard
               style={styles.backgroundBtnContainer}
               childrenStyle={{paddingVertical: 10}}> */}
-            <Text style={styles.quantityTxt}>Customization</Text>
+                <Text style={styles.quantityTxt}>Customization</Text>
 
-            {/* <RestaurantButton
+                {/* <RestaurantButton
               btnText={'Spicy Level'}
               btnTextStyle={{fontFamily: fonts.URBANIST_MEDIUM}}
               style={{width: '90%', marginTop: 10, borderRadius: 16}}
             /> */}
 
-            <LinearGradient
-              colors={['#00F69299', '#00A7F7FF']}
-              useAngle={true}
-              angle={820}
-              style={{
-                borderRadius: 16,
-                marginTop: 10,
-                width: '90%',
-              }}
-              start={{x: 0, y: 0.5}}
-              end={{x: 1, y: 0.5}}>
-              <View style={styles.circleGradient}>
-                <Text style={[styles.btnText]}>Spicy Level</Text>
-              </View>
-            </LinearGradient>
+                <LinearGradient
+                  colors={['#00F69299', '#00A7F7FF']}
+                  useAngle={true}
+                  angle={820}
+                  style={{
+                    borderRadius: 16,
+                    marginTop: 10,
+                    width: '90%',
+                  }}
+                  start={{x: 0, y: 0.5}}
+                  end={{x: 1, y: 0.5}}>
+                  <View style={styles.circleGradient}>
+                    <Text style={[styles.btnText]}>Spicy Level</Text>
+                  </View>
+                </LinearGradient>
 
-            {/* <View style={styles.levelContainer}>
+                {/* <View style={styles.levelContainer}>
               <TouchableOpacity>
                 <Text style={styles.levelTxt}>Low</Text>
               </TouchableOpacity>
@@ -290,121 +327,122 @@ const MenuDetail = () => {
                 <Text style={styles.levelTxt}>High</Text>
               </TouchableOpacity>
             </View> */}
-            <View style={styles.levelContainer}>
-              <HorizontalPicker
-                defaultIndex={selsPice}
-                data={spiceLevel}
-                snapTimeout={250}
-                renderItem={renderSpiceLevel}
-                itemWidth={100}
-                onChange={handleSetSpiceLevel}
-              />
-            </View>
-
-            <LinearGradient
-              colors={['#00F69299', '#00A7F7FF']}
-              useAngle={true}
-              angle={820}
-              style={{
-                borderRadius: 16,
-
-                marginTop: 10,
-                width: '90%',
-              }}
-              start={{x: 0, y: 0.5}}
-              end={{x: 1, y: 0.5}}>
-              <View style={styles.circleGradient}>
-                <Text style={[styles.btnText]}>Portion Size</Text>
-              </View>
-            </LinearGradient>
-            <View style={styles.levelContainer}>
-              <HorizontalPicker
-                defaultIndex={selPortion}
-                data={portionSize}
-                snapTimeout={250}
-                renderItem={renderPortion}
-                itemWidth={100}
-                onChange={handleSetPortion}
-              />
-            </View>
-            {/* </BackgroundCard> */}
-          </View>
-          <View style={styles.customBtns}>
-            <ButtonsCommonAlt
-              btnText={'Quick Order'}
-              onPress={() => navigation.push('Cart')}
-              btnTextStyle={{}}
-              containerStyle={{width: widthToDp(45), marginTop: 10}}
-              btnStyle={{borderRadius: 20}}
-              linearTextStyle={{borderRadius: 20}}
-            />
-
-            <ButtonsCommon
-              btnText={'Add to Cart'}
-              onPress={() => Alert.alert('Item Added to Cart')}
-              containerStyle={{width: widthToDp(45), marginTop: 10}}
-              btnStyle={{borderRadius: 20}}
-              linearTextStyle={{borderRadius: 20}}
-            />
-          </View>
-
-          <View style={{marginBottom: 10}}>
-            {/* <Text></Text> */}
-            <Text style={styles.headingText}>Reviews</Text>
-
-            <View>
-              <LinearGradient
-                colors={['#00000022', '#FFFFFFFF', '#FFFFFFFF']}
-                style={{borderRadius: 18, margin: 1}}
-                start={{x: 0, y: 4}}
-                end={{x: 1, y: 0}}>
-                <Pressable
-                  style={styles.review_btn}
-                  onPress={() => {
-                    // setExpanded(!expanded);
-                  }}>
-                  <View style={{flexDirection: 'row', alignItems: 'center'}}>
-                    <Text style={styles.rating_type}>Excellent</Text>
-                    <View style={styles.review_tag}></View>
-                  </View>
-
-                  <SelectCountry
-                    style={styles.dropdown}
-                    placeholderStyle={styles.placeholderStyle}
-                    selectedTextStyle={styles.selectedTextStyle}
-                    activeColor="rgba(0,0,0,0.5)"
-                    itemContainerStyle={{backgroundColor: '#272730'}}
-                    imageStyle={styles.imageStyle}
-                    iconStyle={styles.iconStyle}
-                    data={data}
-                    maxHeight={300}
-                    labelField="label"
-                    valueField="value"
-                    placeholder=""
-                    value={value}
-                    onChange={item => {
-                      setValue(item.value);
-                    }}
+                <View style={styles.levelContainer}>
+                  <HorizontalPicker
+                    defaultIndex={selsPice}
+                    data={spiceLevel}
+                    snapTimeout={250}
+                    renderItem={renderSpiceLevel}
+                    itemWidth={100}
+                    onChange={handleSetSpiceLevel}
                   />
-                </Pressable>
-              </LinearGradient>
-              {expanded && (
-                <FlatList
-                  data={reviews}
-                  style={styles.reviewList}
-                  scrollEnabled={false}
-                  renderItem={({item}) => (
-                    <ReviewCard
-                      name={item.name}
-                      time={item.time}
-                      detail={item.detail}
+                </View>
+
+                <LinearGradient
+                  colors={['#00F69299', '#00A7F7FF']}
+                  useAngle={true}
+                  angle={820}
+                  style={{
+                    borderRadius: 16,
+
+                    marginTop: 10,
+                    width: '90%',
+                  }}
+                  start={{x: 0, y: 0.5}}
+                  end={{x: 1, y: 0.5}}>
+                  <View style={styles.circleGradient}>
+                    <Text style={[styles.btnText]}>Portion Size</Text>
+                  </View>
+                </LinearGradient>
+                <View style={styles.levelContainer}>
+                  <HorizontalPicker
+                    defaultIndex={selPortion}
+                    data={portionSize}
+                    snapTimeout={250}
+                    renderItem={renderPortion}
+                    itemWidth={100}
+                    onChange={handleSetPortion}
+                  />
+                </View>
+                {/* </BackgroundCard> */}
+              </View>
+              <View style={styles.customBtns}>
+                <ButtonsCommonAlt
+                  btnText={'Quick Order'}
+                  onPress={() => navigation.push('Cart')}
+                  btnTextStyle={{}}
+                  containerStyle={{width: widthToDp(45), marginTop: 10}}
+                  btnStyle={{borderRadius: 20}}
+                  linearTextStyle={{borderRadius: 20}}
+                />
+
+                <ButtonsCommon
+                  btnText={'Add to Cart'}
+                  onPress={() => Alert.alert('Item Added to Cart')}
+                  containerStyle={{width: widthToDp(45), marginTop: 10}}
+                  btnStyle={{borderRadius: 20}}
+                  linearTextStyle={{borderRadius: 20}}
+                />
+              </View>
+
+              <View style={{marginBottom: 10}}>
+                {/* <Text></Text> */}
+                <Text style={styles.headingText}>Reviews</Text>
+
+                <View>
+                  <LinearGradient
+                    colors={['#00000022', '#FFFFFFFF', '#FFFFFFFF']}
+                    style={{borderRadius: 18, margin: 1}}
+                    start={{x: 0, y: 4}}
+                    end={{x: 1, y: 0}}>
+                    <Pressable
+                      style={styles.review_btn}
+                      onPress={() => {
+                        // setExpanded(!expanded);
+                      }}>
+                      <View
+                        style={{flexDirection: 'row', alignItems: 'center'}}>
+                        <Text style={styles.rating_type}>Excellent</Text>
+                        <View style={styles.review_tag}></View>
+                      </View>
+
+                      <SelectCountry
+                        style={styles.dropdown}
+                        placeholderStyle={styles.placeholderStyle}
+                        selectedTextStyle={styles.selectedTextStyle}
+                        activeColor="rgba(0,0,0,0.5)"
+                        itemContainerStyle={{backgroundColor: '#272730'}}
+                        imageStyle={styles.imageStyle}
+                        iconStyle={styles.iconStyle}
+                        data={data}
+                        maxHeight={300}
+                        labelField="label"
+                        valueField="value"
+                        placeholder=""
+                        value={value}
+                        onChange={item => {
+                          setValue(item.value);
+                        }}
+                      />
+                    </Pressable>
+                  </LinearGradient>
+                  {expanded && (
+                    <FlatList
+                      data={reviews}
+                      style={styles.reviewList}
+                      scrollEnabled={false}
+                      renderItem={({item}) => (
+                        <ReviewCard
+                          name={item.name}
+                          time={item.time}
+                          detail={item.detail}
+                        />
+                      )}
                     />
                   )}
-                />
-              )}
-            </View>
+                </View>
 
-            {/* <View>
+                {/* <View>
               <LinearGradient
                 colors={['#00000022', '#FFFFFFFF', '#FFFFFFFF']}
                 style={{borderRadius: 18, flexWrap: 'nowrap', margin: 1}}
@@ -445,21 +483,24 @@ const MenuDetail = () => {
               )}
             </View> */}
 
-            <LinearGradient
-              colors={['#00000022', '#FFFFFFFF', '#FFFFFFFF']}
-              start={{x: 0, y: 0.5}}
-              end={{x: 1, y: 0.5}}
-              style={{
-                padding: 0,
-                margin: 1,
-                borderRadius: 18,
-                width: '100%',
-              }}></LinearGradient>
+                <LinearGradient
+                  colors={['#00000022', '#FFFFFFFF', '#FFFFFFFF']}
+                  start={{x: 0, y: 0.5}}
+                  end={{x: 1, y: 0.5}}
+                  style={{
+                    padding: 0,
+                    margin: 1,
+                    borderRadius: 18,
+                    width: '100%',
+                  }}></LinearGradient>
 
-            {!expanded && <View style={{padding: 10}}></View>}
+                {!expanded && <View style={{padding: 10}}></View>}
+              </View>
+            </View>
           </View>
-        </View>
-      </ScrollView>
+        </ScrollView>
+      </PanGestureHandler>
+
       {/* <Footer /> */}
     </View>
 
