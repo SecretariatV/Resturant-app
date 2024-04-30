@@ -20,8 +20,9 @@ const styles = StyleSheet.create({
   underConfettiPara1: {
     color: '#fff',
     textAlign: 'center',
+    fontFamily: fonts.URBANIST_REGULAR,
     width: widthToDp(80),
-    fontSize: screenToTextSize(5),
+    fontSize: screenToTextSize(4),
     marginVertical: 5,
   },
   gradientTextColored: {
@@ -34,7 +35,7 @@ const styles = StyleSheet.create({
     // position: 'relative',
   },
   gradientText: {
-    fontSize: 32,
+    fontSize: 25,
     fontFamily: fonts.URBANIST_BOLD,
     // color: '#00FC92',
   },
@@ -211,7 +212,7 @@ const styles = StyleSheet.create({
   btnGradient: {
     margin: 2,
 
-    padding: 10,
+    padding: 5,
     alignItems: 'center',
 
     borderRadius: 22,
@@ -234,7 +235,7 @@ const styles = StyleSheet.create({
     fontSize: 14,
   },
   billPayment: {
-    fontSize: 34,
+    fontSize: 28,
     color: Colors.BLACK,
     fontFamily: fonts.URBANIST_EXTRABOLD,
   },
@@ -246,9 +247,9 @@ const styles = StyleSheet.create({
     paddingLeft: screenToTextSize(5),
   },
   lottieStyle: {
-    width: widthToDp(50),
-    height: widthToDp(50),
-    margin: 5,
+    width: widthToDp(30),
+    height: widthToDp(30),
+    // margin: 5,
   },
 });
 export {styles};

@@ -60,7 +60,8 @@ const styles = StyleSheet.create({
   reviewSubmitButtonContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    width: '100%',
+    width: '90%',
+    marginTop: 10,
   },
   myOrderSubContainer: {
     flexDirection: 'row',

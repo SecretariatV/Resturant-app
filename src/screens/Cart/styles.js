@@ -15,6 +15,25 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
 
+  itemContainer: {
+    padding: 16,
+    borderBottomWidth: 1,
+    borderBottomColor: '#ccc',
+    backgroundColor: '#fff',
+  },
+  hiddenItemContainer: {
+    flex: 1,
+    justifyContent: 'flex-end',
+    flexDirection: 'row',
+    paddingRight: 15,
+    paddingBottom: 10,
+  },
+  deleteButton: {
+    backgroundColor: 'red',
+    padding: 10,
+    borderRadius: 5, // Optional: Add border radius for rounded corners
+  },
+
   quantityTitle: {
     color: Colors.WHITE,
     fontFamily: fonts.URBANIST_REGULAR,

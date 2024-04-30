@@ -180,18 +180,66 @@ const MyOrder = () => {
             <GradientText style={styles.customizeTxt}>$150</GradientText>
           </View>
         </View>
+        <BackgroundCard
+          style={{
+            marginTop: 10,
+            width: '95%',
+            alignSelf: 'center',
+          }}>
+          <View
+            style={{
+              marginVertical: 15,
+              paddingHorizontal: 10,
+              width: '100%',
+            }}>
+            {cardData.map((item, index) => (
+              <View style={{width: '100%'}} key={index}>
+                <RadioButtonCard cardName={item.cardName} />
 
-        {/* </BackgroundCard> */}
+                <FadedSeparator />
+              </View>
+            ))}
+          </View>
+          <TouchableOpacity
+            style={{
+              backgroundColor: 'rgba(255, 255, 255, 0.15)',
+              width: '90%',
+              padding: 10,
+              alignItems: 'center',
+              borderRadius: 22,
+            }}
+            onPress={() => navigation.navigate('AddCard')}>
+            <Text
+              style={{
+                color: Colors.WHITE,
+                fontFamily: fonts.URBANIST_MEDIUM,
+              }}>
+              Add new card
+            </Text>
+          </TouchableOpacity>
 
-        <ButtonsCommon
-          containerStyle={{
-            width: '100%',
-            marginBottom: getPlatformSpecificValue(10, 32),
-            paddingHorizontal: 15,
-          }}
-          btnText={'Pay'}
-          onPress={() => navigation.navigate('ConfirmPayment')}
-        />
+          <FadedSeparator />
+          <View
+            style={{
+              marginVertical: 15,
+              paddingHorizontal: 10,
+              width: '100%',
+            }}>
+            {paymentMode.map((item, index) => (
+              <View style={{width: '100%'}}>
+                <RadioButtonCard cardName={item.cardName} />
+
+                {/* <FadedSeparator /> */}
+              </View>
+            ))}
+          </View>
+
+          <ButtonsCommon
+            containerStyle={{width: '95%', marginBottom: 10}}
+            btnText={'Pay'}
+            onPress={() => navigation.navigate('ConfirmPayment')}
+          />
+        </BackgroundCard>
       </ScrollView>
       {/* <Footer /> */}
     </View>

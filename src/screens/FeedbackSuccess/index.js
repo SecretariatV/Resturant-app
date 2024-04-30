@@ -10,8 +10,11 @@ import {Colors} from '../../theme';
 import ButtonsCommon from '../../components/Buttons/ButtonCommon.js';
 import HamBurgerButton from '../../components/NavButtons/HamBurgerButton';
 import {widthToDp} from '../../utils/Dimensions.js';
+import {useNavigation} from '@react-navigation/native';
 
 const FeedbackSuccess = () => {
+  const navigation = useNavigation();
+
   return (
     <View style={{flex: 1, alignItems: 'center'}}>
       {/* <H */}
@@ -81,6 +84,7 @@ const FeedbackSuccess = () => {
       </View>
       <ButtonsCommon
         btnText={'Done'}
+        onPress={() => navigation.navigate('RestaurantMain')}
         containerStyle={{width: '80%', position: 'absolute', bottom: 30}}
       />
     </View>

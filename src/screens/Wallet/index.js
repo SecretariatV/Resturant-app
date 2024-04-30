@@ -23,7 +23,7 @@ const Wallet = () => {
         slotRight={<></>}
       />
       <ScrollView>
-        <View style={styles.balanceView} className="balance-view">
+        {/* <View style={styles.balanceView} className="balance-view">
           <Text style={styles.balanceText}>Total Balance</Text>
 
           <Text style={styles.balance}>$ 34.44</Text>
@@ -32,7 +32,7 @@ const Wallet = () => {
             btnText="Add Funds"
             containerStyle={{width: widthToDp(95), marginTop: 10}}
           />
-        </View>
+        </View> */}
         <View style={styles.mainCardView} className="card-view">
           <Text style={styles.heading}>All Card</Text>
           <View style={styles.card}>

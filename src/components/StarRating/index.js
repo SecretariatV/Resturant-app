@@ -3,7 +3,7 @@ import React, {useState} from 'react';
 import {styles} from './styles';
 import YellowStar from '../../assets/images/ratingstarYellow.svg';
 import WhiteStar from '../../assets/images/ratingstarWhite.svg';
-const StarRating = ({rating, isEditable = false, starSize = 15}) => {
+const StarRating = ({rating, isEditable = false, starSize = 15, style}) => {
   const [fillto, setFillTo] = useState(rating);
 
   const handleRatingChange = newRating => {
@@ -11,7 +11,7 @@ const StarRating = ({rating, isEditable = false, starSize = 15}) => {
   };
 
   return (
-    <View class="star-container" style={styles.starContainer}>
+    <View class="star-container" style={[styles.starContainer, style]}>
       {Array.from({length: 5}, (_, index) =>
         fillto >= index + 1 ? (
           <Pressable

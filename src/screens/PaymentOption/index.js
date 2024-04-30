@@ -224,7 +224,7 @@ const ShareByItems = () => {
                 </View>
                 <View style={{marginBottom: 10}}>
                   {SharedItems.map((item, index) => (
-                    <View>
+                    <View key={index}>
                       <View style={styles.sharedItemContainer}>
                         <View style={styles.sharedItemContainerTwo}>
                           <View style={styles.pricing}>

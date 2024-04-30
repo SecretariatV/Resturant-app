@@ -110,6 +110,7 @@ const styles = StyleSheet.create({
   filterHeadingText: {
     color: '#fff',
     fontSize: 16,
+    fontFamily: fonts.URBANIST_MEDIUM,
   },
   cuisineTypeBtns: {
     flexDirection: 'row',

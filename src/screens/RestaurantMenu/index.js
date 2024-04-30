@@ -9,7 +9,7 @@ import {
   useWindowDimensions,
   Platform,
 } from 'react-native';
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useRef} from 'react';
 import {Image} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import {styles} from './styles';
@@ -42,6 +42,8 @@ import Skeleton from 'react-native-reanimated-skeleton';
 const RestaurantMenu = () => {
   const dispatch = useDispatch();
   const navigation = useNavigation();
+  const flatListRef = useRef(null);
+
   const [modalVisible, setModalVisible] = useState(false);
   const [showFilter, setShowFilter] = useState(false);
   const [showRequest, setShowRequest] = useState(false);
@@ -53,18 +55,19 @@ const RestaurantMenu = () => {
 
   const qr = useSelector(state => state.auth.qr);
 
-  const categories = ['Breakfast', 'Lunch', 'Main Course'];
+  const categories = ['Breakfast', 'Lunch', 'Main Course Formula'];
 
   const renderItemCategories = ({item, index}) => (
     <TouchableOpacity
       style={{
-        width: widthToDp(85) / 3,
+        minWidth: widthToDp(85) / 3,
         alignItems: 'center',
         marginHorizontal: 4,
       }}
       onPress={() => {
         console.log('tab change');
         // if (selRest !== index) {
+        scrollToIndex(index);
         setLoadingItems(true);
         setItemsObj(foodItemsObj[index]);
         setSelectedCategory(index);
@@ -80,15 +83,19 @@ const RestaurantMenu = () => {
         angle={820}
         start={{x: 0, y: 0.5}}
         end={{x: 1, y: 0.5}}
-        style={{borderRadius: 14}}>
+        style={{
+          borderRadius: 14,
+          width: '100%',
+          alignItems: 'center',
+          borderWidth: 1,
+          borderColor: index === selectedCategory ? Colors.BLACK : Colors.WHITE,
+          // borderRadius: 14,
+        }}>
         <Text
           style={{
             color: index === selectedCategory ? Colors.BLACK : Colors.WHITE,
             fontFamily: fonts.URBANIST_MEDIUM,
-            borderWidth: 1,
-            borderColor:
-              index === selectedCategory ? Colors.BLACK : Colors.WHITE,
-            borderRadius: 14,
+            marginBottom: 5,
             fontSize: 16,
             paddingVertical: 2,
             paddingHorizontal: 10,
@@ -555,14 +562,18 @@ const RestaurantMenu = () => {
             class="rating-with-allergies"
             style={{
               flexDirection: 'row',
-              justifyContent: 'flex-start',
+              // justifyContent: 'center',
               alignItems: 'center',
-              flex: 1,
+              // backgroundColor: 'orange',
+              // height: 50,
+              // justifyContent
+
+              // flex: 1,
             }}>
             <View
               className="menu-item-smallbox-ratingCont"
               style={[styles.menuItemSmallbox.ratingCont, {marginLeft: 5}]}>
-              <Star style={styles.menuItemSmallbox.ratingIcon} width={35} />
+              <Star style={styles.menuItemSmallbox.ratingIcon} width={30} />
               <Text style={styles.menuItemSmallbox.rating}>{item.rating}</Text>
             </View>
             <View
@@ -583,7 +594,7 @@ const RestaurantMenu = () => {
           <View
             className="product-name-cont"
             style={styles.verticalPrdListItem.prdNameCont}>
-            <View style={{width: widthToDp(80)}}>
+            <View style={{width: widthToDp(80), marginTop: 5}}>
               <Text
                 className="product-name"
                 style={styles.verticalPrdListItem.prdName}>
@@ -643,18 +654,21 @@ const RestaurantMenu = () => {
   const layout = useWindowDimensions();
 
   const [index, setIndex] = useState(0);
-
+  const scrollToIndex = index => {
+    flatListRef.current.scrollToIndex({animated: true, index});
+  };
   return (
     <SafeAreaProvider>
       <View style={styles.container}>
         <BackgroundLayout />
         {Platform.OS === 'ios' && (
-          <BlurView
-            blurType="ultraThinMaterialDark"
-            overlayColor="#ffffff00"
-            reducedTransparencyFallbackColor="#f00"
-            downsampleFactor={25}
-            style={{height: 35}}></BlurView>
+          // <BlurView
+          //   blurType="ultraThinMaterialDark"
+          //   overlayColor="#ffffff00"
+          //   reducedTransparencyFallbackColor="#f00"
+          //   downsampleFactor={25}
+          //   style={{height: 35}}></BlurView>
+          <View style={{height: 35, backgroundColor: '#060015'}}></View>
         )}
         <ScrollView stickyHeaderIndices={[2]} style={{paddingBottom: 20}}>
           <HeaderModed
@@ -752,7 +766,7 @@ const RestaurantMenu = () => {
                           <Text
                             className="menu-item-smallbox-name"
                             style={styles.menuItemSmallbox.itemPrice}>
-                            100$
+                            $100
                           </Text>
                           <View
                             className="menu-item-smallbox-ratingCont"
@@ -848,7 +862,8 @@ const RestaurantMenu = () => {
               }}>
               <FlatList
                 horizontal={true}
-                showsVerticalScrollIndicator={false}
+                showsHorizontalScrollIndicator={false}
+                ref={flatListRef}
                 style={styles.listStyle}
                 data={categories}
                 renderItem={renderItemCategories}

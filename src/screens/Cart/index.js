@@ -15,7 +15,7 @@ import {heightToDp, widthToDp} from '../../utils/Dimensions';
 import HeaderModed from '../../components/HeaderModed';
 
 import BackgroundCard from '../../components/BackgroundCard';
-import {cartData, dressCode} from '../../utils/demodata';
+import {cartData} from '../../utils/demodata';
 import Counter from '../../components/Counter';
 import {Colors} from '../../theme';
 // import SwipeableList from 'react-native-swipeable-list';
@@ -30,6 +30,7 @@ import HamBurgerButton from '../../components/NavButtons/HamBurgerButton/index.j
 import {useDispatch} from 'react-redux';
 import {setCartBtn} from '../../redux/actions/cart.js';
 import CloseFilterBtn from '../../assets/images/closeBtnFilter.svg';
+import {SwipeListView} from 'react-native-swipe-list-view';
 
 const Cart = () => {
   const navigation = useNavigation();
@@ -50,6 +51,8 @@ const Cart = () => {
     {key: 'item3'},
     // Add more items as needed
   ]);
+
+  const [cartItems, setCartItems] = useState(cartData);
   const keyExtractor = (item, index) => index.toString();
 
   const FullScreenModal = () => {
@@ -91,6 +94,107 @@ const Cart = () => {
     );
   };
 
+  const renderItem = item => (
+    <BackgroundCard
+      style={{marginTop: 10, marginHorizontal: 10}}
+      childrenStyle={{borderRadius: 26}}
+      linearBackStyle={{borderRadius: 26}}>
+      <View
+        style={{
+          marginHorizontal: 15,
+        }}>
+        <View
+          style={{
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+            width: '100%',
+            // marginTop: 15,
+            marginVertical: 10,
+            alignItems: 'center',
+            // justifyContent: 'center',
+          }}>
+          <View
+            style={{
+              flexDirection: 'row',
+
+              alignItems: 'center',
+            }}>
+            <View
+              style={{
+                backgroundColor: '#303F43',
+                borderRadius: 8,
+              }}>
+              <Image
+                source={require('../../assets/images/burger_one.png')}
+                style={{width: widthToDp(20), height: heightToDp(20)}}
+                resizeMode="contain"
+              />
+            </View>
+            <View style={{}}>
+              <Text style={[styles.navbarPageTitle, {marginLeft: 10}]}>
+                {item.productName}
+              </Text>
+              <Text style={[styles.priceStyle, {marginLeft: 10, marginTop: 5}]}>
+                ${item.price}
+              </Text>
+            </View>
+          </View>
+          <View style={{alignItems: 'center'}}>
+            <View
+              style={{
+                flexDirection: 'row',
+                alignItems: 'center',
+                marginLeft: 10,
+
+                // backgroundColor: 'green',
+              }}>
+              <Counter
+                minusContainerStyle={{
+                  height: heightToDp(7),
+                  width: widthToDp(7),
+                  borderRadius: 8,
+                  // backgroundColor: 'green',
+                }}
+                plusContainerStyle={{
+                  height: heightToDp(7),
+                  width: widthToDp(7),
+                  borderRadius: 8,
+                  backgroundColor: Colors.GREEN,
+                }}
+                counterTextStyle={{
+                  // margin: 25,
+                  margin: 1,
+                  // backgroundColor: 'red',
+                  width: widthToDp(15),
+                }}
+                minusStyle={{width: 10, height: 2}}
+                plusStyle={{width: 10, height: 10}}
+              />
+            </View>
+          </View>
+        </View>
+      </View>
+    </BackgroundCard>
+  );
+
+  // const renderHiddenItem = ({item}) => (
+  //   <View style={styles.hiddenItemContainer}>
+  //     <TouchableOpacity
+  //       style={[
+  //         styles.deleteButton,
+  //         {
+  //           backgroundColor: rowMap[item.id] ? 'red' : 'transparent',
+  //         },
+  //       ]}
+  //       onPress={() => removeItem(item.id)}>
+  //       <Text>Delete</Text>
+  //     </TouchableOpacity>
+  //   </View>
+  // );
+  // const removeItem = itemId => {
+  //   const updatedCartItems = cartItems.filter(item => item.id !== itemId);
+  //   setCartItems(updatedCartItems);
+  // };
   return (
     <View style={styles.container}>
       <BackgroundLayout
@@ -98,8 +202,9 @@ const Cart = () => {
       />
 
       {isModalVisible ? FullScreenModal() : <></>}
+
       <HeaderModed
-        headerStyle={{marginTop: 0}}
+        headerStyle={{}}
         slotLeft={
           <Text
             style={{
@@ -107,7 +212,7 @@ const Cart = () => {
               fontSize: 22,
               color: Colors.WHITE,
             }}>
-            Cart
+            Order
           </Text>
         }
         slotCenter={<></>}
@@ -116,162 +221,178 @@ const Cart = () => {
             <TouchableOpacity
               onPress={() => {
                 dispatch(setCartBtn(false));
-                // navigation.goBack();
-              }}>
-              <CloseFilterBtn width={30} height={30} />
+              }}
+              style={{padding: 10}}>
+              <CloseFilterBtn width={20} height={20} />
             </TouchableOpacity>
           </>
         }
       />
       <ScrollView>
-        {cartData.map((item, index) => (
-          <BackgroundCard
-            style={{marginTop: 10, marginHorizontal: 10}}
-            childrenStyle={{borderRadius: 26}}
-            linearBackStyle={{borderRadius: 26}}>
-            <View
-              style={{
-                marginHorizontal: 15,
-              }}>
+        <View
+          style={{
+            borderWidth: 2,
+            borderColor: Colors.GREEN,
+            borderTopLeftRadius: 35,
+            borderTopRightRadius: 35,
+            // backgroundColor: 'red',
+          }}>
+          {cartData.map((item, index) => (
+            <BackgroundCard
+              style={{marginTop: 10, marginHorizontal: 10}}
+              childrenStyle={{borderRadius: 26}}
+              linearBackStyle={{borderRadius: 26}}>
               <View
                 style={{
-                  flexDirection: 'row',
-                  justifyContent: 'space-between',
-                  width: '100%',
-                  // marginTop: 15,
-                  marginVertical: 10,
-                  alignItems: 'center',
-                  // justifyContent: 'center',
+                  marginHorizontal: 15,
                 }}>
                 <View
                   style={{
                     flexDirection: 'row',
-
+                    justifyContent: 'space-between',
+                    width: '100%',
+                    // marginTop: 15,
+                    marginVertical: 10,
                     alignItems: 'center',
+                    // justifyContent: 'center',
                   }}>
                   <View
                     style={{
-                      backgroundColor: '#303F43',
-                      borderRadius: 8,
-                    }}>
-                    <Image
-                      source={require('../../assets/images/burger_one.png')}
-                      style={{width: widthToDp(20), height: heightToDp(20)}}
-                      resizeMode="contain"
-                    />
-                  </View>
-                  <View style={{}}>
-                    <Text style={[styles.navbarPageTitle, {marginLeft: 10}]}>
-                      {item.productName}
-                    </Text>
-                    <Text
-                      style={[
-                        styles.priceStyle,
-                        {marginLeft: 10, marginTop: 5},
-                      ]}>
-                      ${item.price}
-                    </Text>
-                  </View>
-                </View>
-                <View style={{alignItems: 'center'}}>
-                  <View
-                    style={{
                       flexDirection: 'row',
-                      alignItems: 'center',
-                      marginLeft: 10,
 
-                      // backgroundColor: 'green',
+                      alignItems: 'center',
                     }}>
-                    <Counter
-                      minusContainerStyle={{
-                        height: heightToDp(7),
-                        width: widthToDp(7),
+                    <View
+                      style={{
+                        backgroundColor: '#303F43',
                         borderRadius: 8,
+                      }}>
+                      <Image
+                        source={require('../../assets/images/burger_one.png')}
+                        style={{width: widthToDp(20), height: heightToDp(20)}}
+                        resizeMode="contain"
+                      />
+                    </View>
+                    <View style={{}}>
+                      <Text style={[styles.navbarPageTitle, {marginLeft: 10}]}>
+                        {item.productName}
+                      </Text>
+                      <Text
+                        style={[
+                          styles.priceStyle,
+                          {marginLeft: 10, marginTop: 5},
+                        ]}>
+                        ${item.price}
+                      </Text>
+                    </View>
+                  </View>
+                  <View style={{alignItems: 'center'}}>
+                    <View
+                      style={{
+                        flexDirection: 'row',
+                        alignItems: 'center',
+                        marginLeft: 10,
+
                         // backgroundColor: 'green',
-                      }}
-                      plusContainerStyle={{
-                        height: heightToDp(7),
-                        width: widthToDp(7),
-                        borderRadius: 8,
-                        backgroundColor: Colors.GREEN,
-                      }}
-                      counterTextStyle={{
-                        // margin: 25,
-                        margin: 1,
-                        // backgroundColor: 'red',
-                        width: widthToDp(15),
-                      }}
-                      minusStyle={{width: 10, height: 2}}
-                      plusStyle={{width: 10, height: 10}}
-                    />
+                      }}>
+                      <Counter
+                        minusContainerStyle={{
+                          height: heightToDp(7),
+                          width: widthToDp(7),
+                          borderRadius: 8,
+                          // backgroundColor: 'green',
+                        }}
+                        plusContainerStyle={{
+                          height: heightToDp(7),
+                          width: widthToDp(7),
+                          borderRadius: 8,
+                          backgroundColor: Colors.GREEN,
+                        }}
+                        counterTextStyle={{
+                          // margin: 25,
+                          margin: 1,
+                          // backgroundColor: 'red',
+                          width: widthToDp(15),
+                        }}
+                        minusStyle={{width: 10, height: 2}}
+                        plusStyle={{width: 10, height: 10}}
+                      />
+                    </View>
                   </View>
                 </View>
               </View>
-            </View>
-          </BackgroundCard>
-        ))}
-        <View
-          style={{
-            width: '95%',
-            alignItems: 'flex-end',
-            marginTop: 15,
-            // m,
-          }}>
-          <ButtonsCommon
-            btnText={'Add more items'}
-            onPress={() => {
-              dispatch(setCartBtn(false));
-              navigation.navigate('RestaurantMenu');
-            }}
-          />
-        </View>
+            </BackgroundCard>
+          ))}
 
-        <Text
-          style={{
-            fontFamily: fonts.URBANIST_BOLD,
-            fontSize: 22,
-            color: Colors.WHITE,
-            marginLeft: 15,
-          }}>
-          Special Request
-        </Text>
-        <View style={{alignItems: 'center'}}>
-          <TextInput
+          {/* <SwipeListView
+            data={cartItems}
+            renderItem={renderItem}
+            renderHiddenItem={renderHiddenItem}
+            rightOpenValue={-75}
+            disableRightSwipe={true}
+            keyExtractor={item => item.id.toString()}
+          /> */}
+          <View
             style={{
-              height: 120,
               width: '95%',
-              color: '#fff',
+              alignItems: 'flex-end',
+              marginTop: 15,
+            }}>
+            <ButtonsCommon
+              btnText={'Add more items'}
+              onPress={() => {
+                dispatch(setCartBtn(false));
+                navigation.navigate('RestaurantMenu');
+              }}
+            />
+          </View>
 
-              // backgroundColor: 'red',
-              borderWidth: 1,
-              borderColor: '#FFFFFF33',
-              marginHorizontal: 15,
-              paddingLeft: 10,
-              paddingTop: 10,
-              borderRadius: 18,
-              // marginLeft: 50,
-              // marginRight: 50,
-              alignSelf: 'center',
-              marginVertical: 10,
-              // textAlignVertical: top',
-            }}
-            placeholder="type here"
-            placeholderTextColor="#FFFFFF33"
-            multiline={true}
-          />
+          <Text
+            style={{
+              fontFamily: fonts.URBANIST_BOLD,
+              fontSize: 22,
+              color: Colors.WHITE,
+              marginLeft: 15,
+            }}>
+            Special Request
+          </Text>
+          <View style={{alignItems: 'center'}}>
+            <TextInput
+              style={{
+                height: 120,
+                width: '95%',
+                color: '#fff',
 
-          <RestaurantButton
-            btnText={'Order now'}
-            style={{width: '95%', marginBottom: 20}}
-            onPress={() => {
-              dispatch(setCartBtn(false));
+                // backgroundColor: 'red',
+                borderWidth: 1,
+                borderColor: '#FFFFFF33',
+                marginHorizontal: 15,
+                paddingLeft: 10,
+                paddingTop: 10,
+                borderRadius: 18,
+                // marginLeft: 50,
+                // marginRight: 50,
+                alignSelf: 'center',
+                marginVertical: 10,
+                // textAlignVertical: top',
+              }}
+              placeholder="type here"
+              placeholderTextColor="#FFFFFF33"
+              multiline={true}
+            />
 
-              navigation.navigate('PaymentOption');
-            }}
-          />
-        </View>
+            <RestaurantButton
+              btnText={'Order now'}
+              style={{width: '95%', marginBottom: 20}}
+              onPress={() => {
+                dispatch(setCartBtn(false));
 
-        {/* <GradientText style={styles.triedTxt}>People Also Tried</GradientText>
+                navigation.navigate('PaymentOption');
+              }}
+            />
+          </View>
+
+          {/* <GradientText style={styles.triedTxt}>People Also Tried</GradientText>
 
         <FlatList
           data={dressCode}
@@ -315,8 +436,8 @@ const Cart = () => {
             </BackgroundCard>
           )}
         /> */}
-        {/* )} */}
-        {/* <SwipeableList
+          {/* )} */}
+          {/* <SwipeableList
         data={cartData}
         keyExtractor={keyExtractor}
         renderItem={item => (
@@ -420,7 +541,9 @@ const Cart = () => {
         )}
         backgroundColor={'transparent'}
       /> */}
+        </View>
       </ScrollView>
+
       {/* <Footer /> */}
     </View>
   );

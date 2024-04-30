@@ -180,26 +180,31 @@ export const restaurants = [
 
 export const cartData = [
   {
+    id: 1,
     productName: 'Burger',
     price: '50',
     time: '16:30',
   },
   {
+    id: 2,
     productName: 'Burger',
     price: '50',
     time: '16:30',
   },
   {
+    id: 3,
     productName: 'Onion',
     price: '50',
     time: '16:30',
   },
   {
+    id: 4,
     productName: 'Burger',
     price: '50',
     time: '16:30',
   },
   {
+    id: 5,
     productName: 'Onion',
     price: '50',
     time: '16:30',

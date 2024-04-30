@@ -8,7 +8,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     flexDirection: 'row',
-    gap: 4
+    // width: 100,
+    gap: 4,
   },
 });
 export {styles};

@@ -102,6 +102,8 @@ import Terms from '../screens/Terms/index.js';
 import FAQ from '../screens/FAQ/index.js';
 import Contact from '../screens/Contact/index.js';
 import Favorites from '../screens/Favorites/index.js';
+import Colors from '../theme/Colors.js';
+import DemoScreen from '../screens/DemoScreen/index.js';
 
 const Tab = createBottomTabNavigator();
 // const Stack = createNativeStackNavigator();
@@ -136,6 +138,7 @@ const DrawerScreens = () => {
 const AuthStack = ({toggleLogin}) => {
   return (
     <Stack.Navigator
+      animationEnabled
       screenOptions={{
         headerShown: false,
       }}
@@ -175,21 +178,27 @@ const HomeStack = ({activeRestaurant}) => {
   return (
     <Stack.Navigator
       // initialRouteName="TabNavigator"
-      // initialRouteName="Favorites"
+      // initialRouteName="Cart"
       screenOptions={{
         headerShown: false,
       }}>
       <Stack.Screen name="RestaurantMain" component={RestaurantMain} />
 
-      <Stack.Group screenOptions={{presentation: 'modal'}}>
+      <Stack.Group
+        screenOptions={{
+          presentation: 'modal',
+          // Enable vertical swipe down
+        }}>
         <Stack.Screen name="MenuDetail" component={MenuDetail} />
-      </Stack.Group>
-      <Stack.Group>
-        {/* <Stack.Screen name="MenuDetail" component={MenuDetail} /> */}
+
         <Stack.Screen
           name="IngredientCustomization"
           component={IngredientCustomization}
         />
+      </Stack.Group>
+      <Stack.Group>
+        {/* <Stack.Screen name="MenuDetail" component={MenuDetail} /> */}
+
         <Stack.Screen name="AR" component={AR} />
         <Stack.Screen name="HomeScreens" component={HomeScreens} />
         <Stack.Screen name="TabNavigator" component={TabNavigator} />
@@ -226,6 +235,7 @@ const HomeStack = ({activeRestaurant}) => {
         <Stack.Screen name="FAQ" component={FAQ} />
         <Stack.Screen name="Contact" component={Contact} />
         <Stack.Screen name="Favorites" component={Favorites} />
+        <Stack.Screen name="DemoScreen" component={DemoScreen} />
       </Stack.Group>
     </Stack.Navigator>
   );
@@ -426,7 +436,9 @@ const TabNavigator = () => {
         },
         tabBarActiveTintColor: '#1DA1F2',
         tabBarInactiveTintColor: 'gray',
-      })}>
+      })}
+      gestureEnabled={true}
+      swipeEnabled={true}>
       <Tab.Screen
         name="HomeStack"
         component={HomeStack}
@@ -550,6 +562,8 @@ const TabNavigator = () => {
 
 const RootNavigator = () => {
   const bottomSheetRef = useRef(null);
+  const cartbottomSheetRef = useRef(null);
+
   // const navigation = useNavigation();
   const dispatch = useDispatch();
   const user = useSelector(state => state.auth.user);
@@ -594,18 +608,18 @@ const RootNavigator = () => {
                 ]}
               />
             )}
-            backgroundComponent={({style, backgroundStyle}) => (
-              <BlurView
-                style={[style, {flex: 1, overflow: 'hidden', height: 500}]}
-                blurType="light"
-                blurAmount={10}
-                reducedTransparencyFallbackColor="white"
-                backgroundStyle={[
-                  backgroundStyle,
-                  {flex: 1, overflow: 'hidden'},
-                ]}
-              />
-            )}
+            // backgroundComponent={({style, backgroundStyle}) => (
+            //   <BlurView
+            //     style={[style, {flex: 1, overflow: 'hidden', height: 500}]}
+            //     blurType="light"
+            //     blurAmount={10}
+            //     reducedTransparencyFallbackColor="white"
+            //     backgroundStyle={[
+            //       backgroundStyle,
+            //       {flex: 1, overflow: 'hidden'},
+            //     ]}
+            //   />
+            // )}
             enableDynamicSizing={false}
             snapPoints={[350, '40%']}
             ref={bottomSheetRef}
@@ -616,46 +630,54 @@ const RootNavigator = () => {
                   style={tabNavStyles.bottomImg}
                   source={require('../assets/images/bottom_bg.png')}
                 />
-                <View style={tabNavStyles.bottomView}>
-                  <View style={tabNavStyles.bottomSubView}>
-                    <Text style={tabNavStyles.requestText}>Request</Text>
-                    <TouchableOpacity
-                      onPress={() => {
-                        dispatch(setRequestBtn(false));
-                        // navigation.goBack();
-                      }}>
-                      <CloseFilterBtn width={30} height={30} />
-                    </TouchableOpacity>
-                  </View>
-                  <View>
-                    <ButtonsCommon
-                      btnText={'Call waiter'}
-                      containerStyle={{marginTop: 10}}
-                      btnTextStyle={{marginLeft: 10}}
-                      img
-                      imageSource={require('../assets/images/waiter.png')}
-                      btnStyle={tabNavStyles.btnStyle}
-                      imgStyle={{width: 30, height: 30}}
-                    />
-                    <ButtonsCommon
-                      btnText={'Coal change'}
-                      containerStyle={{marginTop: 10}}
-                      btnTextStyle={{marginLeft: 10}}
-                      img
-                      imageSource={require('../assets/images/coal.png')}
-                      btnStyle={tabNavStyles.btnStyle}
-                      imgStyle={{width: 30, height: 30}}
-                    />
+                <View
+                  style={{
+                    borderWidth: 2,
+                    borderColor: Colors.GREEN,
+                    borderRadius: 15,
+                  }}>
+                  <View style={tabNavStyles.bottomView}>
+                    <View style={tabNavStyles.bottomSubView}>
+                      <Text style={tabNavStyles.requestText}>Request</Text>
+                      <TouchableOpacity
+                        onPress={() => {
+                          dispatch(setRequestBtn(false));
+                          // navigation.goBack();
+                        }}
+                        style={{padding: 10}}>
+                        <CloseFilterBtn width={20} height={20} />
+                      </TouchableOpacity>
+                    </View>
+                    <View>
+                      <ButtonsCommon
+                        btnText={'Call waiter'}
+                        containerStyle={{marginTop: 10}}
+                        btnTextStyle={{marginLeft: 10}}
+                        img
+                        imageSource={require('../assets/images/waiter.png')}
+                        btnStyle={tabNavStyles.btnStyle}
+                        imgStyle={{width: 30, height: 30}}
+                      />
+                      <ButtonsCommon
+                        btnText={'Coal change'}
+                        containerStyle={{marginTop: 10}}
+                        btnTextStyle={{marginLeft: 10}}
+                        img
+                        imageSource={require('../assets/images/coal.png')}
+                        btnStyle={tabNavStyles.btnStyle}
+                        imgStyle={{width: 30, height: 30}}
+                      />
 
-                    <ButtonsCommon
-                      btnText={'Ashtray'}
-                      containerStyle={{marginTop: 10}}
-                      btnTextStyle={{marginLeft: 20}}
-                      img
-                      imageSource={require('../assets/images/ashtray.png')}
-                      btnStyle={tabNavStyles.btnStyle}
-                      imgStyle={{width: 30, height: 30}}
-                    />
+                      <ButtonsCommon
+                        btnText={'Ashtray'}
+                        containerStyle={{marginTop: 10}}
+                        btnTextStyle={{marginLeft: 20}}
+                        img
+                        imageSource={require('../assets/images/ashtray.png')}
+                        btnStyle={tabNavStyles.btnStyle}
+                        imgStyle={{width: 30, height: 30}}
+                      />
+                    </View>
                   </View>
                 </View>
               </View>
@@ -668,18 +690,17 @@ const RootNavigator = () => {
         {cartBtn ? (
           <BottomSheet
             handleComponent={null}
-            enableContentPanningGesture={false}
             onChange={handleCartSheetChanges}
             enablePanDownToClose={true}
             enableDynamicSizing={false}
             backgroundStyle={{
               backgroundColor: 'transparent',
             }}
-            ref={bottomSheetRef}
+            ref={cartbottomSheetRef}
             snapPoints={['90%', '90%']}>
-            <ScrollView>
-              <Cart />
-            </ScrollView>
+            {/* <ScrollView> */}
+            <Cart />
+            {/* </ScrollView> */}
           </BottomSheet>
         ) : (
           <></>
