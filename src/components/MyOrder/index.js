@@ -30,6 +30,7 @@ import Footer from '../../components/Footer/index.js';
 import {useNavigation} from '@react-navigation/native';
 import ButtonsCommon from '../Buttons/ButtonCommon.js/index.js';
 import {widthToDp} from '../../utils/Dimensions.js';
+import {getPlatformSpecificValue} from '../../utils/helper.js';
 
 const MyOrder = () => {
   const navigation = useNavigation();
@@ -181,82 +182,16 @@ const MyOrder = () => {
         </View>
 
         {/* </BackgroundCard> */}
-        <View
-          style={{
-            backgroundColor: '#7074C422',
-            width: '95%',
-            alignItems: 'center',
-            alignSelf: 'center',
-            borderRadius: 26,
-            margin: 5,
-            paddingVertical: 10,
-            marginBottom: 20,
 
-            // paddingHorizontal: 10,
-
-            // marginHorizontal: 10,
-          }}>
-          <BackgroundCard
-            style={{
-              marginTop: 10,
-              width: '95%',
-              alignSelf: 'center',
-            }}>
-            <View
-              style={{
-                marginVertical: 15,
-                paddingHorizontal: 10,
-                width: '100%',
-              }}>
-              {cardData.map((item, index) => (
-                <View style={{width: '100%'}}>
-                  <RadioButtonCard cardName={item.cardName} />
-
-                  <FadedSeparator />
-                </View>
-              ))}
-            </View>
-            <TouchableOpacity
-              style={{
-                backgroundColor: 'rgba(255, 255, 255, 0.15)',
-                width: '90%',
-                padding: 10,
-                alignItems: 'center',
-                borderRadius: 22,
-              }}
-              onPress={() => navigation.navigate('AddCard')}>
-              <Text
-                style={{
-                  color: Colors.WHITE,
-                  fontFamily: fonts.URBANIST_MEDIUM,
-                }}>
-                Add new card
-              </Text>
-            </TouchableOpacity>
-
-            <FadedSeparator />
-            <View
-              style={{
-                marginVertical: 15,
-                paddingHorizontal: 10,
-                width: '100%',
-              }}>
-              {paymentMode.map((item, index) => (
-                <View style={{width: '100%'}}>
-                  <RadioButtonCard cardName={item.cardName} />
-
-                  {/* <FadedSeparator /> */}
-                </View>
-              ))}
-            </View>
-
-            <ButtonsCommon
-              containerStyle={{width: '95%', marginBottom: 10}}
-              btnText={'Pay'}
-              onPress={() => navigation.navigate('Thankyou')}
-            />
-          </BackgroundCard>
-        </View>
+        <ButtonsCommon
+          containerStyle={{
+            width: '100%',
+            marginBottom: getPlatformSpecificValue(10, 32),
+            paddingHorizontal: 15,
+          }}
+          btnText={'Pay'}
+          onPress={() => navigation.navigate('ConfirmPayment')}
+        />
       </ScrollView>
       {/* <Footer /> */}
     </View>

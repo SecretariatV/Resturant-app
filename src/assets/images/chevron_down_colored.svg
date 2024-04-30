@@ -1,0 +1,13 @@
+<svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15 9" width="15" height="9">
+	<title>chevron_up_colored-svg</title>
+	<defs>
+		<linearGradient id="g1" x2="1" gradientUnits="userSpaceOnUse" gradientTransform="matrix(-1.244,-10.237,16.37,-1.99,15,8.843)">
+			<stop offset="0" stop-color="#00a7f7"/>
+			<stop offset="1" stop-color="#00fc92"/>
+		</linearGradient>
+	</defs>
+	<style>
+		.s0 { fill: url(#g1) } 
+	</style>
+	<path id="Layer" class="s0" d="m0.4 0.8q-0.1 0.1-0.2 0.3-0.1 0.2-0.1 0.4 0 0.2 0.1 0.4 0.1 0.2 0.2 0.3l6.6 6.6q0.1 0.1 0.3 0.1 0.1 0.1 0.3 0.1 0.1 0 0.3-0.1 0.1 0 0.2-0.1l6.6-6.6c0.4-0.4 0.4-1 0-1.4-0.4-0.4-1-0.4-1.4 0l-5.7 5.7-5.8-5.7c-0.4-0.4-1-0.4-1.4 0z"/>
+</svg>

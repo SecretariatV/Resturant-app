@@ -87,7 +87,7 @@ const styles = StyleSheet.create({
   },
   customizeTxt: {
     fontFamily: fonts.URBANIST_EXTRABOLD,
-    fontSize: 28,
+    fontSize: 34,
     textAlign: 'center',
   },
   restaurantFilterBg: {

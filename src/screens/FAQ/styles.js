@@ -133,10 +133,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 15,
   },
   faqItem: {
-    marginBottom: 10,
-    borderWidth: 1,
-    borderColor: '#ccc',
-    borderRadius: 5,
+    marginBottom: 10,  
     overflow: 'hidden',
   },
   questionContainer: {
@@ -152,6 +149,11 @@ const styles = StyleSheet.create({
   },
   answer: {
     fontSize: 14,
+  },
+  headerText: {
+    color: Colors.WHITE,
+    fontFamily: fonts.URBANIST_BOLD,
+    fontSize: 17,
   },
 });
 export {styles};

@@ -408,19 +408,19 @@ const RestaurantMain = () => {
         <Pressable
           style={{backgroundColor: 'rgba(0, 0, 0, 0.8)', flex: 1}}
           onPress={() => setModalVisible(false)}>
-          <TouchableHighlight
-            style={{alignItems: 'flex-end', paddingTop: widthToDp(15)}}
-            onPress={() => {
-              setModalVisible(!modalVisible);
-            }}>
-            <SkipButton showCross={true} showValetImg={false} />
-          </TouchableHighlight>
           <View
             style={{
               alignItems: 'center',
               justifyContent: 'center',
               flex: 1,
             }}>
+            <TouchableHighlight
+              style={{alignItems: 'flex-end', paddingTop: widthToDp(15)}}
+              onPress={() => {
+                setModalVisible(!modalVisible);
+              }}>
+              <SkipButton showCross={true} showValetImg={false} />
+            </TouchableHighlight>
             <GradientText style={styles.customizeTxt}>Scan Here</GradientText>
             <Text
               style={{
@@ -430,8 +430,9 @@ const RestaurantMain = () => {
                 width: '70%',
                 textAlign: 'center',
                 fontFamily: fonts.URBANIST_MEDIUM,
+                fontSize: 18,
               }}>
-              Scan the shareabill QR code on the table to start ordering.
+              To start the service please scan a Shareabill QR code.
             </Text>
 
             <Image source={scan_arrow} style={{width: 200, height: 200}} />

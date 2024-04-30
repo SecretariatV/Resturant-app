@@ -10,8 +10,12 @@ import tele from '../../assets/images/tele.png';
 import {width, widthToDp} from '../../utils/Dimensions';
 import HamBurgerButton from '../../components/NavButtons/HamBurgerButton';
 import {commonStyles} from '../../theme';
+import {useNavigation} from '@react-navigation/native';
 
 const Contact = () => {
+
+  const navigation = useNavigation(); 
+
   const [inputName, setInputName] = useState('123-456-789');
   const [inputLname, setInputLname] = useState('Anderson');
   const [inputUname, setInputUname] = useState('info@shareabill.coom');
@@ -85,6 +89,10 @@ const Contact = () => {
             // style={{marginHorizontal: 10, width: 32, height: 32}}
           />
         </View>
+      </TouchableOpacity>
+
+      <TouchableOpacity onPress={() => navigation.navigate('FAQ')}>
+        <Text style={{color: '#fff'}}>Faq</Text>
       </TouchableOpacity>
     </View>
   );
