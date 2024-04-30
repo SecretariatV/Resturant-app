@@ -102,6 +102,7 @@ import FAQ from '../screens/FAQ/index.js';
 import Contact from '../screens/Contact/index.js';
 import Favorites from '../screens/Favorites/index.js';
 import Colors from '../theme/Colors.js';
+import DemoScreen from '../screens/DemoScreen/index.js';
 
 const Tab = createBottomTabNavigator();
 // const Stack = createNativeStackNavigator();
@@ -176,8 +177,7 @@ const HomeStack = ({activeRestaurant}) => {
   return (
     <Stack.Navigator
       // initialRouteName="TabNavigator"
-      // initialRouteName="Favorites"
-
+      // initialRouteName="Cart"
       screenOptions={{
         headerShown: false,
       }}>
@@ -233,6 +233,7 @@ const HomeStack = ({activeRestaurant}) => {
         <Stack.Screen name="FAQ" component={FAQ} />
         <Stack.Screen name="Contact" component={Contact} />
         <Stack.Screen name="Favorites" component={Favorites} />
+        <Stack.Screen name="DemoScreen" component={DemoScreen} />
       </Stack.Group>
     </Stack.Navigator>
   );
@@ -605,18 +606,18 @@ const RootNavigator = () => {
                 ]}
               />
             )}
-            backgroundComponent={({style, backgroundStyle}) => (
-              <BlurView
-                style={[style, {flex: 1, overflow: 'hidden', height: 500}]}
-                blurType="light"
-                blurAmount={10}
-                reducedTransparencyFallbackColor="white"
-                backgroundStyle={[
-                  backgroundStyle,
-                  {flex: 1, overflow: 'hidden'},
-                ]}
-              />
-            )}
+            // backgroundComponent={({style, backgroundStyle}) => (
+            //   <BlurView
+            //     style={[style, {flex: 1, overflow: 'hidden', height: 500}]}
+            //     blurType="light"
+            //     blurAmount={10}
+            //     reducedTransparencyFallbackColor="white"
+            //     backgroundStyle={[
+            //       backgroundStyle,
+            //       {flex: 1, overflow: 'hidden'},
+            //     ]}
+            //   />
+            // )}
             enableDynamicSizing={false}
             snapPoints={[350, '40%']}
             ref={bottomSheetRef}

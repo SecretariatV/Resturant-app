@@ -15,7 +15,7 @@ import {heightToDp, widthToDp} from '../../utils/Dimensions';
 import HeaderModed from '../../components/HeaderModed';
 
 import BackgroundCard from '../../components/BackgroundCard';
-import {cartData, dressCode} from '../../utils/demodata';
+import {cartData} from '../../utils/demodata';
 import Counter from '../../components/Counter';
 import {Colors} from '../../theme';
 // import SwipeableList from 'react-native-swipeable-list';
@@ -30,6 +30,7 @@ import HamBurgerButton from '../../components/NavButtons/HamBurgerButton/index.j
 import {useDispatch} from 'react-redux';
 import {setCartBtn} from '../../redux/actions/cart.js';
 import CloseFilterBtn from '../../assets/images/closeBtnFilter.svg';
+import {SwipeListView} from 'react-native-swipe-list-view';
 
 const Cart = () => {
   const navigation = useNavigation();
@@ -50,6 +51,8 @@ const Cart = () => {
     {key: 'item3'},
     // Add more items as needed
   ]);
+
+  const [cartItems, setCartItems] = useState(cartData);
   const keyExtractor = (item, index) => index.toString();
 
   const FullScreenModal = () => {
@@ -91,6 +94,107 @@ const Cart = () => {
     );
   };
 
+  const renderItem = item => (
+    <BackgroundCard
+      style={{marginTop: 10, marginHorizontal: 10}}
+      childrenStyle={{borderRadius: 26}}
+      linearBackStyle={{borderRadius: 26}}>
+      <View
+        style={{
+          marginHorizontal: 15,
+        }}>
+        <View
+          style={{
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+            width: '100%',
+            // marginTop: 15,
+            marginVertical: 10,
+            alignItems: 'center',
+            // justifyContent: 'center',
+          }}>
+          <View
+            style={{
+              flexDirection: 'row',
+
+              alignItems: 'center',
+            }}>
+            <View
+              style={{
+                backgroundColor: '#303F43',
+                borderRadius: 8,
+              }}>
+              <Image
+                source={require('../../assets/images/burger_one.png')}
+                style={{width: widthToDp(20), height: heightToDp(20)}}
+                resizeMode="contain"
+              />
+            </View>
+            <View style={{}}>
+              <Text style={[styles.navbarPageTitle, {marginLeft: 10}]}>
+                {item.productName}
+              </Text>
+              <Text style={[styles.priceStyle, {marginLeft: 10, marginTop: 5}]}>
+                ${item.price}
+              </Text>
+            </View>
+          </View>
+          <View style={{alignItems: 'center'}}>
+            <View
+              style={{
+                flexDirection: 'row',
+                alignItems: 'center',
+                marginLeft: 10,
+
+                // backgroundColor: 'green',
+              }}>
+              <Counter
+                minusContainerStyle={{
+                  height: heightToDp(7),
+                  width: widthToDp(7),
+                  borderRadius: 8,
+                  // backgroundColor: 'green',
+                }}
+                plusContainerStyle={{
+                  height: heightToDp(7),
+                  width: widthToDp(7),
+                  borderRadius: 8,
+                  backgroundColor: Colors.GREEN,
+                }}
+                counterTextStyle={{
+                  // margin: 25,
+                  margin: 1,
+                  // backgroundColor: 'red',
+                  width: widthToDp(15),
+                }}
+                minusStyle={{width: 10, height: 2}}
+                plusStyle={{width: 10, height: 10}}
+              />
+            </View>
+          </View>
+        </View>
+      </View>
+    </BackgroundCard>
+  );
+
+  // const renderHiddenItem = ({item}) => (
+  //   <View style={styles.hiddenItemContainer}>
+  //     <TouchableOpacity
+  //       style={[
+  //         styles.deleteButton,
+  //         {
+  //           backgroundColor: rowMap[item.id] ? 'red' : 'transparent',
+  //         },
+  //       ]}
+  //       onPress={() => removeItem(item.id)}>
+  //       <Text>Delete</Text>
+  //     </TouchableOpacity>
+  //   </View>
+  // );
+  // const removeItem = itemId => {
+  //   const updatedCartItems = cartItems.filter(item => item.id !== itemId);
+  //   setCartItems(updatedCartItems);
+  // };
   return (
     <View style={styles.container}>
       <BackgroundLayout
@@ -219,6 +323,15 @@ const Cart = () => {
               </View>
             </BackgroundCard>
           ))}
+
+          {/* <SwipeListView
+            data={cartItems}
+            renderItem={renderItem}
+            renderHiddenItem={renderHiddenItem}
+            rightOpenValue={-75}
+            disableRightSwipe={true}
+            keyExtractor={item => item.id.toString()}
+          /> */}
           <View
             style={{
               width: '95%',

@@ -1,9 +1,9 @@
-import {View, Text, TouchableOpacity} from 'react-native';
+import {View, Text, TouchableOpacity, Image} from 'react-native';
 import React from 'react';
 import {styles} from './styles';
 import LinearGradient from 'react-native-linear-gradient';
 
-const RestaurantButton = ({btnText, style, onPress, btnTextStyle}) => {
+const RestaurantButton = ({btnText, style, onPress, btnTextStyle, icon}) => {
   return (
     <View style={style}>
       <LinearGradient
@@ -14,6 +14,14 @@ const RestaurantButton = ({btnText, style, onPress, btnTextStyle}) => {
         start={{x: 0, y: 0.5}}
         end={{x: 1, y: 0.5}}>
         <TouchableOpacity style={styles.circleGradient} onPress={onPress}>
+          {!icon ? (
+            <></>
+          ) : (
+            <Image
+              source={require('../../../assets/images/chat.png')}
+              style={{marginRight: 10}}
+            />
+          )}
           <Text style={[styles.btnText, btnTextStyle]}>{btnText}</Text>
         </TouchableOpacity>
       </LinearGradient>

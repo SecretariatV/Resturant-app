@@ -9,8 +9,9 @@ const styles = StyleSheet.create({
 
     padding: 10,
     alignItems: 'center',
-
+    alignSelf: 'center',
     borderRadius: 22,
+    flexDirection: 'row',
   },
   input: {
     borderBottomColor: 'transparent',

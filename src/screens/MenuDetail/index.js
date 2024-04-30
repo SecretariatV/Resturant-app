@@ -95,7 +95,7 @@ const MenuDetail = () => {
   const renderSpiceLevel = (item, index) => (
     <TouchableOpacity
       style={{
-        width: width > 390 ? width * 0.21 : width * 0.23,
+        width: width > 390 ? width * 0.214 : width * 0.244,
 
         // width: widthToDp(36),
         alignItems: 'center',
@@ -114,7 +114,10 @@ const MenuDetail = () => {
   const renderPortion = (item, index) => (
     <TouchableOpacity
       style={{
-        width: widthToDp(26),
+        // width: widthToDp(26),
+        width: width > 390 ? width * 0.214 : width * 0.244,
+        marginHorizontal: 5,
+
         alignItems: 'center',
       }}>
       <Text

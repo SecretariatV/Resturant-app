@@ -11,29 +11,17 @@ import React, {useState} from 'react';
 import {styles} from './styles';
 import BackgroundLayout from '../../components/BackgroundLayout';
 import HeaderModed from '../../components/HeaderModed';
-import MenuNavButton from '../../components/MenuNavButton';
-import Hamburger from '../../assets/images/hamburger.png';
-import BackgroundCard from '../../components/BackgroundCard';
-import {cartData} from '../../utils/demodata';
-import {fonts} from '../../theme/FontFamily';
-import {Rating} from 'react-native-ratings';
+
 import ButtonsCommon from '../../components/Buttons/ButtonCommon.js';
 import ButtonsCommonAlt from '../../components/Buttons/ButtonCommonAlt';
 import {heightToDp, width, widthToDp} from '../../utils/Dimensions';
-import Footer from '../../components/Footer';
-import {Modal} from 'react-native';
-import CloseFilterBtn from '../../assets/images/closeBtnFilter.svg';
-import FancyInput from '../../components/FancyInput';
-import userIcon from '../../assets/images/userIcon.png';
+
 import HamBurgerButton from '../../components/NavButtons/HamBurgerButton/index.js';
 import Smiley from '../../assets/images/smileyTemp.svg';
 import GradientText from '../../components/GradientText/index.js';
-import {Slider} from '@rneui/themed';
-import LinearGradient from 'react-native-linear-gradient';
-import ReviewIcon from '../../assets/images/reviewIcon.svg';
+
 import ReviewStarUnfilled from '../../assets/images/reviewStar.svg';
 import ReviewStarFilled from '../../assets/images/reviewStarFilled.svg';
-import {screenToTextSize} from '../../utils/helper.js';
 import {useNavigation} from '@react-navigation/native';
 const RestaurantReview = () => {
   const navigation = useNavigation();
@@ -44,9 +32,15 @@ const RestaurantReview = () => {
   // const [max, setmax] = useState(100);
   const SetRatingStar = (target, valuematch) => {
     if (target >= valuematch) {
-      return <ReviewStarFilled   width={35} style={{}}/>;
+      return <ReviewStarFilled width={35} style={{}} />;
     } else {
-      return <ReviewStarUnfilled width={35} height={39} style={{position: 'relative', top: 1}} />;
+      return (
+        <ReviewStarUnfilled
+          width={35}
+          height={39}
+          style={{position: 'relative', top: 1}}
+        />
+      );
     }
   };
 
@@ -64,6 +58,7 @@ const RestaurantReview = () => {
         <View
           style={{
             alignItems: 'center',
+            // backgroundColor: 'red',
             marginTop: 25,
             marginBottom: 150,
           }}>
@@ -82,36 +77,36 @@ const RestaurantReview = () => {
                 onPress={() => setReviewRating(1)}
                 class="review-labe"
                 style={styles.reviewLabelContainer}>
-                {SetRatingStar( reviewRating, 1)}
-                <Text style={styles.reviewTextLabel}>Bad</Text>
+                {SetRatingStar(reviewRating, 1)}
+                <Text style={styles.reviewTextLabel}>Poor</Text>
               </TouchableOpacity>
               <TouchableOpacity
                 onPress={() => setReviewRating(2)}
                 class="review-labe"
                 style={styles.reviewLabelContainer}>
-                {SetRatingStar( reviewRating, 2)}
-                <Text style={styles.reviewTextLabel}>Not Bad</Text>
+                {SetRatingStar(reviewRating, 2)}
+                <Text style={styles.reviewTextLabel}>Average</Text>
               </TouchableOpacity>
               <TouchableOpacity
                 onPress={() => setReviewRating(3)}
                 class="review-labe"
                 style={styles.reviewLabelContainer}>
-                {SetRatingStar( reviewRating, 3)}
-                <Text style={styles.reviewTextLabel}>Okay</Text>
+                {SetRatingStar(reviewRating, 3)}
+                <Text style={styles.reviewTextLabel}>Good</Text>
               </TouchableOpacity>
               <TouchableOpacity
                 onPress={() => setReviewRating(4)}
                 class="review-labe"
                 style={styles.reviewLabelContainer}>
-                {SetRatingStar( reviewRating, 4)}
-                <Text style={styles.reviewTextLabel}>Good</Text>
+                {SetRatingStar(reviewRating, 4)}
+                <Text style={styles.reviewTextLabel}>Great</Text>
               </TouchableOpacity>
               <TouchableOpacity
                 onPress={() => setReviewRating(5)}
                 class="review-labe"
                 style={styles.reviewLabelContainer}>
-                {SetRatingStar( reviewRating, 5)}
-                <Text style={styles.reviewTextLabel}>Happy</Text>
+                {SetRatingStar(reviewRating, 5)}
+                <Text style={styles.reviewTextLabel}>Excellent</Text>
               </TouchableOpacity>
             </View>
             {/* <View class="slider-container">
@@ -234,11 +229,11 @@ const RestaurantReview = () => {
           <View style={styles.reviewSubmitButtonContainer}>
             <ButtonsCommonAlt
               btnText={'Cancel'}
-              btnStyle={{width: widthToDp(42)}}
+              btnStyle={{width: widthToDp(38)}}
             />
             <ButtonsCommon
               btnText={'Next'}
-              btnStyle={{width: widthToDp(42)}}
+              btnStyle={{width: widthToDp(38)}}
               onPress={() => navigation.navigate('ProductReview')}
             />
           </View>

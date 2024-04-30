@@ -21,7 +21,9 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     width: '100%',
+    // backgroundColor: 'red',
     // marginTop: 15,
+    paddingHorizontal: 10,
     marginVertical: 10,
     alignItems: 'center',
     // justifyContent: 'center',
@@ -46,7 +48,7 @@ const styles = StyleSheet.create({
     color: Colors.WHITE,
     fontFamily: fonts.URBANIST_MEDIUM,
     fontSize: screenToTextSize(4),
-    marginTop: 10,
+    // marginTop: 10,
   },
   productPrice: {
     fontFamily: fonts.URBANIST_EXTRABOLD,
@@ -55,9 +57,8 @@ const styles = StyleSheet.create({
   },
   qtyContainer: {
     flexDirection: 'row',
-    // backgroundColor: 'red',
     alignItems: 'center',
-    marginLeft: 10,
+    // marginLeft: 10,
   },
 
   qty: {

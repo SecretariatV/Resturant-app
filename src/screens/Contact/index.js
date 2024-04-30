@@ -10,6 +10,12 @@ import tele from '../../assets/images/tele.png';
 import {width, widthToDp} from '../../utils/Dimensions';
 import HamBurgerButton from '../../components/NavButtons/HamBurgerButton';
 import {commonStyles} from '../../theme';
+import Facebook from '../../assets/images/fb.svg';
+import Twitter from '../../assets/images/twittter.svg';
+import Instagram from '../../assets/images/instagram.svg';
+import Youtube from '../../assets/images/youtube.svg';
+import Browser from '../../assets/images/browser.svg';
+import RestaurantButton from '../../components/Buttons/RestaurantButton';
 
 const Contact = () => {
   const [inputName, setInputName] = useState('123-456-789');
@@ -55,37 +61,25 @@ const Contact = () => {
             marginVertical: 10,
             // backgroundColor: 'red',
           }}>
-          <Image
-            source={require('../../assets/images/fb2.png')}
-            // style={{marginHorizontal: 10, width: 32, height: 32}}
-            style={{marginLeft: 10}}
-          />
-          <Image
-            source={require('../../assets/images/twitter.png')}
-            style={{marginLeft: 20}}
-            // style={{marginHorizontal: 10, width: 50, height: 32}}
-          />
+          <Facebook style={{marginLeft: 10}} />
+          <Twitter style={{marginLeft: 10}} />
 
-          <Image
-            source={require('../../assets/images/instagram.png')}
-            // style={{marginHorizontal: 10, width: 32, height: 32}}
-            style={{marginLeft: 20}}
-          />
+          <Instagram style={{marginLeft: 10}} />
 
-          <Image
-            source={require('../../assets/images/youtube.png')}
-            style={{marginLeft: 20}}
+          <Youtube style={{marginLeft: 10}} />
 
-            // style={{marginHorizontal: 10, width: 32, height: 32}}
-          />
-
-          <Image
-            source={require('../../assets/images/browser.png')}
-            style={{marginLeft: 20}}
-            // style={{marginHorizontal: 10, width: 32, height: 32}}
-          />
+          <Browser style={{marginLeft: 10}} />
         </View>
       </TouchableOpacity>
+      <RestaurantButton
+        icon
+        btnText={'Live Chat'}
+        style={{
+          width: widthToDp(90),
+          marginTop: 15,
+          alignSelf: 'center',
+        }}
+      />
     </View>
   );
 };

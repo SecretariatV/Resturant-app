@@ -133,46 +133,54 @@ const ProductReview = () => {
             </Text>
 
             {cartData.map((item, index) => (
-              <View>
+              <View style={{width: '95%'}}>
                 <BackgroundCard
                   style={{marginTop: 10, marginHorizontal: 5}}
                   childrenStyle={{borderRadius: 26}}
                   linearBackStyle={{borderRadius: 26}}>
-                  <View
-                    style={{
-                      marginHorizontal: 15,
-                    }}>
-                    <View style={styles.myOrderContainer}>
-                      <View style={styles.myOrderSubContainer}>
-                        <View style={styles.productContainer}>
-                          <Image
-                            source={require('../../assets/images/burger_one.png')}
-                            style={styles.productImg}
-                            resizeMode="contain"
-                          />
-                        </View>
-                        <View style={{}}>
-                          <Text style={[styles.productName, {marginLeft: 10}]}>
-                            {item.productName}
-                          </Text>
-                        </View>
+                  {/* <View
+                    style={
+                      {
+                        // marginHorizontal: 15,
+                      }
+                    }> */}
+                  <View style={styles.myOrderContainer}>
+                    <View style={styles.myOrderSubContainer}>
+                      <View style={styles.productContainer}>
+                        <Image
+                          source={require('../../assets/images/burger_one.png')}
+                          style={styles.productImg}
+                          resizeMode="contain"
+                        />
                       </View>
-                      <View style={{alignItems: 'center'}}>
-                        <View style={styles.qtyContainer}>
-                          {/* <Rating
+                      <View
+                        style={{
+                          // backgroundColor: 'green',
+                          justifyContent: 'center',
+                          alignItems: 'center',
+                        }}>
+                        <Text style={[styles.productName, {marginLeft: 10}]}>
+                          {item.productName}
+                        </Text>
+                      </View>
+                    </View>
+                    <View style={{alignItems: 'center'}}>
+                      <View style={styles.qtyContainer}>
+                        {/* <Rating
                             imageSize={20}
                             ratingCount={5}
                             tintColor="#1A2D30"
                           /> */}
-                          <StarRating
-                            rating={4}
-                            isEditable={true}
-                            starSize={50}
-                          />
-                        </View>
+                        <StarRating
+                          rating={4}
+                          isEditable={true}
+                          starSize={30}
+                          style={{gap: 0}}
+                        />
                       </View>
                     </View>
                   </View>
+                  {/* </View> */}
                 </BackgroundCard>
                 <TextInput
                   multiline

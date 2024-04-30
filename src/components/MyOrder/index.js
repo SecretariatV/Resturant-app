@@ -209,7 +209,7 @@ const MyOrder = () => {
                 width: '100%',
               }}>
               {cardData.map((item, index) => (
-                <View style={{width: '100%'}}>
+                <View style={{width: '100%'}} key={index}>
                   <RadioButtonCard cardName={item.cardName} />
 
                   <FadedSeparator />
