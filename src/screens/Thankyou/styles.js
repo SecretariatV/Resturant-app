@@ -23,13 +23,20 @@ const styles = StyleSheet.create({
     fontFamily: fonts.URBANIST_REGULAR,
     width: widthToDp(80),
     fontSize: screenToTextSize(4),
-    marginVertical: 5,
+    // marginVertical: 5,
+  },
+  underConfettiPara2: {
+    color: '#fff',
+    textAlign: 'center',
+    fontFamily: fonts.URBANIST_BOLD,
+    width: widthToDp(80),
+    fontSize: screenToTextSize(4.5),
   },
   gradientTextColored: {
     color: '#00FC92',
-    fontSize: screenToTextSize(5),
+    fontSize: screenToTextSize(4.5),
     fontFamily: fonts.URBANIST_BOLD,
-    textAlign: 'left',
+    textAlign: 'center',
   },
   gradientTextContainer: {
     // position: 'relative',
@@ -37,6 +44,7 @@ const styles = StyleSheet.create({
   gradientText: {
     fontSize: 25,
     fontFamily: fonts.URBANIST_BOLD,
+    // marginBottom: 10,
     // color: '#00FC92',
   },
   bannerImage: {

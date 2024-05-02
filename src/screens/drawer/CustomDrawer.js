@@ -94,19 +94,22 @@ const CustomDrawer1 = props => {
                 onAnimationComplete={() => console.log('onAnimationComplete')}
                 backgroundColor="#3d5875">
                 {points => (
-                  <View
+                  <TouchableOpacity
+                    onPress={() => navigation.navigate('Profile')}
                     style={{alignItems: 'center', justifyContent: 'center'}}>
                     <Image
                       source={require('../../assets/images/profileImg.png')}
                       style={styles.menuProfile}
                     />
-                  </View>
+                  </TouchableOpacity>
                 )}
               </AnimatedCircularProgress>
             </View>
 
             <View style={{}}>
-              <Text style={styles.headerTitle}>Mark Anderson</Text>
+              <TouchableOpacity onPress={() => navigation.navigate('Profile')}>
+                <Text style={styles.headerTitle}>Mark Anderson</Text>
+              </TouchableOpacity>
               <View style={styles.userMenu}>
                 {/* <View class="level-bar-color-bg" style={styles.levelBarColorBg}>
                   <View class="level-bar-bg-dark" style={styles.levelBarBgDark}>

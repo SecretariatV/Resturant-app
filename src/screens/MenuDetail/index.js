@@ -15,7 +15,7 @@ import BackgroundLayout from '../../components/BackgroundLayout';
 import HeaderModed from '../../components/HeaderModed';
 import HorizontalPicker from '@vseslav/react-native-horizontal-picker';
 
-import {heightToDp, width, widthToDp} from '../../utils/Dimensions';
+import {height, heightToDp, width, widthToDp} from '../../utils/Dimensions';
 import Swiper from 'react-native-swiper';
 import LinearGradient from 'react-native-linear-gradient';
 import Counter from '../../components/Counter';
@@ -214,7 +214,17 @@ const MenuDetail = () => {
           <View style={{flexDirection: 'row', marginLeft: 15, marginTop: 10}}>
             {dishType.map((item, index) => (
               <CircleBackground
-                style={index === 0 ? {marginLeft: 0} : {marginLeft: 5}}
+                style={
+                  index === 0
+                    ? {marginLeft: 0}
+                    : {
+                        marginLeft: 5,
+                        // width: 40,
+                        // height: 40,
+                        // borderRadius: 20,
+                        // alignItems: 'center',
+                      }
+                }
                 key={index}>
                 <LottieView
                   source={item.imgUrl}
@@ -241,8 +251,6 @@ const MenuDetail = () => {
               <LottieView
                 source={require('../../assets/images/food_plate.json')}
                 autoPlay
-                // loop
-                // Additional props for customization
                 loop={false}
                 speed={1.5}
                 resizeMode="contain"
@@ -261,6 +269,7 @@ const MenuDetail = () => {
             <RestaurantButton
               btnText={'Select Ingredients'}
               onPress={() => handleSelectIngredient()}
+              style={{marginTop: 20}}
             />
             <View
               style={{

@@ -468,10 +468,11 @@ const RestaurantMain = () => {
             class="intro-user-name"
             style={styles.introHeader.userNameContainer}>
             <Text style={styles.introHeader.userName}>Hey</Text>
-
-            <GradientText style={styles.gradientBoxText}>
-              Mark Anderson
-            </GradientText>
+            <TouchableOpacity onPress={() => navigation.navigate('Profile')}>
+              <GradientText style={styles.gradientBoxText}>
+                Mark Anderson
+              </GradientText>
+            </TouchableOpacity>
           </View>
 
           <LinearGradient
@@ -733,6 +734,7 @@ const RestaurantMain = () => {
           horizontal={true}
           ref={flatListRef}
           showsVerticalScrollIndicator={false}
+          showsHorizontalScrollIndicator={false}
           style={styles.listStyle}
           data={restaurantCategories}
           renderItem={renderRestCats}

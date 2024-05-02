@@ -53,7 +53,10 @@ const ShareEqually = () => (
       Number of Guests
     </Text>
 
-    <Counter plusContainerStyle={{backgroundColor: Colors.GREEN}} />
+    <Counter
+      plusContainerStyle={{backgroundColor: Colors.GREEN}}
+      counterTextStyle={{fontFamily: fonts.URBANIST_EXTRABOLD, fontSize: 32}}
+    />
 
     <Text
       style={{
@@ -133,7 +136,7 @@ const ShareByPercent = () => {
   // const max = useSharedValue(100);
   return (
     <ScrollView
-      style={{flex: 1, marginBottom: 70}}
+      style={{flex: 1, marginVertical: 20}}
       contentContainerStyle={{justifyContent: 'start'}}>
       {dummyData.guests.map((guest, index) => (
         <ShareByPercentBox
@@ -182,8 +185,25 @@ const ShareByItems = () => {
           linearBackStyle={{borderRadius: 24}}
           childrenStyle={{
             borderRadius: 24,
-            paddingTop: 10,
+            marginVertical: 20,
+            // paddingTop: 10,
           }}>
+          <View style={styles.selectAll}>
+            <Text style={styles.selectAllTxt}>Select All</Text>
+            <CheckBox
+              checked={checked}
+              onPress={toggleCheckbox}
+              iconType="material-community"
+              checkedIcon="checkbox-outline"
+              uncheckedIcon={'checkbox-blank-outline'}
+              containerStyle={{
+                // height: 50,
+                backgroundColor: 'transparent',
+              }}
+              checkedColor={Colors.GREEN}
+              uncheckedColor={Colors.GREEN}
+            />
+          </View>
           <View style={styles.itemContainer}>
             <View style={{flexDirection: 'row', alignItems: 'center'}}>
               <Image source={require('../../assets/images/profileImg.png')} />
@@ -278,21 +298,6 @@ const ShareByItems = () => {
                     </View>
                   ))}
                 </View>
-                {/* <View style={styles.selectAll}>
-                  <Text style={styles.selectAllTxt}>Select All</Text>
-                  <CheckBox
-                    checked={checked}
-                    onPress={toggleCheckbox}
-                    iconType="material-community"
-                    checkedIcon="checkbox-outline"
-                    uncheckedIcon={'checkbox-blank-outline'}
-                    containerStyle={{
-                      backgroundColor: 'transparent',
-                    }}
-                    checkedColor={Colors.GREEN}
-                    uncheckedColor={Colors.GREEN}
-                  />
-                </View> */}
               </View>
             )}
           </View>
@@ -304,11 +309,12 @@ const ShareByItems = () => {
 const initialLayout = {width: Dimensions.get('window').width};
 
 const SecondRoute = () => {
-  const [nestedIndex, setNestedIndex] = useState(0);
+  const [nestedIndex, setNestedIndex] = useState(1);
   const [nestedRoutes] = useState([
+    {key: 'secondNested', title: 'By Percentage'},
     {key: 'firstNested', title: 'Equally'},
-    {key: 'secondNested', title: 'By percent'},
-    {key: 'thirdNested', title: 'items'},
+
+    {key: 'thirdNested', title: 'Select Items'},
   ]);
 
   // Define the scenes for the nested tab view
@@ -324,13 +330,22 @@ const SecondRoute = () => {
       {...props}
       indicatorStyle={{backgroundColor: 'transparent'}}
       style={{
-        backgroundColor: 'transparent',
+        // backgroundColor: 'transparent',
+        backgroundColor: '#272735',
         marginTop: getPlatformSpecificValue(10, 0),
+        width: '95%',
+        alignSelf: 'center',
+        // height: 42,
+        justifyContent: 'center',
+
+        // alignItems: 'center',
       }}
       renderLabel={({route, focused, color}) => (
         <LinearGradient
           colors={
-            focused ? ['#00F69299', '#00A7F7FF'] : ['#FFFFFF22', '#FFFFFF22']
+            focused
+              ? ['#00F69299', '#00A7F7FF']
+              : ['transparent', 'transparent']
           }
           useAngle={true}
           angle={820}
@@ -353,10 +368,12 @@ const SecondRoute = () => {
     <View style={{flex: 1, backgroundColor: 'transparent'}}>
       <View style={styles.billContainer}>
         <LinearGradient
-          colors={['#02ABEE6E', '#02ABEE8E', '#00F5946E']}
+          colors={['#00F5946E', '#02ABEE6E', '#02ABEE8E']}
           style={styles.totalBillBox}
-          start={{x: 0, y: 0.5}}
-          end={{x: 1, y: 0.5}}>
+          useAngle={true}
+          angle={250}
+          start={{x: 0, y: 0}}
+          end={{x: 1, y: 2}}>
           <View style={styles.circleGradient}>
             <Text style={styles.billTxt}>Total Bill</Text>
             <GradientText style={styles.amountTxt}>$100.88</GradientText>

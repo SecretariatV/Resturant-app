@@ -222,7 +222,7 @@ const HomeStack = ({activeRestaurant}) => {
         {/* <Stack.Screen name="Wallet" component={Wallet} /> */}
         <Stack.Screen name="RestaurantReview" component={RestaurantReview} />
 
-        <Stack.Screen name="SettingStack" component={SettingStack} />
+        {/* <Stack.Screen name="SettingStack" component={SettingStack} /> */}
         <Stack.Screen
           name="OrderHistoryDetail"
           component={OrderHistoryDetail}
@@ -234,6 +234,9 @@ const HomeStack = ({activeRestaurant}) => {
         <Stack.Screen name="Contact" component={Contact} />
         <Stack.Screen name="Favorites" component={Favorites} />
         <Stack.Screen name="DemoScreen" component={DemoScreen} />
+        {/* <Stack.Screen name="Setting" component={Setting} /> */}
+
+        <Stack.Screen name="Profile" component={Profile} />
       </Stack.Group>
     </Stack.Navigator>
   );

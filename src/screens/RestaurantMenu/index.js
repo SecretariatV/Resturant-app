@@ -562,18 +562,12 @@ const RestaurantMenu = () => {
             class="rating-with-allergies"
             style={{
               flexDirection: 'row',
-              // justifyContent: 'center',
               alignItems: 'center',
-              // backgroundColor: 'orange',
-              // height: 50,
-              // justifyContent
-
-              // flex: 1,
             }}>
             <View
               className="menu-item-smallbox-ratingCont"
               style={[styles.menuItemSmallbox.ratingCont, {marginLeft: 5}]}>
-              <Star style={styles.menuItemSmallbox.ratingIcon} width={30} />
+              <Star style={styles.menuItemSmallbox.ratingIcon} width={45} />
               <Text style={styles.menuItemSmallbox.rating}>{item.rating}</Text>
             </View>
             <View
@@ -773,7 +767,7 @@ const RestaurantMenu = () => {
                             style={styles.menuItemSmallbox.ratingCont}>
                             <Star
                               style={styles.menuItemSmallbox.ratingIcon}
-                              width={30}
+                              width={45}
                             />
                             <Text style={styles.menuItemSmallbox.rating}>
                               4.5
@@ -824,7 +818,7 @@ const RestaurantMenu = () => {
                             style={styles.menuItemSmallbox.ratingCont}>
                             <Star
                               style={styles.menuItemSmallbox.ratingIcon}
-                              width={30}
+                              width={45}
                             />
                             <Text style={styles.menuItemSmallbox.rating}>
                               4.5

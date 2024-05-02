@@ -52,15 +52,20 @@ const Thankyou = () => {
                 Restaurant Name
               </GradientText>
             </View>
-            <Text style={styles.underConfettiPara1}>
+            {/* <Text style={styles.underConfettiPara1}>
               <Text style={styles.gradientTextColored}>500 Points</Text> could
               have been claimed with this payment, download the app to collect
               Shareabill Rewards.
-            </Text>
+            </Text> */}
             <Text style={[{marginTop: 10}, styles.underConfettiPara1]}>
               You Paid
             </Text>
+
             <GradientText style={[styles.gradientText]}>$100.00 </GradientText>
+
+            <Text style={styles.underConfettiPara2}>
+              You get <Text style={styles.gradientTextColored}>500 Points</Text>
+            </Text>
 
             <Text
               style={{

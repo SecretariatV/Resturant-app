@@ -15,6 +15,8 @@ const QrCode = () => {
     <CameraScreen
       // Barcode props
       scanBarcode={true}
+      offsetForScannerFrame={50}
+      heightForScannerFrame={50}
       onReadCode={event => {
         Vibration.vibrate(100);
 
