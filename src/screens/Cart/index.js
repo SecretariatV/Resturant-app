@@ -212,7 +212,7 @@ const Cart = () => {
               fontSize: 22,
               color: Colors.WHITE,
             }}>
-            Cart
+            Order
           </Text>
         }
         slotCenter={<></>}

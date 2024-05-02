@@ -15,7 +15,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import {BottomSheet} from '@rneui/themed';
 import {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
-import {Colors} from '../../theme';
+import {Colors, commonStyles} from '../../theme';
 import {styles} from './styles';
 import {useNavigation} from '@react-navigation/native';
 import {TabView, SceneMap, TabBar} from 'react-native-tab-view';
@@ -43,7 +43,7 @@ import HorizontalPicker from '@vseslav/react-native-horizontal-picker';
 import Skeleton from 'react-native-reanimated-skeleton';
 import BackgroundCard from '../../components/BackgroundCard';
 import {ListItem, Icon} from '@rneui/themed';
-
+import Accordion from '../../components/Accordion';
 const FAQ = () => {
   const dispatch = useDispatch();
 
@@ -56,8 +56,9 @@ const FAQ = () => {
   const [selRest, setSelRest] = useState(0);
   const [restObj, setRestObj] = useState({});
   const [loadingRest, setLoadingRest] = useState(true);
-  const restaurantCategories = ['Nearby', 'All', 'Trending'];
+  const restaurantCategories = ['Search', 'All', 'Trending'];
 
+  
   const renderRestCats = ({item, index}) => (
     <TouchableOpacity
       style={{
@@ -332,18 +333,13 @@ const FAQ = () => {
       ]}>
       <View key={index} style={styles.faqItem}>
         {/* <Pressable></Pressable> */}
-        <BackgroundCard
-          style={{width: widthToDp(90)}}
-          onPress={() => toggleAccordion(index)}>
-          {/* onPress={() => toggleAccordion(index)}
-          style={styles.questionContainer} */}
-          <Text style={styles.question}>{'dsasd'}</Text>
-        </BackgroundCard>
-        {expanded === index && (
-          <BackgroundCard style={styles.answerContainer}>
-            <Text style={styles.answer}>{'faq.answer'}</Text>
-          </BackgroundCard>
-        )}
+        <Accordion title={item.name}>
+          <Text style={{paddingVertical: 5, paddingHorizontal: 10, marginBottom: 10, fontSize: 12, color: '#fff8'}}>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla
+            consectetur blandit accumsan. Sed ac arcu id urna fermentum
+            eleifend. Duis arcu erat,
+          </Text>
+        </Accordion>
       </View>
 
       {/* <ResturantCard
@@ -359,7 +355,7 @@ const FAQ = () => {
       <BackgroundLayout />
       <HeaderModed
         slotLeft={<HamBurgerButton />}
-        slotCenter={<Text>FAQ</Text>}
+        slotCenter={<Text style={commonStyles.headerText}>FAQ</Text>}
         slotRight={<></>}
       />
       <SearchModded
@@ -380,9 +376,9 @@ const FAQ = () => {
         />
       </View>
 
-      <View class="restaurant-list-item" style={{}}>
+      <View class="restaurant-list-item" style={{paddingBottom: 300}}>
         <FlatList
-          showsVerticalScrollIndicator={false}
+          // showsVerticalScrollIndicator={false}
           style={styles.listStyle}
           data={restObj}
           renderItem={renderItemSk}

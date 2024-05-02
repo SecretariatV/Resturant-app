@@ -10,6 +10,7 @@ import tele from '../../assets/images/tele.png';
 import {width, widthToDp} from '../../utils/Dimensions';
 import HamBurgerButton from '../../components/NavButtons/HamBurgerButton';
 import {commonStyles} from '../../theme';
+import {useNavigation} from '@react-navigation/native';
 import Facebook from '../../assets/images/fb.svg';
 import Twitter from '../../assets/images/twittter.svg';
 import Instagram from '../../assets/images/instagram.svg';
@@ -18,6 +19,9 @@ import Browser from '../../assets/images/browser.svg';
 import RestaurantButton from '../../components/Buttons/RestaurantButton';
 
 const Contact = () => {
+
+  const navigation = useNavigation(); 
+
   const [inputName, setInputName] = useState('123-456-789');
   const [inputLname, setInputLname] = useState('Anderson');
   const [inputUname, setInputUname] = useState('info@shareabill.coom');
@@ -71,6 +75,7 @@ const Contact = () => {
           <Browser style={{marginLeft: 10}} />
         </View>
       </TouchableOpacity>
+ 
       <RestaurantButton
         icon
         btnText={'Live Chat'}
@@ -79,6 +84,15 @@ const Contact = () => {
           marginTop: 15,
           alignSelf: 'center',
         }}
+      />
+      <RestaurantButton
+        btnText={'FAQ'}
+        style={{
+          width: widthToDp(90),
+          marginTop: 15,
+          alignSelf: 'center',
+        }}
+        onPress={() => navigation.navigate('FAQ')}
       />
     </View>
   );

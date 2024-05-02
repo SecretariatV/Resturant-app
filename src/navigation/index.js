@@ -70,6 +70,7 @@ import Reward from '../screens/Reward';
 import OrderHistory from '../screens/OrderHistory';
 import OrderHistoryDetail from '../screens/OrderHistoryDetail';
 import TrackOrder from '../screens/TrackOrder';
+import ConfirmPayment from '../screens/ConfirmPayment/index.js';
 
 // utils
 import {widthToDp} from '../utils/Dimensions';
@@ -221,6 +222,7 @@ const HomeStack = ({activeRestaurant}) => {
         <Stack.Screen name="Wallet" component={Wallet} />
         {/* <Stack.Screen name="Wallet" component={Wallet} /> */}
         <Stack.Screen name="RestaurantReview" component={RestaurantReview} />
+        <Stack.Screen name="ConfirmPayment" component={ConfirmPayment} />
 
         {/* <Stack.Screen name="SettingStack" component={SettingStack} /> */}
         <Stack.Screen
