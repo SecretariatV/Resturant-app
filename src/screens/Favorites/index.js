@@ -52,7 +52,7 @@ let breakfastPrd = [
     onSale: false,
     saleType: null,
     description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ultrices nibh vel dui cursus',
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
     allergies: ['eggs', 'dairy'],
     rating: 4.3,
   },
@@ -63,7 +63,7 @@ let breakfastPrd = [
     onSale: true,
     saleType: 'discount',
     description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ultrices nibh vel dui cursus',
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
     allergies: ['gluten', 'dairy'],
     rating: 4.5,
   },
@@ -74,7 +74,7 @@ let breakfastPrd = [
     onSale: false,
     saleType: null,
     description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ultrices nibh vel dui cursus',
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
     allergies: ['gluten', 'dairy'],
     rating: 4.2,
   },
@@ -85,7 +85,7 @@ let breakfastPrd = [
     onSale: false,
     saleType: null,
     description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ultrices nibh vel dui cursus',
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
     allergies: ['eggs', 'dairy'],
     rating: 4.4,
   },
@@ -96,7 +96,7 @@ let breakfastPrd = [
     onSale: false,
     saleType: null,
     description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ultrices nibh vel dui cursus',
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
     allergies: ['eggs'],
     rating: 4.6,
   },
@@ -107,7 +107,7 @@ let breakfastPrd = [
     onSale: false,
     saleType: null,
     description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ultrices nibh vel dui cursus',
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
     allergies: ['gluten', 'dairy'],
     rating: 4.1,
   },
@@ -118,7 +118,7 @@ let breakfastPrd = [
     onSale: false,
     saleType: null,
     description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ultrices nibh vel dui cursus',
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
     allergies: ['none'],
     rating: 4.7,
   },
@@ -129,7 +129,7 @@ let breakfastPrd = [
     onSale: false,
     saleType: null,
     description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ultrices nibh vel dui cursus',
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
     allergies: ['nuts', 'dairy'],
     rating: 4.2,
   },
@@ -140,7 +140,7 @@ let breakfastPrd = [
     onSale: false,
     saleType: null,
     description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ultrices nibh vel dui cursus',
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
     allergies: ['none'],
     rating: 4.3,
   },
@@ -151,7 +151,7 @@ let breakfastPrd = [
     onSale: false,
     saleType: null,
     description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ultrices nibh vel dui cursus',
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
     allergies: ['eggs'],
     rating: 4.4,
   },

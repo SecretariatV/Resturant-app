@@ -23,12 +23,12 @@ const AR = () => {
             color="#ffffff"
             castsShadow={true}
           />
-          <Viro3DObject
+          {/* <Viro3DObject
             source={require('./PalletPlywoodNew_GameReady.obj')}
             position={[0.0, 0.0, 0]}
             scale={[0.1, 0.1, 0.1]}
             type="OBJ"
-          />
+          /> */}
         </ViroARScene>
       </ViroARPlaneSelector>
       <Text style={{backgroundColor: '#fff', color: '#f00'}}>
@@ -38,13 +38,13 @@ const AR = () => {
   );
 };
 
-ViroMaterials.createMaterials({
-  face: {
-    shininess: 2.0,
-    lightingModel: 'Blinn',
-    diffuseTexture: require('./Textures/PalletPlywood_Base_Color.png'),
-  },
-});
+// ViroMaterials.createMaterials({
+//   face: {
+//     shininess: 2.0,
+//     lightingModel: 'Blinn',
+//     diffuseTexture: require('./Textures/PalletPlywood_Base_Color.png'),
+//   },
+// });
 
 export default AR;
 

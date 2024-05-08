@@ -1281,6 +1281,13 @@
   dependencies:
     cross-spawn "^7.0.3"
 
+"@good-react-native/gradient-border@^1.0.2":
+  version "1.0.2"
+  resolved "https://registry.npmjs.org/@good-react-native/gradient-border/-/gradient-border-1.0.2.tgz"
+  integrity sha512-n8vp3180q1w/hh2jHvd7eH0mttWZcEcPeak6Rc6ZHmZRi8k3Y1t+96eEgZG+Kp48lvgrHOgbf/wxcYw7o5iwiQ==
+  dependencies:
+    lodash "^4.17.21"
+
 "@gorhom/bottom-sheet@^4.6.1":
   version "4.6.1"
   resolved "https://registry.npmjs.org/@gorhom/bottom-sheet/-/bottom-sheet-4.6.1.tgz"
@@ -1796,7 +1803,7 @@
   resolved "https://registry.npmjs.org/@react-native-community/slider/-/slider-4.5.0.tgz"
   integrity sha512-pyUvNTvu5IfCI5abzqRfO/dd3A009RC66RXZE6t0gyOwI/j0QDlq9VZRv3rjkpuIvNTnsYj+m5BHlh0DkSYUyA==
 
-"@react-native-masked-view/masked-view@^0.3.1":
+"@react-native-masked-view/masked-view@^0.2.7", "@react-native-masked-view/masked-view@^0.3.1":
   version "0.3.1"
   resolved "https://registry.npmjs.org/@react-native-masked-view/masked-view/-/masked-view-0.3.1.tgz"
   integrity sha512-uVm8U6nwFIlUd1iDIB5cS+lDadApKR+l8k4k84d9hn+GN4lzAIJhUZ9syYX7c022MxNgAlbxoFLt0pqKoyaAGg==
@@ -6428,7 +6435,7 @@ react-native-gesture-handler@^2.15.0, "react-native-gesture-handler@>= 1.0.0", r
     lodash "^4.17.21"
     prop-types "^15.7.2"
 
-react-native-linear-gradient@*, react-native-linear-gradient@^2.8.3:
+react-native-linear-gradient@*, react-native-linear-gradient@^2.6.0, react-native-linear-gradient@^2.8.3:
   version "2.8.3"
   resolved "https://registry.npmjs.org/react-native-linear-gradient/-/react-native-linear-gradient-2.8.3.tgz"
   integrity sha512-KflAXZcEg54PXkLyflaSZQ3PJp4uC4whM7nT/Uot9m0e/qxFV3p6uor1983D1YOBJbJN7rrWdqIjq0T42jOJyA==
@@ -6535,7 +6542,7 @@ react-native-webview@^13.8.6:
     escape-string-regexp "2.0.0"
     invariant "2.2.4"
 
-react-native@*, "react-native@^0.0.0-0 || >=0.60 <1.0", react-native@>=0.23.1, react-native@>=0.46, react-native@>=0.50.0, react-native@>=0.57, react-native@>=0.59.0, react-native@>=0.60.0, react-native@>=0.64.0, react-native@>=0.69, react-native@>=0.70.0, react-native@0.73.3:
+react-native@*, "react-native@^0.0.0-0 || >=0.60 <1.0", react-native@^0.62.0, react-native@>=0.23.1, react-native@>=0.46, react-native@>=0.50.0, react-native@>=0.57, react-native@>=0.59.0, react-native@>=0.60.0, react-native@>=0.64.0, react-native@>=0.69, react-native@>=0.70.0, react-native@0.73.3:
   version "0.73.3"
   resolved "https://registry.npmjs.org/react-native/-/react-native-0.73.3.tgz"
   integrity sha512-RSQDtT2DNUcmB4IgmW9NhRb5wqvXFl6DI2NEJmt0ps2OrVHpoA8Tkq+lkFOA/fvPscJKtFKEHFBDSR5UHR3PUw==
@@ -6609,7 +6616,7 @@ react-test-renderer@18.2.0:
     react-shallow-renderer "^16.15.0"
     scheduler "^0.23.0"
 
-react@*, "react@^16.0.0 || ^17.0.0 || ^18.0.0", "react@^16.8.0 || ^17.0.0 || ^18.0.0", "react@^16.9.0 || ^17.0.0 || ^18", "react@^17 || ^18", react@^18.0, react@^18.2.0, react@>=0.14.8, react@>=16, react@>=16.0.0, react@>=16.4.0, react@>=16.8, react@>=17.0.0, react@>=18.1.0, react@18.2.0:
+react@*, "react@^16.0.0 || ^17.0.0 || ^18.0.0", "react@^16.8.0 || ^17.0.0 || ^18.0.0", "react@^16.9.0 || ^17.0.0 || ^18", "react@^17 || ^18", react@^17.0.0, react@^18.0, react@^18.2.0, react@>=0.14.8, react@>=16, react@>=16.0.0, react@>=16.4.0, react@>=16.8, react@>=17.0.0, react@>=18.1.0, react@18.2.0:
   version "18.2.0"
   resolved "https://registry.npmjs.org/react/-/react-18.2.0.tgz"
   integrity sha512-/3IjMdb2L9QbBdWiW5e3P2/npwMBaU9mHCSCUzNln0ZCYbcfTsGbTJrU/kGemdH2IWmB2ioZ+zkxtmq6g09fGQ==

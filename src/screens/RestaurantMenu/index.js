@@ -61,8 +61,10 @@ const RestaurantMenu = () => {
     <TouchableOpacity
       style={{
         minWidth: widthToDp(85) / 3,
-        alignItems: 'center',
+        // alignItems: 'center',
+        // justifyContent: 'center',
         marginHorizontal: 4,
+        paddingTop: 5
       }}
       onPress={() => {
         console.log('tab change');
@@ -114,7 +116,7 @@ const RestaurantMenu = () => {
       onSale: false,
       saleType: null,
       description:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ultrices nibh vel dui cursus',
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
       allergies: ['eggs', 'dairy'],
       rating: 4.3,
     },
@@ -125,7 +127,7 @@ const RestaurantMenu = () => {
       onSale: true,
       saleType: 'discount',
       description:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ultrices nibh vel dui cursus',
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
       allergies: ['gluten', 'dairy'],
       rating: 4.5,
     },
@@ -136,7 +138,7 @@ const RestaurantMenu = () => {
       onSale: false,
       saleType: null,
       description:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ultrices nibh vel dui cursus',
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
       allergies: ['gluten', 'dairy'],
       rating: 4.2,
     },
@@ -147,7 +149,7 @@ const RestaurantMenu = () => {
       onSale: false,
       saleType: null,
       description:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ultrices nibh vel dui cursus',
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
       allergies: ['eggs', 'dairy'],
       rating: 4.4,
     },
@@ -158,7 +160,7 @@ const RestaurantMenu = () => {
       onSale: false,
       saleType: null,
       description:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ultrices nibh vel dui cursus',
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
       allergies: ['eggs'],
       rating: 4.6,
     },
@@ -169,7 +171,7 @@ const RestaurantMenu = () => {
       onSale: false,
       saleType: null,
       description:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ultrices nibh vel dui cursus',
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
       allergies: ['gluten', 'dairy'],
       rating: 4.1,
     },
@@ -180,7 +182,7 @@ const RestaurantMenu = () => {
       onSale: false,
       saleType: null,
       description:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ultrices nibh vel dui cursus',
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
       allergies: ['none'],
       rating: 4.7,
     },
@@ -191,7 +193,7 @@ const RestaurantMenu = () => {
       onSale: false,
       saleType: null,
       description:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ultrices nibh vel dui cursus',
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
       allergies: ['nuts', 'dairy'],
       rating: 4.2,
     },
@@ -202,7 +204,7 @@ const RestaurantMenu = () => {
       onSale: false,
       saleType: null,
       description:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ultrices nibh vel dui cursus',
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
       allergies: ['none'],
       rating: 4.3,
     },
@@ -213,7 +215,7 @@ const RestaurantMenu = () => {
       onSale: false,
       saleType: null,
       description:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ultrices nibh vel dui cursus',
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
       allergies: ['eggs'],
       rating: 4.4,
     },
@@ -227,7 +229,7 @@ const RestaurantMenu = () => {
       onSale: false,
       saleType: null,
       description:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ultrices nibh vel dui cursus',
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
       allergies: ['nuts', 'fish', 'eggs', 'onion'],
       rating: 4,
     },
@@ -238,7 +240,7 @@ const RestaurantMenu = () => {
       onSale: true,
       saleType: 'discount',
       description:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ultrices nibh vel dui cursus',
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
       allergies: ['nuts', 'gluten'],
       rating: 4.5,
     },
@@ -249,7 +251,7 @@ const RestaurantMenu = () => {
       onSale: false,
       saleType: null,
       description:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ultrices nibh vel dui cursus',
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
       allergies: ['nuts', 'dairy'],
       rating: 4.2,
     },
@@ -260,7 +262,7 @@ const RestaurantMenu = () => {
       onSale: false,
       saleType: null,
       description:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ultrices nibh vel dui cursus',
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
       allergies: ['gluten'],
       rating: 4.3,
     },
@@ -271,7 +273,7 @@ const RestaurantMenu = () => {
       onSale: false,
       saleType: null,
       description:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ultrices nibh vel dui cursus',
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
       allergies: ['nuts', 'fish', 'gluten'],
       rating: 4.1,
     },
@@ -282,7 +284,7 @@ const RestaurantMenu = () => {
       onSale: true,
       saleType: 'discount',
       description:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ultrices nibh vel dui cursus',
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
       allergies: ['nuts', 'eggs'],
       rating: 4.4,
     },
@@ -293,7 +295,7 @@ const RestaurantMenu = () => {
       onSale: false,
       saleType: null,
       description:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ultrices nibh vel dui cursus',
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
       allergies: ['nuts', 'gluten'],
       rating: 4.6,
     },
@@ -304,7 +306,7 @@ const RestaurantMenu = () => {
       onSale: false,
       saleType: null,
       description:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ultrices nibh vel dui cursus',
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
       allergies: ['nuts', 'gluten'],
       rating: 4,
     },
@@ -315,7 +317,7 @@ const RestaurantMenu = () => {
       onSale: true,
       saleType: 'discount',
       description:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ultrices nibh vel dui cursus',
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
       allergies: ['nuts'],
       rating: 4.2,
     },
@@ -326,7 +328,7 @@ const RestaurantMenu = () => {
       onSale: false,
       saleType: null,
       description:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ultrices nibh vel dui cursus',
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
       allergies: ['nuts', 'dairy', 'gluten'],
       rating: 4.3,
     },
@@ -340,7 +342,7 @@ const RestaurantMenu = () => {
       onSale: false,
       saleType: null,
       description:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ultrices nibh vel dui cursus',
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
       allergies: ['gluten'],
       rating: 4.5,
     },
@@ -351,7 +353,7 @@ const RestaurantMenu = () => {
       onSale: false,
       saleType: null,
       description:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ultrices nibh vel dui cursus',
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
       allergies: ['nuts', 'dairy'],
       rating: 4.2,
     },
@@ -362,7 +364,7 @@ const RestaurantMenu = () => {
       onSale: false,
       saleType: null,
       description:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ultrices nibh vel dui cursus',
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
       allergies: ['fish'],
       rating: 4.6,
     },
@@ -373,7 +375,7 @@ const RestaurantMenu = () => {
       onSale: false,
       saleType: null,
       description:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ultrices nibh vel dui cursus',
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
       allergies: ['none'],
       rating: 4.7,
     },
@@ -384,7 +386,7 @@ const RestaurantMenu = () => {
       onSale: false,
       saleType: null,
       description:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ultrices nibh vel dui cursus',
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
       allergies: ['gluten', 'dairy'],
       rating: 4.4,
     },
@@ -395,7 +397,7 @@ const RestaurantMenu = () => {
       onSale: false,
       saleType: null,
       description:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ultrices nibh vel dui cursus',
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
       allergies: ['none'],
       rating: 4.3,
     },
@@ -406,7 +408,7 @@ const RestaurantMenu = () => {
       onSale: false,
       saleType: null,
       description:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ultrices nibh vel dui cursus',
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
       allergies: ['gluten', 'dairy'],
       rating: 4.1,
     },
@@ -417,7 +419,7 @@ const RestaurantMenu = () => {
       onSale: false,
       saleType: null,
       description:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ultrices nibh vel dui cursus',
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
       allergies: ['gluten'],
       rating: 4,
     },
@@ -428,7 +430,7 @@ const RestaurantMenu = () => {
       onSale: false,
       saleType: null,
       description:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ultrices nibh vel dui cursus',
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
       allergies: ['fish'],
       rating: 4.6,
     },
@@ -439,7 +441,7 @@ const RestaurantMenu = () => {
       onSale: false,
       saleType: null,
       description:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ultrices nibh vel dui cursus',
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
       allergies: ['gluten', 'dairy'],
       rating: 4.2,
     },
@@ -852,16 +854,16 @@ const RestaurantMenu = () => {
               reducedTransparencyFallbackColor="#f00"
               downsampleFactor={25}
               class="restaurant-item-categories"
+              s
               style={{
-                paddingVertical: 10,
-                justifyContent: 'center',
-                alignItems: 'center',
+                padding: 5,
+                marginTop: -1,
               }}>
               <FlatList
                 horizontal={true}
                 showsHorizontalScrollIndicator={false}
+                contentContainerStyle={styles.listStyle}
                 ref={flatListRef}
-                style={styles.listStyle}
                 data={categories}
                 renderItem={renderItemCategories}
                 keyExtractor={item => item.id} // Key extractor for each item

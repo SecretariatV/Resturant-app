@@ -256,12 +256,16 @@ const styles = StyleSheet.create({
     color: Colors.BLACK,
     paddingVertical: 5,
   },
-
+  listStyle: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    // backgroundColor: '#f00',
+  },
   verticalPrdListItem: {
     marginHorizontal: 10,
     width: widthToDp(95),
     height: heightToDp(38),
-    // padding: 10,
+    // paddingTop: 10,
     marginBottom: 15,
     alignSelf: 'center',
     backgroundColor: '#7074C422',
@@ -277,6 +281,7 @@ const styles = StyleSheet.create({
       width: '50%',
       // backgroundColor: 'brown',
       paddingHorizontal: 15,
+      paddingTop: 20,
     },
     prdNameCont: {
       // backgroundColor: 'red',
