@@ -256,16 +256,16 @@ const FavoritesTabView = () => {
             style={styles.verticalPrdListItem.prdRestName}>
             Served by: (Restaurant Name)
           </Text>
-          <View
-            className="product-pricing-cont"
-            style={styles.verticalPrdListItem.prdPricingCont}>
-            <Text style={styles.price}>${item.regPrice}</Text>
-          </View>
           <Text
             className="product-restaruant-visit"
             style={styles.verticalPrdListItem.prdVisit}>
             Last visited May 29, 2024
           </Text>
+          <View
+            className="product-pricing-cont"
+            style={styles.verticalPrdListItem.prdPricingCont}>
+            <Text style={styles.price}>${item.regPrice}</Text>
+          </View>
         </View>
         <View
           className="vertical-product-list-right-cont"
@@ -362,6 +362,7 @@ const LocationsTabView = () => {
     <ResturantCard
       name={item.name}
       location={item.location}
+      fav
       //   cuisine={item.cuisine}
     />
   );
@@ -420,7 +421,7 @@ const Favorites = () => {
   const [index, setIndex] = React.useState(0);
   const [routes] = React.useState([
     {key: 'first', title: 'Locations'},
-    {key: 'second', title: 'Favorites'},
+    {key: 'second', title: 'Items'},
   ]);
   return (
     <View style={styles.container}>

@@ -2,10 +2,9 @@ import {View, TextInput, TouchableOpacity} from 'react-native';
 import React from 'react';
 import {styles} from './styles';
 import SearchIcon from '../../assets/images/searchIcon.svg';
-import FilterIcon from '../../assets/images/searchFilterIcon.png';
+import FilterIcon from '../../assets/images/filter.svg';
 
 import LinearGradient from 'react-native-linear-gradient';
-import {Image} from 'react-native';
 import {heightToDp, widthToDp} from '../../utils/Dimensions';
 
 const SearchModded = ({isVisible, setIsVisible, filter = true}) => {
@@ -28,11 +27,12 @@ const SearchModded = ({isVisible, setIsVisible, filter = true}) => {
           />
           {filter ? (
             <TouchableOpacity onPress={() => setIsVisible(!isVisible)}>
-              <Image
+              <FilterIcon />
+              {/* <Image
                 source={FilterIcon}
                 // resizeMode="cover"
                 style={{width: widthToDp(8), height: heightToDp(8)}}
-              />
+              /> */}
             </TouchableOpacity>
           ) : (
             <></>

@@ -159,10 +159,12 @@ const styles = StyleSheet.create({
   customAmountContainer: {
     flex: 1,
     height: 54,
-    backgroundColor: '#08080855'
+    backgroundColor: '#08080855',
   },
   levelTxt: {
-    marginRight: 10,
+    marginRight: width > 390 ? width * 0.04 : width * 0.244,
+
+    marginLeft: 5,
     marginTop: 10,
     color: Colors.WHITE,
     fontFamily: fonts.URBANIST_MEDIUM,

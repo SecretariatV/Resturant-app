@@ -260,7 +260,7 @@ const styles = StyleSheet.create({
   verticalPrdListItem: {
     marginHorizontal: 10,
     width: widthToDp(95),
-    height: heightToDp(42),
+    height: heightToDp(38),
     // padding: 10,
     marginBottom: 15,
     alignSelf: 'center',
@@ -326,6 +326,7 @@ const styles = StyleSheet.create({
     prdRatingStar: {},
     prdAllergiesCont: {
       flexDirection: 'row',
+      marginLeft: 10,
       // backgroundColor: '#ff00ff',
     },
     prdAllergiesBg: {

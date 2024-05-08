@@ -13,6 +13,11 @@ const styles = StyleSheet.create({
     fontFamily: fonts.URBANIST_BOLD,
     fontSize: 17,
   },
+  userNameContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    // justifyContent: 'center',
+  },
   tabBarButton: {
     flex: 1,
     alignItems: 'center',
@@ -24,19 +29,20 @@ const styles = StyleSheet.create({
 
   myOrderContainer: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
-    width: '100%',
+    // justifyContent: 'space-between',
+    width: '80%',
     // marginTop: 15,
+    // backgroundColor: 'green',
     marginVertical: 10,
     // alignItems: 'center',
     // justifyContent: 'center',
   },
 
-  myOrderSubContainer: {
-    flexDirection: 'row',
-    width: '50%',
-    alignItems: 'center',
-  },
+  // myOrderSubContainer: {
+  //   flexDirection: 'row',
+  //   width: '80%',
+  //   alignItems: 'center',
+  // },
   productContainer: {
     backgroundColor: '#303F43',
     borderRadius: 8,
@@ -57,6 +63,11 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: Colors.GREEN,
   },
+  customizePrice: {
+    fontFamily: fonts.URBANIST_REGULAR,
+    fontSize: 16,
+    color: '#00A7F7',
+  },
   timePrice: {
     fontFamily: fonts.URBANIST_REGULAR,
     fontSize: 14,
@@ -71,7 +82,7 @@ const styles = StyleSheet.create({
   },
 
   qty: {
-    fontSize: 22,
+    fontSize: 20,
     fontFamily: fonts.URBANIST_REGULAR,
     color: Colors.GREEN,
   },
@@ -80,6 +91,9 @@ const styles = StyleSheet.create({
     fontSize: 20,
     color: Colors.WHITE,
     marginLeft: 15,
+  },
+  customization: {
+    color: '#00A7F7',
   },
   quantityTitle: {
     color: Colors.WHITE,

@@ -6,12 +6,13 @@ import {Colors} from '../../../theme';
 const styles = StyleSheet.create({
   circleGradient: {
     margin: 2,
-
     padding: 10,
+    justifyContent: 'center',
     alignItems: 'center',
     alignSelf: 'center',
     borderRadius: 22,
     flexDirection: 'row',
+    width: '100%',
   },
   input: {
     borderBottomColor: 'transparent',

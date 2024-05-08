@@ -31,9 +31,7 @@ const Setting = () => {
         <View style={styles.subContainer}>
           <TouchableOpacity
             style={styles.sectionContainer}
-            onPress={() =>
-              navigation.navigate('SettingStack', {screen: 'Profile'})
-            }>
+            onPress={() => navigation.navigate('Profile')}>
             <User />
 
             <View style={styles.sectionTxt}>
@@ -52,6 +50,7 @@ const Setting = () => {
           </TouchableOpacity>
           <FadedSeparator containerStyle={styles.separator} />
           <TouchableOpacity
+            onPress={() => navigation.navigate('Preferences')}
             style={[styles.sectionTop, styles.sectionContainer]}>
             <MenuCustomize />
             <View style={styles.sectionTxt}>

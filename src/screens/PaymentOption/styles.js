@@ -245,7 +245,8 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     width: widthToDp(28),
     // marginBottom: 100,
-    height: 25,
+    // backgroundColor: 'transparent',
+    height: 30,
   },
 
   linearBack: {
@@ -276,7 +277,7 @@ const styles = StyleSheet.create({
 
   itemContainer: {
     flexDirection: 'row',
-    marginBottom: 15,
+    marginVertical: 7,
     marginHorizontal: 15,
     alignItems: 'center',
     justifyContent: 'space-between',

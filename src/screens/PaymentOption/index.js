@@ -188,22 +188,6 @@ const ShareByItems = () => {
             marginVertical: 20,
             // paddingTop: 10,
           }}>
-          <View style={styles.selectAll}>
-            <Text style={styles.selectAllTxt}>Select All</Text>
-            <CheckBox
-              checked={checked}
-              onPress={toggleCheckbox}
-              iconType="material-community"
-              checkedIcon="checkbox-outline"
-              uncheckedIcon={'checkbox-blank-outline'}
-              containerStyle={{
-                // height: 50,
-                backgroundColor: 'transparent',
-              }}
-              checkedColor={Colors.GREEN}
-              uncheckedColor={Colors.GREEN}
-            />
-          </View>
           <View style={styles.itemContainer}>
             <View style={{flexDirection: 'row', alignItems: 'center'}}>
               <Image source={require('../../assets/images/profileImg.png')} />
@@ -228,6 +212,22 @@ const ShareByItems = () => {
           <View>
             {expanded && (
               <View style={{width: '100%'}}>
+                <View style={styles.selectAll}>
+                  <Text style={styles.selectAllTxt}>Select All</Text>
+                  <CheckBox
+                    checked={checked}
+                    onPress={toggleCheckbox}
+                    iconType="material-community"
+                    checkedIcon="checkbox-outline"
+                    uncheckedIcon={'checkbox-blank-outline'}
+                    containerStyle={{
+                      // height: 50,
+                      backgroundColor: 'transparent',
+                    }}
+                    checkedColor={Colors.GREEN}
+                    uncheckedColor={Colors.GREEN}
+                  />
+                </View>
                 <View
                   style={{
                     flexDirection: 'row',
@@ -330,8 +330,8 @@ const SecondRoute = () => {
       {...props}
       indicatorStyle={{backgroundColor: 'transparent'}}
       style={{
-        // backgroundColor: 'transparent',
-        backgroundColor: '#272735',
+        backgroundColor: 'transparent',
+        // backgroundColor: '#272735',
         marginTop: getPlatformSpecificValue(10, 0),
         width: '95%',
         alignSelf: 'center',
@@ -343,9 +343,11 @@ const SecondRoute = () => {
       renderLabel={({route, focused, color}) => (
         <LinearGradient
           colors={
-            focused
-              ? ['#00F69299', '#00A7F7FF']
-              : ['transparent', 'transparent']
+            // focused
+            //   ? ['#00F69299', '#00A7F7FF']
+            //   : ['transparent', 'transparent']
+
+            focused ? ['#00F69299', '#00A7F7FF'] : ['#FFFFFF22', '#FFFFFF22']
           }
           useAngle={true}
           angle={820}
@@ -357,6 +359,7 @@ const SecondRoute = () => {
               color: focused ? Colors.BLACK : Colors.WHITE,
               fontFamily: fonts.URBANIST_MEDIUM,
               fontSize: screenToTextSize(4),
+              marginBottom: 2,
             }}>
             {route.title}
           </Text>
@@ -458,7 +461,7 @@ const PaymentOption = () => {
       <HeaderModed
         //headerStyle={{marginLeft: getPlatformSpecificValue(15, 0)}}
         slotLeft={<HamBurgerButton />}
-        slotCenter={<Text style={styles.headerText}>Payment Option</Text>}
+        slotCenter={<Text style={styles.headerText}>Payments</Text>}
         slotRight={<></>}
       />
       <TabView

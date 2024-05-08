@@ -33,6 +33,7 @@ import {heightToDp, widthToDp} from '../../utils/Dimensions';
 import {reviews, ageGroup, cuisine, dressCode} from '../../utils/demodata';
 import {Colors} from '../../theme';
 import {fonts} from '../../theme/FontFamily';
+import FastImage from 'react-native-fast-image';
 
 const Restaurant = () => {
   const [expanded, setExpanded] = useState(true);
@@ -260,7 +261,13 @@ const Restaurant = () => {
 
   return (
     <View style={styles.container}>
-      <BackgroundLayout />
+      {/* <BackgroundLayout /> */}
+      <FastImage
+        source={require('../../assets/images/bgV3.png')}
+        style={[styles.background_image]}
+        resizeMode={FastImage.resizeMode.cover}
+        priority={FastImage.priority.high} // or 'high' depending on your import
+      />
       {/* <HeaderModed
         slotLeft={<HamBurgerButton />}
         slotCenter={<></>}
@@ -269,7 +276,6 @@ const Restaurant = () => {
       <HamBurgerButton
         style={{position: 'absolute', top: 50, left: 20, zIndex: 999}}
       />
-
       <ScrollView style={styles.restaurantScrollView}>
         {/* <View style={{position: 'absolute'}}> */}
 
@@ -281,7 +287,7 @@ const Restaurant = () => {
           <View
             class="restaurant-rating-container"
             style={styles.resturantRatingContainer}>
-            <Star width={50} style={{marginLeft: 15, marginTop: 4}} />
+            <Star width={50} style={{marginLeft: 15}} />
             <Text style={styles.rating}>4.5</Text>
           </View>
           <View

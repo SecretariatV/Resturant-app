@@ -31,6 +31,7 @@ import {useDispatch} from 'react-redux';
 import {setCartBtn} from '../../redux/actions/cart.js';
 import CloseFilterBtn from '../../assets/images/closeBtnFilter.svg';
 import {SwipeListView} from 'react-native-swipe-list-view';
+import MenuNavButton from '../../components/MenuNavButton/index.js';
 
 const Cart = () => {
   const navigation = useNavigation();
@@ -198,14 +199,15 @@ const Cart = () => {
   return (
     <View style={styles.container}>
       <BackgroundLayout
-        imgStyle={{borderTopLeftRadius: 35, borderTopRightRadius: 35}}
+      // imgStyle={{borderTopLeftRadius: 35, borderTopRightRadius: 35}}
       />
 
       {isModalVisible ? FullScreenModal() : <></>}
 
       <HeaderModed
-        headerStyle={{}}
-        slotLeft={
+        headerStyle={{padding: 0, margin: 0}}
+        slotLeft={<HamBurgerButton />}
+        slotCenter={
           <Text
             style={{
               fontFamily: fonts.URBANIST_BOLD,
@@ -215,12 +217,12 @@ const Cart = () => {
             Order
           </Text>
         }
-        slotCenter={<></>}
         slotRight={
           <>
             <TouchableOpacity
               onPress={() => {
-                dispatch(setCartBtn(false));
+                navigation.goBack();
+                // dispatch(setCartBtn(false));
               }}
               style={{padding: 10}}>
               <CloseFilterBtn width={20} height={20} />
@@ -230,13 +232,15 @@ const Cart = () => {
       />
       <ScrollView>
         <View
-          style={{
-            borderWidth: 2,
-            borderColor: Colors.GREEN,
-            borderTopLeftRadius: 35,
-            borderTopRightRadius: 35,
-            // backgroundColor: 'red',
-          }}>
+          style={
+            {
+              // borderWidth: 2,
+              // borderColor: Colors.GREEN,
+              // borderTopLeftRadius: 35,
+              // borderTopRightRadius: 35,
+              // backgroundColor: 'red',
+            }
+          }>
           {cartData.map((item, index) => (
             <BackgroundCard
               style={{marginTop: 10, marginHorizontal: 10}}

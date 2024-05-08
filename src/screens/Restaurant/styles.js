@@ -11,6 +11,13 @@ const styles = StyleSheet.create({
     position: 'relative',
     // paddingHorizontal: 15,
   },
+  background_image: {
+    height: '100%',
+    width: '100%',
+    // resizeMode: 'stretch',
+    position: 'absolute',
+    bottom: 0,
+  },
   bannerImage: {
     // top: -20,
     width: widthToDp(100),

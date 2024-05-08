@@ -27,9 +27,9 @@ import {useNavigation} from '@react-navigation/native';
 const Profile = () => {
   const navigation = useNavigation();
 
-  const renderItem = ({item}) => {
+  const renderItem = ({item, index}) => {
     return (
-      <View style={{margin: 5}}>
+      <View style={{margin: 5}} key={index}>
         <Image source={item.source} style={styles.image} />
       </View>
     );
@@ -135,6 +135,7 @@ const Profile = () => {
 
           <View>
             <FlatList
+              scrollEnabled={false}
               data={ArReels}
               renderItem={renderItem}
               keyExtractor={item => item.id}

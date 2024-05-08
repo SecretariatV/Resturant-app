@@ -10,8 +10,11 @@ import {heightToDp, widthToDp} from '../../utils/Dimensions';
 import ButtonsCommon from '../../components/Buttons/ButtonCommon.js';
 import LinearGradient from 'react-native-linear-gradient';
 import {restaurantActivity} from '../../utils/demodata.js';
+import {useNavigation} from '@react-navigation/native';
 
 const Wallet = () => {
+  const navigation = useNavigation();
+
   return (
     <View style={styles.container}>
       <BackgroundLayout />
@@ -66,7 +69,10 @@ const Wallet = () => {
                 </View>
               </View>
             </LinearGradient>
-            <TouchableOpacity className="dashed-btn" style={styles.dashedBtn}>
+            <TouchableOpacity
+              className="dashed-btn"
+              style={styles.dashedBtn}
+              onPress={() => navigation.navigate('AddCard')}>
               <Image
                 source={require('../../assets/images/plus.png')}
                 tintColor={Colors.GREEN}
