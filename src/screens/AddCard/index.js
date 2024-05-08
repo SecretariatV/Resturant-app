@@ -7,9 +7,11 @@ import HeaderModed from '../../components/HeaderModed';
 import FancyInput from '../../components/FancyInput';
 import ButtonsCommon from '../../components/Buttons/ButtonCommon.js';
 import HamBurgerButton from '../../components/NavButtons/HamBurgerButton/index.js';
-import { getPlatformSpecificValue } from '../../utils/helper.js';
+import {useNavigation} from '@react-navigation/native';
 
 const AddCard = () => {
+  const navigation = useNavigation();
+
   return (
     <View style={styles.container}>
       <BackgroundLayout />
@@ -59,7 +61,10 @@ const AddCard = () => {
             />
           </View>
           <View style={{marginTop: 20}}>
-            <ButtonsCommon btnText={'Add Card'} />
+            <ButtonsCommon
+              btnText={'Add Card'}
+              onPress={() => navigation.navigate('Wallet')}
+            />
           </View>
         </View>
       </ScrollView>

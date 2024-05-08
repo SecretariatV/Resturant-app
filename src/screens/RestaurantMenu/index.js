@@ -29,7 +29,7 @@ import Star from '../../assets/images/ratingStar.svg';
 import {dressCode} from '../../utils/demodata';
 import {height, heightToDp, widthToDp} from '../../utils/Dimensions';
 import {fonts} from '../../theme/FontFamily';
-import {Colors} from '../../theme';
+import {Colors, commonStyles} from '../../theme';
 import {getPlatformSpecificValue, screenToTextSize} from '../../utils/helper';
 // import {View} from '@candlefinance/blur-view';
 import {Allergies} from '../../utils/demodata';
@@ -562,18 +562,12 @@ const RestaurantMenu = () => {
             class="rating-with-allergies"
             style={{
               flexDirection: 'row',
-              // justifyContent: 'center',
               alignItems: 'center',
-              // backgroundColor: 'orange',
-              // height: 50,
-              // justifyContent
-
-              // flex: 1,
             }}>
             <View
               className="menu-item-smallbox-ratingCont"
               style={[styles.menuItemSmallbox.ratingCont, {marginLeft: 5}]}>
-              <Star style={styles.menuItemSmallbox.ratingIcon} width={30} />
+              <Star style={styles.menuItemSmallbox.ratingIcon} width={45} />
               <Text style={styles.menuItemSmallbox.rating}>{item.rating}</Text>
             </View>
             <View
@@ -662,12 +656,6 @@ const RestaurantMenu = () => {
       <View style={styles.container}>
         <BackgroundLayout />
         {Platform.OS === 'ios' && (
-          // <BlurView
-          //   blurType="ultraThinMaterialDark"
-          //   overlayColor="#ffffff00"
-          //   reducedTransparencyFallbackColor="#f00"
-          //   downsampleFactor={25}
-          //   style={{height: 35}}></BlurView>
           <View style={{height: 35, backgroundColor: '#060015'}}></View>
         )}
         <ScrollView stickyHeaderIndices={[2]} style={{paddingBottom: 20}}>
@@ -676,7 +664,16 @@ const RestaurantMenu = () => {
               marginTop: Platform.OS === 'ios' ? heightToDp(2) : 10,
             }}
             slotLeft={<HamBurgerButton />}
-            slotCenter={<Text style={styles.navbarPageTitle}>Menu</Text>}
+            slotCenter={
+              <Text
+                style={{
+                  fontFamily: fonts.URBANIST_BOLD,
+                  fontSize: 22,
+                  color: Colors.WHITE,
+                }}>
+                Menu
+              </Text>
+            }
             slotRight={
               <View style={{flexDirection: 'row', alignItems: 'center'}}>
                 <SearchButton />
@@ -773,7 +770,7 @@ const RestaurantMenu = () => {
                             style={styles.menuItemSmallbox.ratingCont}>
                             <Star
                               style={styles.menuItemSmallbox.ratingIcon}
-                              width={30}
+                              width={45}
                             />
                             <Text style={styles.menuItemSmallbox.rating}>
                               4.5
@@ -824,7 +821,7 @@ const RestaurantMenu = () => {
                             style={styles.menuItemSmallbox.ratingCont}>
                             <Star
                               style={styles.menuItemSmallbox.ratingIcon}
-                              width={30}
+                              width={45}
                             />
                             <Text style={styles.menuItemSmallbox.rating}>
                               4.5

@@ -97,6 +97,11 @@ const tabNavStyles = StyleSheet.create({
     borderTopLeftRadius: 15,
     borderTopRightRadius: 15,
   },
+  blurContainer: {
+    flex: 1,
+    backgroundColor: 'red', // Semi-transparent black
+  },
+
   bottomView: {
     marginHorizontal: 15,
     marginVertical: 15,

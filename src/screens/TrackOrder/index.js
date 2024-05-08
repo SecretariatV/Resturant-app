@@ -40,7 +40,9 @@ const TrackOrder = () => {
   const [dessertExpanded, setDessertExpanded] = useState(true);
 
   const [checked, setChecked] = React.useState(true);
-
+  const toggleStarter = () => setStarterExpanded(!starterExpanded);
+  const toggleMain = () => setMainExpanded(!mainExpanded);
+  const toggleDessert = () => setDessertExpanded(!dessertExpanded);
   const toggleCheckbox = () => setChecked(!checked);
   return (
     <View style={styles.container}>
@@ -70,7 +72,8 @@ const TrackOrder = () => {
                 // style={styles.review_btn}
                 style={styles.itemDetail}
                 onPress={() => {
-                  setExpanded(!expanded);
+                  // setExpanded(!expanded);
+                  toggleStarter(); // Use toggleStarter here
                 }}>
                 <Image
                   source={require('../../assets/images/chevron_down.png')}
@@ -80,7 +83,7 @@ const TrackOrder = () => {
             </View>
           </View>
           <View>
-            {expanded && (
+            {starterExpanded && (
               <View style={{width: widthToDp(90)}}>
                 <FadedSeparator />
                 {starterItems.map((item, index) => (
@@ -95,7 +98,7 @@ const TrackOrder = () => {
                         // style={styles.review_btn}
                         style={styles.itemDetail}
                         onPress={() => {
-                          setExpanded(!expanded);
+                          setStarterExpanded(!starterExpanded);
                         }}>
                         <Cross width={20} />
                       </TouchableOpacity>
@@ -146,7 +149,9 @@ const TrackOrder = () => {
                 // style={styles.review_btn}
                 style={styles.itemDetail}
                 onPress={() => {
-                  setExpanded(!expanded);
+                  toggleMain(); // Use toggleMain here
+
+                  // setExpanded(!expanded);
                 }}>
                 <Image
                   source={require('../../assets/images/chevron_down.png')}
@@ -156,7 +161,7 @@ const TrackOrder = () => {
             </View>
           </View>
           <View>
-            {expanded && (
+            {mainExpanded && (
               <View style={{width: widthToDp(90)}}>
                 <FadedSeparator />
                 {mainItems.map((item, index) => (
@@ -171,7 +176,7 @@ const TrackOrder = () => {
                         // style={styles.review_btn}
                         style={styles.itemDetail}
                         onPress={() => {
-                          setExpanded(!expanded);
+                          setMainExpanded(!mainExpanded);
                         }}>
                         <Cross width={20} />
                       </TouchableOpacity>
@@ -222,7 +227,7 @@ const TrackOrder = () => {
                 // style={styles.review_btn}
                 style={styles.itemDetail}
                 onPress={() => {
-                  setExpanded(!expanded);
+                  setDessertExpanded(!dessertExpanded);
                 }}>
                 <Image
                   source={require('../../assets/images/chevron_down.png')}
@@ -232,7 +237,7 @@ const TrackOrder = () => {
             </View>
           </View>
           <View>
-            {expanded && (
+            {dessertExpanded && (
               <View
                 style={{
                   width: widthToDp(90),

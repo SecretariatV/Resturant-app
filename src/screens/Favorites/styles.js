@@ -435,6 +435,7 @@ const styles = StyleSheet.create({
       fontFamily: fonts.URBANIST_REGULAR,
       justifyContent: 'center',
       lineHeight: 26,
+      marginBottom: 10,
       // position: 'relative',
       // top: -5,
       // marginTop: 10,
@@ -526,7 +527,7 @@ const styles = StyleSheet.create({
       justifyContent: 'center',
       alignItems: 'center',
       position: 'absolute',
-      right: 10
+      right: 10,
     },
   },
   menuItemSmallbox: {

@@ -180,12 +180,13 @@ const styles = StyleSheet.create({
   circleGradient: {
     // justifyContent: 'center',
 
-    width: widthToDp(42),
+    width: widthToDp(43),
     height: heightToDp(22),
-
+    // paddingBottom: 0,
+    // paddingHorizontal: 40,
     alignItems: 'center',
     backgroundColor: '#00000077',
-    borderRadius: 22,
+    borderRadius: 12,
   },
 
   billContainer: {
@@ -196,21 +197,23 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
   totalBillBox: {
-    borderRadius: 22,
-    marginLeft: 10,
-    height: heightToDp(25),
+    // borderRadius: 22,
+    borderRadius: 12,
 
-    width: widthToDp(46),
+    marginLeft: 10,
+    height: heightToDp(23),
+
+    width: widthToDp(44),
     alignItems: 'center',
     justifyContent: 'center',
   },
 
   yourShareBox: {
-    borderRadius: 22,
-    height: heightToDp(25),
+    borderRadius: 12,
+    height: heightToDp(23),
     marginRight: 10,
 
-    width: widthToDp(46),
+    width: widthToDp(44),
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -224,6 +227,8 @@ const styles = StyleSheet.create({
     fontFamily: fonts.URBANIST_BOLD,
     fontSize: screenToTextSize(8),
     marginTop: getPlatformSpecificValue(3, -5),
+    // paddingBottom: 100,
+    // marginBottom: 100,
   },
   shareABill: {
     fontSize: screenToTextSize(6),
@@ -237,17 +242,19 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    borderRadius: 15,
-    width: widthToDp(25),
-    height: 35,
+    borderRadius: 5,
+    width: widthToDp(28),
+    // marginBottom: 100,
+    // backgroundColor: 'transparent',
+    height: 30,
   },
 
   linearBack: {
     borderRadius: 20,
     flexWrap: 'wrap',
     // width: '90%',
-    marginTop: 10,
-    // padding: 10,
+    // marginTop: 10,
+    padding: 10,
     // b
   },
   circleTwoGradient: {
@@ -270,7 +277,7 @@ const styles = StyleSheet.create({
 
   itemContainer: {
     flexDirection: 'row',
-    marginBottom: 15,
+    marginVertical: 7,
     marginHorizontal: 15,
     alignItems: 'center',
     justifyContent: 'space-between',
@@ -363,9 +370,8 @@ const styles = StyleSheet.create({
   selectAll: {
     width: '100%',
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'flex-end',
     flexDirection: 'row',
-    alignSelf: 'flex-end',
   },
   selectAllTxt: {
     color: Colors.WHITE,

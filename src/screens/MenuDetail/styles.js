@@ -144,7 +144,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     marginLeft: 15,
-    marginTop: 10,
+    marginTop: 20,
   },
   lottieStyle: {
     width: 20,
@@ -157,6 +157,7 @@ const styles = StyleSheet.create({
     fontFamily: fonts.URBANIST_BOLD,
   },
   quantityTxt: {
+    marginTop: 20,
     fontSize: 18,
     fontFamily: fonts.URBANIST_EXTRABOLD,
     color: Colors.WHITE,

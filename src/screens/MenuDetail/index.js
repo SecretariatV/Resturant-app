@@ -15,7 +15,7 @@ import BackgroundLayout from '../../components/BackgroundLayout';
 import HeaderModed from '../../components/HeaderModed';
 import HorizontalPicker from '@vseslav/react-native-horizontal-picker';
 
-import {heightToDp, width, widthToDp} from '../../utils/Dimensions';
+import {height, heightToDp, width, widthToDp} from '../../utils/Dimensions';
 import Swiper from 'react-native-swiper';
 import LinearGradient from 'react-native-linear-gradient';
 import Counter from '../../components/Counter';
@@ -34,6 +34,7 @@ import {SelectCountry} from 'react-native-element-dropdown';
 import GradientText from '../../components/GradientText/index.js';
 import Star from '../../assets/images/ratingStar.svg';
 import CloseFilterBtn from '../../assets/images/closeBtnFilter.svg';
+import SwipBar from '../../components/features/ui/swipBar/index.jsx';
 
 const MenuDetail = () => {
   console.log(width, 'my width');
@@ -150,19 +151,8 @@ const MenuDetail = () => {
             borderRadius: 15,
           }}>
           <HeaderModed
-            headerStyle={{}}
-            slotLeft={
-              <>
-                <TouchableOpacity
-                  onPress={() => {
-                    navigation.goBack();
-                  }}
-                  // style={{padding: 10}}
-                >
-                  <CloseFilterBtn width={20} height={20} />
-                </TouchableOpacity>
-              </>
-            }
+            headerStyle={{marginTop: 0}}
+            slotLeft={<FavouriteButton />}
             // slotLeft={<BackButton onPress={() => navigation.goBack()} />}
             slotCenter={
               <TouchableOpacity
@@ -178,7 +168,18 @@ const MenuDetail = () => {
                 />
               </TouchableOpacity>
             }
-            slotRight={<FavouriteButton />}
+            slotRight={
+              <>
+                <TouchableOpacity
+                  onPress={() => {
+                    navigation.goBack();
+                  }}
+                  // style={{padding: 10}}
+                >
+                  <CloseFilterBtn width={20} height={20} />
+                </TouchableOpacity>
+              </>
+            }
           />
           <View
             style={{
@@ -215,7 +216,17 @@ const MenuDetail = () => {
           <View style={{flexDirection: 'row', marginLeft: 15, marginTop: 10}}>
             {dishType.map((item, index) => (
               <CircleBackground
-                style={index === 0 ? {marginLeft: 0} : {marginLeft: 5}}
+                style={
+                  index === 0
+                    ? {marginLeft: 0}
+                    : {
+                        marginLeft: 5,
+                        // width: 40,
+                        // height: 40,
+                        // borderRadius: 20,
+                        // alignItems: 'center',
+                      }
+                }
                 key={index}>
                 <LottieView
                   source={item.imgUrl}
@@ -242,8 +253,6 @@ const MenuDetail = () => {
               <LottieView
                 source={require('../../assets/images/food_plate.json')}
                 autoPlay
-                // loop
-                // Additional props for customization
                 loop={false}
                 speed={1.5}
                 resizeMode="contain"
@@ -262,8 +271,9 @@ const MenuDetail = () => {
             <RestaurantButton
               btnText={'Select Ingredients'}
               onPress={() => handleSelectIngredient()}
+              style={{marginTop: 20}}
             />
-            <View
+            {/* <View
               style={{
                 marginVertical: 10,
                 alignItems: 'center',
@@ -272,19 +282,19 @@ const MenuDetail = () => {
                 borderColor: '#fff4',
                 borderRadius: 36,
                 borderWidth: 1,
-              }}>
-              {/* <BackgroundCard
+              }}> */}
+            {/* <BackgroundCard
               style={styles.backgroundBtnContainer}
               childrenStyle={{paddingVertical: 10}}> */}
-              <Text style={styles.quantityTxt}>Customization</Text>
+            {/* <Text style={styles.quantityTxt}>Customization</Text> */}
 
-              {/* <RestaurantButton
+            {/* <RestaurantButton
               btnText={'Spicy Level'}
               btnTextStyle={{fontFamily: fonts.URBANIST_MEDIUM}}
               style={{width: '90%', marginTop: 10, borderRadius: 16}}
             /> */}
 
-              <LinearGradient
+            {/* <LinearGradient
                 colors={['#00F69299', '#00A7F7FF']}
                 useAngle={true}
                 angle={820}
@@ -298,9 +308,9 @@ const MenuDetail = () => {
                 <View style={styles.circleGradient}>
                   <Text style={[styles.btnText]}>Spicy Level</Text>
                 </View>
-              </LinearGradient>
+              </LinearGradient> */}
 
-              <View style={styles.levelContainer}>
+            {/* <View style={styles.levelContainer}>
                 <HorizontalPicker
                   defaultIndex={selsPice}
                   data={spiceLevel}
@@ -309,9 +319,24 @@ const MenuDetail = () => {
                   itemWidth={100}
                   onChange={handleSetSpiceLevel}
                 />
-              </View>
+              </View> */}
 
-              <LinearGradient
+            {/* <View
+                style={{
+                  width: '100%',
+                  // minHeight: '100vh',
+                  height: '100%',
+                  // display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  backgroundColor: 'rgba(0, 0, 0, 0.49)',
+                }}> */}
+            <View style={{marginTop: 10, width: '100%', alignSelf: 'center'}}>
+              <SwipBar />
+            </View>
+            {/* </View> */}
+
+            {/* <LinearGradient
                 colors={['#00F69299', '#00A7F7FF']}
                 useAngle={true}
                 angle={820}
@@ -336,9 +361,9 @@ const MenuDetail = () => {
                   itemWidth={100}
                   onChange={handleSetPortion}
                 />
-              </View>
-              {/* </BackgroundCard> */}
-            </View>
+              </View> */}
+            {/* </BackgroundCard> */}
+            {/* </View> */}
             <View style={styles.customBtns}>
               <ButtonsCommonAlt
                 btnText={'Quick Order'}

@@ -29,7 +29,7 @@ import RadioButtonCard from '../../components/RadioButtonCard/index.js';
 import Footer from '../../components/Footer/index.js';
 import {useNavigation} from '@react-navigation/native';
 import ButtonsCommon from '../Buttons/ButtonCommon.js/index.js';
-import {widthToDp} from '../../utils/Dimensions.js';
+import {width, widthToDp} from '../../utils/Dimensions.js';
 import logoImage from '../../assets/images/resturant_log.png';
 import HorizontalPicker from '@vseslav/react-native-horizontal-picker';
 import LinearGradient from 'react-native-linear-gradient';
@@ -202,11 +202,11 @@ const ConfirmOrder = () => {
             {/* <View style={styles.pricingContainer}>
               <Text style={styles.tipsContainerSubTitle}>Custom Amount</Text>
             </View> */}
-            <FancyInput 
+            <FancyInput
               fieldValue={tipAmount}
               fieldPlaceHolder="Custom Amount"
               fieldCallback={setTipAmount}
-            /> 
+            />
             <View class="" style={styles.separatorTextCont}>
               <GradientText style={styles.separatorText}>OR</GradientText>
             </View>
@@ -229,15 +229,24 @@ const ConfirmOrder = () => {
                   renderItem={(item, index) => (
                     <TouchableOpacity
                       style={{
+                        // justifyContent: 'space-between',
+                        // width: '100%',
                         width: widthToDp(26),
                         alignItems: 'center',
                       }}>
-                      <View style={{position: 'relative', width: '100%'}}>
+                      <View
+                        style={{
+                          position: 'relative',
+                          width: '100%',
+                          // backgroundColor: 'green',
+                          // justifyContent: 'space-between',
+                        }}>
                         <Text
                           style={{
                             fontSize: 8,
                             position: 'absolute',
-                            left: '45%',
+                            left: width > 390 ? width * 0.114 : width * 0.244,
+                            // '40%',
                             color:
                               tipAmountIndex === index
                                 ? Colors.GREEN
@@ -263,7 +272,9 @@ const ConfirmOrder = () => {
                           style={{
                             fontSize: 8,
                             position: 'absolute',
-                            left: '45%',
+                            // left: '40%',
+                            left: width > 390 ? width * 0.114 : width * 0.244,
+
                             top: 35,
                             color:
                               tipAmountIndex === index

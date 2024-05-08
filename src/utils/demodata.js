@@ -184,24 +184,28 @@ export const cartData = [
     productName: 'Burger',
     price: '50',
     time: '16:30',
+    customize: false,
   },
   {
     id: 2,
     productName: 'Burger',
     price: '50',
     time: '16:30',
+    customize: false,
   },
   {
     id: 3,
     productName: 'Onion',
     price: '50',
     time: '16:30',
+    customize: true,
   },
   {
     id: 4,
     productName: 'Burger',
     price: '50',
     time: '16:30',
+    customize: true,
   },
   {
     id: 5,

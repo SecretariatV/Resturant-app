@@ -125,12 +125,12 @@ const OrderHistoryDetail = () => {
                     />
                     <View style={styles.taxContainer}>
                       <Text style={styles.itemText}>Burger</Text>
-                      <Text style={styles.tax}>Tax</Text>
+                      {/* <Text style={styles.tax}>Tax</Text> */}
                     </View>
                   </View>
                   <View style={{width: '10%'}}>
                     <Text style={styles.productPrice}>$50</Text>
-                    <Text style={styles.taxPrice}>$5</Text>
+                    {/* <Text style={styles.taxPrice}>$5</Text> */}
                   </View>
                 </View>
               ))}
@@ -159,12 +159,12 @@ const OrderHistoryDetail = () => {
                 </Text>
               </View>
 
-              <View class="box" style={[styles.orderDateBox, {width: '100%'}]}>
+              {/* <View class="box" style={[styles.orderDateBox, {width: '100%'}]}>
                 <Text style={styles.dateHeading}>total Tax</Text>
                 <Text class="bank-transfer" style={styles.date}>
                   $15
                 </Text>
-              </View>
+              </View> */}
 
               <View
                 class="discount-box"

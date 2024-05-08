@@ -100,7 +100,7 @@ const ResturantCard = ({name, location, cuisine, fav = false}) => {
               </>
             )}
           </View>
-          {fav ? (
+          {/* {fav ? (
             <View
               style={{
                 // backgroundColor: 'red',
@@ -116,12 +116,11 @@ const ResturantCard = ({name, location, cuisine, fav = false}) => {
               }}>
               <View style={{alignItems: 'flex-end'}}>
                 <Image source={require('../../assets/images/heartBg.png')} />
-                {/* <Text>dsaads</Text> */}
               </View>
             </View>
           ) : (
             <></>
-          )}
+          )} */}
           <View className="restaurant-rating" style={styles.restaurantRating}>
             <View style={styles.restaurantRatingStar}>
               <Star style={styles.starImg} />

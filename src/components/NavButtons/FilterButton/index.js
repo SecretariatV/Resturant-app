@@ -11,7 +11,7 @@ const FilterButton = ({onPress}) => {
   };
   return (
     <TouchableOpacity onPress={() => handleClick()}>
-      <Filter />
+      <Filter width={25} height={22} />
     </TouchableOpacity>
   );
 };

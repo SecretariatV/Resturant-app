@@ -155,7 +155,7 @@ const styles = StyleSheet.create({
     },
     rating: {
       color: Colors.BLACK,
-      fontSize: screenToTextSize(2),
+      fontSize: screenToTextSize(3.5),
       fontFamily: fonts.URBANIST_BOLD,
       width: 25,
       textAlign: 'center',
@@ -260,7 +260,7 @@ const styles = StyleSheet.create({
   verticalPrdListItem: {
     marginHorizontal: 10,
     width: widthToDp(95),
-    height: heightToDp(36),
+    height: heightToDp(38),
     // padding: 10,
     marginBottom: 15,
     alignSelf: 'center',
@@ -296,21 +296,22 @@ const styles = StyleSheet.create({
       // flex: 1,
       justifyContent: 'center',
       position: 'relative',
-      top: -5,
+      // top: -5,
       // marginTop: 10,
       // backgroundColor: '#f0f4',
     },
     prdDesc: {
       color: 'white',
-      fontSize: screenToTextSize(2.8),
+      fontSize: screenToTextSize(3.2),
       fontFamily: fonts.URBANIST_MEDIUM,
-      lineHeight: 12,
+      lineHeight: 14,
+      marginTop: 5,
       // height: screenToTextSize(4),
       // flex: 1,
-      width: widthToDp(50),
+      width: widthToDp(55),
       justifyContent: 'center',
       position: 'relative',
-      top: -5,
+      // top: -5,
       // backgroundColor: '#f0f4',
     },
     prdRatingCont: {
@@ -325,6 +326,7 @@ const styles = StyleSheet.create({
     prdRatingStar: {},
     prdAllergiesCont: {
       flexDirection: 'row',
+      marginLeft: 10,
       // backgroundColor: '#ff00ff',
     },
     prdAllergiesBg: {

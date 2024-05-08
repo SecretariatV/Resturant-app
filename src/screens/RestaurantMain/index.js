@@ -41,11 +41,13 @@ import {setQrCode} from '../../redux/actions/auth';
 import {fonts} from '../../theme/FontFamily';
 import HorizontalPicker from '@vseslav/react-native-horizontal-picker';
 import Skeleton from 'react-native-reanimated-skeleton';
+import Curvature from '../../components/features/ui/curvature';
 
 const RestaurantMain = () => {
   const navigation = useNavigation();
   const dispatch = useDispatch();
   const flatListRef = useRef(null);
+  const [activeSection, setActiveSection] = useState('All');
 
   const [modalVisible, setModalVisible] = useState(true);
   const [isVisible, setIsVisible] = useState(false);
@@ -64,6 +66,9 @@ const RestaurantMain = () => {
   ];
   const scrollToIndex = index => {
     flatListRef.current.scrollToIndex({animated: true, index});
+  };
+  const handleSectionChange = section => {
+    setActiveSection(section);
   };
   const renderRestCats = ({item, index}) => (
     <TouchableOpacity
@@ -431,13 +436,20 @@ const RestaurantMain = () => {
               justifyContent: 'center',
               flex: 1,
             }}>
-            <TouchableHighlight
+            {/* <TouchableHighlight
               style={{alignItems: 'flex-end', paddingTop: widthToDp(15)}}
               onPress={() => {
                 setModalVisible(!modalVisible);
               }}>
               <SkipButton showCross={true} showValetImg={false} />
-            </TouchableHighlight>
+            </TouchableHighlight> */}
+            <TouchableOpacity
+              onPress={() => {
+                setModalVisible(!modalVisible);
+              }}
+              style={{padding: 10}}>
+              <CloseFilterBtn width={25} height={25} />
+            </TouchableOpacity>
             <GradientText style={styles.customizeTxt}>Scan Here</GradientText>
             <Text
               style={{
@@ -469,10 +481,11 @@ const RestaurantMain = () => {
             class="intro-user-name"
             style={styles.introHeader.userNameContainer}>
             <Text style={styles.introHeader.userName}>Hey</Text>
-
-            <GradientText style={styles.gradientBoxText}>
-              Mark Anderson
-            </GradientText>
+            <TouchableOpacity onPress={() => navigation.navigate('Profile')}>
+              <GradientText style={styles.gradientBoxText}>
+                Mark Anderson
+              </GradientText>
+            </TouchableOpacity>
           </View>
 
           <LinearGradient
@@ -734,6 +747,7 @@ const RestaurantMain = () => {
           horizontal={true}
           ref={flatListRef}
           showsVerticalScrollIndicator={false}
+          showsHorizontalScrollIndicator={false}
           style={styles.listStyle}
           data={restaurantCategories}
           renderItem={renderRestCats}
@@ -750,6 +764,7 @@ const RestaurantMain = () => {
           keyExtractor={item => item.id} // Key extractor for each item
         />
       </View>
+      <Curvature onSectionChange={handleSectionChange} />
       {/* <FlatList
         showsVerticalScrollIndicator={false}
         style={styles.listStyle}

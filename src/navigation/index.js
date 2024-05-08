@@ -224,7 +224,7 @@ const HomeStack = ({activeRestaurant}) => {
         <Stack.Screen name="RestaurantReview" component={RestaurantReview} />
         <Stack.Screen name="ConfirmPayment" component={ConfirmPayment} />
 
-        <Stack.Screen name="SettingStack" component={SettingStack} />
+        {/* <Stack.Screen name="SettingStack" component={SettingStack} /> */}
         <Stack.Screen
           name="OrderHistoryDetail"
           component={OrderHistoryDetail}
@@ -236,6 +236,11 @@ const HomeStack = ({activeRestaurant}) => {
         <Stack.Screen name="Contact" component={Contact} />
         <Stack.Screen name="Favorites" component={Favorites} />
         <Stack.Screen name="DemoScreen" component={DemoScreen} />
+        {/* <Stack.Screen name="Setting" component={Setting} /> */}
+        <Stack.Screen name="Preferences" component={Preferences} />
+        <Stack.Screen name="EditPreferences" component={EditPreferences} />
+
+        <Stack.Screen name="Profile" component={Profile} />
       </Stack.Group>
     </Stack.Navigator>
   );
@@ -491,14 +496,14 @@ const TabNavigator = () => {
       <Tab.Screen
         name="Cart"
         component={Cart}
-        listeners={() => ({
-          tabPress: e => {
-            console.log('cart listern is working');
+        // listeners={() => ({
+        //   tabPress: e => {
+        //     console.log('cart listern is working');
 
-            e.preventDefault();
-            dispatch(setCartBtn(true));
-          },
-        })}
+        //     e.preventDefault();
+        //     dispatch(setCartBtn(true));
+        //   },
+        // })}
         options={{
           tabBarLabel: 'Order',
           headerShown: false,
@@ -687,7 +692,7 @@ const RootNavigator = () => {
           <></>
         )}
 
-        {cartBtn ? (
+        {/* {cartBtn ? (
           <BottomSheet
             handleComponent={null}
             onChange={handleCartSheetChanges}
@@ -698,13 +703,11 @@ const RootNavigator = () => {
             }}
             ref={cartbottomSheetRef}
             snapPoints={['90%', '90%']}>
-            {/* <ScrollView> */}
             <Cart />
-            {/* </ScrollView> */}
           </BottomSheet>
         ) : (
           <></>
-        )}
+        )} */}
       </NavigationContainer>
     </GestureHandlerRootView>
   );

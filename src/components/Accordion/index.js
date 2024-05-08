@@ -20,8 +20,9 @@ const Accordion = ({title, children, closed = true}) => {
 
   const accordionBody = children;
   return (
-    <BackgroundCard style={{width: widthToDp(90)}}> 
-      <TouchableOpacity onPress={() => handleCollapse()}>
+    <TouchableOpacity onPress={() => handleCollapse()}>
+      <BackgroundCard style={{width: widthToDp(90)}}>
+        {/* <TouchableOpacity onPress={() => handleCollapse()}> */}
         <View
           style={{
             flexDirection: 'row',
@@ -50,9 +51,10 @@ const Accordion = ({title, children, closed = true}) => {
             />
           )}
         </View>
-      </TouchableOpacity>
-      {!collapsed && accordionBody}
-    </BackgroundCard>
+        {/* </TouchableOpacity> */}
+        {!collapsed && accordionBody}
+      </BackgroundCard>
+    </TouchableOpacity>
   );
 };
 
