@@ -40,6 +40,10 @@ target 'Share_A_Bill' do
     :app_path => "#{Pod::Config.instance.installation_root}/.."
   )
 
+  # added for ViroReact 5-7-2024 by Markj
+  pod 'ViroReact', :path => '../node_modules/@viro-community/react-viro/ios/'
+  pod 'ViroKit', :path => '../node_modules/@viro-community/react-viro/ios/dist/ViroRenderer/'
+
   target 'Share_A_BillTests' do
     inherit! :complete
     # Pods for testing

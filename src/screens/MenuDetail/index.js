@@ -166,11 +166,12 @@ const MenuDetail = () => {
             // slotLeft={<BackButton onPress={() => navigation.goBack()} />}
             slotCenter={
               <TouchableOpacity
-                onPress={() =>
-                  Linking.openURL(
-                    'https://sketchfab.com/models/c87f3caa5c76470094aa187edc9dcd57/embed-ar',
-                  )
-                }>
+                onPress={() => {
+                  navigation.navigate('AR');
+                  // Linking.openURL(
+                  //   'https://sketchfab.com/models/c87f3caa5c76470094aa187edc9dcd57/embed-ar',
+                  // )
+                }}>
                 <Image
                   source={require('../../assets/images/AR.png')}
                   style={{width: 40, height: 40}}
